@@ -9,21 +9,23 @@ $myVar = "My Variable";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <title>Virtual Attorney Visitation Online Calendar</title>
 </head>
 
 
 <body>
     <header>
-        <!-- Header code -->
+        <!-- Replace this image with a combination of images to ensure it does not need to stretch weird -->
+        <img src="img\banner1.png" alt="lasalle">
     </header>
     <main>
         <h1>Login</h1>
-        <form action="includes/formhandler.php" method="post">
+        <form action="/includes/login.php" method="post">
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" placeholder="example@test.com">
+            <input required type="email" name="email" id="email" placeholder="example@test.com">
             <label for="email">Password:</label>
-            <input type="password" name="password" id="password" placeholder="password123">
+            <input required type="password" name="password" id="password" placeholder="password123">
             <button type="submit">Log In</button>
         </form>
         <?php
