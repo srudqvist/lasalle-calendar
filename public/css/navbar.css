@@ -1,0 +1,26 @@
+#navbar {
+    height: 8rem;
+    background-color: #404434;
+    color: white;
+    width:auto;
+}
+
+#navbarLasalleLogo {
+    height: 6rem;
+    float: left;
+    padding-top: 0.9rem;
+    padding-left: 1rem;
+}
+#calendarImg {
+    height: 3rem;
+    float: right;
+    vertical-align: top;
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
+#navbarHeadline {
+    line-height: 8rem;
+    text-align: center;
+    font-size: 2.5rem;
+}

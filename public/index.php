@@ -1,24 +1,18 @@
-<?php
-echo "Hello World 2";
-$myVar = "My Variable";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <title>Virtual Attorney Visitation Online Calendar</title>
 </head>
 
 
 <body>
-    <header>
-        <!-- Replace this image with a combination of images to ensure it does not need to stretch weird -->
-        <img src="img\banner1.png" alt="lasalle">
-    </header>
+    <!-- Replace this image with a combination of images to ensure it does not need to stretch weird -->
+    <img src="img\banner1.png" alt="lasalle">
+    <?php include('navbar.php'); ?>
     <main>
         <h1>Login</h1>
         <form action="/includes/login.php" method="post">
