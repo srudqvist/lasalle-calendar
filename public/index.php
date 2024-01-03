@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
     <title>Virtual Attorney Visitation Online Calendar</title>
 </head>
 
 
 <body>
-    <!-- Replace this image with a combination of images to ensure it does not need to stretch weird -->
-    <img src="img\banner1.png" alt="lasalle">
-    <?php include('navbar.php'); ?>
+    <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     <main>
         <h1>Login</h1>
         <form action="/includes/login.php" method="post">
@@ -33,9 +32,7 @@
 
         ?>
     </main>
-    <footer>
-        <!-- Header code -->
-    </footer>
+    <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
 </body>
 
 </html>

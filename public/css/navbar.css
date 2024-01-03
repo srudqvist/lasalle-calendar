@@ -1,8 +1,14 @@
 #navbar {
     height: 8rem;
+    position: fixed;
+    left: 0;
+    top: 0;
     background-color: #404434;
     color: white;
-    width:auto;
+    width:100%;
+    line-height: 0.5rem;
+    text-align: center;
+    font-size: 2.5rem;
 }
 
 #navbarLasalleLogo {
@@ -19,8 +25,26 @@
     padding-right: 1rem;
 }
 
-#navbarHeadline {
+@media screen and (max-width: 1500px) {
+    #navbar {
+        font-size: 1.5rem;
+        line-height: 2;
+    }
+}
+@media screen and (max-width: 1000px) {
+    #navbar {
+        font-size: 1.2rem;
+        line-height: 2.5;
+    }
+}
+@media screen and (max-width: 850px) {
+    #navbar {
+        font-size: 1rem;
+        line-height: 3;
+    }
+}
+/* #navbarHeadline {
     line-height: 8rem;
     text-align: center;
     font-size: 2.5rem;
-}
+} */
