@@ -1,0 +1,99 @@
+	p {color:Black; margin-left: 25px; font-size: 12pt; font-weight: normal; font-family:arial, helvetica, sans-serif;}
+	hypr {font-size: 10pt; font-weight: normal; font-family:arial, helvetica, sans-serif;}
+	h1 {color: white; font-size: 16pt; font-weight: normal; background-color:#96AE4D; font-family:arial, helvetica, sans-serif; margin: 0px 0px 0px 0px; padding: 7px 7px 7px 7px;}
+	h1a {color: black; margin-left: 25px;font-size: 16pt; font-weight: normal;font-family:arial, helvetica, sans-serif;}
+	h2 {color: white; font-size: 12pt; font-weight: normal; background-color:#96AE4D; font-family:arial, helvetica, sans-serif; margin: 0px 0px 0px 0px; padding: 10px 10px 10px 25px;}
+	req {color: red;}
+	f1 {font-size: 14pt; font-weight: bold; font-family: Times New Roman}
+	pstf {font-size: 16pt; margin-left: 30px; font-family: Arial, Helvetica, sans-serif;}
+	td {white-space: nowrap;}
+	td1 {white-space: break-spaces;}
+
+	
+	#staff {
+	  font-family: Arial, Helvetica, sans-serif;
+	  border-collapse: collapse;
+	/*  width: 100%; */
+	  margin-left: 15px;
+	  
+}
+	
+	#staff td, #staff th {
+	  border: 1px solid #DCDCDC;
+
+	  padding: 8px;
+	}
+
+	#staff tr:nth-child(even){background-color: #f2f2f2;}
+
+	#staff tr:hover {background-color: #ddd;}
+
+	#staff th {
+	  padding-top: 12px;
+	  padding-bottom: 12px;
+	  text-align: left;
+	  background-color: #96AE4D;
+	  color: Black;
+}
+	
+	
+	td {text-align: left;}
+
+	input[type="text"] { width: 275px; height: 20px}
+	input[type="smtxt"] { width: 123px; height: 20px}
+	input[type="descr"] { width: 275px; height: 80px;word-wrap: break-word}
+	select { width: 131px; height: 25px}
+	
+	a:link { text-decoration: none }
+	a:link { color: #2E75B6 }
+	a:visited { text-decoration: none }
+	a:hover { text-decoration: none }
+	a:active { text-decoration: none } 
+
+
+
+	button { 
+	         border:1px #96AE4D; 
+	         -webkit-border-radius: 7px; 
+	         -moz-border-radius: 7px; 
+	         border-radius: 7px;
+	         font-size:16px;font-family:arial, helvetica, sans-serif;   
+	         padding: 7px 15px 7px 15px; 
+	         display:inline-block;
+	         text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+			 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 5px 0 rgba(0,0,0,0.19);
+	         font-weight: normal; 
+	         color: White;
+	         background-color:#96AE4D;
+		   transition-duration: 0.4s;
+		}
+
+	button:hover { background-color: #3C4530; color: white; }
+
+	button:active { background-color: #67a0cf; color: white; }
+
+
+	/* The alert message box */
+	.alert {
+	  padding: 20px;
+	  background-color: #f44336; /* Red */
+	  color: white;
+	  margin-bottom: 15px;
+	}
+
+	/* The close button */
+	.closebtn {
+	  margin-left: 15px;
+	  color: white;
+	  font-weight: bold;
+	  float: right;
+	  font-size: 22px;
+	  line-height: 20px;
+	  cursor: pointer;
+	  transition: 0.3s;
+	}
+
+	/* When moving the mouse over the close button */
+	.closebtn:hover {
+	  color: black;
+}

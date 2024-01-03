@@ -6,21 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Virtual Attorney Visitation Online Calendar</title>
 </head>
 
 
 <body>
-    <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     <main>
-        <h1>Login</h1>
-        <form action="/includes/login.php" method="post">
-            <label for="email">Email:</label>
-            <input required type="email" name="email" id="email" placeholder="example@test.com">
-            <label for="email">Password:</label>
-            <input required type="password" name="password" id="password" placeholder="password123">
-            <button type="submit">Log In</button>
-        </form>
+        <div id="navbarDiv">
+            <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
+        </div>
+        <!-- <div id="loginDiv" class="center_content">
+            <h1>Login</h1>
+        </div> -->
+        <!-- <div class="center_content">
+            <form action="/includes/login.php" method="post">
+                <label for="email">Email:</label>
+                <input required type="email" name="email" id="email" placeholder="example@test.com">
+                <label for="email">Password:</label>
+                <input required type="password" name="password" id="password" placeholder="password123">
+                <button type="submit">Log In</button>
+            </form>
+        </div> -->
+        <div class="center_content" id="loginForm">
+            <form action="/includes/login.php" method="post" class="modern_form">
+                <label for="email">Email:</label>
+                <input required type="email" name="email" id="email" placeholder="example@test.com">
+                <label for="password">Password:</label>
+                <input required type="password" name="password" id="password" placeholder="password123">
+                <button type="submit">Log In</button>
+            </form>
+        </div>
         <?php
         echo $_SERVER["DOCUMENT_ROOT"];
         echo "<br>";

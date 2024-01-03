@@ -11,6 +11,10 @@
     font-size: 2.5rem;
 }
 
+#navbarDiv {
+    margin-bottom: 8rem;
+}
+
 #navbarLasalleLogo {
     height: 6rem;
     float: left;

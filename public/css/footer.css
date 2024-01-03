@@ -2,8 +2,9 @@
   position: fixed;
   left: 0;
   bottom: 0;
+  height: 5rem;
   width: 100%;
-  background-color: #B7D6A3;
+  background-color: #96AE4D;
   color: white;
   text-align: center;
 }

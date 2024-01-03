@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#loginDiv {
+    width: 100%;
+    height: 4rem;
+    background-color: #96AE4D;
+    color: white;
+    text-align: center;
+    
+}
+
+#loginForm {
+    height: calc(100vh - 13rem);
+}
+
+
+/* Styling for the form */
+.modern_form {
+    max-width: 400px;
+    padding: 30px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Style for labels */
+.modern_form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style for inputs */
+.modern_form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Style for the submit button */
+.modern_form button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #96AE4D;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modern_form button:hover {
+    background-color: #3C4530;
+}
