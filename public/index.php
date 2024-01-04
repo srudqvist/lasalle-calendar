@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/main.css">
     <title>Virtual Attorney Visitation Online Calendar</title>
 </head>
 
@@ -18,7 +18,7 @@
             <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
         </div>
 
-        <div class="center_content" id="loginForm">
+        <div id="loginForm">
             <form action="/includes/login.php" method="post" class="modern_form">
                 <label for="email">Email:</label>
                 <input required type="email" name="email" id="email" placeholder="example@test.com">
