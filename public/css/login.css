@@ -14,7 +14,7 @@
     margin-top: 10px; /* Adjust margin as needed */
 }
 
-#createForgot a {
+#createForgot p,a {
     flex: 1; /* Occupy available space equally */
     text-align: center; /* Center-align text within each link */
     /* Additional styles for the links */
@@ -73,4 +73,32 @@
 
 .modern_form button:hover {
     background-color: #3C4530;
+}
+
+
+
+/* Style for select element */
+.modern_form select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-size: 16px;
+    /* Additional styles for select */
+    background-color: #fff; /* Background color */
+    color: #333; /* Text color */
+}
+
+/* Style for select arrow */
+.modern_form select::after {
+    content: "\25BC"; /* Unicode for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333; /* Arrow color */
 }
