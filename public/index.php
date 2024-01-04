@@ -17,18 +17,7 @@
         <div id="navbarDiv">
             <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
         </div>
-        <!-- <div id="loginDiv" class="center_content">
-            <h1>Login</h1>
-        </div> -->
-        <!-- <div class="center_content">
-            <form action="/includes/login.php" method="post">
-                <label for="email">Email:</label>
-                <input required type="email" name="email" id="email" placeholder="example@test.com">
-                <label for="email">Password:</label>
-                <input required type="password" name="password" id="password" placeholder="password123">
-                <button type="submit">Log In</button>
-            </form>
-        </div> -->
+
         <div class="center_content" id="loginForm">
             <form action="/includes/login.php" method="post" class="modern_form">
                 <label for="email">Email:</label>
@@ -36,18 +25,22 @@
                 <label for="password">Password:</label>
                 <input required type="password" name="password" id="password" placeholder="password123">
                 <button type="submit">Log In</button>
+                <div id="createForgot">
+                    <a href="">Create an account</a>
+                    <a href="">Forgot password?</a>
+                </div>
             </form>
         </div>
-        <?php
-        echo $_SERVER["DOCUMENT_ROOT"];
-        echo "<br>";
-        echo $_SERVER["PHP_SELF"];
-        echo "<br>";
-        echo $_SERVER["SERVER_NAME"];
-        echo "<br>";
-        echo $_SERVER["REQUEST_METHOD"];
+        <!-- <?php
+                echo $_SERVER["DOCUMENT_ROOT"];
+                echo "<br>";
+                echo $_SERVER["PHP_SELF"];
+                echo "<br>";
+                echo $_SERVER["SERVER_NAME"];
+                echo "<br>";
+                echo $_SERVER["REQUEST_METHOD"];
 
-        ?>
+                ?> -->
     </main>
     <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
 </body>
