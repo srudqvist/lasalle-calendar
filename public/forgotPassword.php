@@ -8,6 +8,9 @@
 </head>
 
 <body>
+    <div id="navbarDiv">
+        <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
+    </div>
     <h1>Forgot Password</h1>
 </body>
 
