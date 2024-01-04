@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo "<br>";
     echo $password;
 
-    header("Location: ../index.php");
+    header("Location: ../public/index.php");
 } else {
-    header("Location: ../index.php");
+    header("Location: ../public/index.php");
 }
