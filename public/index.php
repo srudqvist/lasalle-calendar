@@ -26,8 +26,8 @@
                 <input required type="password" name="password" id="password" placeholder="password123">
                 <button type="submit">Log In</button>
                 <div id="createForgot">
-                    <a href="">Create an account</a>
-                    <a href="">Forgot password?</a>
+                    <a href="createAccount.php">Create account</a>
+                    <a href="forgotPassword.php">Forgot password?</a>
                 </div>
             </form>
         </div>
