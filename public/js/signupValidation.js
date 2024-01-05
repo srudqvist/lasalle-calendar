@@ -18,4 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 	}
+	//Add tooltip text
+	const tooltip = document.querySelector(".password-tooltip");
+
+	tooltip.addEventListener("mouseenter", function () {
+		const tooltipText = document.createElement("span");
+		tooltipText.textContent =
+			"Password must contain at least 8 characters, including a number, uppercase letter, and special character.";
+		tooltipText.classList.add("tooltiptext");
+		this.appendChild(tooltipText);
+	});
+
+	tooltip.addEventListener("mouseleave", function () {
+		const tooltipText = document.querySelector(".tooltiptext");
+		this.removeChild(tooltipText);
+	});
 });

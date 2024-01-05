@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/signup.css">
     <script src="./js/signupValidation.js"></script>
     <title>Sign Up</title>
 </head>
@@ -28,8 +29,16 @@
                 <input required type="text" name="phone" id="phone" placeholder="1234567890">
                 <label for="email">Email:</label>
                 <input required type="email" name="email" id="email" placeholder="example@test.com">
-                <label for="password">Password:</label>
+                <!-- <label for="password">
+                    Password:
+                    <input required type="password" name="password" id="password" placeholder="password123">
+                    <span class="password-tooltip">ℹ️</span>
+                </label> -->
+                <label for="password">Password:
+                    <span class="password-tooltip">ℹ️</span>
+                </label>
                 <input required type="password" name="password" id="password" placeholder="password123">
+
                 <label for="password">Confirm Password:</label>
                 <input required type="password" name="confirmPassword" id="confirmPassword" placeholder="password123">
                 <button type="submit">Sign Up</button>
