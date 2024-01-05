@@ -20,6 +20,7 @@
 
         <div id="loginForm">
             <form action="/includes/login.php" method="post" class="modern_form">
+                <h1 class="center_content">Log In</h1>
                 <label for="email">Email:</label>
                 <input required type="email" name="email" id="email" placeholder="example@test.com">
                 <label for="password">Password:</label>

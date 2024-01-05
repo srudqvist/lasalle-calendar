@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/login.css">
     <title>Sign Up</title>
 </head>
@@ -15,6 +16,7 @@
 
     <div id="loginForm">
         <form action="/includes/signup.php" method="post" class="modern_form">
+            <h1 class="center_content">Sign Up</h1>
             <label for="facility">Facility:</label>
             <select required name="facility" id="facility" placeholder="facility">
                 <option>Facility 1</option>
@@ -26,6 +28,8 @@
             <label for="email">Email:</label>
             <input required type="email" name="email" id="email" placeholder="example@test.com">
             <label for="password">Password:</label>
+            <input required type="password" name="password" id="password" placeholder="password123">
+            <label for="password">Confirm Password:</label>
             <input required type="password" name="password" id="password" placeholder="password123">
             <button type="submit">Sign Up</button>
             <div id="createForgot">
