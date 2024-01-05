@@ -1,5 +1,5 @@
 #navbar {
-    height: 8rem;
+    height: 130px;
     position: fixed;
     left: 0;
     top: 0;
@@ -16,7 +16,7 @@
 }
 
 #navbarDiv {
-    margin-bottom: 8rem;
+    margin-bottom: 130px;
 }
 
 #navbarLasalleLogo {

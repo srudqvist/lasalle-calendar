@@ -3,3 +3,7 @@
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
 }
+.content {
+    margin-top: 75px;
+    margin-bottom: 55px;
+}
