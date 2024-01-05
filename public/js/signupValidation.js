@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	tooltip.addEventListener("mouseenter", function () {
 		const tooltipText = document.createElement("span");
 		tooltipText.textContent =
-			"Password must contain at least 8 characters, including a number, uppercase letter, and special character.";
+			"Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character.";
 		tooltipText.classList.add("tooltiptext");
 		this.appendChild(tooltipText);
 	});

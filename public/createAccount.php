@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="./js/signupValidation.js"></script>
     <title>Sign Up</title>
 </head>
@@ -35,7 +36,8 @@
                     <span class="password-tooltip">ℹ️</span>
                 </label> -->
                 <label for="password">Password:
-                    <span class="password-tooltip">ℹ️</span>
+                    <!--<span class="password-tooltip">&#8505;</span>-->
+                    <span class="password-tooltip"><i class="fas fa-info-circle"></i></span>
                 </label>
                 <input required type="password" name="password" id="password" placeholder="password123">
 
