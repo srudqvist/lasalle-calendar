@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 			const passwordField = document.getElementById("password");
-
 			const confirmPasswordField =
 				document.getElementById("confirmPassword");
 			const confirmPasswordDiv =
@@ -52,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					const passwordNoMatchText = document.createElement("span");
 					passwordNoMatchText.textContent = "Passwords do not match";
 					passwordNoMatchText.classList.add("red_text");
-
 					confirmPasswordDiv.appendChild(passwordNoMatchText);
 					confirmPasswordDiv.classList.add("show-confirm-password");
 					confirmPasswordDiv.style.display = "block";

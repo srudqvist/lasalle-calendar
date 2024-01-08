@@ -17,7 +17,6 @@
 
 #confirmPasswordDiv {
     display: none; /* Hide the div and remove it from the layout */
-    box-shadow: 0 2px 5px rgba(255, 0, 0, 1.0);
     box-sizing: border-box;
 }
 
