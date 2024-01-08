@@ -29,3 +29,8 @@
     visibility: visible;
     opacity: 1;
 }
+
+.password-no-match {
+    box-shadow: 0 2px 5px rgba(255, 25, 25, 1.0);
+    border: 2px solid red;
+}

@@ -57,7 +57,13 @@
     box-sizing: border-box;
     font-size: 16px;
 }
-
+.modern_form input[type="password"] {
+    /* Your existing properties */
+    border: 1px solid #ccc; /* Example border color */
+}
+.modern_form input.password-no-match[type="password"] {
+    border-color: red; /* Example border color for mismatch */
+}
 /* Style for the submit button */
 .modern_form button {
     width: 100%;

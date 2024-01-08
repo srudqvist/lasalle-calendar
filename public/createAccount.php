@@ -18,7 +18,7 @@
     </div>
     <div class="content">
         <div id="loginForm">
-            <form action="/includes/signup.php" method="post" id="signupForm" class="modern_form">
+            <form action="" method="post" id="signupForm" class="modern_form">
                 <h1 class="center_content">Sign Up</h1>
                 <label for="facility">Facility:</label>
                 <select required name="facility" id="facility" placeholder="facility">
