@@ -18,28 +18,48 @@ document.addEventListener("DOMContentLoaded", function () {
 					"Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character."
 				);
 			}
+
+			const passwordField = document.getElementById("password");
+
+			const confirmPasswordField =
+				document.getElementById("confirmPassword");
+			const confirmPasswordDiv =
+				document.getElementById("confirmPasswordDiv");
+			const existingErrorMessage =
+				confirmPasswordDiv.querySelector("red_text");
+
 			if (password === confirmPassword) {
 				event.preventDefault();
 				console.log("Passwords match");
+				confirmPasswordField.classList.remove("password-no-match");
+
+				// Remove the error message if it exists
+				const existingErrorMessage =
+					confirmPasswordDiv.querySelector(".red_text");
+				if (existingErrorMessage) {
+					existingErrorMessage.style.display = "none"; // Hide the error message
+				}
 			} else {
 				event.preventDefault();
 				console.log("Password does not match");
-				const passwordField = document.getElementById("password");
 
-				// Change the border color of the confirm password field to red
-				const confirmPasswordField =
-					document.getElementById("confirmPassword");
-				confirmPasswordField.classList.add("password-no-match");
-				confirmPasswordField.blur();
+				if (!existingErrorMessage) {
+					// Change the border color of the confirm password field to red
+					confirmPasswordField.classList.add("password-no-match");
+					confirmPasswordField.blur();
 
-				// Display a message saying the passwords did not match
-				const passwordNoMatchText = document.createElement("span");
-				passwordNoMatchText.textContent = "Passwords do not match";
-				passwordNoMatchText.classList.add("red_text");
-				const confirmPasswordDiv =
-					document.getElementById("confirmPasswordDiv");
+					// Display a message saying the passwords did not match
+					const passwordNoMatchText = document.createElement("span");
+					passwordNoMatchText.textContent = "Passwords do not match";
+					passwordNoMatchText.classList.add("red_text");
 
-				confirmPasswordDiv.appendChild(passwordNoMatchText);
+					confirmPasswordDiv.appendChild(passwordNoMatchText);
+					confirmPasswordDiv.classList.add("show-confirm-password");
+					confirmPasswordDiv.style.display = "block";
+					confirmPasswordDiv.style.visibility = "visible";
+				} else {
+					confirmPasswordDiv.style.display = "none";
+				}
 			}
 		});
 	}

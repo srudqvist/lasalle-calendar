@@ -40,10 +40,9 @@
                     <span class="password-tooltip"><i class="fas fa-info-circle"></i></span>
                 </label>
                 <input required type="password" name="password" id="password" placeholder="password123">
-                <div id="confirmPasswordDiv">
-                    <label for="confirmPassword">Confirm Password:</label>
-                    <input required type="password" name="confirmPassword" id="confirmPassword" placeholder="password123">
-                </div>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input required type="password" name="confirmPassword" id="confirmPassword" placeholder="password123">
+                <div id="confirmPasswordDiv"></div>
                 <button type="submit">Sign Up</button>
                 <div id="createForgot">
                     <p>Already have an account? <a href="index.php">Log In</a></p>

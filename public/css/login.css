@@ -7,6 +7,21 @@
     /* Other styles for your form */
 }
 
+/* #confirmPasswordDiv {
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(255, 0, 0, 1.0);
+    box-sizing: border-box;
+} */
+
+
+
+#confirmPasswordDiv {
+    display: none; /* Hide the div and remove it from the layout */
+    box-shadow: 0 2px 5px rgba(255, 0, 0, 1.0);
+    box-sizing: border-box;
+}
+
+
 #createForgot {
     display: flex;
     justify-content: space-between;
@@ -30,7 +45,8 @@
 
 /* Styling for the form */
 .modern_form {
-    min-width: 30%;
+    max-width: 400px;
+    min-width: 400px;
     padding: 30px;
     background-color: #f7f7f7;
     border-radius: 10px;
@@ -108,4 +124,8 @@
     transform: translateY(-50%);
     pointer-events: none;
     color: #333; /* Arrow color */
+}
+
+.show-confirm-password {
+    display: block;
 }
