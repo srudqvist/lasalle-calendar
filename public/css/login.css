@@ -30,7 +30,7 @@
 
 /* Styling for the form */
 .modern_form {
-    max-width: 400px;
+    min-width: 30%;
     padding: 30px;
     background-color: #f7f7f7;
     border-radius: 10px;
@@ -62,6 +62,7 @@
     border: 1px solid #ccc; /* Example border color */
 }
 .modern_form input.password-no-match[type="password"] {
+    box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
     border-color: red; /* Example border color for mismatch */
 }
 /* Style for the submit button */

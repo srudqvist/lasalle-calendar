@@ -25,16 +25,25 @@ document.addEventListener("DOMContentLoaded", function () {
 				event.preventDefault();
 				console.log("Password does not match");
 				const passwordField = document.getElementById("password");
+
+				// Change the border color of the confirm password field to red
 				const confirmPasswordField =
 					document.getElementById("confirmPassword");
 				confirmPasswordField.classList.add("password-no-match");
 				confirmPasswordField.blur();
-				const passwordNoMatchText = "Password does not match";
-				this.appendChild(passwordNoMatchText);
+
+				// Display a message saying the passwords did not match
+				const passwordNoMatchText = document.createElement("span");
+				passwordNoMatchText.textContent = "Passwords do not match";
+				passwordNoMatchText.classList.add("red_text");
+				const confirmPasswordDiv =
+					document.getElementById("confirmPasswordDiv");
+
+				confirmPasswordDiv.appendChild(passwordNoMatchText);
 			}
 		});
 	}
-	//Add password requirements text
+	//Add password requirements text, show on hover, hide otherwise.
 	const tooltip = document.querySelector(".password-tooltip");
 
 	tooltip.addEventListener("mouseenter", function () {
