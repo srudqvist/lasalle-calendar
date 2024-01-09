@@ -18,7 +18,7 @@
     </div>
     <div class="content">
         <div id="loginForm">
-            <form action="" method="post" id="signupForm" class="modern_form">
+            <form action="../includes/signup.php" method="post" id="signupForm" class="modern_form">
                 <h1 class="center_content">Sign Up</h1>
                 <label for="facility">Facility:</label>
                 <select required name="facility" id="facility" placeholder="facility">
@@ -42,7 +42,7 @@
                 <input required type="password" name="password" id="password" placeholder="password123">
                 <label for="confirmPassword">Confirm Password:</label>
                 <input required type="password" name="confirmPassword" id="confirmPassword" placeholder="password123">
-                <div id="confirmPasswordDiv"></div>
+                <div id="errorMessages"></div>
                 <button type="submit">Sign Up</button>
                 <div id="createForgot">
                     <p>Already have an account? <a href="index.php">Log In</a></p>

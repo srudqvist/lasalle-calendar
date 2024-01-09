@@ -15,7 +15,7 @@
 
 
 
-#confirmPasswordDiv {
+#errorMessages {
     display: none; /* Hide the div and remove it from the layout */
     box-sizing: border-box;
 }

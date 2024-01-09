@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const signupForm = document.getElementById("signupForm");
 	if (signupForm) {
 		signupForm.addEventListener("submit", function (event) {
+			event.preventDefault();
 			const password = document.getElementById("password").value;
 			const confirmPassword =
 				document.getElementById("confirmPassword").value;
@@ -22,13 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			const passwordField = document.getElementById("password");
 			const confirmPasswordField =
 				document.getElementById("confirmPassword");
-			const confirmPasswordDiv =
-				document.getElementById("confirmPasswordDiv");
+			const confirmPasswordDiv = document.getElementById("errorMessages");
 			const existingErrorMessage =
 				confirmPasswordDiv.querySelector("red_text");
 
 			if (password === confirmPassword) {
-				event.preventDefault();
 				console.log("Passwords match");
 				confirmPasswordField.classList.remove("password-no-match");
 
@@ -38,8 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				if (existingErrorMessage) {
 					existingErrorMessage.style.display = "none"; // Hide the error message
 				}
+				signupForm.submit();
 			} else {
-				event.preventDefault();
 				console.log("Password does not match");
 
 				if (!existingErrorMessage) {
