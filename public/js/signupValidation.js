@@ -140,23 +140,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		signupForm.addEventListener("submit", function (event) {
 			event.preventDefault();
-			nameValidation(firstNameInput);
-			nameValidation(lastNameInput);
 			const password = document.getElementById("password").value;
 			const confirmPassword =
 				document.getElementById("confirmPassword").value;
 
-			if (!isPasswordValid(password)) {
-				showErrorMessage(
-					"Password does not meet the required complexity"
-				);
+			if (
+				nameValidation(firstNameInput.value) &&
+				nameValidation(lastNameInput.value) &&
+				isPasswordValid(password) &&
+				password === confirmPassword
+			) {
+				signupForm.submit();
 			} else {
-				if (password === confirmPassword) {
-					confirmPasswordField.classList.remove("password-no-match");
-					signupForm.submit();
-				} else {
-					showErrorMessage("Passwords do not match");
-				}
+				// ? Display bigger error message?
 			}
 		});
 	}
@@ -177,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	function nameValidation(name) {
+		console.log(name);
 		// Regex allowing letters, spaces, hyphens, and apostrophes
 		if (name.length > 0) {
 			const nameRegex = /^[A-Za-z]+(?:[-' ]?[A-Za-z]+)*$/;
