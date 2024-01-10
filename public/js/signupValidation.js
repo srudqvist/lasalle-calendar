@@ -4,14 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	const confirmPasswordField = document.getElementById("confirmPassword");
 	const errorMessagesDiv = document.getElementById("errorMessages");
 	const existingErrorMessages = errorMessagesDiv.getElementsByTagName("span");
-	console.log(existingErrorMessages);
 
 	if (signupForm) {
 		signupForm.addEventListener("submit", function (event) {
 			event.preventDefault();
-			if (existingErrorMessages) {
-				console.log("Error: " + existingErrorMessages);
-			}
 			const password = document.getElementById("password").value;
 			const confirmPassword =
 				document.getElementById("confirmPassword").value;
@@ -22,12 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				);
 			} else {
 				if (password === confirmPassword) {
-					console.log("Passwords match");
 					confirmPasswordField.classList.remove("password-no-match");
 					signupForm.submit();
 				} else {
-					console.log("Password complexity met, password mismatch");
-					console.log(existingErrorMessages.length);
 					showErrorMessage("Passwords do not match");
 				}
 			}
