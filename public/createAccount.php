@@ -38,13 +38,7 @@
                 <label for="email">Email:</label>
                 <input required type="email" name="email" id="email" placeholder="example@test.com">
                 <div id="emailError"></div>
-                <!-- <label for="password">
-                    Password:
-                    <input required type="password" name="password" id="password" placeholder="password123">
-                    <span class="password-tooltip">ℹ️</span>
-                </label> -->
                 <label for="password">Password:
-                    <!--<span class="password-tooltip">&#8505;</span>-->
                     <span class="password-tooltip"><i class="fas fa-info-circle"></i></span>
                 </label>
                 <input required type="password" name="password" id="password" placeholder="password123">
