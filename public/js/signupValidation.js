@@ -109,24 +109,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function showErrorMessage(message, inputName, errorDiv) {
 		//inputName.classList.remove("");
-		inputName.classList.add("input-error-red-border");
-		inputName.style.outline = "2px solid red";
-		errorDiv.classList.add("password-no-match");
-		let errorMessagesDiv = errorDiv;
-		console.log(errorMessagesDiv);
-		const errorMessage = document.createElement("span");
-		errorMessage.textContent = message;
-		errorMessage.classList.add("red_text");
+		let errorAlreadyExists = document.getElementById(errorDiv.id + message);
+		if (!errorAlreadyExists) {
+			inputName.classList.add("input-error-red-border");
+			inputName.style.outline = "2px solid red";
+			errorDiv.classList.add("password-no-match");
+			let errorMessagesDiv = errorDiv;
+			console.log(errorMessagesDiv);
+			const errorMessage = document.createElement("span");
+			errorMessage.id = errorDiv.id + message;
+			errorMessage.textContent = message;
+			errorMessage.classList.add("red_text");
 
-		// if (existingErrorMessages.length > 0) {
-		// 	existingErrorMessages[0].remove();
-		// }
+			// if (existingErrorMessages.length > 0) {
+			// 	existingErrorMessages[0].remove();
+			// }
 
-		errorMessagesDiv.appendChild(errorMessage);
+			errorMessagesDiv.appendChild(errorMessage);
+		}
 		//errorMessagesDiv.classList.add("show-error-message");
 		//errorMessagesDiv.style.display = "block";
 		//errorMessagesDiv.style.visibility = "visible";
 	}
+	function hideErrorMessage(message, inputName, errorDiv) {}
 
 	// function showErrorMessage(message, divName) {
 	// 	// Change the border color of the confirm password field to red
