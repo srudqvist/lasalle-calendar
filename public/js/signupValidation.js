@@ -8,20 +8,49 @@ document.addEventListener("DOMContentLoaded", function () {
 	const firstNameInput = document.getElementById("firstName");
 	const firstNameErrorDiv = document.getElementById("firstNameError");
 	const lastNameInput = document.getElementById("lastName");
+	const lastNameErrorDiv = document.getElementById("lastNameError");
 
 	const phoneInput = document.getElementById("phone");
 
 	if (signupForm) {
 		if (firstNameInput) {
 			firstNameInput.addEventListener("input", function (event) {
-				console.log(event.target.value);
 				let currentValidation = nameValidation(event.target.value);
+				const errorMessage = "Name input failed validation";
 				if (!currentValidation) {
-					console.log("here");
 					showErrorMessage(
-						"Name input failed validation",
+						errorMessage,
 						firstNameInput,
 						firstNameErrorDiv
+					);
+				} else if (
+					document.getElementById(firstNameErrorDiv.id + errorMessage)
+				) {
+					removeErrorMessage(
+						errorMessage,
+						firstNameInput,
+						firstNameErrorDiv
+					);
+				}
+			});
+		}
+		if (lastNameInput) {
+			lastNameInput.addEventListener("input", function (event) {
+				let currentValidation = nameValidation(event.target.value);
+				const errorMessage = "Name input failed validation";
+				if (!currentValidation) {
+					showErrorMessage(
+						errorMessage,
+						lastNameInput,
+						lastNameErrorDiv
+					);
+				} else if (
+					document.getElementById(lastNameErrorDiv.id + errorMessage)
+				) {
+					removeErrorMessage(
+						errorMessage,
+						lastNameInput,
+						lastNameErrorDiv
 					);
 				}
 			});
@@ -102,54 +131,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function nameValidation(name) {
 		// Regex allowing letters, spaces, hyphens, and apostrophes
-		const nameRegex = /^[A-Za-z]+(?:[-' ]?[A-Za-z]+)*$/;
-		const validName = nameRegex.test(name);
-		return validName;
+		if (name.length > 0) {
+			const nameRegex = /^[A-Za-z]+(?:[-' ]?[A-Za-z]+)*$/;
+			const validName = nameRegex.test(name);
+			return validName;
+		} else {
+			return true;
+		}
 	}
 
 	function showErrorMessage(message, inputName, errorDiv) {
 		//inputName.classList.remove("");
-		let errorAlreadyExists = document.getElementById(errorDiv.id + message);
+		const errorAlreadyExists = document.getElementById(
+			errorDiv.id + message
+		);
 		if (!errorAlreadyExists) {
+			let errorMessagesDiv = errorDiv;
+			const errorMessage = document.createElement("span");
+
 			inputName.classList.add("input-error-red-border");
 			inputName.style.outline = "2px solid red";
+
 			errorDiv.classList.add("password-no-match");
-			let errorMessagesDiv = errorDiv;
-			console.log(errorMessagesDiv);
-			const errorMessage = document.createElement("span");
+
 			errorMessage.id = errorDiv.id + message;
 			errorMessage.textContent = message;
 			errorMessage.classList.add("red_text");
 
-			// if (existingErrorMessages.length > 0) {
-			// 	existingErrorMessages[0].remove();
-			// }
-
 			errorMessagesDiv.appendChild(errorMessage);
 		}
-		//errorMessagesDiv.classList.add("show-error-message");
-		//errorMessagesDiv.style.display = "block";
-		//errorMessagesDiv.style.visibility = "visible";
 	}
-	function hideErrorMessage(message, inputName, errorDiv) {}
-
-	// function showErrorMessage(message, divName) {
-	// 	// Change the border color of the confirm password field to red
-	// 	confirmPasswordField.classList.add("password-no-match");
-	// 	confirmPasswordField.blur();
-
-	// 	// Display a message saying the passwords did not match
-	// 	const passwordNoMatchText = document.createElement("span");
-	// 	passwordNoMatchText.textContent = message;
-	// 	passwordNoMatchText.classList.add("red_text");
-	// 	if (existingErrorMessages.length > 0) {
-	// 		existingErrorMessages[0].remove();
-	// 	}
-	// 	errorMessagesDiv.appendChild(passwordNoMatchText);
-	// 	errorMessagesDiv.classList.add("show-confirm-password");
-	// 	errorMessagesDiv.style.display = "block";
-	// 	errorMessagesDiv.style.visibility = "visible";
-	// }
+	function removeErrorMessage(message, inputName, errorDiv) {
+		const errorToRemove = document.getElementById(errorDiv.id + message);
+		inputName.style.outline = "";
+		inputName.classList.remove("input-error-red-border");
+		errorToRemove.remove();
+	}
 
 	function isPasswordValid(password) {
 		const passwordRegex =
