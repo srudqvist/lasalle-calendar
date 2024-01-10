@@ -3,6 +3,8 @@ echo "hello0";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $facility = htmlspecialchars($_POST["facility"]);
+    $firstName = htmlspecialchars($_POST["firstName"]);
+    $lastName = htmlspecialchars($_POST["lastName"]);
     $phone = htmlspecialchars($_POST["phone"]);
     $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
@@ -11,6 +13,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo "Facility: ";
     echo "<br>";
     echo $facility;
+    echo "<br>";
+
+    echo "First Name:";
+    echo "<br>";
+    echo $firstName;
+    echo "<br>";
+
+    echo "Last Name: ";
+    echo "<br>";
+    echo $lastName;
     echo "<br>";
 
     echo "Phone: ";

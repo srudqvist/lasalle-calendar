@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const errorMessagesDiv = document.getElementById("errorMessages");
 	const existingErrorMessages = errorMessagesDiv.getElementsByTagName("span");
 
+	const firstNameInput = document.getElementById("firstName").trim();
+	const lastNameInput = document.getElementById("lastName").trim();
+
 	const phoneInput = document.getElementById("phone");
 
 	if (signupForm) {
@@ -46,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 		signupForm.addEventListener("submit", function (event) {
 			event.preventDefault();
+			nameValidation(firstNameInput);
+			nameValidation(lastNameInput);
 			const password = document.getElementById("password").value;
 			const confirmPassword =
 				document.getElementById("confirmPassword").value;
@@ -79,6 +84,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		const tooltipText = document.querySelector(".tooltiptext");
 		this.removeChild(tooltipText);
 	});
+
+	function nameValidation(name) {
+		// Regex allowing letters, spaces, hyphens, and apostrophes
+		const nameRegex = /^[A-Za-z]+(?:[-' ]?[A-Za-z]+)*$/;
+		const validName = nameRegex.test(name);
+
+		if (!validName) {
+			alert("Invalid name");
+		}
+	}
 
 	function showErrorMessage(message) {
 		// Change the border color of the confirm password field to red

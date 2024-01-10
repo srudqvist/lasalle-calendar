@@ -26,6 +26,10 @@
                     <option>Facility 2</option>
                     <option>Facility 3</option>
                 </select>
+                <label for="firstName">First Name:</label>
+                <input type="text" name="firstName" id="firstName">
+                <label for="lastName">Last Name:</label>
+                <input type="text" name="lastName" id="lastName">
                 <label for="phone">Phone:</label>
                 <input required type="text" name="phone" id="phone" placeholder="(xxx) xxx-xxxx">
                 <label for="email">Email:</label>
