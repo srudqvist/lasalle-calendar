@@ -1,0 +1,13 @@
+#eventContainers {
+    display: flex;
+    flex-wrap: wrap;
+}
+.eventContainer {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}.container-row {
+    width: 100%;
+}
