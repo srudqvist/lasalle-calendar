@@ -27,7 +27,7 @@
                     <option>Facility 3</option>
                 </select>
                 <label for="phone">Phone:</label>
-                <input required type="text" name="phone" id="phone" placeholder="1234567890">
+                <input required type="text" name="phone" id="phone" placeholder="(xxx) xxx-xxxx">
                 <label for="email">Email:</label>
                 <input required type="email" name="email" id="email" placeholder="example@test.com">
                 <!-- <label for="password">

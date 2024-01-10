@@ -5,7 +5,45 @@ document.addEventListener("DOMContentLoaded", function () {
 	const errorMessagesDiv = document.getElementById("errorMessages");
 	const existingErrorMessages = errorMessagesDiv.getElementsByTagName("span");
 
+	const phoneInput = document.getElementById("phone");
+
 	if (signupForm) {
+		if (phoneInput) {
+			// Handle the phone number format as the user is typing.
+			phoneInput.addEventListener("input", function (event) {
+				const isBackspace = event.inputType === "deleteContentBackward";
+				if (!isBackspace) {
+					let inputValue = event.target.value.replace(/\D/g, "");
+					if (inputValue.length > 0) {
+						inputValue =
+							"(" +
+							inputValue.substring(0, 3) +
+							") " +
+							inputValue.substring(3);
+					}
+					if (inputValue.length > 8) {
+						inputValue =
+							inputValue.substring(0, 9) +
+							"-" +
+							inputValue.substring(9);
+					}
+					if (inputValue.length > 14) {
+						inputValue = inputValue.substring(0, 14);
+					}
+					event.target.value = inputValue;
+				} else {
+					let inputValue = event.target.value;
+					const lastChar = inputValue.charAt(inputValue.length - 1);
+					if (lastChar === ")" || lastChar === "-") {
+						inputValue = inputValue.substring(
+							0,
+							inputValue.length - 1
+						);
+					}
+					event.target.value = inputValue;
+				}
+			});
+		}
 		signupForm.addEventListener("submit", function (event) {
 			event.preventDefault();
 			const password = document.getElementById("password").value;
