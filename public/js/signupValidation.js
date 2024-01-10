@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const signupForm = document.getElementById("signupForm");
-	// const passwordField = document.getElementById("password");
-	const confirmPasswordField = document.getElementById("confirmPassword");
+	const passwordInput = document.getElementById("password");
+	const confirmPasswordInput = document.getElementById("confirmPassword");
 	//const errorMessagesDiv = document.getElementById("errorMessages");
 	//const existingErrorMessages = errorMessagesDiv.getElementsByTagName("span");
 
@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	const firstNameErrorDiv = document.getElementById("firstNameError");
 	const lastNameInput = document.getElementById("lastName");
 	const lastNameErrorDiv = document.getElementById("lastNameError");
+	const passwordErrorDiv = document.getElementById("passwordError");
+	const confirmPasswordErrorDiv = document.getElementById("confirmError");
 
 	const phoneInput = document.getElementById("phone");
 
@@ -91,6 +93,51 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			});
 		}
+		if (passwordInput) {
+			passwordInput.addEventListener("input", function (event) {
+				// let currentValidation = nameValidation(event.target.value);
+				const errorMessage =
+					"Password not meeting complexity requirements";
+				if (!isPasswordValid(event.target.value)) {
+					showErrorMessage(
+						errorMessage,
+						passwordInput,
+						passwordErrorDiv
+					);
+				} else if (
+					document.getElementById(passwordErrorDiv.id + errorMessage)
+				) {
+					removeErrorMessage(
+						errorMessage,
+						passwordInput,
+						passwordErrorDiv
+					);
+				}
+			});
+		}
+		if (passwordInput && confirmPasswordInput) {
+			confirmPasswordInput.addEventListener("input", function (event) {
+				const errorMessage = "Passwords do not match";
+				if (passwordInput.value !== event.target.value) {
+					showErrorMessage(
+						errorMessage,
+						confirmPasswordInput,
+						confirmPasswordErrorDiv
+					);
+				} else if (
+					document.getElementById(
+						confirmPasswordErrorDiv.id + errorMessage
+					)
+				) {
+					removeErrorMessage(
+						errorMessage,
+						confirmPasswordInput,
+						confirmPasswordErrorDiv
+					);
+				}
+			});
+		}
+
 		signupForm.addEventListener("submit", function (event) {
 			event.preventDefault();
 			nameValidation(firstNameInput);
@@ -169,8 +216,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function isPasswordValid(password) {
-		const passwordRegex =
-			/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-		return passwordRegex.test(password);
+		if (password.length > 0) {
+			const passwordRegex =
+				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+			return passwordRegex.test(password);
+		} else {
+			return true;
+		}
 	}
 });
