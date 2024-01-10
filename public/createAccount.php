@@ -28,12 +28,16 @@
                 </select>
                 <label for="firstName">First Name:</label>
                 <input type="text" name="firstName" id="firstName">
+                <div id="firstNameError"></div>
                 <label for="lastName">Last Name:</label>
                 <input type="text" name="lastName" id="lastName">
+                <div id="lastNameError"></div>
                 <label for="phone">Phone:</label>
                 <input required type="text" name="phone" id="phone" placeholder="(xxx) xxx-xxxx">
+                <div id="phoneError"></div>
                 <label for="email">Email:</label>
                 <input required type="email" name="email" id="email" placeholder="example@test.com">
+                <div id="emailError"></div>
                 <!-- <label for="password">
                     Password:
                     <input required type="password" name="password" id="password" placeholder="password123">
@@ -44,9 +48,10 @@
                     <span class="password-tooltip"><i class="fas fa-info-circle"></i></span>
                 </label>
                 <input required type="password" name="password" id="password" placeholder="password123">
+                <div id="passwordError"></div>
                 <label for="confirmPassword">Confirm Password:</label>
                 <input required type="password" name="confirmPassword" id="confirmPassword" placeholder="password123">
-                <div id="errorMessages"></div>
+                <div id="confirmError"></div>
                 <button type="submit">Sign Up</button>
                 <div id="createForgot">
                     <p>Already have an account? <a href="index.php">Log In</a></p>
