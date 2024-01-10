@@ -33,4 +33,16 @@
 .red_text {
     color: red;
 }
+.input-error-red-border{
+    box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3) !important; 
+    border-color: red !important; /* Example border color for mismatch */
+}
 
+.show-error-message {
+    display: block;
+}
+
+.errorMessages {
+    display: none; /* Hide the div and remove it from the layout */
+    box-sizing: border-box;
+}

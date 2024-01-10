@@ -7,20 +7,6 @@
     /* Other styles for your form */
 }
 
-/* #confirmPasswordDiv {
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(255, 0, 0, 1.0);
-    box-sizing: border-box;
-} */
-
-
-
-#errorMessages {
-    display: none; /* Hide the div and remove it from the layout */
-    box-sizing: border-box;
-}
-
-
 #createForgot {
     display: flex;
     justify-content: space-between;
@@ -125,6 +111,3 @@
     color: #333; /* Arrow color */
 }
 
-.show-confirm-password {
-    display: block;
-}
