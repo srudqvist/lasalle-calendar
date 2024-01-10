@@ -20,23 +20,42 @@ document.addEventListener("DOMContentLoaded", function () {
 		const viewCalendarButton = document.createElement("button");
 		viewCalendarButton.id = "viewCalendarButton" + containerIndex;
 		viewCalendarButton.textContent = "View Calendar";
+		viewCalendarButton.addEventListener("click", (event) => {
+			handleButtonClick(event, "View Calendar", containerIndex);
+		});
 		container.appendChild(viewCalendarButton);
 
 		const copyLinkButton = document.createElement("button");
 		copyLinkButton.id = "copyLinkButton" + containerIndex;
 		copyLinkButton.textContent = "Copy Link";
+		copyLinkButton.addEventListener("click", (event) => {
+			handleButtonClick(event, "Copy Link", containerIndex);
+		});
 		container.appendChild(copyLinkButton);
 
 		const editButton = document.createElement("button");
 		editButton.id = "editButton" + containerIndex;
 		editButton.textContent = "Edit";
+		editButton.addEventListener("click", (event) => {
+			handleButtonClick(event, "Edit", containerIndex);
+		});
 		container.appendChild(editButton);
 
 		const deleteButton = document.createElement("button");
 		deleteButton.id = "deleteButton" + containerIndex;
 		deleteButton.textContent = "Delete";
+		deleteButton.addEventListener("click", (event) => {
+			handleButtonClick(event, "Delete", containerIndex);
+		});
 		container.appendChild(deleteButton);
 
 		eventContainersDiv.appendChild(container);
+	}
+
+	function handleButtonClick(event, buttonText, containerNumber) {
+		const container = event.target.closest(".event-container");
+		console.log(
+			`${buttonText} button on  container ${containerNumber} clicked.`
+		);
 	}
 });
