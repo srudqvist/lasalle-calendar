@@ -108,7 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function showErrorMessage(message, inputName, errorDiv) {
+		//inputName.classList.remove("");
 		inputName.classList.add("input-error-red-border");
+		inputName.style.outline = "2px solid red";
 		errorDiv.classList.add("password-no-match");
 		let errorMessagesDiv = errorDiv;
 		console.log(errorMessagesDiv);
