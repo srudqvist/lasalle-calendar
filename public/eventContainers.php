@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/eventContainer.css">
     <link rel="stylesheet" href="./css/modal.css">
-    <link rel="stylesheet" href="css/formStyles.css">
     <script src="./js/handleEventContainers.js"></script>
     <title>Event Containers</title>
 </head>
@@ -25,7 +24,7 @@
                 <p>Test text for modal</p>
             </div>
             <div id="eventContainerModalFormDiv">
-                <form action="" method="post" id="eventContainerModalForm" class="modern_form">
+                <form action="" method="post" id="eventContainerModalForm" class="modal-form">
                     <h1 class="center_content">Create Event Container</h1>
                     <label for="eventName">Event Name:</label>
                     <input required type="text" name="eventName" id="eventName">
@@ -68,9 +67,14 @@
                     <label for="description">Description:</label>
                     <textarea id="description" name="description" placeholder="Description"></textarea>
 
+                    <div id="modalButtonsDiv">
+                        <button id="cancelButton" type="button">Cancel</button>
+                        <button type="submit">Create New Container</button>
+                    </div>
+                    <div id="eventColorDiv">
+                        <label for="eventColor">Event Color:</label>
 
-                    <button type="button">Cancel</button>
-                    <button type="submit">Create New Container</button>
+                    </div>
                 </form>
             </div>
         </div>
