@@ -77,13 +77,23 @@ display: none;
     background-color: #3C4530;
 }
 
+/* #cancelButton {
+    background-color: red;
+}
+#canvasButton:hover {
+    background-color: darkred;
+} */
 .modal-form input[type="time"] { 
     width: auto;
 }
 .modal-form input[type="color"] { 
     width:10%;
-    padding: 0px;
+    height: 50px;
+    /* padding: 0px 2px 2px 2px; */
+    padding: 0px 0px 0px 0px;
     cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 /* Style for select element */
@@ -132,9 +142,6 @@ display: none;
     justify-content: space-between;
 }
 
-#cancelButton {
-    background-color: red;
-}
 
 #eventColorDiv {
     margin-bottom: 20px;
@@ -142,6 +149,7 @@ display: none;
 
 .color-picker {
     display: flex;
+    align-items: center;
 }
 
 .color-swatch {
