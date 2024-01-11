@@ -1,11 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const addEventButton = document.getElementById("addEventContainer");
 	const eventContainersDiv = document.getElementById("eventContainers");
-
+	const addEventContainerModal = document.getElementById(
+		"eventContainerModal"
+	);
+	// get container index from db when page loads
 	let containerIndex = 1;
 
 	addEventButton.addEventListener("click", () => {
-		createEventContainer(`Event ${containerIndex}`, containerIndex);
+		//createEventContainer(`Event ${containerIndex}`, containerIndex);
+		openAddEventContainerModal();
+		// Add check to see if the container was created before incrementing the index
 		containerIndex++;
 	});
 
@@ -60,10 +65,23 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventContainersDiv.removeChild(eventContainerToDelete);
 	};
 
+	const openAddEventContainerModal = () => {
+		addEventContainerModal.style.display = "block";
+	};
+	const closeAddEventContainerModal = () => {
+		addEventContainerModal.style.display = "none";
+	};
+
 	const handleButtonClick = (event, buttonText, containerNumber) => {
 		const container = event.target.closest(".event-container");
 		console.log(
 			`${buttonText} button on  container ${containerNumber} clicked.`
 		);
 	};
+
+	window.addEventListener("click", function (event) {
+		if (event.target === addEventContainerModal) {
+			addEventContainerModal.style.display = "none";
+		}
+	});
 });
