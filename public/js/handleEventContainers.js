@@ -23,21 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	addEventButton.addEventListener("click", () => {
 		//createEventContainer(`Event ${containerIndex}`, containerIndex);
+		console.log("Add event button clicked");
 		openAddEventContainerModal();
-		eventContainerModalForm.addEventListener("submit", (event) => {
-			event.preventDefault();
+	});
+	eventContainerModalForm.addEventListener("submit", (event) => {
+		event.preventDefault();
+		console.log("Submit button clicked");
 
-			// TODO:
-			// Do some validation, i.e. set the text color of the event container
-			// based on the color that was picked for the event container color.
+		// TODO:
+		// Do some validation, i.e. set the text color of the event container
+		// based on the color that was picked for the event container color.
 
-			const eventName = event.target.eventName.value;
-			createEventContainer(eventName, containerIndex);
-			closeAddEventContainerModal();
-		});
-		// Add check to see if the container was created before incrementing the index
+		const eventName = event.target.eventName.value;
+		createEventContainer(eventName, containerIndex);
+		closeAddEventContainerModal();
 		containerIndex++;
 	});
+	// Add check to see if the container was created before incrementing the index
 
 	const createEventContainer = (headlineText, containerIndex) => {
 		const container = document.createElement("div");

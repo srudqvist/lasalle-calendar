@@ -76,7 +76,7 @@
 -->
                     <div class="color-picker">
                         <label for="eventColor">Event Color:</label>
-                        <input type="color" id="eventColorPicker" name="eventColor" value="ff0000">
+                        <input type="color" id="eventColorPicker" name="eventColor" value="#ff0000">
                     </div>
 
                     <div id="modalButtonsDiv">
