@@ -12,7 +12,6 @@
 <body>
     <button id="addEventContainer">Add Event Container</button>
     <div id="eventContainers" class="container-row"></div>
-
 </body>
 
 </html>

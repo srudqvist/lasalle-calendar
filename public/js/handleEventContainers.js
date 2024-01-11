@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 	const addEventButton = document.getElementById("addEventContainer");
 	const eventContainersDiv = document.getElementById("eventContainers");
 
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		containerIndex++;
 	});
 
-	function createEventContainer(headlineText, containerIndex) {
+	const createEventContainer = (headlineText, containerIndex) => {
 		const container = document.createElement("div");
 		container.classList.add("eventContainer");
 
@@ -46,16 +46,24 @@ document.addEventListener("DOMContentLoaded", function () {
 		deleteButton.textContent = "Delete";
 		deleteButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Delete", containerIndex);
+			deleteEventContainer(containerIndex);
 		});
 		container.appendChild(deleteButton);
 
-		eventContainersDiv.appendChild(container);
-	}
+		container.id = containerIndex;
 
-	function handleButtonClick(event, buttonText, containerNumber) {
+		eventContainersDiv.appendChild(container);
+	};
+
+	const deleteEventContainer = (containerNumber) => {
+		eventContainerToDelete = document.getElementById(containerNumber);
+		eventContainersDiv.removeChild(eventContainerToDelete);
+	};
+
+	const handleButtonClick = (event, buttonText, containerNumber) => {
 		const container = event.target.closest(".event-container");
 		console.log(
 			`${buttonText} button on  container ${containerNumber} clicked.`
 		);
-	}
+	};
 });
