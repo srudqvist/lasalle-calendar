@@ -17,15 +17,9 @@
     <div id="eventContainerModal" class="modal fade">
 
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-header">
-                <h5 class="modal-title">Create New Event Container</h5>
-            </div>
-            <div class="modal-body">
-                <p>Test text for modal</p>
-            </div>
             <div id="eventContainerModalFormDiv">
                 <form action="" method="post" id="eventContainerModalForm" class="modal-form">
+                    <span class="close">&times;</span>
                     <h1 class="center_content">Create Event Container</h1>
                     <label for="eventName">Event Name:</label>
                     <input required type="text" name="eventName" id="eventName">
