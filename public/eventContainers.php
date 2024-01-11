@@ -36,7 +36,7 @@
                                 <option>Saturday</option>
                                 <option>Sunday</option>
                             </select>
-                            <input type="time" id="startTime" name="startTime">
+                            <input required type="time" id="startTime" name="startTime">
                         </div>
                         <div id="to">
                             <label for="dayTo">To:</label>
@@ -50,7 +50,7 @@
                                 <option>Sunday</option>
                             </select>
                             <!-- <label for="availableTimes">Available Times:</label> -->
-                            <input type="time" id="endTime" name="endTime">
+                            <input required type="time" id="endTime" name="endTime">
                         </div>
                     </div>
                     <label for="timeZone">Time Zone:</label>
@@ -74,8 +74,10 @@
                         </div>
                     </div>
 -->
-                    <label for="eventColor">Event Color:</label>
-                    <input type="color" id="eventColorPicker" name="eventColor" value="ff0000">
+                    <div class="color-picker">
+                        <label for="eventColor">Event Color:</label>
+                        <input type="color" id="eventColorPicker" name="eventColor" value="ff0000">
+                    </div>
 
                     <div id="modalButtonsDiv">
                         <button id="cancelButton" type="button">Cancel</button>
