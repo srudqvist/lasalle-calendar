@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/login.css">
+    <!-- <link rel="stylesheet" href="css/login.css"> -->
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/formStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="./js/signupValidation.js"></script>
     <title>Sign Up</title>
@@ -17,7 +18,7 @@
         <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     </div>
     <div class="content">
-        <div id="loginForm">
+        <div id="signUp">
             <form action="../includes/signup.php" method="post" id="signupForm" class="modern_form">
                 <h1 class="center_content">Sign Up</h1>
                 <label for="facility">Facility:</label>

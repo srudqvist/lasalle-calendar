@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/formStyles.css">
     <title>Virtual Attorney Visitation Online Calendar</title>
 </head>
 
