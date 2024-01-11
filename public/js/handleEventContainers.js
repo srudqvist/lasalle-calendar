@@ -84,4 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			addEventContainerModal.style.display = "none";
 		}
 	});
+	document.querySelector(".close").addEventListener("click", () => {
+		closeAddEventContainerModal();
+	});
 });
