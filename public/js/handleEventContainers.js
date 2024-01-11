@@ -4,23 +4,37 @@ document.addEventListener("DOMContentLoaded", () => {
 	const addEventContainerModal = document.getElementById(
 		"eventContainerModal"
 	);
+	const eventContainerModalForm = document.getElementById(
+		"eventContainerModalForm"
+	);
 
-	const colorSwatches = document.querySelectorAll(".color-swatch");
-	colorSwatches.forEach((swatch) => {
-		swatch.addEventListener("click", () => {
-			colorSwatches.forEach((otherSwatch) => {
-				otherSwatch.classList.remove("selected");
-			});
-		swatch.classList.add("selected");
-		});
+	// const colorSwatches = document.querySelectorAll(".color-swatch");
+	// colorSwatches.forEach((swatch) => {
+	// 	swatch.addEventListener("click", () => {
+	// 		colorSwatches.forEach((otherSwatch) => {
+	// 			otherSwatch.classList.remove("selected");
+	// 		});
+	// 	swatch.classList.add("selected");
+	// 	});
 
-	})
+	// })
 	// get container index from db when page loads
 	let containerIndex = 1;
 
 	addEventButton.addEventListener("click", () => {
 		//createEventContainer(`Event ${containerIndex}`, containerIndex);
 		openAddEventContainerModal();
+		eventContainerModalForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+
+			// TODO:
+			// Do some validation, i.e. set the text color of the event container
+			// based on the color that was picked for the event container color.
+
+			const eventName = event.target.eventName.value;
+			createEventContainer(eventName, containerIndex);
+			closeAddEventContainerModal();
+		});
 		// Add check to see if the container was created before incrementing the index
 		containerIndex++;
 	});
@@ -80,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		addEventContainerModal.style.display = "block";
 	};
 	const closeAddEventContainerModal = () => {
+		eventContainerModalForm.reset();
 		addEventContainerModal.style.display = "none";
 	};
 
