@@ -35,7 +35,7 @@ background-color: #fefefe;
     color: #333;
 
 }
-.modal-form input {
+.modal-form input, textarea {
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
@@ -77,8 +77,12 @@ background-color: #fefefe;
     background-color: #3C4530;
 }
 
-.modal-form input[type="time"] {
+.modal-form input[type="time"] { 
     width: auto;
+}
+.modal-form input[type="color"] { 
+    width:10%;
+    padding: 0px;
 }
 
 /* Style for select element */
@@ -107,6 +111,20 @@ background-color: #fefefe;
     color: #333; /* Arrow color */
 }
 
+#fromToDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    box-sizing: border-box;
+}
+#from, #to{
+    align-items: center;
+    justify-content: center;
+}
+#fromToDiv input {
+    margin-left: 10px;
+}
 #modalButtonsDiv {
     width: 100%;
     display: flex;
@@ -116,3 +134,43 @@ background-color: #fefefe;
 #cancelButton {
     background-color: red;
 }
+
+#eventColorDiv {
+    margin-bottom: 20px;
+}
+
+.color-picker {
+    display: flex;
+}
+
+.color-swatch {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: 2px solid transparent; /* Initial border color */
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#swatch1 {
+    background-color: #ff0000; /* Color for the first swatch */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#swatch2 {
+    background-color: #00ff00; /* Color for the second swatch */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#swatch3 {
+    background-color: #0000ff; /* Color for the third swatch */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch.selected {
+    border-color: #000; /* Border color for selected swatch */
+    border-width: 2px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+
