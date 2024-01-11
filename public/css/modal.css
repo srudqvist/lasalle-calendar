@@ -77,12 +77,12 @@ display: none;
     background-color: #3C4530;
 }
 
-/* #cancelButton {
+#cancelButton {
     background-color: red;
 }
-#canvasButton:hover {
+#cancelButton:hover {
     background-color: darkred;
-} */
+}
 .modal-form input[type="time"] { 
     width: auto;
 }
