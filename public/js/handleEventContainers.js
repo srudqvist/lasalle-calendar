@@ -4,6 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
 	const addEventContainerModal = document.getElementById(
 		"eventContainerModal"
 	);
+
+	const colorSwatches = document.querySelectorAll(".color-swatch");
+	colorSwatches.forEach((swatch) => {
+		swatch.addEventListener("click", () => {
+			colorSwatches.forEach((otherSwatch) => {
+				otherSwatch.classList.remove("selected");
+			});
+		swatch.classList.add("selected");
+		});
+
+	})
 	// get container index from db when page loads
 	let containerIndex = 1;
 
