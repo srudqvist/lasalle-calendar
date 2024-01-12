@@ -29,25 +29,59 @@ document.addEventListener("DOMContentLoaded", () => {
 	eventContainerModalForm.addEventListener("submit", (event) => {
 		event.preventDefault();
 		console.log("Submit button clicked");
+		const eventColor = event.target.eventColor.value;
+		const eventStartDay = event.target.dayFrom.value;
+		const eventStopDay = event.target.dayTo.value;
+		const eventStartTime = event.target.startTime.value;
+		const eventEndTime = event.target.endTime.value;
 
 		// TODO:
 		// Do some validation, i.e. set the text color of the event container
 		// based on the color that was picked for the event container color.
 
 		const eventName = event.target.eventName.value;
-		createEventContainer(eventName, containerIndex);
+		createEventContainer(
+			eventName,
+			eventColor,
+			eventStartDay,
+			eventStartTime,
+			eventStopDay,
+			eventEndTime,
+			containerIndex
+		);
 		closeAddEventContainerModal();
 		containerIndex++;
 	});
 	// Add check to see if the container was created before incrementing the index
 
-	const createEventContainer = (headlineText, containerIndex) => {
+	const createEventContainer = (
+		headlineText,
+		eventColor,
+		eventStartDay,
+		eventStartTime,
+		eventStopDay,
+		eventEndTime,
+		containerIndex
+	) => {
 		const container = document.createElement("div");
 		container.classList.add("eventContainer");
+		container.style.backgroundColor = eventColor;
 
 		const headline = document.createElement("h2");
+		const headlineColor = getContrastColor(eventColor);
 		headline.textContent = headlineText;
+		headline.style.color = headlineColor;
 		container.appendChild(headline);
+
+		const from = eventStartDay + " " + eventStartTime;
+		const to = eventStopDay + " " + eventEndTime;
+		const dayTimeRangeText = from + " - " + to;
+		console.log(from + " - " + to);
+
+		const dayTimeRange = document.createElement("h4");
+		dayTimeRange.textContent = dayTimeRangeText;
+		dayTimeRange.style.color = headlineColor;
+		container.appendChild(dayTimeRange);
 
 		const viewCalendarButton = document.createElement("button");
 		viewCalendarButton.id = "viewCalendarButton" + containerIndex;
@@ -105,6 +139,19 @@ document.addEventListener("DOMContentLoaded", () => {
 		console.log(
 			`${buttonText} button on  container ${containerNumber} clicked.`
 		);
+	};
+
+	const getContrastColor = (hexColor) => {
+		// Convert hex color to RGB
+		const r = parseInt(hexColor.slice(1, 3), 16);
+		const g = parseInt(hexColor.slice(3, 5), 16);
+		const b = parseInt(hexColor.slice(5, 7), 16);
+
+		// Calculate relative luminance using the formula for sRGB
+		const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+		// Choose white or black based on luminance
+		return luminance > 0.5 ? "#000000" : "#ffffff";
 	};
 
 	window.addEventListener("click", function (event) {
