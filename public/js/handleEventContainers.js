@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const eventStopDay = event.target.dayTo.value;
 		const eventStartTime = event.target.startTime.value;
 		const eventEndTime = event.target.endTime.value;
+		const eventMeetingType = event.target.meetingType.value;
 
 		// TODO:
 		// Do some validation, i.e. set the text color of the event container
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			eventStartTime,
 			eventStopDay,
 			eventEndTime,
+			eventMeetingType,
 			containerIndex
 		);
 		closeAddEventContainerModal();
@@ -61,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventStartTime,
 		eventStopDay,
 		eventEndTime,
+		eventMeetingType,
 		containerIndex
 	) => {
 		const container = document.createElement("div");
@@ -83,9 +86,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		dayTimeRange.style.color = headlineColor;
 		container.appendChild(dayTimeRange);
 
+		const meetingType = document.createElement("h4");
+		meetingType.textContent = "Meeting By: " + eventMeetingType;
+		meetingType.style.color = headlineColor;
+		container.appendChild(meetingType);
+
 		const viewCalendarButton = document.createElement("button");
 		viewCalendarButton.id = "viewCalendarButton" + containerIndex;
 		viewCalendarButton.textContent = "View Calendar";
+		applyButtonStyles(viewCalendarButton);
 		viewCalendarButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "View Calendar", containerIndex);
 		});
@@ -94,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const copyLinkButton = document.createElement("button");
 		copyLinkButton.id = "copyLinkButton" + containerIndex;
 		copyLinkButton.textContent = "Copy Link";
+		applyButtonStyles(copyLinkButton);
 		copyLinkButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Copy Link", containerIndex);
 		});
@@ -102,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const editButton = document.createElement("button");
 		editButton.id = "editButton" + containerIndex;
 		editButton.textContent = "Edit";
+		applyButtonStyles(editButton);
 		editButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Edit", containerIndex);
 		});
@@ -110,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const deleteButton = document.createElement("button");
 		deleteButton.id = "deleteButton" + containerIndex;
 		deleteButton.textContent = "Delete";
+		applyButtonStyles(deleteButton);
 		deleteButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Delete", containerIndex);
 			deleteEventContainer(containerIndex);
@@ -152,6 +164,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		// Choose white or black based on luminance
 		return luminance > 0.5 ? "#000000" : "#ffffff";
+	};
+	const applyButtonStyles = (button) => {
+		button.style.padding = "10px 20px";
+		button.style.backgroundColor = "#4CAF50"; /* Green background color */
+		button.style.color = "white";
+		button.style.border = "none";
+		button.style.borderRadius = "5px";
+		button.style.cursor = "pointer";
+		button.style.fontSize = "16px";
+		button.style.transition = "background-color 0.3s ease";
+
+		// Hover effect
+		button.addEventListener("mouseover", () => {
+			button.style.backgroundColor =
+				"#45a049"; /* Darker green on hover */
+		});
+
+		button.addEventListener("mouseout", () => {
+			button.style.backgroundColor =
+				"#4CAF50"; /* Restore original color on mouseout */
+		});
 	};
 
 	window.addEventListener("click", function (event) {
