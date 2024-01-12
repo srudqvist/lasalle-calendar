@@ -72,12 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		buttonDiv.classList.add("button-div");
 		container.classList.add("eventContainer");
-		container.style.backgroundColor = eventColor;
+		// container.style.borderColor = eventColor;
+		// container.style.backgroundColor = eventColor;
+		container.style.setProperty("--event-color", eventColor);
 
 		const headline = document.createElement("h2");
 		const headlineColor = getContrastColor(eventColor);
 		headline.textContent = headlineText;
-		headline.style.color = headlineColor;
+		// headline.style.color = headlineColor;
 		container.appendChild(headline);
 
 		const from = eventStartDay + " " + eventStartTime;
@@ -87,12 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const dayTimeRange = document.createElement("h4");
 		dayTimeRange.textContent = dayTimeRangeText;
-		dayTimeRange.style.color = headlineColor;
+		// dayTimeRange.style.color = headlineColor;
 		container.appendChild(dayTimeRange);
 
 		const meetingType = document.createElement("h4");
 		meetingType.textContent = "Meeting By: " + eventMeetingType;
-		meetingType.style.color = headlineColor;
+		// meetingType.style.color = headlineColor;
 		container.appendChild(meetingType);
 
 		const viewCalendarButton = document.createElement("button");
@@ -102,10 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			"--event-color-darker",
 			buttonColor
 		);
-		viewCalendarButton.style.setProperty(
-			"--event-text-color",
-			headlineColor
-		);
+		// viewCalendarButton.style.setProperty(
+		// 	"--event-text-color",
+		// 	headlineColor
+		// );
 		// applyButtonStyles(viewCalendarButton);
 		viewCalendarButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "View Calendar", containerIndex);
@@ -117,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		copyLinkButton.id = "copyLinkButton" + containerIndex;
 		copyLinkButton.textContent = "Copy Link";
 		copyLinkButton.style.setProperty("--event-color-darker", buttonColor);
-		copyLinkButton.style.setProperty("--event-text-color", headlineColor);
+		// copyLinkButton.style.setProperty("--event-text-color", headlineColor);
 		// applyButtonStyles(copyLinkButton);
 		copyLinkButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Copy Link", containerIndex);
@@ -129,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		editButton.id = "editButton" + containerIndex;
 		editButton.textContent = "Edit";
 		editButton.style.setProperty("--event-color-darker", buttonColor);
-		editButton.style.setProperty("--event-text-color", headlineColor);
+		// editButton.style.setProperty("--event-text-color", headlineColor);
 		// applyButtonStyles(editButton);
 		editButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Edit", containerIndex);
@@ -142,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		deleteButton.textContent = "Delete";
 		// applyButtonStyles(deleteButton);
 		deleteButton.style.setProperty("--event-color-darker", buttonColor);
-		deleteButton.style.setProperty("--event-text-color", headlineColor);
+		// deleteButton.style.setProperty("--event-text-color", headlineColor);
 		deleteButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Delete", containerIndex);
 			deleteEventContainer(containerIndex);
