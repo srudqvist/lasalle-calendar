@@ -20,11 +20,29 @@
 }
 
 .eventContainer button {
+    width: 110px;
+    height: 30px;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 5px;
-    background-color: var(--event-color-darker, black);
+    background-color: transparent;
     color: var(--event-text-color, black);
-    border: none;
+    border-width: 1px;
+    border-color: var(--event-text-color, black);
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+.eventContainer button:hover {
+    cursor: pointer;
+    background-color: var(--event-color-darker, black);
+}
+
+/* #overlay {
+    position: fixed;
+    top: 400;
+    left: 0;
+    width: 10%;
+    height: 10%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    pointer-events: none; 
+    display: none;
+} */
