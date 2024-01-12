@@ -68,6 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	) => {
 		const container = document.createElement("div");
 		const buttonDiv = document.createElement("div");
+		const buttonColor = makeColorBrighter(eventColor);
+
 		buttonDiv.classList.add("button-div");
 		container.classList.add("eventContainer");
 		container.style.backgroundColor = eventColor;
@@ -96,6 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		const viewCalendarButton = document.createElement("button");
 		viewCalendarButton.id = "viewCalendarButton" + containerIndex;
 		viewCalendarButton.textContent = "View Calendar";
+		viewCalendarButton.style.setProperty(
+			"--event-color-darker",
+			buttonColor
+		);
+		viewCalendarButton.style.setProperty(
+			"--event-text-color",
+			headlineColor
+		);
 		// applyButtonStyles(viewCalendarButton);
 		viewCalendarButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "View Calendar", containerIndex);
@@ -106,6 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		const copyLinkButton = document.createElement("button");
 		copyLinkButton.id = "copyLinkButton" + containerIndex;
 		copyLinkButton.textContent = "Copy Link";
+		copyLinkButton.style.setProperty("--event-color-darker", buttonColor);
+		copyLinkButton.style.setProperty("--event-text-color", headlineColor);
 		// applyButtonStyles(copyLinkButton);
 		copyLinkButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Copy Link", containerIndex);
@@ -116,6 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		const editButton = document.createElement("button");
 		editButton.id = "editButton" + containerIndex;
 		editButton.textContent = "Edit";
+		editButton.style.setProperty("--event-color-darker", buttonColor);
+		editButton.style.setProperty("--event-text-color", headlineColor);
 		// applyButtonStyles(editButton);
 		editButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Edit", containerIndex);
@@ -127,7 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		deleteButton.id = "deleteButton" + containerIndex;
 		deleteButton.textContent = "Delete";
 		// applyButtonStyles(deleteButton);
-		deleteButton.style.setProperty("--event-color-darker", "#ff0000");
+		deleteButton.style.setProperty("--event-color-darker", buttonColor);
+		deleteButton.style.setProperty("--event-text-color", headlineColor);
 		deleteButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Delete", containerIndex);
 			deleteEventContainer(containerIndex);
@@ -173,6 +188,33 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Choose white or black based on luminance
 		return luminance > 0.5 ? "#000000" : "#ffffff";
 	};
+	const makeColorBrighter = (eventColor) => {
+		// Get the color value from the input
+		const hex = eventColor.replace(/^#/, "");
+		const bigint = parseInt(hex, 16);
+		const r = (bigint >> 16) & 255;
+		const g = (bigint >> 8) & 255;
+		const b = bigint & 255;
+
+		// Brighten the color (you can adjust the brightness factor)
+		const brightnessFactor = 0.8;
+		const brighterR = Math.min(Math.floor(r * brightnessFactor), 255);
+		const brighterG = Math.min(Math.floor(g * brightnessFactor), 255);
+		const brighterB = Math.min(Math.floor(b * brightnessFactor), 255);
+
+		// Convert back to hex
+		const brighterHex = `#${(
+			(1 << 24) |
+			(brighterR << 16) |
+			(brighterG << 8) |
+			brighterB
+		)
+			.toString(16)
+			.slice(1)}`;
+
+		return brighterHex;
+	};
+
 	// const applyButtonStyles = (button) => {
 	// 	button.style.padding = "10px 20px";
 	// 	button.style.backgroundColor = "#4CAF50"; /* Green background color */
