@@ -6,9 +6,25 @@
     border: 1px solid #ccc;
     padding: 20px;
     margin: 10px;
-    width: 200px;
+    width: 300px;
     text-align: center;
     border-radius: 8px;
 }.container-row {
     width: 100%;
+}
+
+.button-div {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: space-between;
+}
+
+.eventContainer button {
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    background-color: var(--event-color-darker, black);
+    color: var(--event-text-color, black);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);;
 }

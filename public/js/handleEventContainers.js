@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		containerIndex
 	) => {
 		const container = document.createElement("div");
+		const buttonDiv = document.createElement("div");
+		buttonDiv.classList.add("button-div");
 		container.classList.add("eventContainer");
 		container.style.backgroundColor = eventColor;
 
@@ -94,41 +96,47 @@ document.addEventListener("DOMContentLoaded", () => {
 		const viewCalendarButton = document.createElement("button");
 		viewCalendarButton.id = "viewCalendarButton" + containerIndex;
 		viewCalendarButton.textContent = "View Calendar";
-		applyButtonStyles(viewCalendarButton);
+		// applyButtonStyles(viewCalendarButton);
 		viewCalendarButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "View Calendar", containerIndex);
 		});
-		container.appendChild(viewCalendarButton);
+		// container.appendChild(viewCalendarButton);
+		buttonDiv.appendChild(viewCalendarButton);
 
 		const copyLinkButton = document.createElement("button");
 		copyLinkButton.id = "copyLinkButton" + containerIndex;
 		copyLinkButton.textContent = "Copy Link";
-		applyButtonStyles(copyLinkButton);
+		// applyButtonStyles(copyLinkButton);
 		copyLinkButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Copy Link", containerIndex);
 		});
-		container.appendChild(copyLinkButton);
+		// container.appendChild(copyLinkButton);
+		buttonDiv.appendChild(copyLinkButton);
 
 		const editButton = document.createElement("button");
 		editButton.id = "editButton" + containerIndex;
 		editButton.textContent = "Edit";
-		applyButtonStyles(editButton);
+		// applyButtonStyles(editButton);
 		editButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Edit", containerIndex);
 		});
-		container.appendChild(editButton);
+		// container.appendChild(editButton);
+		buttonDiv.appendChild(editButton);
 
 		const deleteButton = document.createElement("button");
 		deleteButton.id = "deleteButton" + containerIndex;
 		deleteButton.textContent = "Delete";
-		applyButtonStyles(deleteButton);
+		// applyButtonStyles(deleteButton);
+		deleteButton.style.setProperty("--event-color-darker", "#ff0000");
 		deleteButton.addEventListener("click", (event) => {
 			handleButtonClick(event, "Delete", containerIndex);
 			deleteEventContainer(containerIndex);
 		});
-		container.appendChild(deleteButton);
+		// container.appendChild(deleteButton);
+		buttonDiv.appendChild(deleteButton);
 
 		container.id = containerIndex;
+		container.appendChild(buttonDiv);
 
 		eventContainersDiv.appendChild(container);
 	};
@@ -165,27 +173,28 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Choose white or black based on luminance
 		return luminance > 0.5 ? "#000000" : "#ffffff";
 	};
-	const applyButtonStyles = (button) => {
-		button.style.padding = "10px 20px";
-		button.style.backgroundColor = "#4CAF50"; /* Green background color */
-		button.style.color = "white";
-		button.style.border = "none";
-		button.style.borderRadius = "5px";
-		button.style.cursor = "pointer";
-		button.style.fontSize = "16px";
-		button.style.transition = "background-color 0.3s ease";
+	// const applyButtonStyles = (button) => {
+	// 	button.style.padding = "10px 20px";
+	// 	button.style.backgroundColor = "#4CAF50"; /* Green background color */
+	// 	button.style.color = "white";
+	// 	button.style.border = "none";
+	// 	button.style.borderRadius = "5px";
+	// 	button.style.cursor = "pointer";
+	// 	button.style.fontSize = "16px";
+	// 	button.style.transition = "background-color 0.3s ease";
+	// 	// button.style.margin = "0px 10px 10px 0px";
 
-		// Hover effect
-		button.addEventListener("mouseover", () => {
-			button.style.backgroundColor =
-				"#45a049"; /* Darker green on hover */
-		});
+	// 	// Hover effect
+	// 	button.addEventListener("mouseover", () => {
+	// 		button.style.backgroundColor =
+	// 			"#45a049"; /* Darker green on hover */
+	// 	});
 
-		button.addEventListener("mouseout", () => {
-			button.style.backgroundColor =
-				"#4CAF50"; /* Restore original color on mouseout */
-		});
-	};
+	// 	button.addEventListener("mouseout", () => {
+	// 		button.style.backgroundColor =
+	// 			"#4CAF50"; /* Restore original color on mouseout */
+	// 	});
+	// };
 
 	window.addEventListener("click", function (event) {
 		if (event.target === addEventContainerModal) {
