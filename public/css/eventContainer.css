@@ -2,14 +2,25 @@
     display: flex;
     flex-wrap: wrap;
 }
-.eventContainer {
-    border: 1px solid #ccc;
+/* .eventContainer {
     padding: 20px;
     margin: 10px;
     width: 300px;
     text-align: center;
     border-radius: 8px;
-}.container-row {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+} */
+.eventContainer {
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+    border: 2px solid var(--event-color, black);
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-row {
     width: 100%;
 }
 
@@ -29,7 +40,7 @@
     border-width: 1px;
     border-color: var(--event-text-color, black);
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 }
 .eventContainer button:hover {
     cursor: pointer;
