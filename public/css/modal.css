@@ -29,16 +29,18 @@ display: none;
 
 }
 .modal-form label {
-    display: block;
-    margin-bottom: 10px;
+    /* display: block; */
+    /* margin-bottom: 10px; */
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-weight: bold;
     color: #333;
 
 }
 .modal-form input, textarea {
-    width: 100%;
+    /* width: 100%; */
     padding: 15px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     border: none;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -92,15 +94,15 @@ display: none;
     /* padding: 0px 2px 2px 2px; */
     padding: 0px 0px 0px 0px;
     cursor: pointer;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    /* margin-left: 10px; */
+    /* margin-bottom: 10px; */
 }
 
 /* Style for select element */
 .modal-form select {
     width: auto;
     padding: 15px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     border: none;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -122,22 +124,23 @@ display: none;
     color: #333; /* Arrow color */
 }
 
-#fromToDiv {
+/* #fromToDiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: auto;
     box-sizing: border-box;
-}
-#from, #to{
+} */
+/* #from, #to{
     align-items: center;
     justify-content: center;
-}
-#fromToDiv input {
+} */
+/* #fromToDiv input {
     margin-left: 10px;
-}
+} */
 #modalButtonsDiv {
     width: 100%;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -182,4 +185,20 @@ display: none;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-
+.col-25 {
+    width: 25%;
+    float: left;
+    margin-top: 10px;
+}
+.col-75 {
+    width: 75%;
+    margin-top: 10px;
+}
+/* .row {
+    
+} */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
