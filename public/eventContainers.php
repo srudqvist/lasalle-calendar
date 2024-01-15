@@ -27,7 +27,7 @@
                     </div>
                     <div class="row" id="fromToDiv">
                         <div id="from">
-                            <label class="col-25" for="dayFrom">From:</label>
+                            <label class="col-25" for="dayFrom">Available Days:</label>
                             <div class="col-75">
                                 <select class="col-75" required name="dayFrom" id="dayFrom" placeholder="Monday">
                                     <option>Monday</option>
