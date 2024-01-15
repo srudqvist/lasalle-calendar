@@ -15,9 +15,11 @@
     margin: 10px;
     width: 300px;
     text-align: center;
-    border: 2px solid var(--event-color, black);
+    border: 0px solid var(--event-color, black);
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0px 0px 5px 5px var(--event-color, black); */
+    box-shadow: 0px 0px 100px 2px var(--event-color, black) inset, 0px 0px 5px 2px var(--event-color, black);
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); */
 }
 
 .container-row {
@@ -28,6 +30,9 @@
     display: grid;
     grid-template-columns: max-content max-content;
     justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .eventContainer button {
@@ -37,14 +42,16 @@
     margin: 5px 5px 5px 5px;
     background-color: transparent;
     color: var(--event-text-color, black);
-    border-width: 1px;
-    border-color: var(--event-text-color, black);
+    border-width: 0px;
+    border-color: var(--event-color, black);
     border-radius: 10px;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+    box-shadow:  0px 0px 2px 0px var(--event-color, black);
 }
 .eventContainer button:hover {
     cursor: pointer;
-    background-color: var(--event-color-darker, black);
+    background-color: whitesmoke;
+    /* box-shadow: 0px 0px 10px 2px var(--event-color, black) inset, 0px 0px 1px 1px var(--event-color, black); */
 }
 
 /* #overlay {
