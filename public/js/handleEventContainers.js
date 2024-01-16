@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const eventStartTime = event.target.startTime.value;
 		const eventEndTime = event.target.endTime.value;
 		const eventMeetingType = event.target.meetingType.value;
+		const eventDescription = event.target.description.value;
 
 		// TODO:
 		// Do some validation, i.e. set the text color of the event container
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			eventStopDay,
 			eventEndTime,
 			eventMeetingType,
+			eventDescription,
 			containerIndex
 		);
 		closeAddEventContainerModal();
@@ -64,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventStopDay,
 		eventEndTime,
 		eventMeetingType,
+		eventDescription,
 		containerIndex
 	) => {
 		const container = document.createElement("div");
@@ -96,6 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		meetingType.textContent = "Meeting By: " + eventMeetingType;
 		// meetingType.style.color = headlineColor;
 		container.appendChild(meetingType);
+
+		const description = document.createElement("p");
+		description.id = "description" + containerIndex;
+		description.textContent = eventDescription;
+		description.style.visibility = "hidden";
+		container.appendChild(description);
 
 		const viewCalendarButton = document.createElement("button");
 		viewCalendarButton.id = "viewCalendarButton" + containerIndex;
