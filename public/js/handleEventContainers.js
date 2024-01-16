@@ -167,6 +167,18 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventContainersDiv.appendChild(container);
 	};
 
+	const editEventContainer = (
+		headlineText,
+		eventColor,
+		eventStartDay,
+		eventStartTime,
+		eventStopDay,
+		eventEndTime,
+		eventMeetingType,
+		eventDescription,
+		containerIndex
+	) => {};
+
 	const deleteEventContainer = (containerNumber) => {
 		eventContainerToDelete = document.getElementById(containerNumber);
 		eventContainersDiv.removeChild(eventContainerToDelete);
