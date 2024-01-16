@@ -48,6 +48,11 @@ display: none;
     font-size: 16px;
 }
 
+.modal-form textarea {
+    min-height: 100px;
+    max-width: 75%;
+}
+
 .close {
   color: #aaa;
   float: right;

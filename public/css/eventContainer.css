@@ -44,7 +44,7 @@
     background-color: transparent;
     color: var(--event-text-color, black);
     border-width: 0px;
-    border-color: var(--event-color, black);
+    border-color: var(--event-color-darker, black);
     border-radius: 10px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     box-shadow:  0px 0px 2px 0px var(--event-color, black);

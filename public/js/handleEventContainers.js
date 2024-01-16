@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const b = bigint & 255;
 
 		// Brighten the color (you can adjust the brightness factor)
-		const brightnessFactor = 0.8;
+		const brightnessFactor = 2;
 		const brighterR = Math.min(Math.floor(r * brightnessFactor), 255);
 		const brighterG = Math.min(Math.floor(g * brightnessFactor), 255);
 		const brighterB = Math.min(Math.floor(b * brightnessFactor), 255);
