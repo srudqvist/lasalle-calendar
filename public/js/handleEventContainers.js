@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const eventStopDay = event.target.dayTo.value;
 		const eventStartTime = event.target.startTime.value;
 		const eventEndTime = event.target.endTime.value;
+		const eventTimeZone = event.target.timeZone.value;
 		const eventMeetingType = event.target.meetingType.value;
 		const eventDescription = event.target.description.value;
 
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			eventStartTime,
 			eventStopDay,
 			eventEndTime,
+			eventTimeZone,
 			eventMeetingType,
 			eventDescription,
 			containerIndex
@@ -65,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventStartTime,
 		eventStopDay,
 		eventEndTime,
+		eventTimeZone,
 		eventMeetingType,
 		eventDescription,
 		containerIndex
@@ -96,6 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		dayTimeRange.classList.add("day-time-range");
 		// dayTimeRange.style.color = headlineColor;
 		container.appendChild(dayTimeRange);
+
+		const timeZone = document.createElement("h4");
+		timeZone.textContent = eventTimeZone;
+		timeZone.classList.add("time-zone");
+		container.appendChild(timeZone);
 
 		const meetingType = document.createElement("h4");
 		meetingType.textContent = "Meeting By: " + eventMeetingType;
@@ -180,6 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		const dayTimeRange =
 			eventContainerToEdit.getElementsByClassName("day-time-range")[0]
 				.innerHTML;
+		const timeZone =
+			eventContainerToEdit.getElementsByClassName("time-zone")[0]
+				.innerHTML;
 		const meetingType = eventContainerToEdit
 			.getElementsByClassName("meeting-type")[0]
 			.innerHTML.split(": ")[1]
@@ -190,11 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		let formHeadline = document.getElementById("eventName");
 
+		const formTimeZone = document.getElementById("timeZone");
 		const formMeetingType = document.getElementById("meetingType");
 		console.log("Meeting type: " + meetingType);
 		const formDescription = document.getElementById("description");
 		formHeadline.value = headline;
 
+		formTimeZone.value = timeZone;
 		formMeetingType.value = meetingType;
 		formDescription.value = description;
 
