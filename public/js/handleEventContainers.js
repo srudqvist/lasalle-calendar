@@ -175,7 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	const editEventContainer = (containerNumber) => {
 		const eventContainerToEdit = document.getElementById(containerNumber);
 		const headline =
-			eventContainerToEdit.getElementsByClassName("event-headline");
+			eventContainerToEdit.getElementsByClassName("event-headline")[0]
+				.innerHTML;
 		const dayTimeRange =
 			eventContainerToEdit.getElementsByClassName("day-time-range");
 		const meetingType =
@@ -188,6 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		console.log(dayTimeRange[0].innerHTML);
 		console.log(meetingType[0].innerHTML);
 		console.log(description.textContent);
+		let formHeadline = document.getElementById("eventName");
+		formHeadline.value = headline;
+		openAddEventContainerModal();
 		// console.log(
 		// 	`Headline: ${headline[0].innerHTML}\nDay-Time Range: ${
 		// 		dayTimeRange[0].innerHTML
