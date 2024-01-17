@@ -67,6 +67,8 @@
                         <label class="col-25" for="timeZone">Time Zone:</label>
                         <select class="col-75" required name="timeZone" id="timeZone" placeholder="">
                             <option>Central Time Zone</option>
+                            <option>Eastern Time Zone</option>
+                            <option>Pacific Time Zone</option>
                         </select>
                     </div>
                     <div class="row">
