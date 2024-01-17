@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const headline = document.createElement("h2");
 		const headlineColor = getContrastColor(eventColor);
 		headline.textContent = headlineText;
+		headline.classList.add("event-headline");
 		// headline.style.color = headlineColor;
 		container.appendChild(headline);
 
@@ -92,18 +93,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const dayTimeRange = document.createElement("h4");
 		dayTimeRange.textContent = dayTimeRangeText;
+		dayTimeRange.classList.add("day-time-range");
 		// dayTimeRange.style.color = headlineColor;
 		container.appendChild(dayTimeRange);
 
 		const meetingType = document.createElement("h4");
 		meetingType.textContent = "Meeting By: " + eventMeetingType;
+		meetingType.classList.add("meeting-type");
 		// meetingType.style.color = headlineColor;
 		container.appendChild(meetingType);
 
 		const description = document.createElement("p");
 		description.id = "description" + containerIndex;
 		description.textContent = eventDescription;
-		description.style.visibility = "hidden";
+		// description.style.visibility = "hidden";
+		description.style.display = "none";
 		container.appendChild(description);
 
 		const viewCalendarButton = document.createElement("button");
@@ -143,7 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		// editButton.style.setProperty("--event-text-color", headlineColor);
 		// applyButtonStyles(editButton);
 		editButton.addEventListener("click", (event) => {
-			handleButtonClick(event, "Edit", containerIndex);
+			// handleButtonClick(event, "Edit", containerIndex);
+			editEventContainer(containerIndex);
 		});
 		// container.appendChild(editButton);
 		buttonDiv.appendChild(editButton);
@@ -167,20 +172,29 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventContainersDiv.appendChild(container);
 	};
 
-	const editEventContainer = (
-		headlineText,
-		eventColor,
-		eventStartDay,
-		eventStartTime,
-		eventStopDay,
-		eventEndTime,
-		eventMeetingType,
-		eventDescription,
-		containerIndex
-	) => {};
+	const editEventContainer = (containerNumber) => {
+		const eventContainerToEdit = document.getElementById(containerNumber);
+		const headline =
+			eventContainerToEdit.getElementsByClassName("event-headline");
+		const dayTimeRange =
+			eventContainerToEdit.getElementsByClassName("day-time-range");
+		const meetingType =
+			eventContainerToEdit.getElementsByClassName("meeting-type");
+
+		console.log(headline[0].innerHTML);
+		console.log(dayTimeRange[0].innerHTML);
+		console.log(meetingType[0].innerHTML);
+		// console.log(
+		// 	`Headline: ${headline[0].innerHTML}\nDay-Time Range: ${
+		// 		dayTimeRange[0].innerHTML
+		// 	}\nMeeting Type: ${meetingType[0].innerHTML}\n`
+		// );
+
+		// console.log(headline.item(0).innerHTML);
+	};
 
 	const deleteEventContainer = (containerNumber) => {
-		eventContainerToDelete = document.getElementById(containerNumber);
+		const eventContainerToDelete = document.getElementById(containerNumber);
 		eventContainersDiv.removeChild(eventContainerToDelete);
 	};
 
@@ -237,29 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		return brighterHex;
 	};
-
-	// const applyButtonStyles = (button) => {
-	// 	button.style.padding = "10px 20px";
-	// 	button.style.backgroundColor = "#4CAF50"; /* Green background color */
-	// 	button.style.color = "white";
-	// 	button.style.border = "none";
-	// 	button.style.borderRadius = "5px";
-	// 	button.style.cursor = "pointer";
-	// 	button.style.fontSize = "16px";
-	// 	button.style.transition = "background-color 0.3s ease";
-	// 	// button.style.margin = "0px 10px 10px 0px";
-
-	// 	// Hover effect
-	// 	button.addEventListener("mouseover", () => {
-	// 		button.style.backgroundColor =
-	// 			"#45a049"; /* Darker green on hover */
-	// 	});
-
-	// 	button.addEventListener("mouseout", () => {
-	// 		button.style.backgroundColor =
-	// 			"#4CAF50"; /* Restore original color on mouseout */
-	// 	});
-	// };
 
 	window.addEventListener("click", function (event) {
 		if (event.target === addEventContainerModal) {
