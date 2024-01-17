@@ -101,7 +101,7 @@
 
                     <div id="modalButtonsDiv">
                         <button id="cancelButton" type="button">Cancel</button>
-                        <button type="submit">Create New Container</button>
+                        <button id="submitButton" type="submit">Create New Container</button>
                     </div>
                 </form>
             </div>
