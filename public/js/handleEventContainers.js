@@ -219,11 +219,13 @@ document.addEventListener("DOMContentLoaded", () => {
 				.innerHTML;
 		const meetingType = eventContainerToEdit
 			.getElementsByClassName("meeting-type")[0]
-			.innerHTML.split(": ")[1]
-			.trim();
+			.innerHTML.split(": ")[1];
 		const description = document.getElementById(
 			"description" + containerNumber
 		).textContent;
+
+		const eventColor = eventContainerToEdit.style.cssText.split(": ")[1];
+		console.log(eventColor);
 
 		let formHeadline = document.getElementById("eventName");
 
@@ -234,6 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const formTimeZone = document.getElementById("timeZone");
 		const formMeetingType = document.getElementById("meetingType");
 		const formDescription = document.getElementById("description");
+		const formEventColor = document.getElementById("eventColorPicker");
 		formHeadline.value = headline;
 		formStartDay.value = startDay;
 		formEndDay.value = endDay;
@@ -242,6 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		formTimeZone.value = timeZone;
 		formMeetingType.value = meetingType;
 		formDescription.value = description;
+		formEventColor.value = eventColor;
 		editing = true;
 		editContainerIndex = containerNumber;
 		openAddEventContainerModal("Edit Event Container");
@@ -267,7 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		containerNumber
 	) => {
 		const eventContainerToEdit = document.getElementById(containerNumber);
-		console.log(eventContainerToEdit);
 		const headline =
 			eventContainerToEdit.getElementsByClassName("event-headline")[0];
 		const dayRange =
@@ -281,13 +284,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		const description = document.getElementById(
 			"description" + containerNumber
 		);
-
+		// const color = eventContainerToEdit.style.cssText;
+		// console.log(color);
 		headline.innerHTML = eventHeadlineText;
 		dayRange.innerHTML = eventStartDay + " - " + eventStopDay;
 		timeRange.innerHTML = eventStartTime + " - " + eventEndTime;
 		timeZone.innerHTML = eventTimeZone;
-		meetingType.innerHTML = eventMeetingType;
+		meetingType.innerHTML = "Meeting By: " + eventMeetingType;
 		description.innerHTML = eventDescription;
+		eventContainerToEdit.style.cssText = "--event-color: " + eventColor;
 	};
 
 	const deleteEventContainer = (containerNumber) => {
