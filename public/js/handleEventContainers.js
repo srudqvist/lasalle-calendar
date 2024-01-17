@@ -89,16 +89,19 @@ document.addEventListener("DOMContentLoaded", () => {
 		// headline.style.color = headlineColor;
 		container.appendChild(headline);
 
-		const from = eventStartDay + " " + eventStartTime;
-		const to = eventStopDay + " " + eventEndTime;
-		const dayTimeRangeText = from + " - " + to;
-		console.log(from + " - " + to);
-
-		const dayTimeRange = document.createElement("h4");
-		dayTimeRange.textContent = dayTimeRangeText;
-		dayTimeRange.classList.add("day-time-range");
+		const dayRangeText = eventStartDay + " - " + eventStopDay;
+		const dayRange = document.createElement("h4");
+		dayRange.textContent = dayRangeText;
+		dayRange.classList.add("day-range");
 		// dayTimeRange.style.color = headlineColor;
-		container.appendChild(dayTimeRange);
+		container.appendChild(dayRange);
+
+		const timeRangeText = eventStartTime + " - " + eventEndTime;
+		const timeRange = document.createElement("h4");
+		timeRange.textContent = timeRangeText;
+		timeRange.classList.add("time-range");
+		// dayTimeRange.style.color = headlineColor;
+		container.appendChild(timeRange);
 
 		const timeZone = document.createElement("h4");
 		timeZone.textContent = eventTimeZone;
@@ -185,9 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		const headline =
 			eventContainerToEdit.getElementsByClassName("event-headline")[0]
 				.innerHTML;
-		const dayTimeRange =
-			eventContainerToEdit.getElementsByClassName("day-time-range")[0]
+		const dayRange =
+			eventContainerToEdit.getElementsByClassName("day-range")[0]
 				.innerHTML;
+		const [startDay, endDay] = dayRange.split(" - ");
+		const timeRange =
+			eventContainerToEdit.getElementsByClassName("time-range")[0]
+				.innerHTML;
+		const [startTime, endTime] = timeRange.split(" - ");
 		const timeZone =
 			eventContainerToEdit.getElementsByClassName("time-zone")[0]
 				.innerHTML;
@@ -201,12 +209,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		let formHeadline = document.getElementById("eventName");
 
+		console.log(`Start Day: ${startDay}`);
+		console.log(`End Day: ${endDay}`);
+		console.log(`Start Time: ${startTime}`);
+		console.log(`End Time: ${endTime}`);
+		const formStartDay = document.getElementById("dayFrom");
+		const formEndDay = document.getElementById("dayTo");
+		const formStartTime = document.getElementById("startTime");
+		const formEndTime = document.getElementById("endTime");
 		const formTimeZone = document.getElementById("timeZone");
 		const formMeetingType = document.getElementById("meetingType");
-		console.log("Meeting type: " + meetingType);
 		const formDescription = document.getElementById("description");
 		formHeadline.value = headline;
-
+		formStartDay.value = startDay;
+		formEndDay.value = endDay;
+		formStartTime.value = startTime;
+		formEndTime.value = endTime;
 		formTimeZone.value = timeZone;
 		formMeetingType.value = meetingType;
 		formDescription.value = description;
