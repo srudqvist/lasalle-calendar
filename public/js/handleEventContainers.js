@@ -225,7 +225,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		).textContent;
 
 		const eventColor = eventContainerToEdit.style.cssText.split(": ")[1];
+		const eventColorSanitized = eventColor.split(";")[0];
 		console.log(eventColor);
+		console.log(eventColorSanitized);
 
 		let formHeadline = document.getElementById("eventName");
 
@@ -245,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		formTimeZone.value = timeZone;
 		formMeetingType.value = meetingType;
 		formDescription.value = description;
-		formEventColor.value = eventColor;
+		formEventColor.value = eventColorSanitized;
 		editing = true;
 		editContainerIndex = containerNumber;
 		openAddEventContainerModal("Edit Event Container");
@@ -292,7 +294,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		timeZone.innerHTML = eventTimeZone;
 		meetingType.innerHTML = "Meeting By: " + eventMeetingType;
 		description.innerHTML = eventDescription;
-		eventContainerToEdit.style.cssText = "--event-color: " + eventColor;
+		eventContainerToEdit.style.cssText =
+			"--event-color: " + eventColor + ";";
 	};
 
 	const deleteEventContainer = (containerNumber) => {
