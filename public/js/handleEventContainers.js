@@ -20,15 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	// })
 	// get container index from db when page loads
 	let containerIndex = 1;
+	let editing = false;
+	let editContainerIndex = 0;
 
 	addEventButton.addEventListener("click", () => {
 		//createEventContainer(`Event ${containerIndex}`, containerIndex);
-		console.log("Add event button clicked");
-		openAddEventContainerModal();
+		openAddEventContainerModal("Create New Container");
 	});
 	eventContainerModalForm.addEventListener("submit", (event) => {
 		event.preventDefault();
-		console.log("Submit button clicked");
 		const eventColor = event.target.eventColor.value;
 		const eventStartDay = event.target.dayFrom.value;
 		const eventStopDay = event.target.dayTo.value;
@@ -43,20 +43,38 @@ document.addEventListener("DOMContentLoaded", () => {
 		// based on the color that was picked for the event container color.
 
 		const eventName = event.target.eventName.value;
-		createEventContainer(
-			eventName,
-			eventColor,
-			eventStartDay,
-			eventStartTime,
-			eventStopDay,
-			eventEndTime,
-			eventTimeZone,
-			eventMeetingType,
-			eventDescription,
-			containerIndex
-		);
-		closeAddEventContainerModal();
-		containerIndex++;
+		if (!editing) {
+			createEventContainer(
+				eventName,
+				eventColor,
+				eventStartDay,
+				eventStartTime,
+				eventStopDay,
+				eventEndTime,
+				eventTimeZone,
+				eventMeetingType,
+				eventDescription,
+				containerIndex
+			);
+			closeAddEventContainerModal();
+			containerIndex++;
+		} else if (editing) {
+			// Edit the current event container.
+			editEventContainer(
+				eventName,
+				eventColor,
+				eventStartDay,
+				eventStartTime,
+				eventStopDay,
+				eventEndTime,
+				eventTimeZone,
+				eventMeetingType,
+				eventDescription,
+				editContainerIndex
+			);
+			editing = false;
+			closeAddEventContainerModal();
+		}
 	});
 	// Add check to see if the container was created before incrementing the index
 
@@ -159,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		// applyButtonStyles(editButton);
 		editButton.addEventListener("click", (event) => {
 			// handleButtonClick(event, "Edit", containerIndex);
-			editEventContainer(containerIndex);
+			getContainerValues(containerIndex);
 		});
 		// container.appendChild(editButton);
 		buttonDiv.appendChild(editButton);
@@ -183,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventContainersDiv.appendChild(container);
 	};
 
-	const editEventContainer = (containerNumber) => {
+	const getContainerValues = (containerNumber) => {
 		const eventContainerToEdit = document.getElementById(containerNumber);
 		const headline =
 			eventContainerToEdit.getElementsByClassName("event-headline")[0]
@@ -209,10 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		let formHeadline = document.getElementById("eventName");
 
-		console.log(`Start Day: ${startDay}`);
-		console.log(`End Day: ${endDay}`);
-		console.log(`Start Time: ${startTime}`);
-		console.log(`End Time: ${endTime}`);
 		const formStartDay = document.getElementById("dayFrom");
 		const formEndDay = document.getElementById("dayTo");
 		const formStartTime = document.getElementById("startTime");
@@ -228,8 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		formTimeZone.value = timeZone;
 		formMeetingType.value = meetingType;
 		formDescription.value = description;
-
-		openAddEventContainerModal();
+		editing = true;
+		editContainerIndex = containerNumber;
+		openAddEventContainerModal("Edit Event Container");
 		// console.log(
 		// 	`Headline: ${headline[0].innerHTML}\nDay-Time Range: ${
 		// 		dayTimeRange[0].innerHTML
@@ -239,12 +254,49 @@ document.addEventListener("DOMContentLoaded", () => {
 		// console.log(headline.item(0).innerHTML);
 	};
 
+	const editEventContainer = (
+		eventHeadlineText,
+		eventColor,
+		eventStartDay,
+		eventStartTime,
+		eventStopDay,
+		eventEndTime,
+		eventTimeZone,
+		eventMeetingType,
+		eventDescription,
+		containerNumber
+	) => {
+		const eventContainerToEdit = document.getElementById(containerNumber);
+		console.log(eventContainerToEdit);
+		const headline =
+			eventContainerToEdit.getElementsByClassName("event-headline")[0];
+		const dayRange =
+			eventContainerToEdit.getElementsByClassName("day-range")[0];
+		const timeRange =
+			eventContainerToEdit.getElementsByClassName("time-range")[0];
+		const timeZone =
+			eventContainerToEdit.getElementsByClassName("time-zone")[0];
+		const meetingType =
+			eventContainerToEdit.getElementsByClassName("meeting-type")[0];
+		const description = document.getElementById(
+			"description" + containerNumber
+		);
+
+		headline.innerHTML = eventHeadlineText;
+		dayRange.innerHTML = eventStartDay + " - " + eventStopDay;
+		timeRange.innerHTML = eventStartTime + " - " + eventEndTime;
+		timeZone.innerHTML = eventTimeZone;
+		meetingType.innerHTML = eventMeetingType;
+		description.innerHTML = eventDescription;
+	};
+
 	const deleteEventContainer = (containerNumber) => {
 		const eventContainerToDelete = document.getElementById(containerNumber);
 		eventContainersDiv.removeChild(eventContainerToDelete);
 	};
 
-	const openAddEventContainerModal = () => {
+	const openAddEventContainerModal = (submitButtonText) => {
+		document.getElementById("submitButton").innerHTML = submitButtonText;
 		addEventContainerModal.style.display = "block";
 	};
 	const closeAddEventContainerModal = () => {
