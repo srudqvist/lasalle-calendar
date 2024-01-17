@@ -180,10 +180,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			eventContainerToEdit.getElementsByClassName("day-time-range");
 		const meetingType =
 			eventContainerToEdit.getElementsByClassName("meeting-type");
+		const description = document.getElementById(
+			"description" + containerNumber
+		);
 
 		console.log(headline[0].innerHTML);
 		console.log(dayTimeRange[0].innerHTML);
 		console.log(meetingType[0].innerHTML);
+		console.log(description.textContent);
 		// console.log(
 		// 	`Headline: ${headline[0].innerHTML}\nDay-Time Range: ${
 		// 		dayTimeRange[0].innerHTML
