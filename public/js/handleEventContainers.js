@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// 	});
 
 	// })
-	// get container index from db when page loads
+	// Todo: get container index from db when page loads
 	let containerIndex = 1;
 	let editing = false;
 	let editContainerIndex = 0;
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const eventStopDay = event.target.dayTo.value;
 		const eventStartTime = event.target.startTime.value;
 		const eventEndTime = event.target.endTime.value;
+		const eventDuration = event.target.duration.value;
 		const eventTimeZone = event.target.timeZone.value;
 		const eventMeetingType = event.target.meetingType.value;
 		const eventDescription = event.target.description.value;
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				eventStartTime,
 				eventStopDay,
 				eventEndTime,
+				eventDuration,
 				eventTimeZone,
 				eventMeetingType,
 				eventDescription,
@@ -67,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				eventStartTime,
 				eventStopDay,
 				eventEndTime,
+				eventDuration,
 				eventTimeZone,
 				eventMeetingType,
 				eventDescription,
@@ -85,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventStartTime,
 		eventStopDay,
 		eventEndTime,
+		eventDuration,
 		eventTimeZone,
 		eventMeetingType,
 		eventDescription,
@@ -120,6 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		timeRange.classList.add("time-range");
 		// dayTimeRange.style.color = headlineColor;
 		container.appendChild(timeRange);
+
+		const duration = document.createElement("h4");
+		// duration.textContent = formatTime(eventDuration);
+		duration.textContent = eventDuration;
+		duration.classList.add("duration");
+		container.appendChild(duration);
 
 		const timeZone = document.createElement("h4");
 		timeZone.textContent = eventTimeZone;
@@ -214,6 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			eventContainerToEdit.getElementsByClassName("time-range")[0]
 				.innerHTML;
 		const [startTime, endTime] = timeRange.split(" - ");
+		const duration =
+			eventContainerToEdit.getElementsByClassName("duration")[0]
+				.innerHTML;
 		const timeZone =
 			eventContainerToEdit.getElementsByClassName("time-zone")[0]
 				.innerHTML;
@@ -226,8 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const eventColor = eventContainerToEdit.style.cssText.split(": ")[1];
 		const eventColorSanitized = eventColor.split(";")[0];
-		console.log(eventColor);
-		console.log(eventColorSanitized);
 
 		let formHeadline = document.getElementById("eventName");
 
@@ -235,6 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const formEndDay = document.getElementById("dayTo");
 		const formStartTime = document.getElementById("startTime");
 		const formEndTime = document.getElementById("endTime");
+		const formDuration = document.getElementById("duration");
 		const formTimeZone = document.getElementById("timeZone");
 		const formMeetingType = document.getElementById("meetingType");
 		const formDescription = document.getElementById("description");
@@ -244,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		formEndDay.value = endDay;
 		formStartTime.value = startTime;
 		formEndTime.value = endTime;
+		formDuration.value = duration;
 		formTimeZone.value = timeZone;
 		formMeetingType.value = meetingType;
 		formDescription.value = description;
@@ -267,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		eventStartTime,
 		eventStopDay,
 		eventEndTime,
+		eventDuration,
 		eventTimeZone,
 		eventMeetingType,
 		eventDescription,
@@ -279,6 +293,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			eventContainerToEdit.getElementsByClassName("day-range")[0];
 		const timeRange =
 			eventContainerToEdit.getElementsByClassName("time-range")[0];
+		const duration =
+			eventContainerToEdit.getElementsByClassName("duration")[0];
 		const timeZone =
 			eventContainerToEdit.getElementsByClassName("time-zone")[0];
 		const meetingType =
@@ -291,6 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		headline.innerHTML = eventHeadlineText;
 		dayRange.innerHTML = eventStartDay + " - " + eventStopDay;
 		timeRange.innerHTML = eventStartTime + " - " + eventEndTime;
+		duration.textContent = eventDuration;
 		timeZone.innerHTML = eventTimeZone;
 		meetingType.innerHTML = "Meeting By: " + eventMeetingType;
 		description.innerHTML = eventDescription;
@@ -358,6 +375,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		return brighterHex;
 	};
+	// const formatTime = (minutes) => {
+	// 	console.log("minutes", minutes);
+	// 	let intMinutes = parseInt(minutes, 10);
+	// 	console.log("intMinutes", intMinutes);
+	// 	let hours = Math.floor(intMinutes / 60);
+	// 	let remainingMinutes = intMinutes % 60;
+
+	// 	if (hours > 0) {
+	// 		return `${hours}h ${remainingMinutes} min`;
+	// 	} else {
+	// 		return `${intMinutes} min`;
+	// 	}
+	// };
 
 	window.addEventListener("click", function (event) {
 		if (event.target === addEventContainerModal) {

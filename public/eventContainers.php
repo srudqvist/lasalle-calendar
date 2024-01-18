@@ -64,6 +64,15 @@
                         </div>
                     </div>
                     <div class="row">
+                        <label class="col-25" for="timeZone">Duration:</label>
+                        <select class="col-75" required name="duration" id="duration" placeholder="">
+                            <option data-minutes="30">30 min</option>
+                            <option data-minutes="60">1h</option>
+                            <option data-minutes="90">1h 30 min</option>
+                            <option data-minutes="120">2h</option>
+                        </select>
+                    </div>
+                    <div class="row">
                         <label class="col-25" for="timeZone">Time Zone:</label>
                         <select class="col-75" required name="timeZone" id="timeZone" placeholder="">
                             <option>Central Time Zone</option>
