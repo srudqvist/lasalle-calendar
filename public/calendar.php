@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/calendar.css">
+    <script src="./js/calendar/getEventInfo.js"></script>
     <title>Calendar</title>
 </head>
 
@@ -19,14 +20,16 @@
                 <h1>Meeting Details</h1>
                 <div class="details-container">
                     <div class="label-column">
-                        <label for="meetingTitle">Meeting Title:</label>
-                        <label for="meetingDate">Meeting Date:</label>
-                        <label for="meetingTime">Meeting Time:</label>
+                        <label for="availableDays">Available Days:</label>
+                        <label for="meetingType">Meeting Type:</label>
+                        <label for="meetingDuration">Meeting Duration:</label>
+                        <label for="meetingNotes">Meeting Notes:</label>
                     </div>
                     <div class="text-column">
-                        <span id="meetingTitle"></span>
-                        <span id="meetingDate"></span>
-                        <span id="meetingTime"></span>
+                        <span id="availableDays"></span>
+                        <span id="meetingType"></span>
+                        <span id="meetingDuration"></span>
+                        <span id="meetingNotes"></span>
                     </div>
                 </div>
             </div>
