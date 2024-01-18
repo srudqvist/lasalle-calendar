@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	) => {
 		const container = document.createElement("div");
 		const buttonDiv = document.createElement("div");
-		const buttonColor = makeColorBrighter(eventColor);
+		const buttonColor = makeColorDarker(eventColor);
 
 		buttonDiv.classList.add("button-div");
 		container.classList.add("eventContainer");
@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Choose white or black based on luminance
 		return luminance > 0.5 ? "#000000" : "#ffffff";
 	};
-	const makeColorBrighter = (eventColor) => {
+	const makeColorDarker = (eventColor) => {
 		// Get the color value from the input
 		const hex = eventColor.replace(/^#/, "");
 		const bigint = parseInt(hex, 16);
@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const b = bigint & 255;
 
 		// Brighten the color (you can adjust the brightness factor)
-		const brightnessFactor = 2;
+		const brightnessFactor = 0.7;
 		const brighterR = Math.min(Math.floor(r * brightnessFactor), 255);
 		const brighterG = Math.min(Math.floor(g * brightnessFactor), 255);
 		const brighterB = Math.min(Math.floor(b * brightnessFactor), 255);
@@ -354,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		)
 			.toString(16)
 			.slice(1)}`;
+		console.log(`Brighter Hex: ${brighterHex}`);
 
 		return brighterHex;
 	};
