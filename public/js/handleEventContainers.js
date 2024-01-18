@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const addEventButton = document.getElementById("addEventContainer");
 	const eventContainersDiv = document.getElementById("eventContainers");
+	const cancelButton = document.getElementById("cancelButton");
 	const addEventContainerModal = document.getElementById(
 		"eventContainerModal"
 	);
@@ -335,6 +336,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			`${buttonText} button on  container ${containerNumber} clicked.`
 		);
 	};
+
+	cancelButton.addEventListener("click", function () {
+		// Your code to handle the click event goes here
+		console.log("Cancel button clicked!");
+		closeAddEventContainerModal();
+	});
 
 	const getContrastColor = (hexColor) => {
 		// Convert hex color to RGB
