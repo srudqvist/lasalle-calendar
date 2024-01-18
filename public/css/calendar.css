@@ -55,9 +55,9 @@ td {
     padding: 10px;
 }
 
-th {
+/* th {
     background-color: #f2f2f2;
-}
+} */
 
 td {
     position: relative;
@@ -76,8 +76,17 @@ td {
     transform: translate(-50%, -50%);
 }
 
-select,
-button {
+select{
     margin: 10px;
     padding: 5px;
+}
+button {
+    background-color: gray;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+   
+    
+    /* transform: translate(-50%, -50%); */
 }
