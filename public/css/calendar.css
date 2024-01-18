@@ -1,0 +1,36 @@
+#contentDiv {
+  display: flex;
+}
+
+#meetingDetailsDiv {
+  width: 40%;
+  padding: 20px; /* Adjust padding as needed */
+  border: 2px solid green;
+}
+
+#calendarDiv {
+  flex: 1; /* Takes up the remaining space */
+  padding: 20px; /* Adjust padding as needed */
+  border: 2px solid red;
+}
+
+
+.details-container {
+    display: flex;
+}
+
+.label-column {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.text-column {
+    flex: 2;
+}
+
+/* Optional styling for labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
