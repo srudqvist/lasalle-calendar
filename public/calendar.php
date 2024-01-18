@@ -51,6 +51,9 @@
                 </div>
                 <div class="calendar" id="calendar"></div>
             </div>
+            <div id="timeDiv">
+
+            </div>
         </div>
         <div id="footerDiv">
             <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->

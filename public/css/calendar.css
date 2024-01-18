@@ -3,7 +3,7 @@
 }
 
 #meetingDetailsDiv {
-    width: 40%;
+    width: 30%;
     padding: 20px;
     border: 2px solid green;
 }
@@ -33,7 +33,7 @@
 }
 
 #calendarDiv {
-    flex: 1;
+    width: 60%;
     padding: 20px;
     border: 2px solid red;
     height: 100%;
@@ -89,4 +89,9 @@ button {
    
     
     /* transform: translate(-50%, -50%); */
+}
+
+#timeDiv {
+    width: 10%;
+    border: 2px solid blue;
 }

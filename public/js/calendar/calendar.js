@@ -2,6 +2,48 @@ document.addEventListener("DOMContentLoaded", function () {
 	const calendarContainer = document.getElementById("calendar");
 	const currentDate = new Date();
 
+	const timeContainer = document.getElementById("timeDiv");
+	const calculateTimeSlots = (startTime, endTime, durationMinutes) => {
+		// Convert start time, end time, and duration to minutes
+		const startMinutes = timeToMinutes(startTime);
+		const endMinutes = timeToMinutes(endTime);
+
+		// Calculate time difference in minutes
+		const timeDifference = endMinutes - startMinutes;
+
+		// Calculate the number of time slots
+		const numTimeSlots = Math.floor(timeDifference / durationMinutes);
+
+		console.log(numTimeSlots);
+		return numTimeSlots;
+	};
+	// Function to convert time in HH:mm format to minutes
+	function timeToMinutes(time) {
+		const [hours, minutes] = time.split(":").map(Number);
+		return hours * 60 + minutes;
+	}
+
+	const generateTimeSlotButtons = (numTimeSlots) => {
+		for (let i = 0; i < numTimeSlots; i++) {
+			const row = document.createElement("div");
+			const button = document.createElement("button");
+			button.innerText = i;
+			row.appendChild(button);
+			timeContainer.appendChild(row);
+		}
+	};
+
+	const startTime = "08:00";
+	const endTime = "16:00";
+	const durationMinutes = 60;
+	const numTimeSlots = calculateTimeSlots(
+		startTime,
+		endTime,
+		durationMinutes
+	);
+	console.log(`Timeslots: ${numTimeSlots}`);
+	const test = generateTimeSlotButtons(numTimeSlots);
+
 	function generateCalendar(year, month) {
 		const daysInMonth = new Date(year, month + 1, 0).getDate();
 		const firstDayOfMonth = new Date(year, month, 1).getDay();
