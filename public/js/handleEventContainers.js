@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const container = document.createElement("div");
 		const buttonDiv = document.createElement("div");
 		const buttonColor = makeColorDarker(eventColor);
-
+		console.log("Here: " + typeof eventStartTime);
 		buttonDiv.classList.add("button-div");
 		container.classList.add("eventContainer");
 		// container.style.borderColor = eventColor;
