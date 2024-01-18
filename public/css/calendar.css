@@ -1,20 +1,17 @@
 #contentDiv {
-  display: flex;
+    display: flex;
 }
 
 #meetingDetailsDiv {
-  width: 40%;
-  padding: 20px; /* Adjust padding as needed */
-  border: 2px solid green;
+    width: 40%;
+    padding: 20px;
+    border: 2px solid green;
 }
 
-#calendarDiv {
-  flex: 1; /* Takes up the remaining space */
-  padding: 20px; /* Adjust padding as needed */
-  border: 2px solid red;
+#meetingDetailsDiv label {
+    display: block;
+    margin-bottom: 5px;
 }
-
-
 .details-container {
     display: flex;
 }
@@ -23,6 +20,7 @@
     flex: 1;
     text-align: right;
     margin-right: 10px;
+    font-weight: bold;
 }
 
 .text-column {
@@ -34,9 +32,52 @@
     margin-bottom: 5px;
 }
 
-/* Optional styling for labels */
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+#calendarDiv {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid red;
+    height: 100%;
+}
+
+.calendar {
+    display: inline-block;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    position: relative;
+}
+
+.selected-date {
+    background-color: #96AE4D;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+select,
+button {
+    margin: 10px;
+    padding: 5px;
 }

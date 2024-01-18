@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/calendar.css">
     <script src="./js/calendar/getEventInfo.js"></script>
+    <script src="./js/calendar/calendar.js"></script>
     <title>Calendar</title>
 </head>
 
@@ -33,8 +34,21 @@
                     </div>
                 </div>
             </div>
+
             <div id="calendarDiv">
-                <h1>Calendar</h1>
+                <div id="calendarControls">
+                    <div class="yearDiv">
+                        <button id="prevYear">Previous Year</button>
+                        <span id="currentYear"></span>
+                        <button id="nextYear">Next Year</button>
+                    </div>
+                    <div class="monthDiv">
+                        <button id="prevMonth">Previous Month</button>
+                        <span id="currentMonth"></span>
+                        <button id="nextMonth">Next Month</button>
+                    </div>
+                </div>
+                <div class="calendar" id="calendar"></div>
             </div>
         </div>
         <div id="footerDiv">
