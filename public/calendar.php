@@ -44,7 +44,7 @@
                         <button id="nextYear" class="calendar-button"> &rarr;</button>
                     </div>
                     <div class="monthDiv gray-out">
-                        <button id="prevMonth" class="calendar-button"> &rarr;</button>
+                        <button id="prevMonth" class="calendar-button"> &larr;</button>
                         <span id="currentMonth"></span>
                         <button id="nextMonth" class="calendar-button"> &rarr;</button>
                     </div>
