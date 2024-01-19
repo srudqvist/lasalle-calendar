@@ -85,6 +85,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	);
 
 	function generateCalendar(year, month) {
+		const date = new Date();
+		const currentYear = date.getFullYear();
+		const currentMonth = date.getMonth() + 1;
+		const currentDay = date.getDate();
+		if (year < currentYear) {
+			console.log("Year is less than current year");
+		}
+		console.log(`Year: ${currentYear}`);
+		console.log(`Month: ${currentMonth}`);
+		console.log(`Day: ${currentDay}`);
 		const daysInMonth = new Date(year, month + 1, 0).getDate();
 		const firstDayOfMonth = new Date(year, month, 1).getDay();
 		const calendarTable = document.createElement("table");
@@ -120,6 +130,19 @@ document.addEventListener("DOMContentLoaded", function () {
 					dayCounter > daysInMonth
 				) {
 					td.textContent = "";
+				} else if (year < currentYear) {
+					td.textContent = dayCounter;
+					td.classList.add("gray-out");
+					dayCounter++;
+				} else if (
+					((i !== 0 && j > firstDayOfMonth) ||
+						dayCounter < daysInMonth) &&
+					dayCounter < currentDay &&
+					month < currentMonth
+				) {
+					td.textContent = dayCounter;
+					td.classList.add("gray-out");
+					dayCounter++;
 				} else {
 					td.textContent = dayCounter;
 					td.addEventListener("click", () => highlightDate(td));
