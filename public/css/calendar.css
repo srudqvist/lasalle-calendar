@@ -80,7 +80,7 @@ select{
     margin: 10px;
     padding: 5px;
 }
-button {
+.calendar-button {
     background-color: gray;
     color: #fff;
     border-radius: 50%;
@@ -94,4 +94,29 @@ button {
 #timeDiv {
     width: 10%;
     border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.time-button-row {
+    display: flex;
+    justify-content: center;
+}
+
+#timeDiv button {
+    background-color: #96AE4D;
+    color: white;
+    width: 80%;
+    padding: 8px 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+#timeDiv button:hover {
+    background-color: #74873b;
 }
