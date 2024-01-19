@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 			button.addEventListener("click", () => {
-				console.log(`Button ${buttonId} Clicked!`);
 				highlightButton(buttonId);
 			});
 
@@ -76,8 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		endTime,
 		durationMinutes
 	);
-	console.log(`Timeslots: ${numTimeSlots}`);
-	const test = generateTimeSlotButtons(
+	const generateButtons = generateTimeSlotButtons(
 		numTimeSlots,
 		startTime,
 		endTime,
@@ -89,12 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		const currentYear = date.getFullYear();
 		const currentMonth = date.getMonth() + 1;
 		const currentDay = date.getDate();
-		if (year < currentYear) {
-			console.log("Year is less than current year");
-		}
-		console.log(`Year: ${currentYear}`);
-		console.log(`Month: ${currentMonth}`);
-		console.log(`Day: ${currentDay}`);
 		const daysInMonth = new Date(year, month + 1, 0).getDate();
 		const firstDayOfMonth = new Date(year, month, 1).getDay();
 		const calendarTable = document.createElement("table");
