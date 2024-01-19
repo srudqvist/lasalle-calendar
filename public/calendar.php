@@ -38,15 +38,15 @@
             <div id="calendarDiv">
                 <div id="calendarControls">
                     <div class="yearDiv">
-                        <button id="prevYear">
+                        <button id="prevYear" class="calendar-button">
                             &larr; </button>
                         <span id="currentYear"></span>
-                        <button id="nextYear"> &rarr;</button>
+                        <button id="nextYear" class="calendar-button"> &rarr;</button>
                     </div>
                     <div class="monthDiv">
-                        <button id="prevMonth"> &rarr;</button>
+                        <button id="prevMonth" class="calendar-button"> &rarr;</button>
                         <span id="currentMonth"></span>
-                        <button id="nextMonth"> &rarr;</button>
+                        <button id="nextMonth" class="calendar-button"> &rarr;</button>
                     </div>
                 </div>
                 <div class="calendar" id="calendar"></div>

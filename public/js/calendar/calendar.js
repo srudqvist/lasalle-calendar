@@ -23,11 +23,39 @@ document.addEventListener("DOMContentLoaded", function () {
 		return hours * 60 + minutes;
 	}
 
-	const generateTimeSlotButtons = (numTimeSlots) => {
+	const timeToHours = (timeInMinutes) => {
+		let hours = Math.floor(timeInMinutes / 60);
+		let remainingMinutes = timeInMinutes % 60;
+		if (remainingMinutes.toString() == "0") {
+			remainingMinutes = "00";
+		}
+		if (hours.toString().length == 1) {
+			hours = "0" + hours.toString();
+		}
+		return `${hours}:${remainingMinutes}`;
+	};
+
+	const generateTimeSlotButtons = (
+		numTimeSlots,
+		startTime,
+		endTime,
+		duration
+	) => {
 		for (let i = 0; i < numTimeSlots; i++) {
 			const row = document.createElement("div");
+			row.classList.add("time-button-row");
 			const button = document.createElement("button");
-			button.innerText = i;
+			button.classList.add("center_content");
+			if (i == 0) {
+				button.innerText = startTime;
+			} else if (i == numTimeSlots - 1) {
+				button.innerText = endTime;
+			} else {
+				const buttonMinutes = timeToMinutes(startTime) + duration * i;
+				const buttonText = timeToHours(buttonMinutes);
+				button.innerText = buttonText;
+			}
+
 			row.appendChild(button);
 			timeContainer.appendChild(row);
 		}
@@ -42,7 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		durationMinutes
 	);
 	console.log(`Timeslots: ${numTimeSlots}`);
-	const test = generateTimeSlotButtons(numTimeSlots);
+	const test = generateTimeSlotButtons(
+		numTimeSlots,
+		startTime,
+		endTime,
+		durationMinutes
+	);
 
 	function generateCalendar(year, month) {
 		const daysInMonth = new Date(year, month + 1, 0).getDate();
