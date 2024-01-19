@@ -45,7 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			const row = document.createElement("div");
 			row.classList.add("time-button-row");
 			const button = document.createElement("button");
+			const buttonId = "time-button-" + i;
 			button.classList.add("center_content");
+			button.id = buttonId;
 			if (i == 0) {
 				button.innerText = startTime;
 			} else if (i == numTimeSlots - 1) {
@@ -55,6 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
 				const buttonText = timeToHours(buttonMinutes);
 				button.innerText = buttonText;
 			}
+
+			button.addEventListener("click", () => {
+				console.log(`Button ${buttonId} Clicked!`);
+				highlightButton(buttonId);
+			});
 
 			row.appendChild(button);
 			timeContainer.appendChild(row);
@@ -136,6 +143,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		const selectedDate = element.textContent;
 		element.innerHTML = `<div class="selected-date">${selectedDate}</div>`;
 	}
+
+	const highlightButton = (buttonId) => {
+		const selectedButtons = document.querySelectorAll(".selected-time");
+		selectedButtons.forEach((button) =>
+			button.classList.remove("selected-time")
+		);
+		const button = document.getElementById(buttonId);
+		button.classList.add("selected-time");
+	};
 
 	function updateCalendar() {
 		const year = parseInt(selectYear.value);

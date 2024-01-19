@@ -103,6 +103,7 @@ td {
     transform: translate(-50%, -50%);
 }
 
+
 select{
     margin: 10px;
     padding: 5px;
@@ -150,6 +151,13 @@ select{
 
 #timeDiv button:hover {
     background-color: #74873b;
+}
+
+.selected-time {
+    /* background-color: #5adc96 !important; */
+    background-color: #61d694 !important;
+    color: #000000 !important;
+    box-shadow: none !important;
 }
 
 .gray-out {
