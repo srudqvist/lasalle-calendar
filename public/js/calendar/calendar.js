@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 
 	const startTime = "08:00";
-	const endTime = "16:00";
+	const endTime = "17:00";
 	const durationMinutes = 60;
 	const numTimeSlots = calculateTimeSlots(
 		startTime,
@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 		daysOfWeek.forEach((day) => {
 			const th = document.createElement("th");
+			th.classList.add("gray-out");
 			th.textContent = day;
 			headerRow.appendChild(th);
 		});

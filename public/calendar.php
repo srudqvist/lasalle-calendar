@@ -37,13 +37,13 @@
 
             <div id="calendarDiv">
                 <div id="calendarControls">
-                    <div class="yearDiv">
+                    <div class="yearDiv gray-out">
                         <button id="prevYear" class="calendar-button">
                             &larr; </button>
                         <span id="currentYear"></span>
                         <button id="nextYear" class="calendar-button"> &rarr;</button>
                     </div>
-                    <div class="monthDiv">
+                    <div class="monthDiv gray-out">
                         <button id="prevMonth" class="calendar-button"> &rarr;</button>
                         <span id="currentMonth"></span>
                         <button id="nextMonth" class="calendar-button"> &rarr;</button>
