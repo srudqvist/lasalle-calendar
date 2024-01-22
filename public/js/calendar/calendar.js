@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const calendarContainer = document.getElementById("calendar");
+	const calendarContent = document.getElementById("contentDiv");
+	const nextButton = document.getElementById("nextButton");
+	const userDetails = document.getElementById("userDetailsDiv");
 	const currentDate = new Date();
+
+	nextButton.addEventListener("click", () => {
+		userDetails.style.visibility = "visible";
+		calendarContent.style.visibility = "hidden";
+	});
 
 	const timeContainer = document.getElementById("timeDiv");
 	const calculateTimeSlots = (startTime, endTime, durationMinutes) => {

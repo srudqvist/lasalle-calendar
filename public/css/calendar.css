@@ -7,8 +7,17 @@
     padding: 20px;
     border: 2px solid green;
 }
+#meetingDetailsDiv2 {
+    width: 30%;
+    padding: 20px;
+    border: 2px solid green;
+}
 
 #meetingDetailsDiv label {
+    display: block;
+    margin-bottom: 5px;
+}
+#meetingDetailsDiv2 label {
     display: block;
     margin-bottom: 5px;
 }
