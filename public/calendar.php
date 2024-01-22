@@ -57,7 +57,7 @@
 
             </div>
 
-            <div id="userDetailsDiv">
+            <div id="userDetailsDiv" style="visibility:hidden">
                 <div id="meetingDetailsDiv">
                     <h1>Meeting Details</h1>
                     <div class="details-container">
@@ -75,7 +75,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="meetingDetails">
+                <div id="meetingDetailsDiv2">
+                    <h1>Test</h1>
                     <div class="details-container">
                         <div class="label-column">
                             <label for="dateTime">Date/Time:</label>
@@ -84,6 +85,8 @@
                             <label for="email">Email:</label>
                         </div>
                         <div class="text-column">
+                            <span id="date-time"></span>
+                            <span id="timezone"></span>
                             <input type="text" id="name" name="name" required placeholder="John Doe">
                             <input type="email" id="email" name="email" required placeholder="john.doe@email.com">
                         </div>
