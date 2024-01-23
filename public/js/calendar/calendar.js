@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	nextButton.addEventListener("click", () => {
 		userDetails.style.display = "flex";
-		userDetails.style.visibility = "visible";
 		calendarContent.style.display = "none";
 	});
 

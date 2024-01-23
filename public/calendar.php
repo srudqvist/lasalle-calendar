@@ -57,7 +57,7 @@
 
             </div>
 
-            <div id="userDetailsDiv" style="visibility:hidden">
+            <div id="userDetailsDiv">
                 <div id="meetingDetailsDiv">
                     <h1>Meeting Details</h1>
                     <div class="details-container">
