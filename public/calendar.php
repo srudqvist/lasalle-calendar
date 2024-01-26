@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="calendar" id="calendar"></div>
-                    <button id="nextButton">Next</button>
+                    <button id="nextButton" class="next-schedule-button">Next</button>
                 </div>
                 <div id="timeDiv"></div>
 
@@ -59,7 +59,6 @@
             <div id="userDetailsDiv">
 
                 <div id="meetingDetailsDiv">
-                    <h1>Meeting Details</h1>
                     <div class="details-container">
                         <div class="label-column">
                             <label for="availableDays">Available Days:</label>
@@ -76,7 +75,6 @@
                     </div>
                 </div>
                 <div id="meetingDetailsDiv2">
-                    <h1>Test</h1>
                     <div class="details-container">
                         <div class="label-column">
                             <label for="dateTime">Date/Time:</label>
@@ -93,7 +91,9 @@
                     </div>
                     <p>Additional Comments or Requests</p>
                     <textarea id="comments" name="comments"></textarea>
+                    <button id="scheduleButton" class="next-schedule-button">Schedule</button>
                 </div>
+
 
             </div>
 
