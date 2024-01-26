@@ -56,8 +56,8 @@
                 <div id="timeDiv"></div>
 
             </div>
-
             <div id="userDetailsDiv">
+
                 <div id="meetingDetailsDiv">
                     <h1>Meeting Details</h1>
                     <div class="details-container">

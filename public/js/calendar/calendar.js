@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	nextButton.addEventListener("click", () => {
 		userDetails.style.display = "flex";
 		calendarContent.style.display = "none";
+
 	});
 
 	const timeContainer = document.getElementById("timeDiv");
