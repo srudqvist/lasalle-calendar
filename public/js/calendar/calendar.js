@@ -2,12 +2,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	const calendarContainer = document.getElementById("calendar");
 	const calendarContent = document.getElementById("contentDiv");
 	const nextButton = document.getElementById("nextButton");
+	const backButton = document.getElementById("backButton");
 	const userDetails = document.getElementById("userDetailsDiv");
 	const currentDate = new Date();
 
 	nextButton.addEventListener("click", () => {
 		userDetails.style.display = "flex";
 		calendarContent.style.display = "none";
+	});
+	backButton.addEventListener("click", () => {
+		userDetails.style.display = "none";
+		calendarContent.style.display = "flex";
 	});
 
 	const timeContainer = document.getElementById("timeDiv");
