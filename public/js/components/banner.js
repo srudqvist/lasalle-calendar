@@ -21,7 +21,7 @@ class Banner extends HTMLElement {
 
       </style>
       <banner>
-        <h3>${customText}</h3>
+        <h3 id="bannerText">${customText}</h3>
       </banner>
     `;
 	}

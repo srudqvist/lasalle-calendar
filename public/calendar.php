@@ -19,7 +19,7 @@
             <div id="navbarDiv">
                 <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
             </div>
-            <banner-component custom-text="Hello, Custom Banner!"></banner-component>
+            <banner-component custom-text="Calendar"></banner-component>
 
             <div id="contentDiv">
                 <div id="meetingDetailsDiv">

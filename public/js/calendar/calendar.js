@@ -5,14 +5,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	const backButton = document.getElementById("backButton");
 	const userDetails = document.getElementById("userDetailsDiv");
 	const currentDate = new Date();
+	const bannerText = document.getElementById("bannerText");
 
 	nextButton.addEventListener("click", () => {
 		userDetails.style.display = "flex";
 		calendarContent.style.display = "none";
+		bannerText.innerText = "User Details";
 	});
 	backButton.addEventListener("click", () => {
 		userDetails.style.display = "none";
 		calendarContent.style.display = "flex";
+		bannerText.innerText = "Calendar";
 	});
 
 	const timeContainer = document.getElementById("timeDiv");
