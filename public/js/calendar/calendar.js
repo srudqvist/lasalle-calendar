@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const currentDate = new Date();
 
 	nextButton.addEventListener("click", () => {
-		userDetails.style.visibility = "visible";
-		calendarContent.style.visibility = "hidden";
+		userDetails.style.display = "flex";
+		calendarContent.style.display = "none";
+
 	});
 
 	const timeContainer = document.getElementById("timeDiv");
