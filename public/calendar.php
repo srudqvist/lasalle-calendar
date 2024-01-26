@@ -68,10 +68,10 @@
                             <label for="meetingNotes">Meeting Notes:</label>
                         </div>
                         <div class="text-column">
-                            <span id="availableDays"></span>
-                            <span id="meetingType"></span>
-                            <span id="meetingDuration"></span>
-                            <span id="meetingNotes"></span>
+                            <span id="availableDays2"></span>
+                            <span id="meetingType2"></span>
+                            <span id="meetingDuration2"></span>
+                            <span id="meetingNotes2"></span>
                         </div>
                     </div>
                 </div>

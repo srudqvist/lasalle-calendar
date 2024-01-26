@@ -186,3 +186,34 @@ select{
 .gray-out {
     opacity: 0.4;
 }
+label {
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+span {
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #333;
+}
+
+input, textarea {
+
+    padding: 15px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+textarea {
+    min-width: 60%;
+    max-width: 60%;
+    min-height: 50px;
+}
