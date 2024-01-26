@@ -15,16 +15,13 @@ class Banner extends HTMLElement {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          background-color: #4CAF50; /* Green background color */
+          background-color: #74873b;
           color: #fff; /* White text color */
         }
 
-        p {
-          margin: 0;
-        }
       </style>
       <banner>
-        <p>${customText}</p>
+        <h3>${customText}</h3>
       </banner>
     `;
 	}
