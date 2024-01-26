@@ -75,23 +75,25 @@
                     </div>
                 </div>
                 <div id="meetingDetailsDiv2">
-                    <div class="details-container">
-                        <div class="label-column">
-                            <label for="dateTime">Date/Time:</label>
-                            <label for="timeZone">Time Zone:</label>
-                            <label for="name">Name:</label>
-                            <label for="email">Email:</label>
+                    <form id="scheduleMeetingForm">
+                        <div class="details-container">
+                            <div class="label-column">
+                                <label for="dateTime">Date/Time:</label>
+                                <label for="timeZone">Time Zone:</label>
+                                <label for="name">Name:</label>
+                                <label for="email">Email:</label>
+                            </div>
+                            <div class="text-column">
+                                <span id="date-time"></span>
+                                <span id="timezone"></span>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                                <input type="email" id="email" name="email" required placeholder="john.doe@email.com">
+                            </div>
                         </div>
-                        <div class="text-column">
-                            <span id="date-time"></span>
-                            <span id="timezone"></span>
-                            <input type="text" id="name" name="name" required placeholder="John Doe">
-                            <input type="email" id="email" name="email" required placeholder="john.doe@email.com">
-                        </div>
-                    </div>
-                    <p>Additional Comments or Requests</p>
-                    <textarea id="comments" name="comments"></textarea>
-                    <button id="scheduleButton" class="next-schedule-button">Schedule</button>
+                        <label id="additionalComments" for="comments">Additional Comments and Requests:</label>
+                        <textarea id="comments" name="comments"></textarea>
+                        <button type="submit" id="scheduleButton" class="next-schedule-button">Schedule</button>
+                    </form>
                 </div>
 
 

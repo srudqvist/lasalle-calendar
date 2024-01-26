@@ -217,13 +217,15 @@ textarea {
     min-width: 50%;
     max-width: 50%;
     min-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .next-schedule-button {
     margin-left: auto;
     background-color: #96AE4D;
     color: white;
-    width: 20%;
+    width: 30%;
     padding: 8px 4px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -231,4 +233,15 @@ textarea {
     border: none;
     text-align: center;
     box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#additionalComments {
+    margin-left: auto;
+    margin-right: auto;
 }
