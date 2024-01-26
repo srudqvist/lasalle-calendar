@@ -93,7 +93,10 @@
                         </div>
                         <label id="additionalComments" for="comments">Additional Comments and Requests:</label>
                         <textarea id="comments" name="comments"></textarea>
-                        <button type="submit" id="scheduleButton" class="next-schedule-button">Schedule</button>
+                        <div id="buttonDiv">
+                            <button id="backButton" class="back-button">Back</button>
+                            <button type="submit" id="scheduleButton" class="next-schedule-button">Schedule</button>
+                        </div>
                     </form>
                 </div>
 
