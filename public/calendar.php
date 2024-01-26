@@ -9,6 +9,7 @@
     <script src="./js/calendar/getEventInfo.js"></script>
     <script src="./js/calendar/calendar.js"></script>
     <script src="./js/calendar/submitDetails.js"></script>
+    <script src="./js/components/banner.js" defer></script>
     <title>Calendar</title>
 </head>
 
@@ -18,6 +19,8 @@
             <div id="navbarDiv">
                 <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
             </div>
+            <banner-component custom-text="Hello, Custom Banner!"></banner-component>
+
             <div id="contentDiv">
                 <div id="meetingDetailsDiv">
                     <h1>Meeting Details</h1>
