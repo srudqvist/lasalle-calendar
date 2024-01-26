@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/calendar.css">
     <script src="./js/calendar/getEventInfo.js"></script>
     <script src="./js/calendar/calendar.js"></script>
+    <script src="./js/calendar/submitDetails.js"></script>
     <title>Calendar</title>
 </head>
 
