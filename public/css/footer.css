@@ -1,13 +1,12 @@
 .footer {
   position: absolute;
   left: 0;
-  bottom: 0;
   height: 80px;
   width: 100%;
-  background-color: #96AE4D;
+  background-color: #96ae4d;
   color: white;
   text-align: center;
 }
-#footerDiv {
-    margin-top: 80px;
-}
+/* #footerDiv { */
+/*     margin-top: 80px; */
+/* } */

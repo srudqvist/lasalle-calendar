@@ -1,18 +1,18 @@
 body {
-    margin: 0px;
+  margin: 0px;
 }
 .center_content {
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
 }
 .content {
-    margin-top: 75px;
-    margin-bottom: 55px;
+  margin-top: 75px;
+  margin-bottom: 55px;
 }
 .flex-wrap {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;

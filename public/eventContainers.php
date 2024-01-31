@@ -4,13 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="./css/eventContainer.css">
     <link rel="stylesheet" href="./css/modal.css">
     <script src="./js/handleEventContainers.js"></script>
+    <script src="./js/components/banner.js" defer></script>
     <title>Event Containers</title>
 </head>
 
 <body>
+    <div id="navbarDiv">
+      <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found  -->
+    </div>
+    <main>
+    <banner-component custom-text="Event Containers" label="lasalle.user@lasallecorrections.com">
+    </banner-component>
     <button id="addEventContainer">Add Event Container</button>
     <div id="eventContainers" class="container-row"></div>
 
@@ -116,6 +124,11 @@
             </div>
         </div>
 
+      </div> 
+
+    </main>
+    <div id="footerDiv" class="footer">
+      <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
     </div>
 </body>
 
