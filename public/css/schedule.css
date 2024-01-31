@@ -1,0 +1,36 @@
+main {
+  min-height: 100vh;
+}
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.green-background {
+  background-color: #96ae4d;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#tableHeader {
+  text-align: left;
+}

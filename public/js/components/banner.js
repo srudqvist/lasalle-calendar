@@ -22,7 +22,17 @@ class Banner extends HTMLElement {
       </style>
       <banner>
         <h3 id="bannerText">${customText}</h3>
-        ${label ? `<div id="accountDiv"><span>Account: ${label}</span> <button>Log Out</button></div>` : ""}
+        ${
+          label
+            ? `<div id="accountDiv">
+        <span>Account: ${label}</span>
+
+        <a href="index.php">
+          <img id="logOutLogo" src="img/logout.png" alt="log out logo">
+        </a>
+        </div>`
+            : ""
+        }
       </banner>
     `;
   }
