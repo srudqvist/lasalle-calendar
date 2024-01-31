@@ -1,13 +1,14 @@
 class Banner extends HTMLElement {
-	constructor() {
-		super();
-	}
+  constructor() {
+    super();
+  }
 
-	connectedCallback() {
-		const customText =
-			this.getAttribute("custom-text") || "Default Banner Text";
+  connectedCallback() {
+    const customText =
+      this.getAttribute("custom-text") || "Default Banner Text";
+    const label = this.getAttribute("label");
 
-		this.innerHTML = `
+    this.innerHTML = `
       <style>
         banner {
           height: 60px;
@@ -18,13 +19,13 @@ class Banner extends HTMLElement {
           background-color: #74873b;
           color: #fff; /* White text color */
         }
-
       </style>
       <banner>
         <h3 id="bannerText">${customText}</h3>
+        ${label ? `<div id="accountDiv"><span>Account: ${label}</span> <button>Log Out</button></div>` : ""}
       </banner>
     `;
-	}
+  }
 }
 
 customElements.define("banner-component", Banner);
