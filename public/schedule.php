@@ -45,6 +45,10 @@
                 $fakeData = array(
                 array("2023-02-01", "10:00 AM", "Meeting A", "John Doe", "123-456-7890", "john@example.com", "Some notes", 1),
                 array("2023-02-02", "02:30 PM", "Meeting B", "Jane Smith", "987-654-3210", "jane@example.com", "Additional notes", 2),
+                array("2023-02-03", "10:00 AM", "Meeting A", "John Smith", "123-456-7890", "john@example.com", "Some notes", 3),
+                array("2023-02-02", "02:30 PM", "Meeting B", "Jane Doe", "987-654-3210", "jane@example.com", "Additional notes", 4),
+                array("2023-02-01", "10:00 AM", "Meeting A", "John Doe", "123-456-7890", "john@example.com", "Some notes", 5),
+                array("2023-02-02", "02:30 PM", "Meeting B", "Jane Smith", "987-654-3210", "jane@example.com", "Additional notes", 6),
                 );
 
       foreach ($fakeData as $row) { ?>
