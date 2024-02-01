@@ -18,10 +18,10 @@
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     </div>
     <main>
-      <banner-component custom-text="Scheduled" label="lasalle.user@lasallecorrections.com">
+      <banner-component custom-text="Events | Scheduled" label="lasalle.user@lasallecorrections.com">
       </banner-component>
       <div id="scheduledTableDiv" class="center_content">
-        <table>
+        <table id="outerTable">
           <tr>
             <th id="tableHeader">Scheduled Meetings</th>
           </tr>

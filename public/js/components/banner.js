@@ -16,8 +16,20 @@ class Banner extends HTMLElement {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          background-color: #74873b;
-          color: #fff; /* White text color */
+          // background-color: #74873b;
+          background-color: #96AE4D;
+          color: #fff; 
+        }
+        #logOutLogo {
+          height: 2rem;
+          width: 2rem;
+          margin-top: 5px;
+          margin-left: 5px;
+        }
+        #accountDiv {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       </style>
       <banner>

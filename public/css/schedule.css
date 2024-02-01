@@ -4,6 +4,12 @@ main {
 table {
   border-collapse: collapse;
 }
+#outerTable {
+  width: 90%;
+}
+#staff {
+  width: 100%;
+}
 
 th,
 td {
