@@ -17,7 +17,7 @@
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found  -->
     </div>
     <main>
-    <banner-component custom-text="Event Containers" label="lasalle.user@lasallecorrections.com">
+    <banner-component custom-text="Events | Scheduled" label="lasalle.user@lasallecorrections.com">
     </banner-component>
     <button id="addEventContainer">Add Event Container</button>
     <div id="eventContainers" class="container-row"></div>
