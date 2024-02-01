@@ -112,6 +112,9 @@ td {
 td {
   position: relative;
 }
+td:hover {
+  cursor: pointer;
+}
 
 .selected-date {
   background-color: #96ae4d;
@@ -139,6 +142,10 @@ select {
   height: 50px;
 
   /* transform: translate(-50%, -50%); */
+}
+.calendar-button:hover {
+  cursor: pointer;
+  background-color: darkgrey;
 }
 
 #timeDiv {
