@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function closeCancelModal() {
+    const checkbox = document.getElementById("myCheckbox");
+    checkbox.checked = false;
     deleteScheduleModal.style.display = "none";
   }
 });
