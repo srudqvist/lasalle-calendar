@@ -77,30 +77,31 @@
       </div>
       <div id="scheduleModal" class="modal fade">
         <div class="modal-content">
-                <div id="meetingDetailsDiv">
-                    <h1>Cancel Meeting</h1>
-                    <div class="details-container">
-                        <div class="label-column">
-                            <label for="eventTitle">Event:</label>
-                            <label for="meetingDate">Date:</label>
-                            <label for="meetingTime">Time:</label>
-                            <label for="name">Name:</label>
-                            <label for="email">Email:</label>
-                        </div>
-                        <div class="text-column">
-                            <span id="eventTitle"></span>
-                            <span id="meetingDate"></span>
-                            <span id="meetingTime"></span>
-                            <span id="name"></span>
-                            <span id="email"></span>
-                            <checkbox id="sendEmail"></checkbox>
-                        </div>
-                    </div>
-            <div class="custom-checkbox">
-              <input type="checkbox" id="myCheckbox" class="checkbox-input">
-              <label for="myCheckbox" class="checkbox-label">Send email notification</label>
-            </div>
+          <div class="top">
+            <h1>Cancel Meeting</h1>
+          </div>
+          <div id="meetingDetailsDiv">
+            <div class="details-container">
+              <div class="label-column">
+                <label for="eventTitle">Event:</label>
+                <label for="meetingDate">Date:</label>
+                <label for="meetingTime">Time:</label>
+                <label for="name">Name:</label>
+                <label for="email">Email:</label>
+              </div>
+              <div class="text-column">
+                <span id="eventTitle"></span>
+                <span id="meetingDate"></span>
+                <span id="meetingTime"></span>
+                <span id="name"></span>
+                <span id="email"></span>
+                <div class="custom-checkbox">
+                  <input type="checkbox" id="myCheckbox" class="checkbox-input">
+                  <label for="myCheckbox" class="checkbox-label">Send email notification</label>
                 </div>
+              </div>
+            </div>
+          </div>
           <div id="modalButtonsDiv">
             <button id="closeButton" type="button">Close</button>
             <button id="confirmCancel" type="button">Cancel Meeting</button>
