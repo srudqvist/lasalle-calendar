@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalName = document.getElementById("name");
   const modalEmail = document.getElementById("email");
 
-  console.log("Cancel Button 0: " + cancelButtons[0].id);
   scheduleTable.addEventListener("click", (event) => {
     if (event.target.classList.contains("cancel-button")) {
       const buttonID = event.target.id;
@@ -35,11 +34,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     deleteScheduleModal.style.display = "block";
     const confirmCancel = document.getElementById("confirmCancel");
+    const closeButton = document.getElementById("closeButton");
     if (confirmCancel) {
       confirmCancel.addEventListener("click", () => {
-        console.log("Confirm Cancel Clicked");
+        closeCancelModal();
         meetingRowToCancel.remove();
       });
     }
+    if (closeButton) {
+      closeButton.addEventListener("click", () => {
+        closeCancelModal();
+      });
+    }
+  }
+
+  function closeCancelModal() {
+    deleteScheduleModal.style.display = "none";
   }
 });
