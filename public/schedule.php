@@ -9,7 +9,6 @@
     <!-- <link rel="stylesheet" href="css/login.css"> -->
     <!-- <link rel="stylesheet" href="css/formStyles.css"> -->
     <link rel="stylesheet" href="css/schedule.css">
-    <link rel="stylesheet" href="./css/modal.css">
     <script src="./js/components/banner.js" defer></script>
     <script src="./js/schedule.js" defer></script>
     <title>Virtual Attorney Visitation Online Calendar</title>
@@ -79,7 +78,7 @@
       <div id="scheduleModal" class="modal fade">
         <div class="modal-content">
                 <div id="meetingDetailsDiv">
-                    <h1>Meeting Details</h1>
+                    <h1>Cancel Meeting</h1>
                     <div class="details-container">
                         <div class="label-column">
                             <label for="eventTitle">Event:</label>
@@ -97,6 +96,10 @@
                             <checkbox id="sendEmail"></checkbox>
                         </div>
                     </div>
+            <div class="custom-checkbox">
+              <input type="checkbox" id="myCheckbox" class="checkbox-input">
+              <label for="myCheckbox" class="checkbox-label">Send email notification</label>
+            </div>
                 </div>
           <div id="modalButtonsDiv">
             <button id="closeButton" type="button">Close</button>
