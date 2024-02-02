@@ -20,8 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function openCancelModal(meetingRowToCancel) {
-    const meetingTitle = meetingRowToCancel.td[2];
-    console.log(`Meeting Title: ${meetingTitle}`);
+    const eventTitle =
+      meetingRowToCancel.querySelector(".eventTitle-column").innerText;
+    const date = meetingRowToCancel.querySelector(".date-column").innerText;
+    const time = meetingRowToCancel.querySelector(".time-column").innerText;
+    const name = meetingRowToCancel.querySelector(".name-column").innerText;
+    const email = meetingRowToCancel.querySelector(".email-column").innerText;
+
+    modalEventTitle.textContent = eventTitle;
+    modalMeetingDate.textContent = date;
+    modalMeetingTime.textContent = time;
+    modalName.textContent = name;
+    modalEmail.textContent = email;
+
     deleteScheduleModal.style.display = "block";
     const confirmCancel = document.getElementById("confirmCancel");
     if (confirmCancel) {
