@@ -73,10 +73,14 @@
         </table>
 
       </div>
-    <div id="scheduleModal" class="modal fade">
-      <div class="modal-content">
-      </div>
+      <div id="scheduleModal" class="modal fade">
+        <div class="modal-content">
+          <div id="modalButtonsDiv">
+            <button id="closeButton" type="submit">Close</button>
+            <button id="confirmCancel" type="button">Cancel Meeting</button>
+          </div>
         </div>
+      </div>
     </main>
     <div id="footerDiv">
       <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
