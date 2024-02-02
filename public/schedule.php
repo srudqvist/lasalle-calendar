@@ -53,17 +53,20 @@
                 array("2023-02-02", "02:30 PM", "Meeting B", "Jane Smith", "987-654-3210", "jane@example.com", "Additional notes", 6),
                 );
 
+
+
+
       foreach ($fakeData as $row) { ?>
                 <tr id="meeting<?php echo $row[7]?>">
-                  <td><?php echo $row[0]; ?></td>
-                  <td><?php echo $row[1]; ?></td>
-                  <td><?php echo $row[2]; ?></td>
-                  <td><?php echo $row[3]; ?></td>
-                  <td><?php echo $row[4]; ?></td>
-                  <td><a href="mailto:<?php echo $row[5]; ?>">&nbsp;<?php echo $row[5]; ?></a></td>
-                  <td><td1><?php echo $row[6]; ?></td1></td>
-                  <td><hypr><a href="del.html?id=<?php echo $row[7]; ?>" title="Delete" target="_blank">Delete</a></hypr></td>
-                  <td><button class="cancel-button" id="<?php echo $row[7]?>">Cancel</button>
+                  <td class="date-column"><?php echo $row[0]; ?></td>
+                  <td class="time-column"><?php echo $row[1]; ?></td>
+                  <td class="eventTitle-column"><?php echo $row[2]; ?></td>
+                  <td class="name-column"><?php echo $row[3]; ?></td>
+                  <td class="phone-column"><?php echo $row[4]; ?></td>
+                  <td class="email-column"><a href="mailto:<?php echo $row[5]; ?>">&nbsp;<?php echo $row[5]; ?></a></td>
+                  <td class="notes-column"><td1><?php echo $row[6]; ?></td1></td>
+                  <td class="delete-column"><hypr><a href="del.html?id=<?php echo $row[7]; ?>" title="Delete" target="_blank">Delete</a></hypr></td>
+                  <td class="cancel-column"><button class="cancel-button" id="<?php echo $row[7]?>">Cancel</button>
                 </tr>
                 <?php } ?>
               </table>
@@ -75,6 +78,26 @@
       </div>
       <div id="scheduleModal" class="modal fade">
         <div class="modal-content">
+                <div id="meetingDetailsDiv">
+                    <h1>Meeting Details</h1>
+                    <div class="details-container">
+                        <div class="label-column">
+                            <label for="eventTitle">Event:</label>
+                            <label for="meetingDate">Date:</label>
+                            <label for="meetingTime">Time:</label>
+                            <label for="name">Name:</label>
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="text-column">
+                            <span id="eventTitle"></span>
+                            <span id="meetingDate"></span>
+                            <span id="meetingTime"></span>
+                            <span id="name"></span>
+                            <span id="email"></span>
+                            <checkbox id="sendEmail"></checkbox>
+                        </div>
+                    </div>
+                </div>
           <div id="modalButtonsDiv">
             <button id="closeButton" type="submit">Close</button>
             <button id="confirmCancel" type="button">Cancel Meeting</button>
