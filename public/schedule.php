@@ -99,7 +99,7 @@
                     </div>
                 </div>
           <div id="modalButtonsDiv">
-            <button id="closeButton" type="submit">Close</button>
+            <button id="closeButton" type="button">Close</button>
             <button id="confirmCancel" type="button">Cancel Meeting</button>
           </div>
         </div>
