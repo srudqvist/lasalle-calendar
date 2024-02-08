@@ -1,56 +1,55 @@
-
 #signUp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 /* Style for the password requirements tooltip */
 .password-tooltip {
-    position: relative;
+  position: relative;
 }
 
 /* Tooltip text */
 .password-tooltip .tooltiptext {
-    visibility: hidden;
-    width: 240px;
-    background-color: white;
-    color: black;
-    font-weight: normal;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 5px 5px 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    transition: opacity 0.3s;
+  visibility: hidden;
+  width: 240px;
+  background-color: white;
+  color: black;
+  font-weight: normal;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px 5px 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: opacity 0.3s;
 }
 
 /* Show the tooltip text on hover */
 .password-tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 .red_text {
-    color: red;
+  color: red;
 }
-.input-error-red-border{
-    box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3) !important; 
-    border-color: red !important; /* Example border color for mismatch */
+.input-error-red-border {
+  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3) !important;
+  border-color: red !important; /* Example border color for mismatch */
 }
 
 .show-error-message {
-    display: block;
+  display: block;
 }
 
 .errorMessages {
-    display: none; /* Hide the div and remove it from the layout */
-    box-sizing: border-box;
+  display: none; /* Hide the div and remove it from the layout */
+  box-sizing: border-box;
 }
