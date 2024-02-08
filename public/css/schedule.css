@@ -2,7 +2,10 @@ main {
   min-height: 100vh;
 }
 table {
+  margin-top: 10px;
   border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
 }
 #outerTable {
   width: 90%;
@@ -141,4 +144,12 @@ input[type="checkbox"] {
 .checkbox-label {
   font-size: 1rem;
   margin-bottom: 0px !important;
+}
+.cancel-button {
+  background-color: #96ae4d;
+  color: white;
+  padding: 8px 40px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
 }

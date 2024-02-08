@@ -39,6 +39,7 @@
                   <th class="green-background"><f1>Email</f1></th>
                   <th class="green-background"><f1>Notes</f1></th>
                   <th class="green-background"><f1>Delete</f1></th>
+                  <th class="green-background"><f1>Cancel</f1></th>
                 </tr>
 
                 <?php
