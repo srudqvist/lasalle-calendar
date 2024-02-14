@@ -114,7 +114,7 @@ class Banner extends HTMLElement {
             ? `<div id="accountDiv">
         <span>Account: ${label}</span>
 
-        <a href="index.php">
+        <a href="../../../includes/logout.php">
           <img id="logOutLogo" src="img/logout.png" alt="log out logo">
         </a>
         </div>`
