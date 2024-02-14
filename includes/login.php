@@ -1,9 +1,15 @@
 <?php
 
+// Checkout: https://codeshack.io/secure-login-system-php-mysql/
 include '../../../lasalle-calendar-env-variables/config.php';
 // Make sure request is of the right type
 //var_dump($_SERVER["REQUEST_METHOD"]);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    if (!isset($_POST["email"], $_POST["password"])) {
+        // expected data was not provided
+        exit("Expected Data Was Not Provided");
+    }
     $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
 
@@ -41,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: ../public/eventContainers.php");
             exit;
         } else {
-            //header("Location: ../public/index.php?error=invalid_credentials");
+            header("Location: ../public/index.php?error=invalid_credentials");
             exit;
         }
     } else {
