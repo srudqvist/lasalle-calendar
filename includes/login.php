@@ -16,21 +16,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     echo "Connection Successful";
     // Prepare SQL query to retrieve user with the provided email
-    $stmt = $mysqli->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $query = $mysqli->prepare("SELECT * FROM users WHERE email = ?");
+    $query->bind_param("s", $email);
+    $query->execute();
+    $result = $query->get_result();
     //Echo the result
-    while ($row = $result->fetch_assoc()) {
-        echo "User ID: " . $row['uid'] . "<br>";
-        echo "Facility: " . $row['facility'] . "<br>";
-        echo "Email: " . $row['email'] . "<br>";
-        echo "First Name: " . $row['fname'] . "<br>";
-        echo "Last Name: " . $row['lname'] . "<br>";
-        echo "Phone: " . $row['phone'] . "<br>";
-    }
+    // while ($row = $result->fetch_assoc()) {
+    //     echo "User ID: " . $row['uid'] . "<br>";
+    //     echo "Facility: " . $row['facility'] . "<br>";
+    //     echo "Email: " . $row['email'] . "<br>";
+    //     echo "First Name: " . $row['fname'] . "<br>";
+    //     echo "Last Name: " . $row['lname'] . "<br>";
+    //     echo "Phone: " . $row['phone'] . "<br>";
+    // }
 
-    //header("Location: ../public/eventContainers.php");
+    if ($result -> num_rows == 1) {
+        $row = $result -> fetch_assoc();
+
+        echo "Password from submission: " . $password . "<br>";
+        echo "Password from DB: " . $row['password'] . "<br>";
+        $password_hash = password_hash($row['password'], PASSWORD_DEFAULT);
+        echo "Password hash: " . $password_hash . "<br>";
+        if (password_verify($password, $password_hash)) {
+            header("Location: ../public/eventContainers.php");
+            exit;
+        } else {
+            //header("Location: ../public/index.php?error=invalid_credentials");
+            exit;
+        }
+    } else {
+        header("Location: ../public/index.php?error=user_not_found");
+        exit;
+    }
+    // Close database connection
+    $stmt->close();
+    $mysqli->close();
+
 } else {
     header("Location: ../public/index.php");
 }
