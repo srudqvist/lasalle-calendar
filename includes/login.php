@@ -56,11 +56,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: ../public/eventContainers.php");
             exit;
         } else {
-            header("Location: ../public/index.php?error=invalid_credentials");
+            $_SESSION['login_error_msg'] = "Invalid Email or Password";
+            header("Location: ../public/index.php");
             exit;
         }
     } else {
-        header("Location: ../public/index.php?error=user_not_found");
+        $_SESSION['login_error_msg'] = "Invalid Email or Password";
+        header("Location: ../public/index.php");
         exit;
     }
     // Close database connection

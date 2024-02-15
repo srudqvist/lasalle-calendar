@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 
 <head>
@@ -30,21 +33,20 @@
                 <div id="createForgot">
                     <a href="createAccount.php">Create account</a>
                     <a href="forgotPassword.php">Forgot password?</a>
-                </div>
-            </form>
-        </div>
-        <!-- <?php
-                echo $_SERVER["DOCUMENT_ROOT"];
-                echo "<br>";
-                echo $_SERVER["PHP_SELF"];
-                echo "<br>";
-                echo $_SERVER["SERVER_NAME"];
-                echo "<br>";
-                echo $_SERVER["REQUEST_METHOD"];
-
-                ?> -->
+          </div>
+          <?php
+          // Check if login error message exists
+          if (isset($_SESSION['login_error_msg'])) {
+              // Display the error message
+              echo '<p class="error-message">' . $_SESSION['login_error_msg'] . '</p>';
+              // Remove the login error message from the session to prevent it from displaying again
+              unset($_SESSION['login_error_msg']);
+          }
+?>
+        </form>
+      </div>
     </main>
     <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
-</body>
+  </body>
 
 </html>
