@@ -42,9 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         echo "Password from submission: " . $password . "<br>";
         echo "Password from DB: " . $row['password'] . "<br>";
-        $password_hash = password_hash($row['password'], PASSWORD_DEFAULT);
-        echo "Password hash: " . $password_hash . "<br>";
-        if (password_verify($password, $password_hash)) {
+        //$password_hash = password_hash($row['password'], PASSWORD_DEFAULT);
+        //echo "Password hash: " . $password_hash . "<br>";
+        //if (password_verify($password, $password_hash)) {
+        if (password_verify($password, $row['password'])) {
             // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
             session_regenerate_id();
             $_SESSION['loggedin'] = true;
@@ -66,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
     // Close database connection
-    $stmt->close();
+    $query->close();
     $mysqli->close();
 
 } else {

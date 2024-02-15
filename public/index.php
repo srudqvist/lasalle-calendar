@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <?php
 session_start();
+$passwords = [
+    'SuperSecret!123',
+    'MyPassword123!',
+    'p@ssw0rd!',
+    'longerThanBefore!123'
+];
+
+foreach ($passwords as $password) {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    echo "Password: $password, Hashed: $hashedPassword <br>";
+}
 ?>
 <html lang="en">
 
