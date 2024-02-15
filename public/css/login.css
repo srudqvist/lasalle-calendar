@@ -1,32 +1,29 @@
-
 #loginForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 13rem);
-    /* Other styles for your form */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 13rem);
+  /* Other styles for your form */
 }
 
 #createForgot {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 10px; /* Adjust margin as needed */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px; /* Adjust margin as needed */
 }
 
-#createForgot p,a {
-    flex: 1; /* Occupy available space equally */
-    text-align: center; /* Center-align text within each link */
-    /* Additional styles for the links */
+#createForgot p,
+a {
+  flex: 1; /* Occupy available space equally */
+  text-align: center; /* Center-align text within each link */
+  /* Additional styles for the links */
 }
 
 #createForgot a:first-child {
-    margin-right: auto; /* Pushes the first link to the left */
+  margin-right: auto; /* Pushes the first link to the left */
 }
 
 #createForgot a:last-child {
-    margin-left: auto; /* Pushes the last link to the right */
+  margin-left: auto; /* Pushes the last link to the right */
 }
-
-
-
