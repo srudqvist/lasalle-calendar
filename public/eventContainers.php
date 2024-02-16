@@ -28,10 +28,14 @@ if (!isset($_SESSION['loggedin'])) {
     <main>
 <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
       </banner-component>
-      <p>Welcome back, <?=htmlspecialchars($_SESSION['fname'], ENT_QUOTES)?>!</p>
+      <p>Welcome back, <?=htmlspecialchars($_SESSION['first_name'], ENT_QUOTES)?>!</p>
       <button id="addEventContainer">Add Event Container</button>
-      <div id="eventContainers" class="container-row"></div>
-
+      <div id="eventContainers" class="container-row">
+      <?php
+      // Include the PHP script to retrieve event containers
+      include '../includes/loadEventContainers.php';
+?>
+      </div>
       <div id="eventContainerModal" class="modal fade">
 
         <div class="modal-content">

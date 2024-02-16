@@ -50,9 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             session_regenerate_id();
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $row['email'];
-            $_SESSION['fname'] = $row['fname'];
-            $_SESSION['lname'] = $row['lname'];
-            $_SESSION['id'] = $row['uid'];
+            $_SESSION['first_name'] = $row['first_name'];
+            $_SESSION['last_name'] = $row['last_name'];
+            $_SESSION['id'] = $row['user_id'];
             echo 'Welcome back, ' . htmlspecialchars($_SESSION['fname'], ENT_QUOTES) . '!';
             header("Location: ../public/eventContainers.php");
             exit;
