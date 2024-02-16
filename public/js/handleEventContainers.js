@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // })
   // Todo: get container index from db when page loads
-  let containerIndex = 1;
+  //let containerIndex = 1;
+  let containerIndex = highestContainerId + 1;
   let editing = false;
   let editContainerIndex = 0;
 

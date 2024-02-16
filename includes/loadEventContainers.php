@@ -1,28 +1,19 @@
 <?php
 
-// Establish a connection to the database
-
 include '../../../lasalle-calendar-env-variables/config.php';
-// Create connection
 $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
-$mysqli = new mysqli($db_host, $db_username, $db_password, $db_database);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// SQL query to retrieve event containers
 $sql = "SELECT * FROM event_containers";
 
-// Execute the query
 $result = $conn->query($sql);
 
-// Check if there are any results
 if ($result->num_rows > 0) {
-    // Output data of each row
+
     while($row = $result->fetch_assoc()) {
-        // Access each column of the row and do something with the data
         $eventContainerID = $row["event_container_id"];
         $facility = $row["facility"];
         $eventName = $row["event_name"];
@@ -35,7 +26,6 @@ if ($result->num_rows > 0) {
         $description = $row["description"];
         $color = $row["color"];
 
-        // Here, you can use the retrieved data to generate HTML content for each event container
         echo "<div id='$eventContainerID' class='eventContainer' style='--event-color: $color;'>";
         echo "<h2 class='event-headline'>$eventName</h4>";
         echo "<h4 class='day-range'>$startDay - $endDay</h4>";
@@ -56,5 +46,4 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-// Close the connection
 $conn->close();
