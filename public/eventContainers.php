@@ -41,7 +41,7 @@ if (!isset($_SESSION['loggedin'])) {
 
         <div class="modal-content">
           <div id="eventContainerModalFormDiv">
-            <form action="" method="post" id="eventContainerModalForm" class="modal-form">
+            <form action="../includes/saveEventContainer.php" method="post" id="eventContainerModalForm" class="modal-form">
               <span class="close">&times;</span>
               <h1 class="center_content">Create Event Container</h1>
               <div class="row">
