@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS event_containers (
     event_container_id INT AUTO_INCREMENT PRIMARY KEY,
     facility VARCHAR(50) NOT NULL,
-    event_name VARCHAR(255) NOT NULL UNIQUE,
+    event_name VARCHAR(255) NOT NULL,
     start_day VARCHAR(20) NOT NULL,
     end_day VARCHAR(20) NOT NULL,
     start_time TIME NOT NULL,

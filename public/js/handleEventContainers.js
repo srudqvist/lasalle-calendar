@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       closeAddEventContainerModal();
       containerIndex++;
+      eventContainerModalForm.submit();
     } else if (editing) {
       // Edit the current event container.
       editEventContainer(
