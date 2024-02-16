@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.tagName === "BUTTON") {
       const buttonId = event.target.id;
       const containerIndex = buttonId.replace(/\D/g, "");
+      console.log(containerIndex);
 
       if (buttonId.startsWith("viewCalendarButton")) {
         handleButtonClick(event, "View Calendar", containerIndex);
@@ -44,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (buttonId.startsWith("deleteButton")) {
         // Handle the "Delete" button click
         handleButtonClick(event, "Delete", containerIndex);
+        deleteEventContainer(containerIndex);
       }
     }
   });
@@ -225,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const getContainerValues = (containerNumber) => {
     const eventContainerToEdit = document.getElementById(containerNumber);
+    console.log(eventContainerToEdit);
     const headline =
       eventContainerToEdit.getElementsByClassName("event-headline")[0]
         .innerHTML;
