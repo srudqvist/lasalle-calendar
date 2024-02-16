@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
         $color = $row["color"];
 
         // Here, you can use the retrieved data to generate HTML content for each event container
-        echo "<div class='eventContainer' style='--event-color: $color;'>";
+        echo "<div id='$eventContainerID' class='eventContainer' style='--event-color: $color;'>";
         echo "<h2 class='event-headline'>$eventName</h4>";
         echo "<h4 class='day-range'>$startDay - $endDay</h4>";
         echo "<h4 class='time-range'>$startTime - $endTime</h4>";
