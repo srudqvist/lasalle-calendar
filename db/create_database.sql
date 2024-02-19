@@ -26,5 +26,6 @@ CREATE TABLE IF NOT EXISTS event_containers (
     time_zone VARCHAR(50) NOT NULL,
     meeting_type VARCHAR(50) NOT NULL,
     description TEXT,
-    color VARCHAR(7) NOT NULL
+    color VARCHAR(7) NOT NULL,
+    isDeleted BOOLEAN NOT NULL DEFAULT FALSE
 );
