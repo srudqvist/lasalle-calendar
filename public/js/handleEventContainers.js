@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // based on the color that was picked for the event container color.
 
     const eventName = event.target.eventName.value;
+    console.log(`Event Name 1: ${eventName}`);
     if (!editing) {
       createEventContainer(
         eventName,
@@ -84,7 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       closeAddEventContainerModal();
       containerIndex++;
-      eventContainerModalForm.submit();
+      console.log(`Event Name: ${eventName}`);
+      //eventContainerModalForm.submit();
     } else if (editing) {
       // Edit the current event container.
       editEventContainer(
@@ -225,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(buttonDiv);
 
     eventContainersDiv.appendChild(container);
+    eventContainerModalForm.submit();
   };
 
   const getContainerValues = (containerNumber) => {
