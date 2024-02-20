@@ -7,7 +7,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM event_containers";
+$sql = "SELECT * FROM event_containers WHERE isDeleted != 1";
 
 $result = $conn->query($sql);
 
