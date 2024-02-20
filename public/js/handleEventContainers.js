@@ -329,9 +329,30 @@ document.addEventListener("DOMContentLoaded", () => {
     eventContainerToEdit.style.cssText = "--event-color: " + eventColor + ";";
   };
 
+  // OLD
+  // const deleteEventContainer = (containerNumber) => {
+  //   const eventContainerToDelete = document.getElementById(containerNumber);
+  //   eventContainersDiv.removeChild(eventContainerToDelete);
+  // };
+
   const deleteEventContainer = (containerNumber) => {
     const eventContainerToDelete = document.getElementById(containerNumber);
-    eventContainersDiv.removeChild(eventContainerToDelete);
+    // Send AJAX request to PHP script
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "../../includes/delete_event_container.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // If the update was successful, remove the event container from the DOM
+        eventContainersDiv.removeChild(eventContainerToDelete);
+      } else {
+        console.error("Error deleting event container:", xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error("Error deleting event container:", xhr.statusText);
+    };
+    xhr.send(`event_container_id=${containerNumber}`);
   };
 
   const openAddEventContainerModal = (submitButtonText) => {
