@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $endDay = isset($_POST['dayTo']) ? htmlspecialchars($_POST['dayTo']) : null;
         $startTime = isset($_POST['startTime']) ? htmlspecialchars($_POST['startTime']) : null;
         $endTime = isset($_POST['endTime']) ? htmlspecialchars($_POST['endTime']) : null;
+        $duration = isset($_POST['duration']) ? htmlspecialchars($_POST['duration']) : null;
         $timeZone = isset($_POST['timeZone']) ? htmlspecialchars($_POST['timeZone']) : null;
         $meetingType = isset($_POST['meetingType']) ? htmlspecialchars($_POST['meetingType']) : null;
         $description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : "";
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $eventContainerID = isset($_POST['eventContainerID']) ? htmlspecialchars($_POST['eventContainerID']) : null;
 
         // Check if all required data is provided
-        $eventInfo = array($facility, $eventName, $startDay, $endDay, $endTime, $timeZone, $meetingType, $color, $eventContainerID);
+        $eventInfo = array($facility, $eventName, $startDay, $endDay, $endTime, $duration, $timeZone, $meetingType, $color, $eventContainerID);
         error_log("Event Info: " . print_r($eventInfo, true));
         foreach ($eventInfo as $value) {
             if ($value === null) {
@@ -43,11 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Prepare SQL statement to update data in the event_containers table
-        $sql = "UPDATE event_containers SET event_name=?, start_day=?, end_day=?, start_time=?, end_time=?, time_zone=?, meeting_type=?, description=?, color=? WHERE event_container_id=?";
+        $sql = "UPDATE event_containers SET event_name=?, start_day=?, end_day=?, start_time=?, end_time=?, duration=?, time_zone=?, meeting_type=?, description=?, color=? WHERE event_container_id=?";
 
         // Prepare and bind parameters
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssssssss", $eventName, $startDay, $endDay, $startTime, $endTime, $timeZone, $meetingType, $description, $color, $eventContainerID);
+        $stmt->bind_param("sssssssssss", $eventName, $startDay, $endDay, $startTime, $endTime, $duration, $timeZone, $meetingType, $description, $color, $eventContainerID);
 
         // Execute the SQL statement
         if ($stmt->execute() === true) {

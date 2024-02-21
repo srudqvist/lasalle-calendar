@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS event_containers (
     end_day VARCHAR(20) NOT NULL,
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,
+    duration VARCHAR(50) NOT NULL DEFAULT "30 min",
     time_zone VARCHAR(50) NOT NULL,
     meeting_type VARCHAR(50) NOT NULL,
     description TEXT,
