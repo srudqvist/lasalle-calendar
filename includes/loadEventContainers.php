@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
         $endDay = $row["end_day"];
         $startTime = $row["start_time"];
         $endTime = $row["end_time"];
+        $duration = $row["duration"];
         $timeZone = $row["time_zone"];
         $meetingType = $row["meeting_type"];
         $description = $row["description"];
@@ -30,9 +31,9 @@ if ($result->num_rows > 0) {
         echo "<h2 class='event-headline'>$eventName</h4>";
         echo "<h4 class='day-range'>$startDay - $endDay</h4>";
         echo "<h4 class='time-range'>$startTime - $endTime</h4>";
-        echo "<h4 class='duration'>30 min</h4>";
+        echo "<h4 class='duration'>Duration: $duration</h4>";
         echo "<h4 class='time-zone'>$timeZone</h4>";
-        echo "<h4 class='meeting-type'>$meetingType</h4>";
+        echo "<h4 class='meeting-type'>Meeting By: $meetingType</h4>";
         echo "<p id='description$eventContainerID' style='display:none;'>$description</p>";
         echo "<div class='button-div'>";
         echo "<button id='viewCalendarButton$eventContainerID' class='event-container-button' style='--event-color-darker: $color;'>View Calendar</button>";
