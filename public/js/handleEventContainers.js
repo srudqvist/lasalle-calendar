@@ -328,6 +328,38 @@ document.addEventListener("DOMContentLoaded", () => {
     meetingType.innerHTML = "Meeting By: " + eventMeetingType;
     description.innerHTML = eventDescription;
     eventContainerToEdit.style.cssText = "--event-color: " + eventColor + ";";
+
+    // Make AJAX request to update event container in database
+    const xhr = new XMLHttpRequest();
+    // Prepare data to send with the request
+    const formData = new FormData();
+    formData.append("eventName", eventHeadlineText);
+    formData.append("dayFrom", eventStartDay);
+    formData.append("dayTo", eventStopDay);
+    formData.append("startTime", eventStartTime);
+    formData.append("endTime", eventEndTime);
+    // formData.append("eventDuration", eventDuration);
+    formData.append("timeZone", eventTimeZone);
+    formData.append("meetingType", eventMeetingType);
+    formData.append("description", eventDescription);
+    formData.append("eventColor", eventColor);
+    formData.append("eventContainerID", containerNumber);
+    console.log("FORM DATA: ", formData);
+    xhr.open("POST", "../../includes/edit_event_container.php", true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Handle successful update if needed
+        console.log("Event container updated successfully.");
+      } else {
+        console.error("Error updating event container:", xhr.statusText);
+      }
+    };
+    xhr.onerror = function () {
+      console.error("Error updating event container:", xhr.statusText);
+    };
+
+    // Send the request
+    xhr.send(formData);
   };
 
   // OLD
