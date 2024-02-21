@@ -38,7 +38,6 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
       </div>
       <div id="eventContainerModal" class="modal fade">
-
         <div class="modal-content">
           <div id="eventContainerModalFormDiv">
             <form action="../includes/saveEventContainer.php" method="post" id="eventContainerModalForm" class="modal-form">
@@ -139,7 +138,20 @@ if (!isset($_SESSION['loggedin'])) {
           </div>
         </div>
 
-      </div> 
+      </div> <!-- addEventContainerModal close -->
+      
+      <div id="deleteMessageModal" class="modal fade">
+        <div class="modal-content">
+          <div id="eventContainerModalFormDiv">
+            <form class="modal-form">
+          <h1>Are you sure you want to Delete this event container?</h1>
+              <div id="modalButtonsDiv">
+                <button id="deleteModalCancelButton" type="button">Cancel</button>
+                <button id="deleteModalDeleteButton" type="button">Delete Event Container</button>
+              </div>
+</form>
+        </div>
+        </div> <!-- deleteMessageModal close -->
 
     </main>
     <div id="footerDiv" class="footer">
