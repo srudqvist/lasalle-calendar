@@ -435,6 +435,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Your code to handle the click event goes here
     console.log("Cancel button clicked!");
     closeAddEventContainerModal();
+    if (editing) {
+      editing = false;
+    }
   });
 
   const getContrastColor = (hexColor) => {
