@@ -28,11 +28,11 @@ INSERT INTO users (facility, email, first_name, last_name, phone, password) VALU
 -- }
 -- ?>
 
-INSERT INTO event_containers (facility, event_name, start_day, end_day, start_time, end_time, time_zone, meeting_type, description, color) VALUES
-('Facility 1', 'Team Meeting', 'Monday', 'Monday', '09:00:00', '11:00:00', 'America/New_York', 'Regular', 'Weekly team meeting to discuss project updates and goals.', '#FF5733'),
-('Facility 1', 'Training Workshop', 'Wednesday', 'Friday', '13:00:00', '16:00:00', 'Europe/London', 'Workshop', 'Three-day training workshop on new software tools.', '#0099FF'),
-('Facility 2', 'Executive Briefing', 'Tuesday', 'Tuesday', '10:30:00', '12:00:00', 'America/Los_Angeles', 'Executive', 'Monthly executive briefing on company performance.', '#FF9900'),
-('Facility 3', 'Project Kickoff', 'Thursday', 'Thursday', '11:00:00', '13:00:00', 'Asia/Tokyo', 'Project', 'Kickoff meeting for the new marketing campaign project.', '#66FF33');
+INSERT INTO event_containers (facility, event_name, start_day, end_day, start_time, end_time, duration, time_zone, meeting_type, description, color) VALUES
+('Facility 1', 'Team Meeting', 'Monday', 'Monday', '09:00:00', '11:00:00', '30 min', 'Central Time Zone', 'Zoom', 'Weekly team meeting to discuss project updates and goals.', '#FF5733'),
+('Facility 1', 'Training Workshop', 'Wednesday', 'Friday', '13:00:00', '16:00:00', '30 min', 'Eastern Time Zone', 'Teams', 'Three-day training workshop on new software tools.', '#0099FF'),
+('Facility 2', 'Executive Briefing', 'Tuesday', 'Tuesday', '10:30:00', '12:00:00', '30 min', 'Pacific Time Zone', 'Zoom', 'Monthly executive briefing on company performance.', '#FF9900'),
+('Facility 3', 'Project Kickoff', 'Thursday', 'Thursday', '11:00:00', '13:00:00', '30 min', 'Central Time Zone', 'Phone', 'Kickoff meeting for the new marketing campaign project.', '#66FF33');
 
 
 
