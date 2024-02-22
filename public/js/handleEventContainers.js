@@ -522,10 +522,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("click", function (event) {
     if (event.target === addEventContainerModal) {
-      addEventContainerModal.style.display = "none";
+      //addEventContainerModal.style.display = "none";
+      closeAddEventContainerModal();
+      if (editing) {
+        editing = false;
+      }
     }
   });
   document.querySelector(".close").addEventListener("click", () => {
     closeAddEventContainerModal();
+    if (editing) {
+      editing = false;
+    }
   });
 });
