@@ -9,6 +9,31 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       // Handle the data retrieved from PHP
       console.log(data);
+
+      //const availableDaysContent = data.start_day + " - " data.end_day + " "
+      const availableDaysContent = `${data.start_day} - ${data.end_day} ${data.start_time} - ${data.end_time}`;
+      const meetingTypeContent = data.meeting_type;
+      const meetingDurationContent = data.duration;
+      const meetingNotesContent = data.description;
+      const timeZoneContent = data.time_zone;
+
+      document.getElementById("availableDays").textContent =
+        availableDaysContent;
+      document.getElementById("meetingType").textContent = meetingTypeContent;
+      document.getElementById("meetingDuration").textContent =
+        meetingDurationContent;
+      document.getElementById("meetingNotes").textContent = meetingNotesContent;
+
+      // Data for "second" page
+      document.getElementById("timezone").innerHTML = timeZoneContent;
+
+      document.getElementById("availableDays2").textContent =
+        availableDaysContent;
+      document.getElementById("meetingType2").textContent = meetingTypeContent;
+      document.getElementById("meetingDuration2").textContent =
+        meetingDurationContent;
+      document.getElementById("meetingNotes2").textContent =
+        meetingNotesContent;
     })
     .catch((error) => {
       // Handle errors
@@ -20,36 +45,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const meetingDurationContent = "1h, 30 min";
   const meetingNotesContent = "Some notes about the meeting.";
 
+  // dateTimeContent is the selected date
   const dateTimeContent = "9:00 am - 10:00 am, March 16, 2024";
-  const timeZoneContent = "Central Time (US & Canada)";
+  //const timeZoneContent = "Central Time (US & Canada)";
 
-  // const availableDays = document.getElementById("availableDays");
-  // const meetingType = document.getElementById("meetingType");
-  // const meetingDuration = document.getElementById("meetingDuration");
-  // const meetingNotes = document.getElementById("meetingNotes");
-
-  // availableDays = availableDaysContent;
-  // meetingType = meetingTypeContent;
-  // meetingDuration = meetingDurationContent;
-  // meetingNotes = meetingNotesContent;
-
-  // const nextButton = document.getElementById("nextButton");
-  // nextButton.addEventListener("click", () => {
-  // 	document.getElementById("date-time").textContent = dateTimeContent;
-  // 	document.getElementById("timezone").innerHTML = timeZoneContent;
-  // });
-
-  document.getElementById("availableDays").textContent = availableDaysContent;
-  document.getElementById("meetingType").textContent = meetingTypeContent;
-  document.getElementById("meetingDuration").textContent =
-    meetingDurationContent;
-  document.getElementById("meetingNotes").textContent = meetingNotesContent;
+  // document.getElementById("availableDays").textContent = availableDaysContent;
+  // document.getElementById("meetingType").textContent = meetingTypeContent;
+  // document.getElementById("meetingDuration").textContent =
+  //   meetingDurationContent;
+  // document.getElementById("meetingNotes").textContent = meetingNotesContent;
   document.getElementById("date-time").textContent = dateTimeContent;
-  document.getElementById("timezone").innerHTML = timeZoneContent;
-
-  document.getElementById("availableDays2").textContent = availableDaysContent;
-  document.getElementById("meetingType2").textContent = meetingTypeContent;
-  document.getElementById("meetingDuration2").textContent =
-    meetingDurationContent;
-  document.getElementById("meetingNotes2").textContent = meetingNotesContent;
+  // document.getElementById("timezone").innerHTML = timeZoneContent;
+  //
+  // document.getElementById("availableDays2").textContent = availableDaysContent;
+  // document.getElementById("meetingType2").textContent = meetingTypeContent;
+  // document.getElementById("meetingDuration2").textContent =
+  //   meetingDurationContent;
+  // document.getElementById("meetingNotes2").textContent = meetingNotesContent;
 });
