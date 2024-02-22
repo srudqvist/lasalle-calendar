@@ -27,7 +27,7 @@ if (!isset($_SESSION['loggedin'])) {
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     </div>
     <main>
-      <banner-component custom-text="Events | Scheduled" label="lasalle.user@lasallecorrections.com">
+      <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
       </banner-component>
       <?php
       include '../includes/load_scheduled_meetings.php';
