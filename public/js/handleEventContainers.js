@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (buttonId.startsWith("copyLinkButton")) {
         // Handle the "Copy Link" button click
         handleButtonClick(event, "Copy Link", containerIndex);
+        copyLink(containerIndex);
       } else if (buttonId.startsWith("editButton")) {
         // Handle the "Edit" button click
         //handleButtonClick(event, "Edit", containerIndex);
@@ -192,9 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
     copyLinkButton.style.setProperty("--event-color-darker", buttonColor);
     // copyLinkButton.style.setProperty("--event-text-color", headlineColor);
     // applyButtonStyles(copyLinkButton);
-    copyLinkButton.addEventListener("click", (event) => {
-      handleButtonClick(event, "Copy Link", containerIndex);
-    });
+    // copyLinkButton.addEventListener("click", (event) => {
+    //   console.log("HERE");
+    //   handleButtonClick(event, "Copy Link", containerIndex);
+    // });
     // container.appendChild(copyLinkButton);
     buttonDiv.appendChild(copyLinkButton);
 
@@ -363,6 +365,30 @@ document.addEventListener("DOMContentLoaded", () => {
     xhr.send(formData);
   };
 
+  const copyLink = (containerNumber) => {
+    // Fetch the link from the db and copy it.
+    let dummyLink = `http://localhost:3000/public/calendar.php?containerId=${containerNumber}`;
+    console.log(`Copy Link Number: ${containerNumber}`);
+    console.log(`Copy Link: ${dummyLink}`);
+    const myButton = document.getElementById(
+      "copyLinkButton" + containerNumber,
+    );
+    // Copy the link to the clipboard
+    navigator.clipboard
+      .writeText(dummyLink)
+      .then(() => {
+        console.log("Link copied to clipboard");
+        if (myButton) {
+          myButton.textContent = "Link Copied!";
+          setTimeout(() => {
+            myButton.textContent = "Copy Link";
+          }, 3000);
+        }
+      })
+      .catch((error) => {
+        console.error("Error copying link to clipboard: ", error);
+      });
+  };
   // OLD
   // const deleteEventContainer = (containerNumber) => {
   //   const eventContainerToDelete = document.getElementById(containerNumber);
