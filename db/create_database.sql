@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS event_containers (
     meeting_type VARCHAR(50) NOT NULL,
     description TEXT,
     color VARCHAR(7) NOT NULL,
-    event_link VARCHAR(255) NOT NULL,
     isDeleted BOOLEAN NOT NULL DEFAULT FALSE
 );
 
