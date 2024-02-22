@@ -28,12 +28,14 @@ CREATE TABLE IF NOT EXISTS event_containers (
     meeting_type VARCHAR(50) NOT NULL,
     description TEXT,
     color VARCHAR(7) NOT NULL,
+    event_link VARCHAR(255) NOT NULL,
     isDeleted BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 -- Create the table for scheduled meetings
 CREATE TABLE IF NOT EXISTS scheduled_meetings (
     meeting_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT NOT NULL,
     facility VARCHAR(50) NOT NULL,
     name VARCHAR(100) NOT NULL,
     meeting_date DATE NOT NULL,
