@@ -8,24 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "eventContainerModalForm",
   );
 
-  // const colorSwatches = document.querySelectorAll(".color-swatch");
-  // colorSwatches.forEach((swatch) => {
-  // 	swatch.addEventListener("click", () => {
-  // 		colorSwatches.forEach((otherSwatch) => {
-  // 			otherSwatch.classList.remove("selected");
-  // 		});
-  // 	swatch.classList.add("selected");
-  // 	});
-
-  // })
-  // Todo: get container index from db when page loads
-  //let containerIndex = 1;
   let containerIndex = highestContainerId + 1;
   let editing = false;
   let editContainerIndex = 0;
 
   addEventButton.addEventListener("click", () => {
-    //createEventContainer(`Event ${containerIndex}`, containerIndex);
     openAddEventContainerModal("Create New Container");
   });
 
@@ -39,11 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
         handleButtonClick(event, "View Calendar", containerIndex);
       } else if (buttonId.startsWith("copyLinkButton")) {
         // Handle the "Copy Link" button click
-        handleButtonClick(event, "Copy Link", containerIndex);
         copyLink(containerIndex);
       } else if (buttonId.startsWith("editButton")) {
         // Handle the "Edit" button click
-        //handleButtonClick(event, "Edit", containerIndex);
         getContainerValues(containerIndex);
       } else if (buttonId.startsWith("deleteButton")) {
         // Handle the "Delete" button click
@@ -64,33 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventTimeZone = event.target.timeZone.value;
     const eventMeetingType = event.target.meetingType.value;
     const eventDescription = event.target.description.value;
-
-    // TODO:
-    // Do some validation, i.e. set the text color of the event container
-    // based on the color that was picked for the event container color.
-
     const eventName = event.target.eventName.value;
-    console.log(`Event Name 1: ${eventName}`);
+
     if (!editing) {
-      createEventContainer(
-        eventName,
-        eventColor,
-        eventStartDay,
-        eventStartTime,
-        eventStopDay,
-        eventEndTime,
-        eventDuration,
-        eventTimeZone,
-        eventMeetingType,
-        eventDescription,
-        containerIndex,
-      );
-      closeAddEventContainerModal();
-      containerIndex++;
-      console.log(`Event Name: ${eventName}`);
-      //eventContainerModalForm.submit();
+      eventContainerModalForm.submit();
     } else if (editing) {
-      // Edit the current event container.
       editEventContainer(
         eventName,
         eventColor,
@@ -108,134 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
       closeAddEventContainerModal();
     }
   });
-  // Add check to see if the container was created before incrementing the index
-
-  const createEventContainer = (
-    headlineText,
-    eventColor,
-    eventStartDay,
-    eventStartTime,
-    eventStopDay,
-    eventEndTime,
-    eventDuration,
-    eventTimeZone,
-    eventMeetingType,
-    eventDescription,
-    containerIndex,
-  ) => {
-    const container = document.createElement("div");
-    const buttonDiv = document.createElement("div");
-    const buttonColor = makeColorDarker(eventColor);
-    buttonDiv.classList.add("button-div");
-    container.classList.add("eventContainer");
-    // container.style.borderColor = eventColor;
-    // container.style.backgroundColor = eventColor;
-    container.style.setProperty("--event-color", eventColor);
-
-    const headline = document.createElement("h2");
-    const headlineColor = getContrastColor(eventColor);
-    headline.textContent = headlineText;
-    headline.classList.add("event-headline");
-    // headline.style.color = headlineColor;
-    container.appendChild(headline);
-
-    const dayRangeText = eventStartDay + " - " + eventStopDay;
-    const dayRange = document.createElement("h4");
-    dayRange.textContent = dayRangeText;
-    dayRange.classList.add("day-range");
-    // dayTimeRange.style.color = headlineColor;
-    container.appendChild(dayRange);
-
-    const timeRangeText = eventStartTime + " - " + eventEndTime;
-    const timeRange = document.createElement("h4");
-    timeRange.textContent = timeRangeText;
-    timeRange.classList.add("time-range");
-    // dayTimeRange.style.color = headlineColor;
-    container.appendChild(timeRange);
-
-    const duration = document.createElement("h4");
-    // duration.textContent = formatTime(eventDuration);
-    duration.textContent = eventDuration;
-    duration.classList.add("duration");
-    container.appendChild(duration);
-
-    const timeZone = document.createElement("h4");
-    timeZone.textContent = eventTimeZone;
-    timeZone.classList.add("time-zone");
-    container.appendChild(timeZone);
-
-    const meetingType = document.createElement("h4");
-    meetingType.textContent = "Meeting By: " + eventMeetingType;
-    meetingType.classList.add("meeting-type");
-    // meetingType.style.color = headlineColor;
-    container.appendChild(meetingType);
-
-    const description = document.createElement("p");
-    description.id = "description" + containerIndex;
-    description.textContent = eventDescription;
-    // description.style.visibility = "hidden";
-    description.style.display = "none";
-    container.appendChild(description);
-
-    const viewCalendarButton = document.createElement("button");
-    viewCalendarButton.id = "viewCalendarButton" + containerIndex;
-    viewCalendarButton.textContent = "View Calendar";
-    viewCalendarButton.style.setProperty("--event-color-darker", buttonColor);
-    viewCalendarButton.addEventListener("click", (event) => {
-      handleButtonClick(event, "View Calendar", containerIndex);
-    });
-    // container.appendChild(viewCalendarButton);
-    buttonDiv.appendChild(viewCalendarButton);
-
-    const copyLinkButton = document.createElement("button");
-    copyLinkButton.id = "copyLinkButton" + containerIndex;
-    copyLinkButton.textContent = "Copy Link";
-    copyLinkButton.style.setProperty("--event-color-darker", buttonColor);
-    // copyLinkButton.style.setProperty("--event-text-color", headlineColor);
-    // applyButtonStyles(copyLinkButton);
-    // copyLinkButton.addEventListener("click", (event) => {
-    //   console.log("HERE");
-    //   handleButtonClick(event, "Copy Link", containerIndex);
-    // });
-    // container.appendChild(copyLinkButton);
-    buttonDiv.appendChild(copyLinkButton);
-
-    const editButton = document.createElement("button");
-    editButton.id = "editButton" + containerIndex;
-    editButton.textContent = "Edit";
-    editButton.style.setProperty("--event-color-darker", buttonColor);
-    // editButton.style.setProperty("--event-text-color", headlineColor);
-    // applyButtonStyles(editButton);
-    editButton.addEventListener("click", (event) => {
-      // handleButtonClick(event, "Edit", containerIndex);
-      getContainerValues(containerIndex);
-    });
-    // container.appendChild(editButton);
-    buttonDiv.appendChild(editButton);
-
-    const deleteButton = document.createElement("button");
-    deleteButton.id = "deleteButton" + containerIndex;
-    deleteButton.textContent = "Delete";
-    // applyButtonStyles(deleteButton);
-    deleteButton.style.setProperty("--event-color-darker", buttonColor);
-    // deleteButton.style.setProperty("--event-text-color", headlineColor);
-    deleteButton.addEventListener("click", (event) => {
-      handleButtonClick(event, "Delete", containerIndex);
-      deleteEventContainer(containerIndex);
-    });
-    // container.appendChild(deleteButton);
-    buttonDiv.appendChild(deleteButton);
-
-    container.id = containerIndex;
-    container.appendChild(buttonDiv);
-
-    eventContainersDiv.appendChild(container);
-    eventContainerModalForm.submit();
-  };
 
   const getContainerValues = (containerNumber) => {
     const eventContainerToEdit = document.getElementById(containerNumber);
-    console.log(eventContainerToEdit);
     const headline =
       eventContainerToEdit.getElementsByClassName("event-headline")[0]
         .innerHTML;
@@ -284,13 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
     editing = true;
     editContainerIndex = containerNumber;
     openAddEventContainerModal("Edit Event Container");
-    // console.log(
-    // 	`Headline: ${headline[0].innerHTML}\nDay-Time Range: ${
-    // 		dayTimeRange[0].innerHTML
-    // 	}\nMeeting Type: ${meetingType[0].innerHTML}\n`
-    // );
-
-    // console.log(headline.item(0).innerHTML);
   };
 
   const editEventContainer = (
@@ -306,33 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     eventDescription,
     containerNumber,
   ) => {
-    const eventContainerToEdit = document.getElementById(containerNumber);
-    const headline =
-      eventContainerToEdit.getElementsByClassName("event-headline")[0];
-    const dayRange =
-      eventContainerToEdit.getElementsByClassName("day-range")[0];
-    const timeRange =
-      eventContainerToEdit.getElementsByClassName("time-range")[0];
-    const duration = eventContainerToEdit.getElementsByClassName("duration")[0];
-    const timeZone =
-      eventContainerToEdit.getElementsByClassName("time-zone")[0];
-    const meetingType =
-      eventContainerToEdit.getElementsByClassName("meeting-type")[0];
-    const description = document.getElementById(
-      "description" + containerNumber,
-    );
-    // const color = eventContainerToEdit.style.cssText;
-    // console.log(color);
-    headline.innerHTML = eventHeadlineText;
-    dayRange.innerHTML = eventStartDay + " - " + eventStopDay;
-    timeRange.innerHTML = eventStartTime + " - " + eventEndTime;
-    duration.textContent = "Duration:" + eventDuration;
-    timeZone.innerHTML = eventTimeZone;
-    meetingType.innerHTML = "Meeting By: " + eventMeetingType;
-    description.innerHTML = eventDescription;
-    eventContainerToEdit.style.cssText = "--event-color: " + eventColor + ";";
-
-    // Make AJAX request to update event container in database
+    // Create object for HTTP request
     const xhr = new XMLHttpRequest();
     // Prepare data to send with the request
     const formData = new FormData();
@@ -353,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (xhr.status === 200) {
         // Handle successful update if needed
         console.log("Event container updated successfully.");
+        location.reload();
       } else {
         console.error("Error updating event container:", xhr.statusText);
       }
@@ -360,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
     xhr.onerror = function () {
       console.error("Error updating event container:", xhr.statusText);
     };
-
     // Send the request
     xhr.send(formData);
   };
@@ -389,11 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error copying link to clipboard: ", error);
       });
   };
-  // OLD
-  // const deleteEventContainer = (containerNumber) => {
-  //   const eventContainerToDelete = document.getElementById(containerNumber);
-  //   eventContainersDiv.removeChild(eventContainerToDelete);
-  // };
 
   const deleteEventContainer = (containerNumber) => {
     openDeleteMessageModal(containerNumber);
@@ -420,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventContainerToDelete = document.getElementById(containerNumber);
     deleteMessageModal.style.display = "block";
     deleteModalDeleteButton.addEventListener("click", () => {
-      // Send AJAX request to PHP script
+      // Create the object for making the HTTP request
       const xhr = new XMLHttpRequest();
       xhr.open("POST", "../../includes/delete_event_container.php", true);
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -506,23 +306,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return brighterHex;
   };
-  // const formatTime = (minutes) => {
-  // 	console.log("minutes", minutes);
-  // 	let intMinutes = parseInt(minutes, 10);
-  // 	console.log("intMinutes", intMinutes);
-  // 	let hours = Math.floor(intMinutes / 60);
-  // 	let remainingMinutes = intMinutes % 60;
-
-  // 	if (hours > 0) {
-  // 		return `${hours}h ${remainingMinutes} min`;
-  // 	} else {
-  // 		return `${intMinutes} min`;
-  // 	}
-  // };
 
   window.addEventListener("click", function (event) {
     if (event.target === addEventContainerModal) {
-      //addEventContainerModal.style.display = "none";
       closeAddEventContainerModal();
       if (editing) {
         editing = false;

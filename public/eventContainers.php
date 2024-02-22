@@ -125,7 +125,7 @@ if (!isset($_SESSION['loggedin'])) {
               <div class="row">
                 <div class="color-picker">
                   <label class="col-25" for="eventColor">Event Color:</label>
-                  <input class="col-75" type="color" id="eventColorPicker" name="eventColor" value="#000000">
+                  <input class="col-75" type="color" id="eventColorPicker" name="eventColor" value="#cdcbcb">
                 </div>
               </div>
 
