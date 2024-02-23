@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //const bannerText = document.getElementById("bannerText");
   const bannerComponent = document.querySelector("banner-component");
 
+  let selectedDateTime = "";
+
   nextButton.addEventListener("click", () => {
     userDetails.style.display = "flex";
     calendarContent.style.display = "none";
@@ -77,18 +79,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const buttonId = "time-button-" + i;
       button.classList.add("center_content");
       button.id = buttonId;
+      const buttonMinutes = timeToMinutes(startTime) + duration * i;
+      const buttonText = timeToHours(buttonMinutes);
       if (i == 0) {
         button.innerText = startTime;
       } else if (i == numTimeSlots - 1) {
         button.innerText = endTime;
       } else {
-        const buttonMinutes = timeToMinutes(startTime) + duration * i;
-        const buttonText = timeToHours(buttonMinutes);
         button.innerText = buttonText;
       }
 
       button.addEventListener("click", () => {
         highlightButton(buttonId);
+        console.log(`Clicked button ${buttonId}, Time: ${buttonText}`);
       });
 
       row.appendChild(button);
@@ -178,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const selectedDate = element.textContent;
     element.innerHTML = `<div class="selected-date">${selectedDate}</div>`;
+    console.log(`Highlighted Date: ${selectedDate}`);
   }
 
   const highlightButton = (buttonId) => {
@@ -245,10 +249,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Create and append buttons for switching months and years
   const prevMonthButton = document.getElementById("prevMonth");
-  prevMonthButton.addEventListener("click", () => switchMonth(-1));
+  prevMonthButton.addEventListener("click", () => {
+    const month = document.getElementById("currentMonth").innerText;
+    if (month == "January") {
+      switchYear(-1);
+    }
+    switchMonth(-1);
+  });
 
   const nextMonthButton = document.getElementById("nextMonth");
-  nextMonthButton.addEventListener("click", () => switchMonth(1));
+  nextMonthButton.addEventListener("click", () => {
+    const month = document.getElementById("currentMonth").innerText;
+    if (month == "December") {
+      switchYear(1);
+    }
+    switchMonth(1);
+  });
 
   const prevYearButton = document.getElementById("prevYear");
   prevYearButton.addEventListener("click", () => switchYear(-1));
