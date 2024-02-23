@@ -3,62 +3,32 @@ class Banner extends HTMLElement {
     super();
   }
 
-  async connectedCallback() {
+  connectedCallback() {
+    this.render();
+  }
+
+  render() {
     const customText =
       this.getAttribute("custom-text") || "Default Banner Text";
     const label = this.getAttribute("label");
+    const currentURL = window.location.href;
+    const lastSegment = currentURL.substring(currentURL.lastIndexOf("/") + 1);
     let isEventOrSchedule = false;
-    let eventLabel;
-    let scheduleLabel;
-    let eventLink;
-    let scheduleLink;
+    let eventLabel, scheduleLabel;
+    let eventLink, scheduleLink;
 
-    await new Promise((resolve) => {
-      document.addEventListener("DOMContentLoaded", function () {
-        // Your code here
-        const currentURL = window.location.href;
-        const queryString = window.location.search;
-        const queryParams = new URLSearchParams(queryString);
-        const parameterValue = queryParams.get("parameterName");
+    if (lastSegment == "schedule.php" || lastSegment == "eventContainers.php") {
+      [eventLabel, scheduleLabel] = customText.split("|");
+      isEventOrSchedule = true;
 
-        console.log("Full URL:", currentURL);
-        console.log("Query String:", queryString);
-        console.log("Query Parameters:", queryParams);
-        console.log('Value of "parameterName":', parameterValue);
-
-        const lastSegment = currentURL.substring(
-          currentURL.lastIndexOf("/") + 1,
-        );
-        console.log(typeof lastSegment);
-        if (
-          lastSegment == "schedule.php" ||
-          lastSegment == "eventContainers.php"
-        ) {
-          [eventLabel, scheduleLabel] = customText.split("|");
-          console.log(
-            `Event label: ${eventLabel.trim()} \nSchedule label: ${scheduleLabel.trim()}`,
-          );
-          isEventOrSchedule = true;
-          if (lastSegment == "schedule.php") {
-            scheduleLink = `<a class="custom-link active" href="schedule.php">
-                ${scheduleLabel}
-              </a>`;
-            eventLink = `<a class="custom-link" href="eventContainers.php">
-                ${eventLabel}
-              </a>`;
-          } else {
-            console.log("changed isEventOrSchedule", isEventOrSchedule);
-            eventLink = `<a class="custom-link active" href="eventContainers.php">
-                ${eventLabel}
-              </a>`;
-            scheduleLink = `<a class="custom-link" href="schedule.php">
-                ${scheduleLabel}
-              </a>`;
-          }
-        }
-        resolve();
-      });
-    });
+      if (lastSegment == "schedule.php") {
+        scheduleLink = `<a class="custom-link active" href="schedule.php">${scheduleLabel.trim()}</a>`;
+        eventLink = `<a class="custom-link" href="eventContainers.php">${eventLabel.trim()}</a>`;
+      } else {
+        eventLink = `<a class="custom-link active" href="eventContainers.php">${eventLabel.trim()}</a>`;
+        scheduleLink = `<a class="custom-link" href="schedule.php">${scheduleLabel.trim()}</a>`;
+      }
+    }
 
     this.innerHTML = `
       <style>
@@ -68,7 +38,6 @@ class Banner extends HTMLElement {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          // background-color: #74873b;
           background-color: #96AE4D;
           color: #fff; 
         }
@@ -90,7 +59,6 @@ class Banner extends HTMLElement {
           text-decoration: none;
           padding: 5px 10px; 
         }
-
         a.custom-link:hover {
           cursor: pointer;
           color: whitesmoke; 
@@ -98,26 +66,21 @@ class Banner extends HTMLElement {
         a.active {
           color: white
         }
-
       </style>
       <banner>
         ${
           isEventOrSchedule
-            ? `
-
-        <h3 id="bannerText">${eventLink} | ${scheduleLink}</h3>
-        `
+            ? `<h3 id="bannerText">${eventLink} | ${scheduleLink}</h3>`
             : `<h3 id="bannerText">${customText}</h3>`
         }
         ${
           label
             ? `<div id="accountDiv">
-        <span>Account: ${label}</span>
-
-        <a href="../../../includes/logout.php">
-          <img id="logOutLogo" src="img/logout.png" alt="log out logo">
-        </a>
-        </div>`
+              <span>Account: ${label}</span>
+              <a href="../../../includes/logout.php">
+                <img id="logOutLogo" src="img/logout.png" alt="log out logo">
+              </a>
+            </div>`
             : ""
         }
       </banner>

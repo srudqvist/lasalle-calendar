@@ -7,7 +7,7 @@ body {
 }
 
 #meetingDetailsDiv {
-  width: 30%;
+  width: 40%;
   padding: 20px;
   border: 2px solid green;
   margin-bottom: 50vh;
@@ -26,29 +26,36 @@ body {
 #meetingDetailsDiv label {
   display: block;
   margin-bottom: 5px;
+  height: 1.5em;
 }
 #meetingDetailsDiv2 label {
   display: block;
   margin-bottom: 5px;
+  height: 1.5em;
 }
 .details-container {
   display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .label-column {
-  flex: 1;
+  flex: 0 0 33%;
   text-align: right;
   margin-right: 10px;
   font-weight: bold;
 }
 
 .text-column {
-  flex: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .text-column span {
-  display: block;
   margin-bottom: 5px;
+  display: block;
+  height: 1.5em;
 }
 
 #calendarDiv {
@@ -211,7 +218,7 @@ span {
 input,
 textarea {
   padding: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
   margin-top: 2px;
   border: none;
   border-radius: 8px;
