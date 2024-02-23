@@ -1,3 +1,6 @@
+body {
+  font-size: 1.5rem;
+}
 #contentDiv {
   display: flex;
   justify-content: center;
@@ -155,8 +158,8 @@ select {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
   margin-bottom: 50vh;
 }
 
