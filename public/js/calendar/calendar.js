@@ -23,6 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       console.log("banner not found");
     }
+    const year = document.getElementById("currentYear").innerText;
+    const month = document.getElementById("currentMonth").innerText;
+    const date = document.getElementsByClassName("selected-date")[0].innerHTML;
+    const time = document.getElementsByClassName("selected-time")[0].innerHTML;
+    console.log(`${time} ${month} ${date}, ${year}`);
+    const test = document.getElementById("date-time");
+    test.innerText = `${time} ${month} ${date}, ${year}`;
   });
   backButton.addEventListener("click", () => {
     userDetails.style.display = "none";
@@ -91,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       button.addEventListener("click", () => {
         highlightButton(buttonId);
-        console.log(`Clicked button ${buttonId}, Time: ${buttonText}`);
       });
 
       row.appendChild(button);
@@ -181,7 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const selectedDate = element.textContent;
     element.innerHTML = `<div class="selected-date">${selectedDate}</div>`;
-    console.log(`Highlighted Date: ${selectedDate}`);
   }
 
   const highlightButton = (buttonId) => {
