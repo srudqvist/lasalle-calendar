@@ -163,11 +163,14 @@ select {
 }
 
 #timeDiv {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
   margin-bottom: 50vh;
+  height: auto;
+  max-height: 40rem;
 }
 
 .time-button-row {
