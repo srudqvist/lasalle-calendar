@@ -64,6 +64,7 @@ session_start();
               </div>
             </div>
             <div class="calendar" id="calendar"></div>
+            <div id="calendarTimezone"></div>
             <button id="nextButton" class="next-schedule-button">Next</button>
           </div>
           <div id="timeDiv"></div>
