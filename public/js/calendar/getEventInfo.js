@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
         meetingDurationContent;
       document.getElementById("meetingNotes2").textContent =
         meetingNotesContent;
+      document.getElementById("calendarTimezone").innerHTML =
+        `<p>Time Zone: ${timeZoneContent}</p>`;
     })
     .catch((error) => {
       // Handle errors
