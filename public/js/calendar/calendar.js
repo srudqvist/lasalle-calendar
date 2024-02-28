@@ -1,3 +1,4 @@
+import { getEventInfo } from "./getEventInfo.js";
 document.addEventListener("DOMContentLoaded", function () {
   const calendarContainer = document.getElementById("calendar");
   const calendarContent = document.getElementById("contentDiv");
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   // Function to convert time in HH:mm format to minutes
   function timeToMinutes(time) {
+    console.log(`TIME: ${time}`);
     const [hours, minutes] = time.split(":").map(Number);
     return hours * 60 + minutes;
   }
@@ -89,11 +91,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const buttonMinutes = timeToMinutes(startTime) + duration * i;
       const buttonText = timeToHours(buttonMinutes);
       if (i == 0) {
-        button.innerText = startTime;
-      } else if (i == numTimeSlots - 1) {
-        button.innerText = endTime;
+        const formattedStartTime = formatAMPM(startTime);
+        button.innerText = formattedStartTime;
+      } else if (i == numTimeSlots) {
+        const formattedEndTime = formatAMPM(endTime);
+        button.innerText = formattedEndTime;
       } else {
-        button.innerText = buttonText;
+        const formattedTime = formatAMPM(buttonText);
+        button.innerText = formattedTime;
       }
 
       button.addEventListener("click", () => {
@@ -105,16 +110,49 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  const startTime = "08:00";
-  const endTime = "17:00";
-  const durationMinutes = 60;
-  const numTimeSlots = calculateTimeSlots(startTime, endTime, durationMinutes);
-  const generateButtons = generateTimeSlotButtons(
-    numTimeSlots,
-    startTime,
-    endTime,
-    durationMinutes,
-  );
+  getEventInfo()
+    .then((eventInfo) => {
+      const startTime = eventInfo.fetchedStartTime;
+      console.log(`START TIME: ${startTime}`);
+      //const startTime = "08:00";
+      const endTime = eventInfo.fetchedEndTime;
+      const durationMinutes = parseInt(eventInfo.fetchedDuration.split(" "));
+      const numTimeSlots = calculateTimeSlots(
+        startTime,
+        endTime,
+        durationMinutes,
+      );
+      const formattedStartTime = formatAMPM(startTime);
+      const formattedEndTime = formatAMPM(endTime);
+      const generateButtons = generateTimeSlotButtons(
+        numTimeSlots,
+        startTime,
+        endTime,
+        durationMinutes,
+      );
+    })
+    .catch((error) => {
+      console.log("Error in fetching times, calendar.js 130: ", error);
+    });
+
+  function formatAMPM(time) {
+    // Split the time string into hours, minutes, and seconds
+    const [hours, minutes] = time.split(":").map(Number);
+
+    // Create a Date object to use its time formatting methods
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+
+    // Use Intl.DateTimeFormat to format the time in AM/PM format
+    const ampm = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    }).format(date);
+
+    return ampm;
+  }
 
   function generateCalendar(year, month) {
     const date = new Date();
