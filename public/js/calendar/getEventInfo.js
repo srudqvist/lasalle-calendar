@@ -1,3 +1,4 @@
+import { formatAMPM } from "../utils/formatAMPM.js";
 document.addEventListener("DOMContentLoaded", () => {
   // Make a request to PHP to get data from the database
   getEventInfo();
@@ -23,7 +24,7 @@ const getEventInfo = async () => {
     const endTime = data.end_time;
 
     //const availableDaysContent = data.start_day + " - " data.end_day + " "
-    const availableDaysContent = `${data.start_day} - ${data.end_day} ${startTime} - ${endTime}`;
+    const availableDaysContent = `${data.start_day} - ${data.end_day} ${formatAMPM(startTime)} - ${formatAMPM(endTime)}`;
     const meetingTypeContent = data.meeting_type;
     const meetingDurationContent = data.duration;
     const meetingNotesContent = data.description;

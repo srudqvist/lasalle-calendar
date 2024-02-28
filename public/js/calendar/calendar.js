@@ -1,3 +1,4 @@
+import { formatAMPM } from "../utils/formatAMPM.js";
 import { getEventInfo } from "./getEventInfo.js";
 document.addEventListener("DOMContentLoaded", function () {
   const calendarContainer = document.getElementById("calendar");
@@ -6,10 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const backButton = document.getElementById("backButton");
   const userDetails = document.getElementById("userDetailsDiv");
   const currentDate = new Date();
-  //const bannerText = document.getElementById("bannerText");
   const bannerComponent = document.querySelector("banner-component");
-
-  let selectedDateTime = "";
 
   nextButton.addEventListener("click", () => {
     userDetails.style.display = "flex";
@@ -122,8 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
         endTime,
         durationMinutes,
       );
-      const formattedStartTime = formatAMPM(startTime);
-      const formattedEndTime = formatAMPM(endTime);
       const generateButtons = generateTimeSlotButtons(
         numTimeSlots,
         startTime,
@@ -134,25 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.log("Error in fetching times, calendar.js 130: ", error);
     });
-
-  function formatAMPM(time) {
-    // Split the time string into hours, minutes, and seconds
-    const [hours, minutes] = time.split(":").map(Number);
-
-    // Create a Date object to use its time formatting methods
-    const date = new Date();
-    date.setHours(hours);
-    date.setMinutes(minutes);
-
-    // Use Intl.DateTimeFormat to format the time in AM/PM format
-    const ampm = new Intl.DateTimeFormat("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    }).format(date);
-
-    return ampm;
-  }
 
   function generateCalendar(year, month) {
     const date = new Date();
