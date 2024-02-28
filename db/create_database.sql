@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS scheduled_meetings (
     name VARCHAR(100) NOT NULL,
     meeting_date DATE NOT NULL,
     meeting_time TIME NOT NULL,
-    phone VARCHAR(20) NOT NULL,
     event_name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
     notes TEXT,
