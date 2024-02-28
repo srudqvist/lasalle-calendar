@@ -183,8 +183,11 @@ select {
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 8px;
-  border: none;
-  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+  /* border: none; */
+  border: double;
+  border-color: darkolivegreen;
+  /* box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2); */
+  /* box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2); */
 }
 
 #timeDiv button:hover {
@@ -197,6 +200,8 @@ select {
   background-color: #61d694 !important;
   color: #000000 !important;
   box-shadow: none !important;
+  border: groove !important;
+  border-color: darkolivegreen !important;
 }
 
 .gray-out {
