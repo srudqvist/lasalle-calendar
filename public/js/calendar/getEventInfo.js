@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const meetingNotesContent = "Some notes about the meeting.";
 
   // dateTimeContent is the selected date
-  const dateTimeContent = "9:00 am - 10:00 am, March 16, 2024";
+  const dateTimeContent = "No date or time selected";
   //const timeZoneContent = "Central Time (US & Canada)";
 
   // document.getElementById("availableDays").textContent = availableDaysContent;
