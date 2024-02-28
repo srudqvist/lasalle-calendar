@@ -36,8 +36,8 @@ INSERT INTO event_containers (facility, event_name, start_day, end_day, start_ti
 
 
 
-INSERT INTO scheduled_meetings (event_id, facility, name, meeting_date, meeting_time, phone, event_name, email, notes, isDeleted) VALUES
-('1', 'Facility 1', 'John Doe', '2024-02-24', '09:00:00', '+1234567890', 'Team Meeting', 'john@example.com', 'Discuss project updates and goals', false),
-('2', 'Facility 1', 'Jane Smith', '2024-02-26', '13:00:00', '+1234567890', 'Training Workshop', 'jane@example.com', 'Attend training workshop on new software tools', false),
-('3', 'Facility 2', 'Alice Johnson', '2024-02-25', '10:30:00', '+1234567890', 'Executive Briefing', 'alice@example.com', 'Monthly executive briefing on company performance', false),
-('4', 'Facility 3', 'Bob Williams', '2024-02-27', '11:00:00', '+1234567890', 'Project Kickoff', 'bob@example.com', 'Kickoff meeting for the new marketing campaign project', false);
+INSERT INTO scheduled_meetings (event_id, facility, name, meeting_date, meeting_time, event_name, email, notes, isDeleted) VALUES
+('1', 'Facility 1', 'John Doe', '2024-02-24', '09:00:00', 'Team Meeting', 'john@example.com', 'Discuss project updates and goals', false),
+('2', 'Facility 1', 'Jane Smith', '2024-02-26', '13:00:00', 'Training Workshop', 'jane@example.com', 'Attend training workshop on new software tools', false),
+('3', 'Facility 2', 'Alice Johnson', '2024-02-25', '10:30:00', 'Executive Briefing', 'alice@example.com', 'Monthly executive briefing on company performance', false),
+('4', 'Facility 3', 'Bob Williams', '2024-02-27', '11:00:00', 'Project Kickoff', 'bob@example.com', 'Kickoff meeting for the new marketing campaign project', false);
