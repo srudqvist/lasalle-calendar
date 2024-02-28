@@ -1,25 +1,28 @@
 body {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 #contentDiv {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #meetingDetailsDiv {
-  width: 40%;
   padding: 20px;
-  border: 2px solid green;
   margin-bottom: 50vh;
+}
+.card {
+  background-color: whiteSmoke;
+  padding: 1rem;
+  border-radius: 10px;
 }
 #meetingDetailsDiv2 {
   width: 40%;
-  padding: 20px;
-  border: 2px solid red;
+  padding: 5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   margin-bottom: 50vh;
 }
 
@@ -28,10 +31,14 @@ body {
   margin-bottom: 5px;
   height: 1.5em;
 }
+h1 {
+  text-align: center;
+}
 #meetingDetailsDiv2 label {
   display: block;
   margin-bottom: 5px;
   height: 1.5em;
+  text-align: center;
 }
 .details-container {
   display: flex;
@@ -55,13 +62,10 @@ body {
 .text-column span {
   margin-bottom: 5px;
   display: block;
-  height: 1.5em;
 }
 
 #calendarDiv {
-  width: 40%;
   padding: 20px;
-  border: 2px solid red;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -87,7 +91,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  justify-content: center;
+  padding-bottom: 1rem;
 }
 .yearDiv,
 .monthDiv {
@@ -159,14 +163,10 @@ select {
 }
 
 #timeDiv {
-  width: 10%;
-  border: 2px solid blue;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding-top: 7rem;
-  padding-bottom: 7rem;
   margin-bottom: 50vh;
 }
 
@@ -233,11 +233,12 @@ textarea {
 }
 
 textarea {
-  min-width: 50%;
-  max-width: 50%;
-  min-height: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  min-width: 100%;
+  min-height: 6rem;
+}
+#additionalCommentsDiv {
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .next-schedule-button {
@@ -278,6 +279,7 @@ textarea {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding-top: 1rem;
 }
 
 #buttonDiv button:hover {

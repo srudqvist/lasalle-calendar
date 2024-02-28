@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     daysOfWeek.forEach((day) => {
       const th = document.createElement("th");
-      th.classList.add("gray-out");
+      //th.classList.add("gray-out");
       th.textContent = day;
       headerRow.appendChild(th);
     });
