@@ -52,6 +52,10 @@ class Banner extends HTMLElement {
           justify-content: center;
           align-items: center;
         }
+        #accountSpan {
+          color: #fff;
+          font-size: 1rem;
+        }
         a.custom-link {
           display: inline-block;
           font-weight: bold;
@@ -76,7 +80,7 @@ class Banner extends HTMLElement {
         ${
           label
             ? `<div id="accountDiv">
-              <span>Account: ${label}</span>
+              <span id="accountSpan">Account: ${label}</span>
               <a href="../../../includes/logout.php">
                 <img id="logOutLogo" src="img/logout.png" alt="log out logo">
               </a>

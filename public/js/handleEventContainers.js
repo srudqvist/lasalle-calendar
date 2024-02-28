@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (buttonId.startsWith("viewCalendarButton")) {
         handleButtonClick(event, "View Calendar", containerIndex);
+        viewCalendar(containerIndex);
       } else if (buttonId.startsWith("copyLinkButton")) {
         // Handle the "Copy Link" button click
         copyLink(containerIndex);
@@ -168,6 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     // Send the request
     xhr.send(formData);
+  };
+
+  const viewCalendar = (containerNumber) => {
+    let dummyLink = `http://localhost:3000/public/calendar.php?containerId=${containerNumber}`;
+    window.location.href = dummyLink;
   };
 
   const copyLink = (containerNumber) => {
