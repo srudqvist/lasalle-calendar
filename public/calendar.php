@@ -15,8 +15,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/calendar.css">
-    <script src="./js/calendar/getEventInfo.js"></script>
-    <script src="./js/calendar/calendar.js"></script>
+    <script src="./js/calendar/getEventInfo.js" type="module"></script>
+    <script src="./js/calendar/calendar.js" type="module"></script>
     <script src="./js/calendar/submitDetails.js"></script>
     <script src="./js/components/banner.js" defer></script>
     <title>Calendar</title>
