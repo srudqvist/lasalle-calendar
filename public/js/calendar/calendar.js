@@ -1,5 +1,7 @@
 import { formatAMPM } from "../utils/formatAMPM.js";
 import { getEventInfo } from "./getEventInfo.js";
+import { getScheduledMeetingsByDate } from "./getMeetingsForCalendar.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const calendarContainer = document.getElementById("calendar");
   const calendarContent = document.getElementById("contentDiv");
@@ -79,6 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
     endTime,
     duration,
   ) => {
+    // Get the times that should be grayed out
+    //
+
     for (let i = 0; i < numTimeSlots; i++) {
       const row = document.createElement("div");
       row.classList.add("time-button-row");
@@ -202,6 +207,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const selectedDate = element.textContent;
     element.innerHTML = `<div class="selected-date">${selectedDate}</div>`;
+
+    // Build the date and get times already taken
+    const year = parseInt(selectYear.value);
+    const month = parseInt(selectMonth.value) + 1;
+    let formattedDate = `${year}-`;
+    if (month.toString().length == 1) {
+      formattedDate += `0${month}-`;
+    } else {
+      formattedDate += `${month}-`;
+    }
+    if (selectedDate.length == 1) {
+      formattedDate += `0${selectedDate}`;
+    } else {
+      formattedDate += selectedDate;
+    }
+    const takenTimes = getScheduledMeetingsByDate(formattedDate);
+    console.log(`Taken Times: ${takenTimes}`);
   }
 
   const highlightButton = (buttonId) => {
