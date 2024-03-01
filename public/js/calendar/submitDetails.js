@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (response.ok) {
           // Handle successful update if needed
           console.log("Meeting Scheduled successfully.");
-          //location.reload();
           window.location.href = "meetingConfirmation.php";
         } else {
           console.error("Error Scheduling a Meeting:", response.statusText);

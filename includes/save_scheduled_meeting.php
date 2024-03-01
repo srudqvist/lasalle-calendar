@@ -58,6 +58,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($saveMeetingSTMT->execute() === true) {
                 $saveMeetingSTMT->close();
                 $conn->close();
+                // Store meeting details in session
+                session_start();
+                $_SESSION['meeting_details'] = array(
+                    'facility' => $facility,
+                    'eventName' => $eventName,
+                    'date' => $date,
+                    'time' => $time,
+                    'name' => $name,
+                    'email' => $email,
+                    'timezone' => $timezone,
+                    'comments' => $comments
+                );
+
+                session_write_close();
                 exit(json_encode(array("success" => true, "message" => "Saved Meeting Successfully")));
             } else {
                 echo json_encode(array("success" => false, "message" => "Unable to Save Meeting"));

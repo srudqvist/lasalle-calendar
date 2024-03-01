@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
@@ -34,6 +33,28 @@ session_start();
 
         <div id="details">
           <h1>Meeting Details</h1>
+          <?php
+          // Check if meeting details are set in the session
+          if(isset($_SESSION['meeting_details'])) {
+              // Retrieve meeting details from the session
+              $meetingDetails = $_SESSION['meeting_details'];
+              ?>
+          <p>Facility: <?php echo htmlspecialchars($meetingDetails['facility']); ?></p>
+          <p>Event Name: <?php echo htmlspecialchars($meetingDetails['eventName']); ?></p>
+          <p>Date: <?php echo htmlspecialchars($meetingDetails['date']); ?></p>
+          <p>Time: <?php echo htmlspecialchars($meetingDetails['time']); ?></p>
+          <p>Name: <?php echo htmlspecialchars($meetingDetails['name']); ?></p>
+          <p>Email: <?php echo htmlspecialchars($meetingDetails['email']); ?></p>
+          <p>Timezone: <?php echo htmlspecialchars($meetingDetails['timezone']); ?></p>
+          <p>Comments: <?php echo htmlspecialchars($meetingDetails['comments']); ?></p>
+          <?php
+          } else {
+              // Display a message if meeting details are not set in the session
+              ?>
+          <p>No meeting details found.</p>
+          <?php
+          }
+?>
         </div>
 
       </div>
