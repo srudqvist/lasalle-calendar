@@ -40,6 +40,6 @@ INSERT INTO scheduled_meetings (event_id, facility, name, meeting_date, meeting_
 ('1', 'Facility 1', 'John Doe', '2024-03-01', '09:00:00', 'Team Meeting', 'john@example.com', 'Discuss project updates and goals', false),
 ('2', 'Facility 1', 'Jane Smith', '2024-02-26', '13:00:00', 'Training Workshop', 'jane@example.com', 'Attend training workshop on new software tools', false),
 ('3', 'Facility 2', 'Alice Johnson', '2024-02-25', '10:30:00', 'Executive Briefing', 'alice@example.com', 'Monthly executive briefing on company performance', false),
-('4', 'Facility 3', 'Bob Williams', '2024-02-27', '11:00:00', 'Project Kickoff', 'bob@example.com', 'Kickoff meeting for the new marketing campaign project', false),
-('5', 'Facility 1', 'Test Tester', '2024-03-01', '11:00:00', 'Team Meeting', 'test@example.com', 'Testing Gray out', false),
-('6', 'Facility 1', 'Test Tester', '2024-03-01', '13:00:00', 'Team Meeting', 'test@example.com', 'Testing Gray out', false);
+('3', 'Facility 3', 'Bob Williams', '2024-02-27', '11:00:00', 'Project Kickoff', 'bob@example.com', 'Kickoff meeting for the new marketing campaign project', false),
+('1', 'Facility 1', 'Test Tester', '2024-03-01', '11:00:00', 'Team Meeting', 'test@example.com', 'Testing Gray out', false),
+('1', 'Facility 1', 'Test Tester', '2024-03-01', '13:00:00', 'Team Meeting', 'test@example.com', 'Testing Gray out', false);

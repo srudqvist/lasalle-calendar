@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $scheduledMeetingsResult = $getScheduledMeetingsSTMT->get_result();
     $meetings = array();
     while($row = $scheduledMeetingsResult->fetch_assoc()) {
-        $meetings[] = $row;
+        $meetings[] = $row["meeting_time"];
     }
 
     // Send response based on query results

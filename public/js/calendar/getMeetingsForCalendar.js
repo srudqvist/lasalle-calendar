@@ -28,13 +28,14 @@ const getScheduledMeetingsByDate = async (date) => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    //const data = await response.json();
-    const data = await response.text();
-    console.log(data);
+    const data = await response.json();
+    return data.map((meeting) => formatAMPM(meeting));
+
     // Handle the response data as needed
   } catch (error) {
     // Handle errors
     console.log(`Error in getScheduledMeetingsByDate: ${error}`);
+    return [];
   }
 };
 
