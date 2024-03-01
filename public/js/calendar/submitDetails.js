@@ -20,8 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     console.log(`Date: ${date}, Time: ${time}`);
 
-    // Create object for HTTP request
-    const xhr = new XMLHttpRequest();
     // Prepare data to send with the request
     const formData = new FormData();
 
@@ -33,21 +31,26 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("timezone", timeZone);
     formData.append("comments", comments);
 
-    xhr.open("POST", "../../../includes/save_scheduled_meeting.php", true);
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        // Handle successful update if needed
-        console.log("Meeting Scheduled successfully.");
-        //location.reload();
-      } else {
-        console.error("Error Scheduling a Meeting:", xhr.statusText);
-      }
-    };
-    xhr.onerror = function () {
-      console.error("There Was an Error Scheduling a Meeting:", xhr.statusText);
-    };
-    // Send the request
-    xhr.send(formData);
+    fetch("../../../includes/save_scheduled_meeting.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Handle successful update if needed
+          console.log("Meeting Scheduled successfully.");
+          //location.reload();
+          window.location.href = "meetingConfirmation.php";
+        } else {
+          console.error("Error Scheduling a Meeting:", response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error(
+          "There Was an Error Scheduling a Meeting:",
+          error.message,
+        );
+      });
   });
 });
 
