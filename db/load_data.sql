@@ -29,7 +29,7 @@ INSERT INTO users (facility, email, first_name, last_name, phone, password) VALU
 -- ?>
 
 INSERT INTO event_containers (facility, event_name, start_day, end_day, start_time, end_time, duration, time_zone, meeting_type, description, color) VALUES
-('Facility 1', 'Team Meeting', 'Monday', 'Monday', '09:00:00', '11:00:00', '30 min', 'Central Time Zone', 'Zoom', 'Weekly team meeting to discuss project updates and goals.', '#FF5733'),
+('Facility 1', 'Team Meeting', 'Monday', 'Monday', '09:00:00', '16:00:00', '30 min', 'Central Time Zone', 'Zoom', 'Weekly team meeting to discuss project updates and goals.', '#FF5733'),
 ('Facility 1', 'Training Workshop', 'Wednesday', 'Friday', '13:00:00', '16:00:00', '30 min', 'Eastern Time Zone', 'Teams', 'Three-day training workshop on new software tools.', '#0099FF'),
 ('Facility 2', 'Executive Briefing', 'Tuesday', 'Tuesday', '10:30:00', '12:00:00', '30 min', 'Pacific Time Zone', 'Zoom', 'Monthly executive briefing on company performance.', '#FF9900'),
 ('Facility 3', 'Project Kickoff', 'Thursday', 'Thursday', '11:00:00', '13:00:00', '30 min', 'Central Time Zone', 'Phone', 'Kickoff meeting for the new marketing campaign project.', '#66FF33');
@@ -37,7 +37,9 @@ INSERT INTO event_containers (facility, event_name, start_day, end_day, start_ti
 
 
 INSERT INTO scheduled_meetings (event_id, facility, name, meeting_date, meeting_time, event_name, email, notes, isDeleted) VALUES
-('1', 'Facility 1', 'John Doe', '2024-02-24', '09:00:00', 'Team Meeting', 'john@example.com', 'Discuss project updates and goals', false),
+('1', 'Facility 1', 'John Doe', '2024-03-01', '09:00:00', 'Team Meeting', 'john@example.com', 'Discuss project updates and goals', false),
 ('2', 'Facility 1', 'Jane Smith', '2024-02-26', '13:00:00', 'Training Workshop', 'jane@example.com', 'Attend training workshop on new software tools', false),
 ('3', 'Facility 2', 'Alice Johnson', '2024-02-25', '10:30:00', 'Executive Briefing', 'alice@example.com', 'Monthly executive briefing on company performance', false),
-('4', 'Facility 3', 'Bob Williams', '2024-02-27', '11:00:00', 'Project Kickoff', 'bob@example.com', 'Kickoff meeting for the new marketing campaign project', false);
+('4', 'Facility 3', 'Bob Williams', '2024-02-27', '11:00:00', 'Project Kickoff', 'bob@example.com', 'Kickoff meeting for the new marketing campaign project', false),
+('5', 'Facility 1', 'Test Tester', '2024-03-01', '11:00:00', 'Team Meeting', 'test@example.com', 'Testing Gray out', false),
+('6', 'Facility 1', 'Test Tester', '2024-03-01', '13:00:00', 'Team Meeting', 'test@example.com', 'Testing Gray out', false);
