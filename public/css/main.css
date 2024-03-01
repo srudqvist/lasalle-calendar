@@ -20,3 +20,8 @@ body {
 .error-message {
   color: red;
 }
+.card {
+  background-color: whiteSmoke;
+  padding: 1rem;
+  border-radius: 10px;
+}

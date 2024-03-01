@@ -1,0 +1,26 @@
+body {
+  font-size: 1.2rem;
+}
+
+#contentDiv {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+}
+
+#confirmation {
+  margin: 2rem;
+  max-width: 40%;
+  height: fit-content;
+}
+#details {
+  margin: 2rem;
+  padding: 1rem 2rem;
+  max-width: 40%;
+  height: fit-content;
+}
+
+#details p:before {
+  font-weight: bold;
+  content: attr(data-label) ": ";
+}
