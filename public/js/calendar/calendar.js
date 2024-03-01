@@ -222,8 +222,29 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       formattedDate += selectedDate;
     }
-    const takenTimes = getScheduledMeetingsByDate(formattedDate);
-    console.log(`Taken Times: ${takenTimes}`);
+    getScheduledMeetingsByDate(formattedDate)
+      .then((takenTimes) => {
+        console.log(`Taken Times: ${takenTimes}`);
+        grayOutTimeButtons(takenTimes);
+        // Use takenTimes to populate the list of scheduled meetings
+      })
+      .catch((error) => {
+        console.log(`Error in highlightDate: ${error}`);
+      });
+  }
+
+  function grayOutTimeButtons(takenTimes) {
+    const timeButtons = document.querySelectorAll(".time-button-row button");
+    timeButtons.forEach((button) => {
+      const buttonText = button.innerText.trim();
+      if (takenTimes.includes(buttonText)) {
+        button.classList.add("gray-out");
+        button.disabled = true;
+      } else {
+        button.classList.remove("gray-out");
+        button.disabled = false;
+      }
+    });
   }
 
   const highlightButton = (buttonId) => {
