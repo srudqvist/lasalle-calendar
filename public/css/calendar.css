@@ -11,11 +11,6 @@ body {
   padding: 20px;
   margin-bottom: 50vh;
 }
-.card {
-  background-color: whiteSmoke;
-  padding: 1rem;
-  border-radius: 10px;
-}
 #meetingDetailsDiv2 {
   width: 40%;
   padding: 5rem;
