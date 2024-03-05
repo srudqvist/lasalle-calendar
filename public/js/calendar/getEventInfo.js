@@ -23,6 +23,26 @@ const getEventInfo = async () => {
     const startTime = data.start_time;
     const endTime = data.end_time;
 
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let startDayIndex = daysOfWeek.indexOf(data.start_day);
+    let endDayIndex = daysOfWeek.indexOf(data.end_day);
+
+    // Handle the case where end day comes before start day
+    if (endDayIndex < startDayIndex) {
+      endDayIndex += 7;
+    }
+
+    const availableDays = daysOfWeek.slice(startDayIndex, endDayIndex + 1); // Extract available days
+    console.log(availableDays);
+
     //const availableDaysContent = data.start_day + " - " data.end_day + " "
     const availableDaysContent = `${data.start_day} - ${data.end_day} ${formatAMPM(startTime)} - ${formatAMPM(endTime)}`;
     const meetingTypeContent = data.meeting_type;
@@ -51,6 +71,7 @@ const getEventInfo = async () => {
       fetchedStartTime: startTime,
       fetchedEndTime: endTime,
       fetchedDuration: meetingDurationContent,
+      fetchedAvailableDays: availableDays,
     };
   } catch (error) {
     // Handle errors
