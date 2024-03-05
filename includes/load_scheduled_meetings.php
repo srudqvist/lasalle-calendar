@@ -31,7 +31,6 @@ if(isset($_SESSION['facility'])) {
         echo '<th class="green-background"><f1>Phone</f1></th>';
         echo '<th class="green-background"><f1>Email</f1></th>';
         echo '<th class="green-background"><f1>Notes</f1></th>';
-        echo '<th class="green-background"><f1>Delete</f1></th>';
         echo '<th class="green-background"><f1>Cancel</f1></th>';
         echo '</tr>';
 
@@ -44,7 +43,6 @@ if(isset($_SESSION['facility'])) {
             echo "<td class='phone-column'>{$row['phone']}</td>";
             echo "<td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>";
             echo "<td class='notes-column'><td1>{$row['notes']}</td1></td>";
-            echo "<td class='delete-column'><hypr><a href='del.html?id={$row['meeting_id']}' title='Delete' target='_blank'>Delete</a></hypr></td>";
             echo "<td class='cancel-column'><button class='cancel-button' id='{$row['meeting_id']}'>Cancel</button></td>";
             echo "</tr>";
         }

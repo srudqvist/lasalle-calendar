@@ -152,4 +152,5 @@ input[type="checkbox"] {
   border-radius: 8px;
   border: none;
   box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
