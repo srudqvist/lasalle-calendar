@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const userDetails = document.getElementById("userDetailsDiv");
   const currentDate = new Date();
   const bannerComponent = document.querySelector("banner-component");
+  let availableDays;
 
   nextButton.addEventListener("click", () => {
     userDetails.style.display = "flex";
@@ -120,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
       //const startTime = "08:00";
       const endTime = eventInfo.fetchedEndTime;
       const durationMinutes = parseInt(eventInfo.fetchedDuration.split(" "));
+      availableDays = eventInfo.fetchedAvailableDays;
+      console.log(availableDays);
       const numTimeSlots = calculateTimeSlots(
         startTime,
         endTime,
@@ -131,12 +134,18 @@ document.addEventListener("DOMContentLoaded", function () {
         endTime,
         durationMinutes,
       );
+      // Generate initial calendar
+      generateCalendar(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        availableDays,
+      );
     })
     .catch((error) => {
       console.log("Error in fetching times, calendar.js 130: ", error);
     });
 
-  function generateCalendar(year, month) {
+  function generateCalendar(year, month, availableDays) {
     const date = new Date();
     const currentYear = date.getFullYear();
     const currentMonth = date.getMonth() + 1;
@@ -156,6 +165,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create table header with days of the week
     const headerRow = document.createElement("tr");
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const longDaysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
     daysOfWeek.forEach((day) => {
       const th = document.createElement("th");
       //th.classList.add("gray-out");
@@ -186,9 +204,18 @@ document.addEventListener("DOMContentLoaded", function () {
           td.classList.add("gray-out");
           dayCounter++;
         } else {
-          td.textContent = dayCounter;
-          td.addEventListener("click", () => highlightDate(td));
-          dayCounter++;
+          if (!availableDays.includes(longDaysOfWeek[j])) {
+            console.log(availableDays);
+            console.log(daysOfWeek[j]);
+            td.textContent = dayCounter;
+            console.log("HERE");
+            td.classList.add("gray-out");
+            dayCounter++;
+          } else {
+            td.textContent = dayCounter;
+            td.addEventListener("click", () => highlightDate(td));
+            dayCounter++;
+          }
         }
 
         row.appendChild(td);
@@ -259,7 +286,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCalendar() {
     const year = parseInt(selectYear.value);
     const month = parseInt(selectMonth.value);
-    generateCalendar(year, month);
+    console.log(availableDays);
+    generateCalendar(year, month, availableDays);
   }
 
   function switchMonth(offset) {
@@ -338,6 +366,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set initial values for selectors
   selectYear.value = currentDate.getFullYear();
   selectMonth.value = currentDate.getMonth();
-  // Generate initial calendar
-  generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
 });
