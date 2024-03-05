@@ -18,7 +18,6 @@ const getEventInfo = async () => {
     );
     const data = await response.json();
     // Handle the data retrieved from PHP
-    console.log(data);
 
     const startTime = data.start_time;
     const endTime = data.end_time;
@@ -41,7 +40,6 @@ const getEventInfo = async () => {
     }
 
     const availableDays = daysOfWeek.slice(startDayIndex, endDayIndex + 1); // Extract available days
-    console.log(availableDays);
 
     //const availableDaysContent = data.start_day + " - " data.end_day + " "
     const availableDaysContent = `${data.start_day} - ${data.end_day} ${formatAMPM(startTime)} - ${formatAMPM(endTime)}`;

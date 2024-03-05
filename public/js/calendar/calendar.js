@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const month = document.getElementById("currentMonth").innerText;
     const date = document.getElementsByClassName("selected-date")[0].innerHTML;
     const time = document.getElementsByClassName("selected-time")[0].innerHTML;
-    console.log(`${time} ${month} ${date}, ${year}`);
     const test = document.getElementById("date-time");
     test.innerText = `${time} ${month} ${date}, ${year}`;
   });
@@ -54,12 +53,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Calculate the number of time slots
     const numTimeSlots = Math.floor(timeDifference / durationMinutes);
 
-    console.log(numTimeSlots);
     return numTimeSlots;
   };
   // Function to convert time in HH:mm format to minutes
   function timeToMinutes(time) {
-    console.log(`TIME: ${time}`);
     const [hours, minutes] = time.split(":").map(Number);
     return hours * 60 + minutes;
   }
@@ -117,12 +114,10 @@ document.addEventListener("DOMContentLoaded", function () {
   getEventInfo()
     .then((eventInfo) => {
       const startTime = eventInfo.fetchedStartTime;
-      console.log(`START TIME: ${startTime}`);
       //const startTime = "08:00";
       const endTime = eventInfo.fetchedEndTime;
       const durationMinutes = parseInt(eventInfo.fetchedDuration.split(" "));
       availableDays = eventInfo.fetchedAvailableDays;
-      console.log(availableDays);
       const numTimeSlots = calculateTimeSlots(
         startTime,
         endTime,
@@ -205,10 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
           dayCounter++;
         } else {
           if (!availableDays.includes(longDaysOfWeek[j])) {
-            console.log(availableDays);
-            console.log(daysOfWeek[j]);
             td.textContent = dayCounter;
-            console.log("HERE");
             td.classList.add("gray-out");
             dayCounter++;
           } else {
@@ -251,7 +243,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     getScheduledMeetingsByDate(formattedDate)
       .then((takenTimes) => {
-        console.log(`Taken Times: ${takenTimes}`);
         grayOutTimeButtons(takenTimes);
         // Use takenTimes to populate the list of scheduled meetings
       })
@@ -286,7 +277,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCalendar() {
     const year = parseInt(selectYear.value);
     const month = parseInt(selectMonth.value);
-    console.log(availableDays);
     generateCalendar(year, month, availableDays);
   }
 
