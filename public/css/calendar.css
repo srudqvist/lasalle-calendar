@@ -202,9 +202,6 @@ select {
   border-color: darkolivegreen !important;
 }
 
-.gray-out {
-  opacity: 0.4;
-}
 label {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -294,4 +291,8 @@ form {
 #additionalComments {
   margin-left: auto;
   margin-right: auto;
+}
+.gray-out {
+  opacity: 0.4;
+  cursor: not-allowed !important;
 }
