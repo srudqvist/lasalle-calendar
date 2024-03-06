@@ -1,3 +1,43 @@
+:root {
+  /* Main Colors*/
+  --primary-color: #96ae4d; /* the primary color is the 600 value*/
+  --primary-color-900: #4d652b;
+  --primary-color-800: #6e873b;
+  --primary-color-700: #819a43;
+  --primary-color-500: #a6be55;
+  --primary-color-400: #b3c76d;
+  --primary-color-300: #c0d187;
+  --primary-complimentary: #654dae;
+  --primary-analogous: #ae964d;
+  --primary-analogous-2: #65ae4d;
+  --primary-triadic: #4dae65;
+  --primary-triadic-2: #4d96ae;
+  --primary-variant: #abbf6f;
+  --error-color: #b00020;
+  --error-color-600: #de2839;
+  --error-color-500: #ed323b;
+
+  --on-primary: #ffffff;
+
+  /* Text */
+  --text-color-black: #313131;
+
+  /* Card Variables*/
+  --card-color: #f7f7f7;
+  --card-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  --card-border-radius: 16px;
+
+  /* Inputs */
+  --input-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  --input-border-radius: 8px;
+
+  /* Buttons */
+  --button-border-radius: 8px;
+}
+/*
+* https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+*/
+
 body {
   margin: 0px;
 }
