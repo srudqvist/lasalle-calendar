@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 main {
   min-height: 100vh;
 }
@@ -9,15 +10,16 @@ main {
 #addEventContainer {
   float: right;
   margin: 30px 30px 30px 30px;
-  background-color: #96ae4d;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
   padding: 8px 40px;
   border-radius: 8px;
   border: none;
-  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--button-shadow);
 }
+
 #addEventContainer:hover {
-  background-color: #74873b;
+  background-color: var(--primary-btn-hover-color);
   cursor: pointer;
 }
 
@@ -28,11 +30,9 @@ main {
   text-align: center;
   border: 0px solid var(--event-color, black);
   border-radius: 8px;
-  /* box-shadow: 0px 0px 5px 5px var(--event-color, black); */
   box-shadow:
     0px 0px 100px 1px var(--event-color, black) inset,
     0px 0px 5px 2px var(--event-color, black);
-  /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); */
 }
 
 .container-row {
@@ -58,22 +58,10 @@ main {
   border-width: 0px;
   border-color: var(--event-color-darker, black);
   border-radius: 10px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 2px 0px var(--event-color-darker, black);
 }
+
 .eventContainer button:hover {
   cursor: pointer;
-  background-color: whitesmoke;
-  /* box-shadow: 0px 0px 10px 2px var(--event-color, black) inset, 0px 0px 1px 1px var(--event-color, black); */
+  background-color: var(--event-color-darker, whitesmoke);
 }
-
-/* #overlay {
-    position: fixed;
-    top: 400;
-    left: 0;
-    width: 10%;
-    height: 10%;
-    background-color: rgba(255, 255, 255, 0.5); 
-    pointer-events: none; 
-    display: none;
-} */

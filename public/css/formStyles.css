@@ -2,6 +2,7 @@
 .modern_form h1 {
   color: var(--text-color-black);
 }
+
 .modern_form {
   max-width: 400px;
   min-width: 400px;
@@ -31,6 +32,7 @@
   box-sizing: border-box;
   font-size: 16px;
 }
+
 .modern_form input[type="password"] {
   /* Your existing properties */
   border: none; /* Example border color */
