@@ -1,4 +1,7 @@
 /* Styling for the form */
+.modern_form h1 {
+  color: var(--text-color-black);
+}
 .modern_form {
   max-width: 400px;
   min-width: 400px;
@@ -14,7 +17,7 @@
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--text-color-black);
 }
 
 /* Style for inputs */
@@ -57,12 +60,10 @@
   margin-bottom: 20px;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--input-shadow);
   box-sizing: border-box;
   font-size: 16px;
-  /* Additional styles for select */
-  background-color: #fff; /* Background color */
-  color: #333; /* Text color */
+  color: var(-text-color-black); /* Text color */
 }
 
 /* Style for select arrow */
@@ -73,5 +74,5 @@
   right: 10px;
   transform: translateY(-50%);
   pointer-events: none;
-  color: #333; /* Arrow color */
+  color: var(--text-color-black);
 }

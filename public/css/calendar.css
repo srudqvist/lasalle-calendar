@@ -114,10 +114,6 @@ td {
   padding: 10px;
 }
 
-/* th {
-    background-color: #f2f2f2;
-} */
-
 td {
   position: relative;
 }
@@ -127,7 +123,7 @@ td:hover {
 
 .selected-date {
   background-color: #96ae4d;
-  color: #fff;
+  color: var(--on-primary);
   border-radius: 50%;
   width: 3rem;
   height: 3rem;
@@ -144,8 +140,9 @@ select {
 }
 
 .calendar-button {
-  background-color: gray;
-  color: #fff;
+  background-color: #a6a6a6;
+  color: var(--on-primary);
+  font-size: 2rem;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -154,7 +151,7 @@ select {
 }
 .calendar-button:hover {
   cursor: pointer;
-  background-color: darkgrey;
+  background-color: #7c7c7c;
 }
 
 #timeDiv {
@@ -174,17 +171,15 @@ select {
 }
 
 #timeDiv button {
-  background-color: #96ae4d;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
   width: 80%;
   padding: 8px 40px;
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 8px;
-  /* border: none; */
   border: double;
   border-color: darkolivegreen;
-  /* box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2); */
   /* box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2); */
 }
 
@@ -206,7 +201,7 @@ label {
   padding-top: 15px;
   padding-bottom: 15px;
   font-weight: bold;
-  color: #333;
+  color: var(--text-color-black);
 }
 
 span {
@@ -222,7 +217,7 @@ textarea {
   margin-top: 2px;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--input-shadow);
   box-sizing: border-box;
   font-size: 16px;
 }
@@ -236,10 +231,11 @@ textarea {
   margin-left: 1rem;
 }
 
-.next-schedule-button {
+.next-schedule-button,
+.back-button {
   margin-left: auto;
-  background-color: #96ae4d;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
   width: 30%;
   padding: 8px 4px;
   margin-top: 5px;
@@ -247,29 +243,36 @@ textarea {
   border-radius: 8px;
   border: none;
   text-align: center;
-  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--button-shadow);
+  /*box-shadow: var(--input-shadow);*/
+  /*box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);*/
 }
 .back-button {
-  background-color: #96ae4d;
-  color: white;
-  width: 30%;
-  padding: 8px 4px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 8px;
-  border: none;
-  text-align: center;
-  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+  margin-left: 0px;
 }
+/* .back-button { */
+/*   background-color: #96ae4d; */
+/*   color: white; */
+/*   width: 30%; */
+/*   padding: 8px 4px; */
+/*   margin-top: 5px; */
+/*   margin-bottom: 5px; */
+/*   border-radius: 8px; */
+/*   border: none; */
+/*   text-align: center; */
+/*   box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2); */
+/* } */
 
-.next-schedule-button:hover {
+.next-schedule-button:hover,
+.back-button:hover,
+#buttonDiv button:hover {
   cursor: pointer;
-  background-color: #74873b;
+  background-color: var(--primary-color-800);
 }
-.back-button button:hover {
-  background-color: #74873b;
-  cursor: pointer;
-}
+/* .back-button button:hover { */
+/*   background-color: #74873b; */
+/*   cursor: pointer; */
+/* } */
 #buttonDiv {
   width: 100%;
   display: flex;
@@ -277,10 +280,10 @@ textarea {
   padding-top: 1rem;
 }
 
-#buttonDiv button:hover {
-  background-color: #74873b;
-  cursor: pointer;
-}
+/* #buttonDiv button:hover { */
+/*   background-color: var(--primary-color-800); */
+/*   cursor: pointer; */
+/* } */
 
 form {
   display: flex;

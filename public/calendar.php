@@ -56,14 +56,14 @@ session_start();
             <div id="calendarControls">
               <div class="yearDiv">
                 <button id="prevYear" class="calendar-button">
-                  &larr; </button>
+                  &lt; </button>
                 <span id="currentYear"></span>
-                <button id="nextYear" class="calendar-button"> &rarr;</button>
+                <button id="nextYear" class="calendar-button"> &gt;</button>
               </div>
               <div class="monthDiv">
-                <button id="prevMonth" class="calendar-button"> &larr;</button>
+                <button id="prevMonth" class="calendar-button"> &lt;</button>
                 <span id="currentMonth"></span>
-                <button id="nextMonth" class="calendar-button"> &rarr;</button>
+                <button id="nextMonth" class="calendar-button"> &gt;</button>
               </div>
             </div>
             <div class="card">
@@ -117,10 +117,10 @@ session_start();
                   <label id="additionalComments" for="comments">Additional Comments and Requests:</label>
                   <textarea id="comments" name="comments"></textarea>
                 </div>
-              </div>
-              <div id="buttonDiv">
-                <button id="backButton" class="back-button">Back</button>
-                <button type="submit" id="scheduleButton" class="next-schedule-button">Schedule</button>
+                <div id="buttonDiv">
+                  <button id="backButton" class="back-button">Back</button>
+                  <button type="submit" id="scheduleButton" class="next-schedule-button">Schedule</button>
+                </div>
               </div>
             </form>
           </div>

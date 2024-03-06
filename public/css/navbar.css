@@ -1,64 +1,65 @@
 #navbar {
-    height: 130px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: #404434;
-    color: white;
-    width:100%;
-    line-height: 2;
-    font-size: 1.5rem;
-    text-align: center;
-    /* font-size: 2.5rem; */
-    overflow: hidden;
+  height: 130px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*background-color: #404434;*/
+  background-color: var(--navbar-bg-color);
+  color: var(--on-primary);
+  width: 100%;
+  line-height: 2;
+  font-size: 1.5rem;
+  text-align: center;
+  /* font-size: 2.5rem; */
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 #navbarDiv {
-    margin-bottom: 130px;
+  margin-bottom: 130px;
 }
 
 #navbarLasalleLogo {
-    height: 6rem;
-    float: left;
-    padding-top: 0.9rem;
-    padding-left: 1rem;
+  height: 6rem;
+  float: left;
+  padding-top: 0.9rem;
+  padding-left: 1rem;
 }
 #calendarImg {
-    height: 3rem;
-    float: right;
-    vertical-align: top;
-    padding-top: 1rem;
-    padding-right: 1rem;
+  height: 3rem;
+  float: right;
+  vertical-align: top;
+  padding-top: 1rem;
+  padding-right: 1rem;
 }
 
 @media screen and (max-width: 1500px) {
-    #navbar {
-        font-size: 1.5rem;
-        line-height: 2;
-    }
+  #navbar {
+    font-size: 1.5rem;
+    line-height: 2;
+  }
 }
 @media screen and (max-width: 1000px) {
-    #navbar {
-        font-size: 1.2rem;
-        line-height: 2.5;
-    }
+  #navbar {
+    font-size: 1.2rem;
+    line-height: 2.5;
+  }
 }
 @media screen and (max-width: 850px) {
-    #navbar {
-        height: 4rem;
-        font-size: 1rem;
-        line-height: 3;
-    }
-    #navbarLasalleLogo {
-        height: 2rem;
-    }
-    #calendarImg {
-        height: 1rem;
-        padding-top: 0.3rem;
-        padding-right: 0.3rem;
-    }
+  #navbar {
+    height: 4rem;
+    font-size: 1rem;
+    line-height: 3;
+  }
+  #navbarLasalleLogo {
+    height: 2rem;
+  }
+  #calendarImg {
+    height: 1rem;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+  }
 }
 /* #navbarHeadline {
     line-height: 8rem;
