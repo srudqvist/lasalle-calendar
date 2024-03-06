@@ -19,6 +19,9 @@
 
   --on-primary: #ffffff;
 
+  /* Navbar Variables*/
+  --navbar-bg-color: #3c452f;
+
   /* Text */
   --text-color-black: #313131;
 
@@ -33,6 +36,7 @@
 
   /* Buttons */
   --button-border-radius: 8px;
+  --button-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
 }
 /*
 * https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
@@ -61,7 +65,8 @@ body {
   color: red;
 }
 .card {
-  background-color: whiteSmoke;
+  background-color: var(--card-color);
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
 }
