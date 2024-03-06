@@ -40,9 +40,13 @@ const getEventInfo = async () => {
     }
 
     const availableDays = daysOfWeek.slice(startDayIndex, endDayIndex + 1); // Extract available days
-
+    let availableDaysContent;
     //const availableDaysContent = data.start_day + " - " data.end_day + " "
-    const availableDaysContent = `${data.start_day} - ${data.end_day} ${formatAMPM(startTime)} - ${formatAMPM(endTime)}`;
+    if (startDayIndex == endDayIndex) {
+      availableDaysContent = `${data.start_day} ${formatAMPM(startTime)} - ${formatAMPM(endTime)}`;
+    } else {
+      availableDaysContent = `${data.start_day} - ${data.end_day} ${formatAMPM(startTime)} - ${formatAMPM(endTime)}`;
+    }
     const meetingTypeContent = data.meeting_type;
     const meetingDurationContent = data.duration;
     const meetingNotesContent = data.description;
