@@ -29,6 +29,9 @@ const getScheduledMeetingsByDate = async (date) => {
     }
 
     const data = await response.json();
+    if (data["success"] === false) {
+      return [];
+    }
     return data.map((meeting) => formatAMPM(meeting));
 
     // Handle the response data as needed
