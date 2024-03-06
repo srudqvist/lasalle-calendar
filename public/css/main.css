@@ -7,6 +7,8 @@
   --primary-color-500: #a6be55;
   --primary-color-400: #b3c76d;
   --primary-color-300: #c0d187;
+  --primary-color-200: #d2dea9;
+  --primary-color-100: #e4ebca;
   --primary-complimentary: #654dae;
   --primary-analogous: #ae964d;
   --primary-analogous-2: #65ae4d;
@@ -37,6 +39,10 @@
   /* Buttons */
   --button-border-radius: 8px;
   --button-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+  --primary-btn-hover-color: var(--primary-color-900);
+
+  /* Modal */
+  --modal-bg-color: rgba(0, 0, 0, 0.5);
 }
 /*
 * https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
