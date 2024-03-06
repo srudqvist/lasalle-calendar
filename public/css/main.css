@@ -62,7 +62,7 @@ body {
   justify-content: space-between;
 }
 .error-message {
-  color: red;
+  color: var(--error-color);
 }
 .card {
   background-color: var(--card-color);
