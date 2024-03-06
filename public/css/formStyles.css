@@ -1,82 +1,77 @@
 /* Styling for the form */
 .modern_form {
-    max-width: 400px;
-    min-width: 400px;
-    padding: 30px;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    text-align: left;
+  max-width: 400px;
+  min-width: 400px;
+  padding: 30px;
+  background-color: var(--card-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  text-align: left;
 }
 
 /* Style for labels */
 .modern_form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--text-color);
 }
 
 /* Style for inputs */
 .modern_form input {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    font-size: 16px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: var(--input-border-radius);
+  box-shadow: var(--input-shadow);
+  box-sizing: border-box;
+  font-size: 16px;
 }
 .modern_form input[type="password"] {
-    /* Your existing properties */
-    border: 1px solid #ccc; /* Example border color */
+  /* Your existing properties */
+  border: none; /* Example border color */
 }
-.modern_form input.password-no-match[type="password"] {
-    box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
-    border-color: red; /* Example border color for mismatch */
-}
+
 /* Style for the submit button */
 .modern_form button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #96AE4D;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: var(--button-border-radius);
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .modern_form button:hover {
-    background-color: #3C4530;
+  background-color: var(--primary-color-900);
 }
-
-
 
 /* Style for select element */
 .modern_form select {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    font-size: 16px;
-    /* Additional styles for select */
-    background-color: #fff; /* Background color */
-    color: #333; /* Text color */
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  font-size: 16px;
+  /* Additional styles for select */
+  background-color: #fff; /* Background color */
+  color: #333; /* Text color */
 }
 
 /* Style for select arrow */
 .modern_form select::after {
-    content: "\25BC"; /* Unicode for down arrow */
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #333; /* Arrow color */
+  content: "\25BC"; /* Unicode for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #333; /* Arrow color */
 }
