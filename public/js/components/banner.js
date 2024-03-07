@@ -8,12 +8,18 @@ class Banner extends HTMLElement {
   }
 
   render() {
-    const customText =
-      this.getAttribute("custom-text") || "Default Banner Text";
+    let customText = this.getAttribute("custom-text") || "Default Banner Text";
     const label = this.getAttribute("label");
     const currentURL = window.location.href;
-    const lastSegment = currentURL.substring(currentURL.lastIndexOf("/") + 1);
+    let lastSegment = currentURL.substring(currentURL.lastIndexOf("/") + 1);
+
+    if (lastSegment.includes("?")) {
+      lastSegment = lastSegment.split("?")[0];
+    }
+    console.log(lastSegment);
+
     let isEventOrSchedule = false;
+    let isLoggedInCalendar = false;
     let eventLabel, scheduleLabel;
     let eventLink, scheduleLink;
 
@@ -28,6 +34,11 @@ class Banner extends HTMLElement {
         eventLink = `<a class="custom-link active" href="eventContainers.php">${eventLabel.trim()}</a>`;
         scheduleLink = `<a class="custom-link" href="schedule.php">${scheduleLabel.trim()}</a>`;
       }
+    } else if (lastSegment == "calendar.php" && label.length > 1) {
+      isLoggedInCalendar = true;
+      eventLink = `<a class="custom-link" href="eventContainers.php">Events</a>`;
+
+      scheduleLink = `<a class="custom-link active" href="#" onclick="window.location.reload()">Calendar</a>`;
     }
 
     this.innerHTML = `
@@ -73,7 +84,7 @@ class Banner extends HTMLElement {
       </style>
       <banner>
         ${
-          isEventOrSchedule
+          isEventOrSchedule || isLoggedInCalendar
             ? `<h3 id="bannerText">${eventLink} | ${scheduleLink}</h3>`
             : `<h3 id="bannerText">${customText}</h3>`
         }
