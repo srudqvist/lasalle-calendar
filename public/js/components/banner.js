@@ -16,7 +16,6 @@ class Banner extends HTMLElement {
     if (lastSegment.includes("?")) {
       lastSegment = lastSegment.split("?")[0];
     }
-    console.log(lastSegment);
 
     let isEventOrSchedule = false;
     let isLoggedInCalendar = false;
@@ -34,6 +33,15 @@ class Banner extends HTMLElement {
         eventLink = `<a class="custom-link active" href="eventContainers.php">${eventLabel.trim()}</a>`;
         scheduleLink = `<a class="custom-link" href="schedule.php">${scheduleLabel.trim()}</a>`;
       }
+    } else if (
+      lastSegment == "calendar.php" &&
+      label.length > 1 &&
+      customText == "User Details"
+    ) {
+      isLoggedInCalendar = true;
+      eventLink = `<a class="custom-link" href="eventContainers.php">Events</a>`;
+
+      scheduleLink = `<a class="custom-link active" href="#" onclick="window.location.reload()">User Details</a>`;
     } else if (lastSegment == "calendar.php" && label.length > 1) {
       isLoggedInCalendar = true;
       eventLink = `<a class="custom-link" href="eventContainers.php">Events</a>`;
@@ -100,6 +108,12 @@ class Banner extends HTMLElement {
         }
       </banner>
     `;
+  }
+  // Called when attributes are changed
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "custom-text") {
+      this.render(); // Update the banner when custom-text attribute changes
+    }
   }
 }
 
