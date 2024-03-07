@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const buttonID = event.target.id;
       const meetingRowToCancel = document.getElementById(`meeting${buttonID}`);
       if (meetingRowToCancel) {
-        openCancelModal(meetingRowToCancel);
+        openCancelModal(meetingRowToCancel, buttonID);
       }
     }
   });
 
-  function openCancelModal(meetingRowToCancel) {
+  function openCancelModal(meetingRowToCancel, meetingID) {
     const eventTitle = meetingRowToCancel
       .querySelector(".eventTitle-column")
       .innerText.trim();
@@ -46,8 +46,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeButton = document.getElementById("closeButton");
     if (confirmCancel) {
       confirmCancel.addEventListener("click", () => {
-        closeCancelModal();
-        meetingRowToCancel.remove();
+        const requestData = {
+          meetingID: meetingID,
+        };
+        fetch("../../includes/delete_meeting.php", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(requestData),
+        })
+          .then((response) => {
+            if (response.ok) {
+              // If the update was successful, remove the event container from the DOM
+              meetingRowToCancel.remove();
+            } else {
+              console.error(
+                "Error deleting event container:",
+                response.statusText,
+              );
+            }
+            closeCancelModal();
+          })
+          .catch((error) => {
+            console.error("Error deleting event container:", error);
+            closeCancelModal();
+          });
       });
     }
     if (closeButton) {
