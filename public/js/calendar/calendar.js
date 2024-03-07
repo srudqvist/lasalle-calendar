@@ -7,11 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarContent = document.getElementById("contentDiv");
   const nextButton = document.getElementById("nextButton");
   const backButton = document.getElementById("backButton");
+  const scheduleButton = document.getElementById("scheduleButton");
   const userDetails = document.getElementById("userDetailsDiv");
   const currentDate = new Date();
   const bannerComponent = document.querySelector("banner-component");
   let availableDays;
 
+  // Next button event listeners
+  nextButton.addEventListener("mouseover", () => scaleUpElement(nextButton));
+  nextButton.addEventListener("mouseleave", () =>
+    resetScaleElement(nextButton),
+  );
   nextButton.addEventListener("click", () => {
     userDetails.style.display = "flex";
     calendarContent.style.display = "none";
@@ -32,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const test = document.getElementById("date-time");
     test.innerText = `${time} ${month} ${date}, ${year}`;
   });
+
+  // Back button event listeners
   backButton.addEventListener("click", () => {
     userDetails.style.display = "none";
     calendarContent.style.display = "flex";
@@ -40,6 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
       bannerComponent.setAttribute("custom-text", "Calendar");
     }
   });
+  backButton.addEventListener("mouseover", () => scaleUpElement(backButton));
+  backButton.addEventListener("mouseleave", () =>
+    resetScaleElement(backButton),
+  );
+
+  // ScheduleButton event listeners
+  scheduleButton.addEventListener("mouseover", () =>
+    scaleUpElement(scheduleButton),
+  );
+  scheduleButton.addEventListener("mouseleave", () =>
+    resetScaleElement(scheduleButton),
+  );
 
   const timeContainer = document.getElementById("timeDiv");
   const calculateTimeSlots = (startTime, endTime, durationMinutes) => {
@@ -101,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const formattedTime = formatAMPM(buttonText);
         button.innerText = formattedTime;
       }
+      button.addEventListener("mouseover", () => scaleUpElement(button));
+      button.addEventListener("mouseleave", () => resetScaleElement(button));
 
       button.addEventListener("click", () => {
         highlightButton(buttonId);
@@ -206,6 +228,8 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             td.textContent = dayCounter;
             td.addEventListener("click", () => highlightDate(td));
+            td.addEventListener("mouseover", () => scaleUpElement(td));
+            td.addEventListener("mouseleave", () => resetScaleElement(td));
             dayCounter++;
           }
         }
@@ -218,6 +242,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calendarContainer.innerHTML = "";
     calendarContainer.appendChild(calendarTable);
+  }
+
+  function scaleUpElement(element) {
+    if (element.tagName === "TD") {
+      element.style.transform = "scale(1.2)";
+    } else {
+      element.style.transform = "scale(1.1)";
+    }
+    element.style.transition = "transform 0.1s ease";
+  }
+  function resetScaleElement(element) {
+    element.style.transform = "scale(1)";
+    element.style.transition = "transform 0.1s ease";
   }
 
   function highlightDate(element) {
@@ -337,6 +374,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     switchMonth(-1);
   });
+  prevMonthButton.addEventListener("mouseover", () =>
+    scaleUpElement(prevMonthButton),
+  );
+  prevMonthButton.addEventListener("mouseleave", () =>
+    resetScaleElement(prevMonthButton),
+  );
 
   const nextMonthButton = document.getElementById("nextMonth");
   nextMonthButton.addEventListener("click", () => {
@@ -346,12 +389,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     switchMonth(1);
   });
+  nextMonthButton.addEventListener("mouseover", () =>
+    scaleUpElement(nextMonthButton),
+  );
+  nextMonthButton.addEventListener("mouseleave", () =>
+    resetScaleElement(nextMonthButton),
+  );
 
   const prevYearButton = document.getElementById("prevYear");
   prevYearButton.addEventListener("click", () => switchYear(-1));
+  prevYearButton.addEventListener("mouseover", () =>
+    scaleUpElement(prevYearButton),
+  );
+  prevYearButton.addEventListener("mouseleave", () =>
+    resetScaleElement(prevYearButton),
+  );
 
   const nextYearButton = document.getElementById("nextYear");
   nextYearButton.addEventListener("click", () => switchYear(1));
+
+  nextYearButton.addEventListener("mouseover", () =>
+    scaleUpElement(nextYearButton),
+  );
+  nextYearButton.addEventListener("mouseleave", () =>
+    resetScaleElement(nextYearButton),
+  );
 
   // Set initial values for selectors
   selectYear.value = currentDate.getFullYear();
