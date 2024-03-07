@@ -226,26 +226,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventContainerToDelete = document.getElementById(containerNumber);
     deleteMessageModal.style.display = "block";
     deleteModalDeleteButton.addEventListener("click", () => {
-      // Create the object for making the HTTP request
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "../../includes/delete_event_container.php", true);
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          // If the update was successful, remove the event container from the DOM
-          if (eventContainersDiv.contains(eventContainerToDelete)) {
-            eventContainersDiv.removeChild(eventContainerToDelete);
+      // // Create the object for making the HTTP request
+      // const xhr = new XMLHttpRequest();
+      // xhr.open("POST", "../../includes/delete_event_container.php", true);
+      // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // xhr.onload = function () {
+      //   if (xhr.status === 200) {
+      //     // If the update was successful, remove the event container from the DOM
+      //     if (eventContainersDiv.contains(eventContainerToDelete)) {
+      //       eventContainersDiv.removeChild(eventContainerToDelete);
+      //     }
+      //   } else {
+      //     console.error("Error deleting event container:", xhr.statusText);
+      //   }
+      //   closeDeleteMessageModal();
+      // };
+      // xhr.onerror = function () {
+      //   console.error("Error deleting event container:", xhr.statusText);
+      //   closeDeleteMessageModal();
+      // };
+      // xhr.send(`event_container_id=${containerNumber}`);
+
+      fetch("../../includes/delete_event_container.php", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded",
+        },
+        body: `event_container_id=${containerNumber}`,
+      })
+        .then((response) => {
+          if (response.ok) {
+            // If the update was successful, remove the event container from the DOM
+            if (eventContainersDiv.contains(eventContainerToDelete)) {
+              eventContainersDiv.removeChild(eventContainerToDelete);
+            }
+          } else {
+            console.error(
+              "Error deleting event container:",
+              response.statusText,
+            );
           }
-        } else {
-          console.error("Error deleting event container:", xhr.statusText);
-        }
-        closeDeleteMessageModal();
-      };
-      xhr.onerror = function () {
-        console.error("Error deleting event container:", xhr.statusText);
-        closeDeleteMessageModal();
-      };
-      xhr.send(`event_container_id=${containerNumber}`);
+          closeDeleteMessageModal();
+        })
+        .catch((error) => {
+          console.error("Error deleting event container:", error);
+          closeDeleteMessageModal();
+        });
     });
 
     deleteModalCancelButton.addEventListener("click", () => {
