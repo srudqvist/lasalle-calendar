@@ -1,3 +1,5 @@
+import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const addEventButton = document.getElementById("addEventContainer");
   const eventContainersDiv = document.getElementById("eventContainers");
@@ -8,9 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
     "eventContainerModalForm",
   );
 
+  const allButtons = document.getElementsByTagName("BUTTON");
   let containerIndex = highestContainerId + 1;
   let editing = false;
   let editContainerIndex = 0;
+
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].addEventListener("mouseover", () =>
+      scaleUpElement(allButtons[i]),
+    );
+    allButtons[i].addEventListener("mouseleave", () =>
+      resetScaleElement(allButtons[i]),
+    );
+  }
 
   addEventButton.addEventListener("click", () => {
     openAddEventContainerModal("Create New Container");

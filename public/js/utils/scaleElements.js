@@ -1,8 +1,8 @@
-function scaleUpElement(element) {
+function scaleUpElement(element, scaleFactor = 1.1) {
   if (element.tagName === "TD") {
     element.style.transform = "scale(1.2)";
   } else {
-    element.style.transform = "scale(1.1)";
+    element.style.transform = `scale(${scaleFactor})`;
   }
   element.style.transition = "transform 0.1s ease";
 }

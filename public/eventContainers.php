@@ -16,7 +16,7 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="./css/eventContainer.css">
     <link rel="stylesheet" href="./css/modal.css">
-    <script src="./js/handleEventContainers.js"></script>
+    <script src="./js/handleEventContainers.js" type="module"></script>
     <script src="./js/components/banner.js" defer></script>
     <title>Event Containers</title>
 </head>
