@@ -13,7 +13,8 @@ body {
   margin-bottom: 50vh;
 }
 
-#meetingDetailsDiv2 {
+#meetingDetailsDiv2,
+#meetingDetailsDiv3 {
   width: 40%;
   padding: 5rem;
   height: 100%;
@@ -33,7 +34,8 @@ h1 {
   text-align: center;
 }
 
-#meetingDetailsDiv2 label {
+#meetingDetailsDiv2 label,
+#meetingDetailsDiv3 label {
   display: block;
   margin-bottom: 5px;
   height: 1.5em;

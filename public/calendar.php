@@ -19,6 +19,7 @@ session_start();
     <script src="./js/calendar/calendar.js" type="module"></script>
     <script src="./js/calendar/submitDetails.js"></script>
     <script src="./js/components/banner.js" defer></script>
+    <script src="./js/utils/movingCard.js" defer></script>
     <title>Calendar</title>
   </head>
 
@@ -31,8 +32,8 @@ session_start();
         <banner-component custom-text="Calendar" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
         </banner-component>
         <div id="contentDiv">
-          <div id="meetingDetailsDiv">
-            <div class="card">
+          <div id="meetingDetailsDiv" class="preserve-3d-container">
+            <div class="card moving-card">
               <h1>Meeting Details</h1>
               <div class="details-container">
                 <div class="label-column">
@@ -78,7 +79,7 @@ session_start();
         <div id="userDetailsDiv">
 
           <div id="meetingDetailsDiv2">
-            <div class="card">
+            <div class="card moving-card">
               <h1>Meeting Details</h1>
               <div class="details-container">
                 <div class="label-column">
@@ -96,7 +97,7 @@ session_start();
               </div>
             </div>
           </div>
-          <div id="meetingDetailsDiv2">
+          <div id="meetingDetailsDiv3">
             <form id="scheduleMeetingForm">
               <div class="card">
                 <div class="details-container">
