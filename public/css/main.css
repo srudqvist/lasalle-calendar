@@ -76,3 +76,11 @@ body {
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
 }
+
+.moving-card {
+  transition: transform 0.3s ease;
+}
+.preserve-3d-container {
+  perspective: 1000px; /* Adjust perspective value as needed */
+  transform-style: preserve-3d; /* Maintain crispness of child elements */
+}
