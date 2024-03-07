@@ -1,3 +1,4 @@
+import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
 document.addEventListener("DOMContentLoaded", function () {
   const cancelButtons = document.getElementsByClassName("cancel-button");
   const deleteScheduleModal = document.getElementById("scheduleModal");
@@ -8,6 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalName = document.getElementById("name");
   const modalEmail = document.getElementById("email");
 
+  for (let i = 0; i < cancelButtons.length; i++) {
+    cancelButtons[i].addEventListener("mouseover", () =>
+      scaleUpElement(cancelButtons[i]),
+    );
+    cancelButtons[i].addEventListener("mouseleave", () =>
+      resetScaleElement(cancelButtons[i]),
+    );
+  }
   scheduleTable.addEventListener("click", (event) => {
     if (event.target.classList.contains("cancel-button")) {
       const buttonID = event.target.id;
