@@ -19,18 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
     resetScaleElement(nextButton),
   );
   nextButton.addEventListener("click", () => {
-    userDetails.style.display = "flex";
-    calendarContent.style.display = "none";
     if (bannerComponent) {
-      const customText = bannerComponent.getAttribute("custom-text");
       bannerComponent.setAttribute("custom-text", "User Details");
-      const h3Element = bannerComponent.querySelector("h3");
-      if (h3Element) {
-        h3Element.innerText = "User Details";
-      }
+      bannerComponent.connectedCallback();
     } else {
       console.log("banner not found");
     }
+    userDetails.style.display = "flex";
+    calendarContent.style.display = "none";
     const year = document.getElementById("currentYear").innerText;
     const month = document.getElementById("currentMonth").innerText;
     const date = document.getElementsByClassName("selected-date")[0].innerHTML;
@@ -41,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Back button event listeners
   backButton.addEventListener("click", () => {
+    if (bannerComponent) {
+      bannerComponent.setAttribute("custom-text", "Calendar");
+      bannerComponent.connectedCallback();
+    }
     userDetails.style.display = "none";
     calendarContent.style.display = "flex";
-    if (bannerComponent) {
-      const customText = bannerComponent.getAttribute("custom-text");
-      bannerComponent.setAttribute("custom-text", "Calendar");
-    }
   });
   backButton.addEventListener("mouseover", () => scaleUpElement(backButton));
   backButton.addEventListener("mouseleave", () =>
