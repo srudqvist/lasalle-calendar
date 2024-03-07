@@ -8,15 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalMeetingTime = document.getElementById("meetingTime");
   const modalName = document.getElementById("name");
   const modalEmail = document.getElementById("email");
+  const allButtons = document.getElementsByTagName("BUTTON");
+  const sendEmailCheckbox = document.getElementById("myCheckbox");
 
-  for (let i = 0; i < cancelButtons.length; i++) {
-    cancelButtons[i].addEventListener("mouseover", () =>
-      scaleUpElement(cancelButtons[i]),
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].addEventListener("mouseover", () =>
+      scaleUpElement(allButtons[i]),
     );
-    cancelButtons[i].addEventListener("mouseleave", () =>
-      resetScaleElement(cancelButtons[i]),
+    allButtons[i].addEventListener("mouseleave", () =>
+      resetScaleElement(allButtons[i]),
     );
   }
+
+  sendEmailCheckbox.addEventListener("mouseover", () =>
+    scaleUpElement(sendEmailCheckbox),
+  );
+  sendEmailCheckbox.addEventListener("mouseleave", () =>
+    resetScaleElement(sendEmailCheckbox),
+  );
+
   scheduleTable.addEventListener("click", (event) => {
     if (event.target.classList.contains("cancel-button")) {
       const buttonID = event.target.id;
