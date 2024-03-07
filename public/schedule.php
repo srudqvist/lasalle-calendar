@@ -69,6 +69,6 @@ if (!isset($_SESSION['loggedin'])) {
     <div id="footerDiv">
       <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
     </div>
-    <script src="./js/schedule.js" defer></script>
+    <script src="./js/schedule.js" type="module" defer></script>
   </body>
 </html>
