@@ -86,3 +86,11 @@ body {
   perspective: 1000px; /* Adjust perspective value as needed */
   transform-style: preserve-3d; /* Maintain crispness of child elements */
 }
+
+.generic-input {
+  padding: 15px;
+  border: none;
+  border-radius: var(--input-border-radius);
+  box-shadow: var(--input-shadow);
+  box-sizing: border-box;
+}
