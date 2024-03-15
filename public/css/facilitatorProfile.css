@@ -66,3 +66,7 @@
   background-color: var(--primary-btn-hover-color);
   cursor: pointer;
 }
+
+#errorDiv {
+  color: var(--error-color-500);
+}

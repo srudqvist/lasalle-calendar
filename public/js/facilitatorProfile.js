@@ -26,13 +26,26 @@ function displayUserInformation(currentDiv) {
 function displayEditUserInformation(currentDiv) {
   console.log(currentDiv);
   const primaryEmailSpan = currentDiv.querySelector("#primaryEmail");
-  const primaryEmail = primaryEmailSpan.textContent;
-  const primaryEmailInputField = createInputField(primaryEmail, "email");
-  primaryEmailSpan.parentNode.replaceChild(
-    primaryEmailInputField,
-    primaryEmailSpan,
-  );
-  currentDiv.appendChild(displayButtons());
+  let primaryEmail;
+  if (primaryEmailSpan) {
+    primaryEmail = primaryEmailSpan.textContent;
+    console.log(primaryEmail);
+    const primaryEmailInputField = createInputField(primaryEmail, "email");
+    primaryEmailSpan.parentNode.replaceChild(
+      primaryEmailInputField,
+      primaryEmailSpan,
+    );
+    currentDiv.appendChild(displayButtons());
+  } else {
+    const parent = currentDiv.parentNode;
+    parent.insertBefore(displayErrorMessage(), parent.firstChild);
+    console.log("No primary email element");
+  }
+}
+
+function hideEditElements() {
+  const buttonDiv = document.getElementById("buttonDiv");
+  buttonDiv.parentNode.removeChild(buttonDiv);
 }
 
 function createInputField(text, inputType) {
@@ -50,6 +63,7 @@ function createButtons() {
   cancelButton.innerHTML = "Cancel";
   cancelButton.classList.add("cancel-button");
   cancelButton.addEventListener("click", () => {
+    hideEditElements();
     console.log("Cancel Button Clicked");
   });
 
@@ -78,6 +92,16 @@ function displayButtons() {
   }
 
   return buttonDiv;
+}
+
+function displayErrorMessage() {
+  const errorMessage = document.createElement("p");
+  errorMessage.innerText = "Something Went Wrong";
+  const errorDiv = document.createElement("div");
+  errorDiv.setAttribute("id", "errorDiv");
+  errorDiv.appendChild(errorMessage);
+
+  return errorDiv;
 }
 
 function fetchUserInformation() {
