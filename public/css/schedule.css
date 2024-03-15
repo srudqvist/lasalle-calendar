@@ -1,7 +1,6 @@
-main {
-  min-height: 100vh;
+#scheduledTableDiv {
+  margin: 10px 0px 10px 0px;
 }
-
 table {
   margin-top: 10px;
   border-collapse: collapse;

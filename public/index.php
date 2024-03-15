@@ -46,7 +46,9 @@ session_start();
         </form>
       </div>
     </main>
-    <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
+    <div id="footerDiv"
+      <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
+    </div>
   </body>
 
 </html>

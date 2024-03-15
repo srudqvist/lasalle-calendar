@@ -1,6 +1,10 @@
+#footerDiv {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
 .footer {
-  position: absolute;
-  left: 0;
   height: 80px;
   width: 100%;
   background-color: var(--primary-color);

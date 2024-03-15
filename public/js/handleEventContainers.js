@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const closeIcon = document.getElementsByClassName("close")[0];
   const allButtons = document.getElementsByTagName("BUTTON");
-  let containerIndex = highestContainerId + 1;
   let editing = false;
   let editContainerIndex = 0;
 
