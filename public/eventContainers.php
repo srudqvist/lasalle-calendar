@@ -151,17 +151,14 @@ if (!isset($_SESSION['loggedin'])) {
         </div> <!-- deleteMessageModal close -->
 
     </main>
-    <div id="footerDiv" class="footer">
-      <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
-    </div>
       <?php
       // Include the PHP script to retrieve event containers
       include '../includes/getEventContainerMaxID.php';
 ?>
+    <div id="footerDiv">
+      <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
+    </div>
 <!-- Output the highest container ID as a JavaScript variable -->
-<script>
-  const highestContainerId = <?php echo $highestId; ?>;
-</script>
   </body>
 
 </html>

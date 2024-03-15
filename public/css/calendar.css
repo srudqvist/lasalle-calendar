@@ -10,7 +10,6 @@ body {
 
 #meetingDetailsDiv {
   padding: 20px;
-  margin-bottom: 50vh;
 }
 
 #meetingDetailsDiv2,
@@ -21,7 +20,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin-bottom: 50vh;
 }
 
 #meetingDetailsDiv label {
@@ -68,12 +66,10 @@ h1 {
 
 #calendarDiv {
   padding: 20px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50vh;
 }
 #userDetailsDiv {
   display: none;
@@ -167,7 +163,6 @@ select {
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  margin-bottom: 50vh;
   height: auto;
   max-height: 40rem;
 }

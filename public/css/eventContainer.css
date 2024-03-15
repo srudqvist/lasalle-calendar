@@ -2,10 +2,9 @@
   display: flex;
   flex-wrap: wrap;
 }
-
-main {
-  min-height: 100vh;
-}
+/* main { */
+/*   min-height: 100vh; */
+/* } */
 
 #addEventContainer {
   float: right;

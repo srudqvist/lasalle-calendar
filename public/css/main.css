@@ -50,6 +50,9 @@
 
 body {
   margin: 0px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 .center_content {
   display: flex;
@@ -63,7 +66,6 @@ body {
 .flex-wrap {
   display: flex;
   position: relative;
-  min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
 }
