@@ -1,3 +1,40 @@
+#contentDiv {
+  display: flex;
+  flex-direction: column;
+}
 .card {
   width: 50%;
+  margin: 2rem 0rem 0rem 2rem;
+  padding-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+#headRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#userDetailsDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#editButton {
+  transform: scale(1.5);
+}
+
+#editButton {
+  border: none;
+  background-color: var(--card-color);
+  height: fit-content;
+}
+
+#editButton:hover {
+  transform: scale(2);
+  cursor: pointer;
 }

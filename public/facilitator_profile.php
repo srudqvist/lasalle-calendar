@@ -23,20 +23,38 @@ if (!isset($_SESSION['loggedin'])) {
   </head>
 
   <body>
-        <div id="navbarDiv">
-          <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
-        </div>
-        <banner-component custom-text="Profile Page" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
-        </banner-component>
-      <h1>Profile Page</h1>
-      <div id="contentDiv">
+    <div id="navbarDiv">
+      <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
+    </div>
+    <banner-component custom-text="Profile Page" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
+    </banner-component>
+    <h1>Settings</h1>
+    <div id="contentDiv" class="center_content">
       <div class="card">
-        <h3>Settings</h3>
+        <div id="headRow">
+          <h3>User Information</h3>
+        <button id="editButton"><span>&#9998;</span></button>
         </div>
+        <div id="userDetailsDiv">
+        <label>Primary Email:</label>
+        <span id="primaryEmail"></span>
+        <label>Secondary Email:</label>
+        <span id="secondaryEmail"></span>
+        <label>Password:</label>
+        <span id="password"></span>
+</div>
+      </div>
+      <div class="card">
+        <h3>Preferences</h3>
 
       </div>
-        <div id="footerDiv">
-          <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
-        </div>
+      <div class="card">
+        <h3>Other</h3>
+      </div>
+
+    </div>
+    <div id="footerDiv">
+      <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
+    </div>
   </body>
 </html>
