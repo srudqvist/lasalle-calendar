@@ -5,8 +5,8 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: index.php');
-    exit;
+header('Location: index.php');
+exit;
 }
 ?>
 <html lang="en">
@@ -16,7 +16,7 @@ if (!isset($_SESSION['loggedin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/facilitatorProfile.css">
-    <!--<script src="./js/calendar/calendar.js" type="module"></script>-->
+    <script src="./js/facilitatorProfile.js" type="module"></script>
     <script src="./js/components/banner.js" defer></script>
     <script src="./js/utils/movingCard.js" defer></script>
     <title>Profile</title>
@@ -30,19 +30,19 @@ if (!isset($_SESSION['loggedin'])) {
     </banner-component>
     <h1>Settings</h1>
     <div id="contentDiv" class="center_content">
-      <div class="card">
+      <div id="userInformationDiv" class="card">
         <div id="headRow">
           <h3>User Information</h3>
-        <button id="editButton"><span>&#9998;</span></button>
+          <button id="editButton"><span>&#9998;</span></button>
         </div>
         <div id="userDetailsDiv">
-        <label>Primary Email:</label>
-        <span id="primaryEmail"></span>
-        <label>Secondary Email:</label>
-        <span id="secondaryEmail"></span>
-        <label>Password:</label>
-        <span id="password"></span>
-</div>
+          <label>Primary Email:</label>
+          <span id="primaryEmail">testemail@email.com</span>
+          <label>Secondary Email:</label>
+          <span id="secondaryEmail">otheremail@email.com</span>
+          <label>Password:</label>
+          <span id="password"></span>
+        </div>
       </div>
       <div class="card">
         <h3>Preferences</h3>

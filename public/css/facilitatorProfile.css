@@ -38,3 +38,31 @@
   transform: scale(2);
   cursor: pointer;
 }
+
+.cancel-button {
+  background-color: var(--error-color-600);
+  color: var(--on-primary);
+  padding: 8px 40px;
+  border-radius: var(--button-border-radius);
+  border: none;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: var(--error-color);
+}
+
+.save-button {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  padding: 8px 40px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: var(--button-shadow);
+}
+
+.save-button:hover {
+  background-color: var(--primary-btn-hover-color);
+  cursor: pointer;
+}
