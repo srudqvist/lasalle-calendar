@@ -19,8 +19,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function displayUserInformation(currentDiv) {
-  // TODO: fetch the user information and display it.
+async function displayUserInformation(currentDiv) {
+  try {
+    const userData = await fetchUserInformation();
+
+    if (!userData) {
+      console.log("No user data available");
+      return;
+    }
+
+    console.log(`Data: ${userData.user_id}`);
+  } catch (error) {
+    console.log(`Error fetching the user information: ${error}`);
+  }
 }
 
 function displayEditUserInformation(currentDiv) {
@@ -104,6 +115,36 @@ function displayErrorMessage() {
   return errorDiv;
 }
 
-function fetchUserInformation() {
+async function fetchUserInformation() {
   // Todo: fetch the user information.
+  try {
+    const requestData = {};
+    const url = "../../../includes/get_profile_info.php";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
+
+    if (!response.ok) {
+      console.log(response);
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (data["success"] === false) {
+      return null;
+    }
+
+    // Return the user data
+    return data["data"];
+
+    // Handle the response data as needed
+  } catch (error) {
+    // Handle errors
+    console.log(`Error in facilitatorProfile: ${error}`);
+    return [];
+  }
 }
