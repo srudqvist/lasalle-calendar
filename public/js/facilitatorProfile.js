@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const userInformationDiv = document.getElementById("userInformationDiv");
   const resetPasswordButton = document.getElementById("resetPasswordButton");
   const userData = await fetchUserInformation();
+  let editDisabled = false;
   let editing = false;
 
   if (userInformationDiv) {
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (editUserInformationButton) {
     editUserInformationButton.addEventListener("click", () => {
-      if (userInformationDiv && !editing) {
+      if (userInformationDiv && !editing && !editDisabled) {
         editing = true;
         displayEditUserInformation(userInformationDiv);
       } else {
@@ -53,16 +54,35 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
+      const contentDiv = document.getElementById("contentDiv");
       const primaryEmailSpan = document.getElementById("primaryEmail");
       const secondaryEmailSpan = document.getElementById("secondaryEmail");
+      const facilitySpan = document.getElementById("facility");
       const phoneSpan = document.getElementById("phone");
 
       const resetPasswordButton = document.createElement("button");
       resetPasswordButton.innerText = "Reset Password";
 
       if (userData.email) {
-        primaryEmailSpan.innerText = userData.email;
+        if (userData.email.length < 3) {
+          editDisabled = true;
+          contentDiv.insertBefore(
+            displayErrorMessage(
+              "Primary Email value incorrect, Please contact your systems administrator",
+            ),
+            contentDiv.firstChild,
+          );
+        } else {
+          primaryEmailSpan.innerText = userData.email;
+        }
       } else {
+        editDisabled = true;
+        contentDiv.insertBefore(
+          displayErrorMessage(
+            "Primary Email missing, Please contact your systems administrator",
+          ),
+          contentDiv.firstChild,
+        );
         primaryEmailSpan.innerText = "This should never happen";
       }
 
@@ -70,6 +90,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         secondaryEmailSpan.innerText = userData.secondary_email;
       } else {
         secondaryEmailSpan.innerText = "Add a secondary email";
+      }
+
+      if (userData.facility) {
+        if (userData.facility.lenght < 2) {
+          editDisabled = true;
+          contentDiv.insertBefore(
+            displayErrorMessage(
+              "Incorrect facility value, Please contact your systems administrator",
+            ),
+            contentDiv.firstChild,
+          );
+        } else {
+          facilitySpan.innerText = userData.facility;
+        }
+      } else {
+        editDisabled = true;
+        contentDiv.insertBefore(
+          displayErrorMessage(
+            "Facility missing, Please contact your systems administrator",
+          ),
+          contentDiv.firstChild,
+        );
+        facilitySpan.innerText =
+          "Facility information missing, please contact your administrator";
       }
 
       if (userData.phone) {
@@ -85,21 +129,85 @@ document.addEventListener("DOMContentLoaded", async () => {
   function displayEditUserInformation(currentDiv) {
     console.log(currentDiv);
     const primaryEmailSpan = currentDiv.querySelector("#primaryEmail");
+    const secondaryEmailSpan = currentDiv.querySelector("#secondaryEmail");
+    const phoneSpan = currentDiv.querySelector("#phone");
+
     let primaryEmail;
+    let secondaryEmail;
+    let phone;
+
     if (primaryEmailSpan) {
       primaryEmail = primaryEmailSpan.textContent;
       console.log(primaryEmail);
       const primaryEmailInputField = createInputField(primaryEmail, "email");
+      primaryEmailInputField.required = true;
       primaryEmailSpan.parentNode.replaceChild(
         primaryEmailInputField,
         primaryEmailSpan,
       );
-      currentDiv.appendChild(displayButtons());
     } else {
       const parent = currentDiv.parentNode;
-      parent.insertBefore(displayErrorMessage(), parent.firstChild);
+      parent.insertBefore(
+        displayErrorMessage(
+          "Primary Email missing, Please contact your systems administrator",
+        ),
+        parent.firstChild,
+      );
       console.log("No primary email element");
     }
+
+    if (secondaryEmailSpan) {
+      secondaryEmail = secondaryEmailSpan.textContent;
+      if (secondaryEmail.startsWith("Add ")) {
+        secondaryEmail = "";
+      }
+      const secondaryEmailInputField = createInputField(
+        secondaryEmail,
+        "email",
+      );
+      secondaryEmailSpan.parentNode.replaceChild(
+        secondaryEmailInputField,
+        secondaryEmailSpan,
+      );
+    }
+
+    if (phoneSpan) {
+      phone = phoneSpan.textContent;
+      console.log(phoneSpan);
+      const phoneInputField = createInputField(phone, "tel");
+      phoneInputField.required = true;
+
+      phoneInputField.addEventListener("input", function (event) {
+        const isBackspace = event.inputType === "deleteContentBackward";
+        if (!isBackspace) {
+          let inputValue = event.target.value.replace(/\D/g, "");
+          if (inputValue.length > 0) {
+            inputValue =
+              "(" + inputValue.substring(0, 3) + ") " + inputValue.substring(3);
+          }
+          if (inputValue.length > 8) {
+            inputValue =
+              inputValue.substring(0, 9) + "-" + inputValue.substring(9);
+          }
+          if (inputValue.length > 14) {
+            inputValue = inputValue.substring(0, 14);
+          }
+          event.target.value = inputValue;
+        }
+      });
+
+      phoneSpan.parentNode.replaceChild(phoneInputField, phoneSpan);
+    } else {
+      const parent = currentDiv.parentNode;
+      parent.insertBefore(
+        displayErrorMessage(
+          "Phone Number missing, Please contact your systems administrator",
+        ),
+        parent.firstChild,
+      );
+      console.log("Phone number missing");
+    }
+    currentDiv.appendChild(displayButtons());
   }
 
   function hideEditElements() {
@@ -154,9 +262,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     return buttonDiv;
   }
 
-  function displayErrorMessage() {
+  function displayErrorMessage(message) {
     const errorMessage = document.createElement("p");
-    errorMessage.innerText = "Something Went Wrong";
+    errorMessage.innerText = message;
     const errorDiv = document.createElement("div");
     errorDiv.setAttribute("id", "errorDiv");
     errorDiv.appendChild(errorMessage);
