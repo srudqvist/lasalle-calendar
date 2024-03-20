@@ -1,3 +1,4 @@
+import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
 document.addEventListener("DOMContentLoaded", async () => {
   let originalUserDetailsDiv; // Variable to store the original state of userInformationDiv
   const editUserInformationButton = document.getElementById("editButton");
@@ -6,6 +7,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   const userData = await fetchUserInformation();
   let editDisabled = false;
   let editing = false;
+
+  const allButtons = document.getElementsByTagName("BUTTON");
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].addEventListener("mouseover", () =>
+      scaleUpElement(allButtons[i]),
+    );
+    allButtons[i].addEventListener("mouseleave", () =>
+      resetScaleElement(allButtons[i]),
+    );
+  }
 
   if (userInformationDiv) {
     displayUserInformation(userData);
@@ -256,6 +267,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const buttons = createButtons();
 
     for (const button of buttons) {
+      button.addEventListener("mouseover", () => scaleUpElement(button));
+      button.addEventListener("mouseleave", () => resetScaleElement(button));
       buttonDiv.appendChild(button);
     }
 

@@ -5,7 +5,6 @@
 .card {
   width: 50%;
   margin: 2rem 0rem 0rem 2rem;
-  padding-bottom: 2rem;
   transition: transform 0.3s ease;
 }
 
@@ -24,6 +23,19 @@
   flex-direction: column;
 }
 
+#userDetailsDiv label {
+  margin-bottom: 1px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--text-color-black);
+}
+
+#userDetailsDiv input {
+  margin-bottom: 1px;
+  margin-top: 10px;
+  color: var(--text-color-black);
+}
+
 #editButton {
   transform: scale(1.5);
 }
@@ -39,6 +51,24 @@
   cursor: pointer;
 }
 
+#resetPasswordButton {
+  color: var(--on-primary);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--button-shadow);
+  padding: 8px 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#resetPasswordButton:hover {
+  background-color: var(--primary-btn-hover-color);
+}
+
+#buttonDiv {
+  margin-top: 10px;
+}
 .cancel-button {
   background-color: var(--error-color-600);
   color: var(--on-primary);
