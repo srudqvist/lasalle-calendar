@@ -63,7 +63,7 @@ function getUserData($userId)
             exit;
         }
         // Prepare SQL statement to fetch user data
-        $sql = "SELECT facility, email, first_name, last_name, phone FROM users WHERE user_id = ?";
+        $sql = "SELECT facility, email, secondary_email, first_name, last_name, facility, phone FROM users WHERE user_id = ?";
 
         // Prepare and bind parameters
         $stmt = $conn->prepare($sql);
