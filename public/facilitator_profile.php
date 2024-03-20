@@ -5,8 +5,8 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-header('Location: index.php');
-exit;
+    header('Location: index.php');
+    exit;
 }
 ?>
 <html lang="en">
@@ -37,11 +37,16 @@ exit;
         </div>
         <div id="userDetailsDiv">
           <label>Primary Email:</label>
-          <span id="primaryEmail">testemail@email.com</span>
+          <span id="primaryEmail"></span>
           <label>Secondary Email:</label>
-          <span id="secondaryEmail">otheremail@email.com</span>
-          <label>Password:</label>
-          <span id="password"></span>
+          <span id="secondaryEmail"></span>
+          <label>Facility:</label>
+          <span id="facility"></span>
+          <label>Phone:</label>
+          <span id="phone"></span>
+          <div id="passwordDiv">
+            <button id="resetPasswordButton">Reset Password</button>
+          </div>
         </div>
       </div>
       <div class="card">
