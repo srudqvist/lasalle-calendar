@@ -8,15 +8,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   let editDisabled = false;
   let editing = false;
 
-  const allButtons = document.getElementsByTagName("BUTTON");
-  for (let i = 0; i < allButtons.length; i++) {
-    allButtons[i].addEventListener("mouseover", () =>
-      scaleUpElement(allButtons[i]),
-    );
-    allButtons[i].addEventListener("mouseleave", () =>
-      resetScaleElement(allButtons[i]),
-    );
-  }
+  resetPasswordButton.addEventListener("mouseover", () =>
+    scaleUpElement(resetPasswordButton),
+  );
+  resetPasswordButton.addEventListener("mouseleave", () =>
+    resetScaleElement(resetPasswordButton),
+  );
 
   if (userInformationDiv) {
     displayUserInformation(userData);
@@ -66,6 +63,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       const contentDiv = document.getElementById("contentDiv");
+      const firstNameSpan = document.getElementById("firstName");
+      const lastNameSpan = document.getElementById("lastName");
       const primaryEmailSpan = document.getElementById("primaryEmail");
       const secondaryEmailSpan = document.getElementById("secondaryEmail");
       const facilitySpan = document.getElementById("facility");
@@ -73,6 +72,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const resetPasswordButton = document.createElement("button");
       resetPasswordButton.innerText = "Reset Password";
+
+      if (userData.first_name) {
+        firstNameSpan.innerText = userData.first_name;
+      }
+
+      if (userData.last_name) {
+        lastNameSpan.innerText = userData.last_name;
+      }
 
       if (userData.email) {
         if (userData.email.length < 3) {
@@ -139,18 +146,60 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function displayEditUserInformation(currentDiv) {
     console.log(currentDiv);
+
+    const firstNameSpan = currentDiv.querySelector("#firstName");
+    const lastNameSpan = currentDiv.querySelector("#lastName");
     const primaryEmailSpan = currentDiv.querySelector("#primaryEmail");
     const secondaryEmailSpan = currentDiv.querySelector("#secondaryEmail");
     const phoneSpan = currentDiv.querySelector("#phone");
 
+    let firstName;
+    let lastName;
     let primaryEmail;
     let secondaryEmail;
     let phone;
+
+    if (firstNameSpan) {
+      firstName = firstNameSpan.textContent;
+      console.log(firstName);
+      const firstNameInputField = createInputField(firstName, "text");
+      firstNameInputField.id = "firstName";
+      firstNameInputField.required = true;
+      firstNameSpan.parentNode.replaceChild(firstNameInputField, firstNameSpan);
+    } else {
+      const parent = currentDiv.parentNode;
+      parent.insertBefore(
+        displayErrorMessage(
+          "First Name missing, Please contact your systems administrator",
+        ),
+        parent.firstChild,
+      );
+      console.log("No first name element");
+    }
+
+    if (lastNameSpan) {
+      lastName = lastNameSpan.textContent;
+      console.log(lastName);
+      const lastNameInputField = createInputField(lastName, "text");
+      lastNameInputField.id = "lastName";
+      lastNameInputField.required = true;
+      lastNameSpan.parentNode.replaceChild(lastNameInputField, lastNameSpan);
+    } else {
+      const parent = currentDiv.parentNode;
+      parent.insertBefore(
+        displayErrorMessage(
+          "Last Name missing, Please contact your systems administrator",
+        ),
+        parent.firstChild,
+      );
+      console.log("No last name element");
+    }
 
     if (primaryEmailSpan) {
       primaryEmail = primaryEmailSpan.textContent;
       console.log(primaryEmail);
       const primaryEmailInputField = createInputField(primaryEmail, "email");
+      primaryEmailInputField.id = "primaryEmail";
       primaryEmailInputField.required = true;
       primaryEmailSpan.parentNode.replaceChild(
         primaryEmailInputField,
@@ -176,6 +225,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         secondaryEmail,
         "email",
       );
+      secondaryEmailInputField.id = "secondaryEmail";
       secondaryEmailSpan.parentNode.replaceChild(
         secondaryEmailInputField,
         secondaryEmailSpan,
@@ -186,6 +236,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       phone = phoneSpan.textContent;
       console.log(phoneSpan);
       const phoneInputField = createInputField(phone, "tel");
+      phoneInputField.id = "phone";
       phoneInputField.required = true;
 
       phoneInputField.addEventListener("input", function (event) {
@@ -251,6 +302,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     saveButton.classList.add("save-button");
     saveButton.addEventListener("click", () => {
       console.log("Save Button Clicked");
+      if (validateInputs()) {
+        const inputData = getInputData();
+        saveEdits(inputData);
+      } else {
+        console.log("Validation Failed");
+      }
     });
 
     buttons.push(cancelButton);
@@ -275,16 +332,62 @@ document.addEventListener("DOMContentLoaded", async () => {
     return buttonDiv;
   }
 
-  function displayErrorMessage(message) {
-    const errorMessage = document.createElement("p");
-    errorMessage.innerText = message;
-    const errorDiv = document.createElement("div");
-    errorDiv.setAttribute("id", "errorDiv");
-    errorDiv.appendChild(errorMessage);
+  function validateInputs() {
+    const primaryEmailInput = document.querySelector("#primaryEmail");
+    console.log(primaryEmailInput);
+    const phoneInput = document.querySelector("#phone");
 
-    return errorDiv;
+    // Validate primary email
+    if (primaryEmailInput && !validateEmail(primaryEmailInput.value)) {
+      return false;
+    }
+
+    // Validate phone number
+    if (phoneInput && !validatePhoneNumber(phoneInput.value)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function validateEmail(email) {
+    // Email validation logic
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validatePhoneNumber(phone) {
+    // Phone number validation logic
+    return /^\(\d{3}\) \d{3}-\d{4}$/.test(phone);
+  }
+
+  function getInputData() {
+    const firstNameInput = document.querySelector("#firstName");
+    const lastNameInput = document.querySelector("#lastName");
+    const primaryEmailInput = document.querySelector("#primaryEmail");
+    const secondaryEmailInput = document.querySelector("#secondaryEmail");
+    const phoneInput = document.querySelector("#phone");
+
+    console.log(primaryEmailInput.value);
+
+    return {
+      firstName: firstNameInput ? firstNameInput.value : "",
+      lastName: lastNameInput ? lastNameInput.value : "",
+      primaryEmail: primaryEmailInput ? primaryEmailInput.value : "",
+      secondaryEmail: secondaryEmailInput ? secondaryEmailInput.value : "",
+      phone: phoneInput ? phoneInput.value : "",
+    };
   }
 });
+
+function displayErrorMessage(message) {
+  const errorMessage = document.createElement("p");
+  errorMessage.innerText = message;
+  const errorDiv = document.createElement("div");
+  errorDiv.setAttribute("id", "errorDiv");
+  errorDiv.appendChild(errorMessage);
+
+  return errorDiv;
+}
 
 async function fetchUserInformation() {
   // Todo: fetch the user information.
@@ -317,5 +420,45 @@ async function fetchUserInformation() {
     // Handle errors
     console.log(`Error in facilitatorProfile: ${error}`);
     return [];
+  }
+}
+
+async function saveEdits(data) {
+  console.log(`Data: ${JSON.stringify(data)}`);
+  const requestData = data;
+  if (!requestData) {
+    const contentDiv = document.getElementById("contentDiv");
+    contentDiv.insertBefore(
+      displayErrorMessage(
+        "Something Went Wrong, Please contact your systems administrator.",
+      ),
+      contentDiv.firstChild,
+    );
+    return null;
+  }
+  try {
+    const url = "../../includes/facilitator_profile/save_user_info.php";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
+
+    if (!response.ok) {
+      console.log("Response NOT OK");
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const responseData = await response.json();
+    if (responseData["success"] === false) {
+      return null;
+    }
+
+    // Return the user data
+    console.log(responseData);
+    return responseData["message"];
+  } catch (error) {
+    console.log(error);
   }
 }
