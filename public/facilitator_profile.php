@@ -36,6 +36,10 @@ if (!isset($_SESSION['loggedin'])) {
           <button id="editButton"><span>&#9998;</span></button>
         </div>
         <div id="userDetailsDiv">
+          <label>First Name:</label>
+          <span id="firstName"></span>
+          <label>Last Name:</label>
+          <span id="lastName"></span>
           <label>Primary Email:</label>
           <span id="primaryEmail"></span>
           <label>Secondary Email:</label>
