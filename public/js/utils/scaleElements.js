@@ -6,6 +6,7 @@ function scaleUpElement(element, scaleFactor = 1.1) {
   }
   element.style.transition = "transform 0.1s ease";
 }
+
 function resetScaleElement(element) {
   element.style.transform = "scale(1)";
   element.style.transition = "transform 0.1s ease";

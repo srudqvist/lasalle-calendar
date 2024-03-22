@@ -1,5 +1,4 @@
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
-
 document.addEventListener("DOMContentLoaded", () => {
   const addEventButton = document.getElementById("addEventContainer");
   const eventContainersDiv = document.getElementById("eventContainers");
@@ -16,10 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   closeIcon.addEventListener("mouseover", () => scaleUpElement(closeIcon, 2.0));
   closeIcon.addEventListener("mouseleave", () => resetScaleElement(closeIcon));
+
   for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("mouseover", () =>
       scaleUpElement(allButtons[i]),
     );
+
     allButtons[i].addEventListener("mouseleave", () =>
       resetScaleElement(allButtons[i]),
     );
@@ -88,32 +89,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const getContainerValues = (containerNumber) => {
     const eventContainerToEdit = document.getElementById(containerNumber);
+
     const headline =
       eventContainerToEdit.getElementsByClassName("event-headline")[0]
         .innerHTML;
+
     const dayRange =
       eventContainerToEdit.getElementsByClassName("day-range")[0].innerHTML;
+
     const [startDay, endDay] = dayRange.split(" - ");
+
     const timeRange =
       eventContainerToEdit.getElementsByClassName("time-range")[0].innerHTML;
+
     const [startTime, endTime] = timeRange.split(" - ");
+
     const duration = eventContainerToEdit
       .getElementsByClassName("duration")[0]
       .innerHTML.split(": ")[1];
+
     const timeZone =
       eventContainerToEdit.getElementsByClassName("time-zone")[0].innerHTML;
+
     const meetingType = eventContainerToEdit
       .getElementsByClassName("meeting-type")[0]
       .innerHTML.split(": ")[1];
+
     const description = document.getElementById(
       "description" + containerNumber,
     ).textContent;
 
     const eventColor = eventContainerToEdit.style.cssText.split(": ")[1];
     const eventColorSanitized = eventColor.split(";")[0];
-
     let formHeadline = document.getElementById("eventName");
-
     const formStartDay = document.getElementById("dayFrom");
     const formEndDay = document.getElementById("dayTo");
     const formStartTime = document.getElementById("startTime");
@@ -123,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formMeetingType = document.getElementById("meetingType");
     const formDescription = document.getElementById("description");
     const formEventColor = document.getElementById("eventColorPicker");
+
     formHeadline.value = headline;
     formStartDay.value = startDay;
     formEndDay.value = endDay;
@@ -133,8 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
     formMeetingType.value = meetingType;
     formDescription.value = description;
     formEventColor.value = eventColorSanitized;
+
     editing = true;
     editContainerIndex = containerNumber;
+
     openAddEventContainerModal("Edit Event Container");
   };
 
@@ -164,7 +175,9 @@ document.addEventListener("DOMContentLoaded", () => {
       eventColor: eventColor,
       eventContainerID: containerNumber,
     };
+
     const editSuccess = updateEventContainer(requestData);
+
     if (editSuccess) {
       location.reload();
     } else {
@@ -185,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const myButton = document.getElementById(
       "copyLinkButton" + containerNumber,
     );
+
     // Copy the link to the clipboard
     navigator.clipboard
       .writeText(dummyLink)
@@ -211,6 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("submitButton").innerHTML = submitButtonText;
     addEventContainerModal.style.display = "block";
   };
+
   const closeAddEventContainerModal = () => {
     eventContainerModalForm.reset();
     addEventContainerModal.style.display = "none";
@@ -221,11 +236,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const deleteModalDeleteButton = document.getElementById(
       "deleteModalDeleteButton",
     );
+
     const deleteModalCancelButton = document.getElementById(
       "deleteModalCancelButton",
     );
+
     const eventContainerToDelete = document.getElementById(containerNumber);
     deleteMessageModal.style.display = "block";
+
     deleteModalDeleteButton.addEventListener("click", async () => {
       try {
         const response = await fetch(
@@ -238,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
             body: `event_container_id=${containerNumber}`,
           },
         );
+
         if (response.ok) {
           // If the update was successful, remove the event container from the DOM
           if (eventContainersDiv.contains(eventContainerToDelete)) {
@@ -246,6 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           console.error("Error deleting event container:", response.statusText);
         }
+
         closeDeleteMessageModal();
       } catch (error) {
         console.error("Error deleting event container:", error);
@@ -273,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Your code to handle the click event goes here
     console.log("Cancel button clicked!");
     closeAddEventContainerModal();
+
     if (editing) {
       editing = false;
     }
@@ -321,11 +342,13 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("click", function (event) {
     if (event.target === addEventContainerModal) {
       closeAddEventContainerModal();
+
       if (editing) {
         editing = false;
       }
     }
   });
+
   document.querySelector(".close").addEventListener("click", () => {
     closeAddEventContainerModal();
     if (editing) {
@@ -336,6 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function updateEventContainer(requestData) {
   console.log(requestData);
+
   try {
     const url = "../../includes/edit_event_container.php";
     const response = await fetch(url, {
@@ -354,14 +378,11 @@ async function updateEventContainer(requestData) {
 
     if (data) {
       console.log(`DATA: ${data["message"]}`);
+
       if (data["success"] === true) {
         console.log("Event container updated successfully.");
+
         return true;
-        // const successMessage = document.getElementById("successMessage");
-        // successMessage.style.display = "block";
-        //
-        // var targetTime = new Date().getTime() + 3000;
-        // updateCountdown(targetTime);
       }
     } else {
       console.log("No Data");

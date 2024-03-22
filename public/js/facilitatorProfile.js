@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   resetPasswordButton.addEventListener("mouseover", () =>
     scaleUpElement(resetPasswordButton),
   );
+
   resetPasswordButton.addEventListener("mouseleave", () =>
     resetScaleElement(resetPasswordButton),
   );
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const buttonDiv = document.getElementById("buttonDiv");
     const parent = userDetailsDiv.parentNode;
     parent.replaceChild(originalUserDetailsDiv.cloneNode(true), userDetailsDiv); // Restore userInformationDiv to its original state
+
     if (buttonDiv) {
       parent.removeChild(buttonDiv);
     }
@@ -69,7 +71,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const secondaryEmailSpan = document.getElementById("secondaryEmail");
       const facilitySpan = document.getElementById("facility");
       const phoneSpan = document.getElementById("phone");
-
       const resetPasswordButton = document.createElement("button");
       resetPasswordButton.innerText = "Reset Password";
 
@@ -145,8 +146,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function displayEditUserInformation(currentDiv) {
-    console.log(currentDiv);
-
     const firstNameSpan = currentDiv.querySelector("#firstName");
     const lastNameSpan = currentDiv.querySelector("#lastName");
     const primaryEmailSpan = currentDiv.querySelector("#primaryEmail");
@@ -161,7 +160,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (firstNameSpan) {
       firstName = firstNameSpan.textContent;
-      console.log(firstName);
       const firstNameInputField = createInputField(firstName, "text");
       firstNameInputField.id = "firstName";
       firstNameInputField.required = true;
@@ -238,22 +236,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       const phoneInputField = createInputField(phone, "tel");
       phoneInputField.id = "phone";
       phoneInputField.required = true;
-
       phoneInputField.addEventListener("input", function (event) {
         const isBackspace = event.inputType === "deleteContentBackward";
+
         if (!isBackspace) {
           let inputValue = event.target.value.replace(/\D/g, "");
+
           if (inputValue.length > 0) {
             inputValue =
               "(" + inputValue.substring(0, 3) + ") " + inputValue.substring(3);
           }
+
           if (inputValue.length > 8) {
             inputValue =
               inputValue.substring(0, 9) + "-" + inputValue.substring(9);
           }
+
           if (inputValue.length > 14) {
             inputValue = inputValue.substring(0, 14);
           }
+
           event.target.value = inputValue;
         }
       });
@@ -287,10 +289,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function createButtons() {
     const buttons = [];
-
     const cancelButton = document.createElement("button");
     cancelButton.innerHTML = "Cancel";
     cancelButton.classList.add("cancel-button");
+
     cancelButton.addEventListener("click", () => {
       editing = false;
       restoreUserInformationDiv();
@@ -300,8 +302,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const saveButton = document.createElement("button");
     saveButton.innerHTML = "Save";
     saveButton.classList.add("save-button");
+
     saveButton.addEventListener("click", () => {
       console.log("Save Button Clicked");
+
       if (validateInputs()) {
         const inputData = getInputData();
         saveEdits(inputData);
@@ -426,6 +430,7 @@ async function fetchUserInformation() {
 async function saveEdits(data) {
   console.log(`Data: ${JSON.stringify(data)}`);
   const requestData = data;
+
   if (!requestData) {
     const contentDiv = document.getElementById("contentDiv");
     contentDiv.insertBefore(
@@ -436,6 +441,7 @@ async function saveEdits(data) {
     );
     return null;
   }
+
   try {
     const url = "../../includes/facilitator_profile/save_user_info.php";
     const response = await fetch(url, {
@@ -450,7 +456,9 @@ async function saveEdits(data) {
       console.log("Response NOT OK");
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
     const responseData = await response.json();
+
     if (responseData["success"] === false) {
       return null;
     }

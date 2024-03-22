@@ -2,16 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const signupForm = document.getElementById("signupForm");
   const passwordInput = document.getElementById("password");
   const confirmPasswordInput = document.getElementById("confirmPassword");
-  //const errorMessagesDiv = document.getElementById("errorMessages");
-  //const existingErrorMessages = errorMessagesDiv.getElementsByTagName("span");
-
   const firstNameInput = document.getElementById("firstName");
   const firstNameErrorDiv = document.getElementById("firstNameError");
   const lastNameInput = document.getElementById("lastName");
   const lastNameErrorDiv = document.getElementById("lastNameError");
   const passwordErrorDiv = document.getElementById("passwordError");
   const confirmPasswordErrorDiv = document.getElementById("confirmError");
-
   const phoneInput = document.getElementById("phone");
 
   if (signupForm) {
@@ -19,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       firstNameInput.addEventListener("input", function (event) {
         let currentValidation = nameValidation(event.target.value);
         const errorMessage = "Name input failed validation";
+
         if (!currentValidation) {
           showErrorMessage(errorMessage, firstNameInput, firstNameErrorDiv);
         } else if (
@@ -28,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+
     if (lastNameInput) {
       lastNameInput.addEventListener("input", function (event) {
         let currentValidation = nameValidation(event.target.value);
         const errorMessage = "Name input failed validation";
+
         if (!currentValidation) {
           showErrorMessage(errorMessage, lastNameInput, lastNameErrorDiv);
         } else if (
@@ -41,20 +40,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+
     if (phoneInput) {
       // Handle the phone number format as the user is typing.
       phoneInput.addEventListener("input", function (event) {
         const isBackspace = event.inputType === "deleteContentBackward";
+
         if (!isBackspace) {
           let inputValue = event.target.value.replace(/\D/g, "");
+
           if (inputValue.length > 0) {
             inputValue =
               "(" + inputValue.substring(0, 3) + ") " + inputValue.substring(3);
           }
+
           if (inputValue.length > 8) {
             inputValue =
               inputValue.substring(0, 9) + "-" + inputValue.substring(9);
           }
+
           if (inputValue.length > 14) {
             inputValue = inputValue.substring(0, 14);
           }
@@ -62,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           let inputValue = event.target.value;
           const lastChar = inputValue.charAt(inputValue.length - 1);
+
           if (lastChar === ")" || lastChar === "-") {
             inputValue = inputValue.substring(0, inputValue.length - 1);
           }
@@ -69,10 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+
     if (passwordInput) {
       passwordInput.addEventListener("input", function (event) {
-        // let currentValidation = nameValidation(event.target.value);
         const errorMessage = "Password not meeting complexity requirements";
+
         if (!isPasswordValid(event.target.value)) {
           showErrorMessage(errorMessage, passwordInput, passwordErrorDiv);
         } else if (
@@ -82,9 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+
     if (passwordInput && confirmPasswordInput) {
       confirmPasswordInput.addEventListener("input", function (event) {
         const errorMessage = "Passwords do not match";
+
         if (passwordInput.value !== event.target.value) {
           showErrorMessage(
             errorMessage,
@@ -114,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
         isPasswordValid(password) &&
         password === confirmPassword
       ) {
-        //signupForm.submit();
         const formData = {
           facility: event.target.facility.value,
           firstName: event.target.firstName.value,
@@ -133,9 +140,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
   //Add password requirements text, show on hover, hide otherwise.
   const tooltip = document.querySelector(".password-tooltip");
-
   tooltip.addEventListener("mouseenter", function () {
     const tooltipText = document.createElement("span");
     tooltipText.textContent =
@@ -162,8 +169,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showErrorMessage(message, inputName, errorDiv) {
-    //inputName.classList.remove("");
     const errorAlreadyExists = document.getElementById(errorDiv.id + message);
+
     if (!errorAlreadyExists) {
       let errorMessagesDiv = errorDiv;
       const errorMessage = document.createElement("span");
@@ -180,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
       errorMessagesDiv.appendChild(errorMessage);
     }
   }
+
   function removeErrorMessage(message, inputName, errorDiv) {
     const errorToRemove = document.getElementById(errorDiv.id + message);
     inputName.style.outline = "";
@@ -219,6 +227,7 @@ async function submitSignupForm(requestData) {
 
     if (data) {
       console.log(`DATA: ${data["message"]}`);
+
       if (data["success"] === true) {
         const successMessage = document.getElementById("successMessage");
         successMessage.style.display = "block";
@@ -226,6 +235,7 @@ async function submitSignupForm(requestData) {
         var targetTime = new Date().getTime() + 3000;
         updateCountdown(targetTime);
       }
+
       return data;
     } else {
       return false;
@@ -234,6 +244,7 @@ async function submitSignupForm(requestData) {
     console.log(error);
   }
 }
+
 // Function to update the countdown
 function updateCountdown(targetTime) {
   var intervalId; // Declare intervalId variable outside of the function
