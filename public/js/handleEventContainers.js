@@ -151,37 +151,25 @@ document.addEventListener("DOMContentLoaded", () => {
     eventDescription,
     containerNumber,
   ) => {
-    // Create object for HTTP request
-    const xhr = new XMLHttpRequest();
-    // Prepare data to send with the request
-    const formData = new FormData();
-    formData.append("eventName", eventHeadlineText);
-    formData.append("dayFrom", eventStartDay);
-    formData.append("dayTo", eventStopDay);
-    formData.append("startTime", eventStartTime);
-    formData.append("endTime", eventEndTime);
-    formData.append("duration", eventDuration);
-    formData.append("timeZone", eventTimeZone);
-    formData.append("meetingType", eventMeetingType);
-    formData.append("description", eventDescription);
-    formData.append("eventColor", eventColor);
-    formData.append("eventContainerID", containerNumber);
-    console.log("FORM DATA: ", formData);
-    xhr.open("POST", "../../includes/edit_event_container.php", true);
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        // Handle successful update if needed
-        console.log("Event container updated successfully.");
-        location.reload();
-      } else {
-        console.error("Error updating event container:", xhr.statusText);
-      }
+    const requestData = {
+      eventName: eventHeadlineText,
+      startDay: eventStartDay,
+      endDay: eventStopDay,
+      startTime: eventStartTime,
+      endTime: eventEndTime,
+      duration: eventDuration,
+      timeZone: eventTimeZone,
+      meetingType: eventMeetingType,
+      description: eventDescription,
+      eventColor: eventColor,
+      eventContainerID: containerNumber,
     };
-    xhr.onerror = function () {
-      console.error("Error updating event container:", xhr.statusText);
-    };
-    // Send the request
-    xhr.send(formData);
+    const editSuccess = updateEventContainer(requestData);
+    if (editSuccess) {
+      location.reload();
+    } else {
+      console.log("Could not update");
+    }
   };
 
   const viewCalendar = (containerNumber) => {
@@ -238,53 +226,31 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     const eventContainerToDelete = document.getElementById(containerNumber);
     deleteMessageModal.style.display = "block";
-    deleteModalDeleteButton.addEventListener("click", () => {
-      // // Create the object for making the HTTP request
-      // const xhr = new XMLHttpRequest();
-      // xhr.open("POST", "../../includes/delete_event_container.php", true);
-      // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // xhr.onload = function () {
-      //   if (xhr.status === 200) {
-      //     // If the update was successful, remove the event container from the DOM
-      //     if (eventContainersDiv.contains(eventContainerToDelete)) {
-      //       eventContainersDiv.removeChild(eventContainerToDelete);
-      //     }
-      //   } else {
-      //     console.error("Error deleting event container:", xhr.statusText);
-      //   }
-      //   closeDeleteMessageModal();
-      // };
-      // xhr.onerror = function () {
-      //   console.error("Error deleting event container:", xhr.statusText);
-      //   closeDeleteMessageModal();
-      // };
-      // xhr.send(`event_container_id=${containerNumber}`);
-
-      fetch("../../includes/delete_event_container.php", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/x-www-form-urlencoded",
-        },
-        body: `event_container_id=${containerNumber}`,
-      })
-        .then((response) => {
-          if (response.ok) {
-            // If the update was successful, remove the event container from the DOM
-            if (eventContainersDiv.contains(eventContainerToDelete)) {
-              eventContainersDiv.removeChild(eventContainerToDelete);
-            }
-          } else {
-            console.error(
-              "Error deleting event container:",
-              response.statusText,
-            );
+    deleteModalDeleteButton.addEventListener("click", async () => {
+      try {
+        const response = await fetch(
+          "../../includes/delete_event_container.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/x-www-form-urlencoded",
+            },
+            body: `event_container_id=${containerNumber}`,
+          },
+        );
+        if (response.ok) {
+          // If the update was successful, remove the event container from the DOM
+          if (eventContainersDiv.contains(eventContainerToDelete)) {
+            eventContainersDiv.removeChild(eventContainerToDelete);
           }
-          closeDeleteMessageModal();
-        })
-        .catch((error) => {
-          console.error("Error deleting event container:", error);
-          closeDeleteMessageModal();
-        });
+        } else {
+          console.error("Error deleting event container:", response.statusText);
+        }
+        closeDeleteMessageModal();
+      } catch (error) {
+        console.error("Error deleting event container:", error);
+        closeDeleteMessageModal();
+      }
     });
 
     deleteModalCancelButton.addEventListener("click", () => {
@@ -367,3 +333,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+async function updateEventContainer(requestData) {
+  console.log(requestData);
+  try {
+    const url = "../../includes/edit_event_container.php";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (data) {
+      console.log(`DATA: ${data["message"]}`);
+      if (data["success"] === true) {
+        console.log("Event container updated successfully.");
+        return true;
+        // const successMessage = document.getElementById("successMessage");
+        // successMessage.style.display = "block";
+        //
+        // var targetTime = new Date().getTime() + 3000;
+        // updateCountdown(targetTime);
+      }
+    } else {
+      console.log("No Data");
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
