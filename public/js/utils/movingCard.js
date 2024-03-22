@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cards[i].addEventListener("mouseenter", () => {
       cards[i].style.transition = "transform 0.2s ease";
     });
+
     cards[i].addEventListener("mousemove", (event) => {
       const rect = cards[i].getBoundingClientRect();
       const x = event.clientX - rect.left;
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cards[i].style.transform =
         `perspective(1000px) rotateX(${tiltY}deg) rotateY(${-tiltX}deg) translateZ(0)`;
     });
+
     cards[i].addEventListener("mouseleave", () => {
       cards[i].style.transition = "transform 1s ease";
       cards[i].style.transform = "none";

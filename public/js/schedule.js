@@ -41,15 +41,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const eventTitle = meetingRowToCancel
       .querySelector(".eventTitle-column")
       .innerText.trim();
+
     const date = meetingRowToCancel
       .querySelector(".date-column")
       .innerText.trim();
+
     const time = meetingRowToCancel
       .querySelector(".time-column")
       .innerText.trim();
+
     const name = meetingRowToCancel
       .querySelector(".name-column")
       .innerText.trim();
+
     const email = meetingRowToCancel
       .querySelector(".email-column")
       .innerText.trim();
@@ -61,18 +65,22 @@ document.addEventListener("DOMContentLoaded", function () {
     modalEmail.textContent = email;
 
     deleteScheduleModal.style.display = "block";
+
     const confirmCancel = document.getElementById("confirmCancel");
     const closeButton = document.getElementById("closeButton");
+
     if (confirmCancel) {
       confirmCancel.addEventListener("click", () => {
         const requestData = {
           meetingID: meetingID,
         };
+
         fetch("../../includes/delete_meeting.php", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
+
           body: JSON.stringify(requestData),
         })
           .then((response) => {
@@ -85,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 response.statusText,
               );
             }
+
             closeCancelModal();
           })
           .catch((error) => {
@@ -93,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       });
     }
+
     if (closeButton) {
       closeButton.addEventListener("click", () => {
         closeCancelModal();
