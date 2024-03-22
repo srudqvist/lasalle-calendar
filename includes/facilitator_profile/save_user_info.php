@@ -3,6 +3,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 include '../../../../lasalle-calendar-env-variables/config.php';
+require_once '../validationFunctions/validation_functions.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Debugging: Dump the received POST data to inspect it
@@ -73,23 +74,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(['success' => true, 'message' => "User Information updated successfully"]);
         exit;
     }
-}
-
-
-function isValidName($name)
-{
-    // Name should not be empty and should consist of letters, spaces, or hyphens
-    return !empty($name) && preg_match('/^[a-zA-Z\s-]+$/', $name);
-}
-
-function isValidEmail($email)
-{
-    // Use PHP's built-in filter_var function to validate email format
-    return !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL);
-}
-
-function isValidPhone($phone)
-{
-    // Phone should not be empty and should consist of digits and optional parentheses, spaces, hyphens
-    return !empty($phone) && preg_match('/^[\d\s()-]+$/', $phone);
 }

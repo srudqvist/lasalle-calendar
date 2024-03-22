@@ -2,6 +2,7 @@
 
 // Checkout: https://codeshack.io/secure-login-system-php-mysql/
 include '../../../lasalle-calendar-env-variables/config.php';
+require_once './validationFunctions/validation_functions.php';
 // Make sure request is of the right type
 //var_dump($_SERVER["REQUEST_METHOD"]);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -11,8 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // expected data was not provided
         exit("Expected Data Was Not Provided");
     }
+
     $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
+
+    if (!isValidEmail($email) || !isValidPassword($password)) {
+        exit("Password or email failed validation");
+    }
 
     // Connect to the database
     $mysqli = new mysqli($db_host, $db_username, $db_password, $db_database);
@@ -27,24 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $query->bind_param("s", $email);
     $query->execute();
     $result = $query->get_result();
-    //Echo the result
-    // while ($row = $result->fetch_assoc()) {
-    //     echo "User ID: " . $row['uid'] . "<br>";
-    //     echo "Facility: " . $row['facility'] . "<br>";
-    //     echo "Email: " . $row['email'] . "<br>";
-    //     echo "First Name: " . $row['fname'] . "<br>";
-    //     echo "Last Name: " . $row['lname'] . "<br>";
-    //     echo "Phone: " . $row['phone'] . "<br>";
-    // }
 
     if ($result -> num_rows == 1) {
         $row = $result -> fetch_assoc();
 
         echo "Password from submission: " . $password . "<br>";
         echo "Password from DB: " . $row['password'] . "<br>";
-        //$password_hash = password_hash($row['password'], PASSWORD_DEFAULT);
-        //echo "Password hash: " . $password_hash . "<br>";
-        //if (password_verify($password, $password_hash)) {
+
         if (password_verify(trim($password), trim($row['password']))) {
             // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
             session_regenerate_id();
