@@ -6,6 +6,20 @@ console.log(lastSegment);
 lastSegment = lastSegment.split(".")[0];
 console.log(lastSegment);
 
+const nextButton = document.getElementById("nextButton");
+const backButton = document.getElementById("backButton");
+
+nextButton.addEventListener("click", () => {
+  const linkText = document.getElementsByClassName("active");
+  console.log(linkText);
+  linkText[0].innerHTML = "User Details";
+});
+
+backButton.addEventListener("click", () => {
+  const linkText = document.getElementsByClassName("active");
+  console.log(linkText);
+  linkText[0].innerHTML = "Calendar";
+});
 // Links
 const eventContainersLink = "eventContainers.php";
 const scheduleLink = "schedule.php";
@@ -14,22 +28,24 @@ const profileLink = "facilitator_profile.php";
 
 // Array of navbar links for each page
 const pageLinks = {
-  home: [
-    { label: "Home", href: "#", active: true },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Contact", href: "#contact" },
-  ],
-  about: [
-    { label: "Home", href: "#" },
-    { label: "About", href: "#about", active: true },
-    { label: "Services", href: "#services" },
-    { label: "Contact", href: "#contact" },
-  ],
   eventContainers: [
     { label: "Events", href: eventContainersLink, active: true },
     { label: "Scheduled", href: scheduleLink },
     { label: "Profile", href: profileLink },
+  ],
+  schedule: [
+    { label: "Events", href: eventContainersLink },
+    { label: "Scheduled", href: scheduleLink, active: true },
+    { label: "Profile", href: profileLink },
+  ],
+  facilitator_profile: [
+    { label: "Events", href: eventContainersLink },
+    { label: "Scheduled", href: scheduleLink },
+    { label: "Profile", href: profileLink, active: true },
+  ],
+  calendar: [
+    { label: "Events", href: eventContainersLink },
+    { label: "Calendar", href: calendarLink, active: true },
   ],
   // Add more pages and links as needed
 };
