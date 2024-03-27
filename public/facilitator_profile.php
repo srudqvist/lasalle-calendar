@@ -5,8 +5,8 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: index.php');
-    exit;
+header('Location: index.php');
+exit;
 }
 ?>
 <html lang="en">
@@ -28,15 +28,15 @@ if (!isset($_SESSION['loggedin'])) {
     <div id="navbarDiv">
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     </div>
-    <banner-component custom-text="Profile Page" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
-    </banner-component>
-      <script>
+    <!-- <banner-component custom-text="Profile Page" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>"> -->
+    <!-- </banner-component> -->
+    <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-      </script>
+</script>
     <div class="navbar" id="myNavbar">
-      </div>
+    </div>
     <h1>Settings</h1>
     <div id="contentDiv" class="center_content">
       <div id="userInformationDiv" class="card">
