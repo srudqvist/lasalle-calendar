@@ -9,21 +9,26 @@ console.log(lastSegment);
 const nextButton = document.getElementById("nextButton");
 const backButton = document.getElementById("backButton");
 
-nextButton.addEventListener("click", () => {
-  const linkText = document.getElementsByClassName("active");
-  console.log(linkText);
-  linkText[0].innerHTML = "User Details";
-});
+if (nextButton) {
+  nextButton.addEventListener("click", () => {
+    const linkText = document.getElementsByClassName("active");
+    console.log(linkText);
+    linkText[0].innerHTML = "User Details";
+  });
+}
 
-backButton.addEventListener("click", () => {
-  const linkText = document.getElementsByClassName("active");
-  console.log(linkText);
-  linkText[0].innerHTML = "Calendar";
-});
+if (backButton) {
+  backButton.addEventListener("click", () => {
+    const linkText = document.getElementsByClassName("active");
+    console.log(linkText);
+    linkText[0].innerHTML = "Calendar";
+  });
+}
+
 // Links
 const eventContainersLink = "eventContainers.php";
 const scheduleLink = "schedule.php";
-const calendarLink = "calendar.php";
+const calendarLink = currentURL;
 const profileLink = "facilitator_profile.php";
 
 // Array of navbar links for each page
