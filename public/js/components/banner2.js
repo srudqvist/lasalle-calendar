@@ -1,10 +1,7 @@
 const currentURL = window.location.href;
 let lastSegment = currentURL.substring(currentURL.lastIndexOf("/") + 1);
 const email = sessionData.email;
-console.log(email);
-console.log(lastSegment);
 lastSegment = lastSegment.split(".")[0];
-console.log(lastSegment);
 
 const nextButton = document.getElementById("nextButton");
 const backButton = document.getElementById("backButton");
@@ -12,7 +9,6 @@ const backButton = document.getElementById("backButton");
 if (nextButton) {
   nextButton.addEventListener("click", () => {
     const linkText = document.getElementsByClassName("active");
-    console.log(linkText);
     linkText[0].innerHTML = "User Details";
   });
 }
@@ -20,7 +16,6 @@ if (nextButton) {
 if (backButton) {
   backButton.addEventListener("click", () => {
     const linkText = document.getElementsByClassName("active");
-    console.log(linkText);
     linkText[0].innerHTML = "Calendar";
   });
 }
