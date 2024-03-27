@@ -163,7 +163,7 @@ var sessionData = {
     </main>
     <?php
     // Include the PHP script to retrieve event containers
-    include '../includes/getEventContainerMaxID.php';
+//    include '../includes/getEventContainerMaxID.php';
     ?>
     <div id="footerDiv">
       <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
