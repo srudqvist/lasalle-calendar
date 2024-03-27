@@ -15,10 +15,12 @@ if (!isset($_SESSION['loggedin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./css/banner/banner2.css">
     <!-- <link rel="stylesheet" href="css/login.css"> -->
     <!-- <link rel="stylesheet" href="css/formStyles.css"> -->
     <link rel="stylesheet" href="css/schedule.css">
     <script src="./js/components/banner.js" defer></script>
+    <script src="./js/components/banner2.js" defer></script>
     <title>Virtual Attorney Visitation Online Calendar</title>
   </head>
 
@@ -29,12 +31,20 @@ if (!isset($_SESSION['loggedin'])) {
     <main>
       <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
       </banner-component>
+      <script>
+var sessionData = {
+  email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
+};
+      </script>
+      <div class="navbar" id="myNavbar">
+
+      </div>
       <?php
       include '../includes/load_scheduled_meetings.php';
 ?>
       <div id="scheduleModal" class="modal fade">
         <div class="modal-content">
-          <div class="top">
+        <div class="top">
             <h1>Cancel Meeting</h1>
           </div>
           <div id="meetingDetailsDiv">

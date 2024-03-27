@@ -16,8 +16,10 @@ if (!isset($_SESSION['loggedin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/facilitatorProfile.css">
+    <link rel="stylesheet" href="./css/banner/banner2.css">
     <script src="./js/facilitatorProfile.js" type="module"></script>
     <script src="./js/components/banner.js" defer></script>
+    <script src="./js/components/banner2.js" defer></script>
     <script src="./js/utils/movingCard.js" defer></script>
     <title>Profile</title>
   </head>
@@ -28,6 +30,13 @@ if (!isset($_SESSION['loggedin'])) {
     </div>
     <banner-component custom-text="Profile Page" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
     </banner-component>
+      <script>
+var sessionData = {
+  email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
+};
+      </script>
+    <div class="navbar" id="myNavbar">
+      </div>
     <h1>Settings</h1>
     <div id="contentDiv" class="center_content">
       <div id="userInformationDiv" class="card">

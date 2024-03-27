@@ -15,10 +15,12 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="./css/banner/banner2.css">
     <script src="./js/calendar/getEventInfo.js" type="module"></script>
     <script src="./js/calendar/calendar.js" type="module"></script>
     <script src="./js/calendar/submitDetails.js"></script>
     <script src="./js/components/banner.js" defer></script>
+    <script src="./js/components/banner2.js" defer></script>
     <script src="./js/utils/movingCard.js" defer></script>
     <title>Calendar</title>
   </head>
@@ -29,8 +31,16 @@ session_start();
         <div id="navbarDiv">
           <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
         </div>
-        <banner-component custom-text="Calendar" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
-        </banner-component>
+        <!-- <banner-component custom-text="Calendar" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>"> -->
+        <!-- </banner-component> -->
+      <script>
+var sessionData = {
+  email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
+};
+</script>
+      <div class="navbar" id="myNavbar">
+
+      </div>
         <div id="contentDiv">
           <div id="meetingDetailsDiv" class="preserve-3d-container">
             <div class="card moving-card">

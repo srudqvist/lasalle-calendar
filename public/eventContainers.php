@@ -4,13 +4,13 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: index.php');
-    exit;
+header('Location: index.php');
+exit;
 }
 ?>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
@@ -21,7 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="./js/components/banner.js" defer></script>
     <script src="./js/components/banner2.js" defer></script>
     <title>Event Containers</title>
-</head>
+  </head>
 
 
   <body>
@@ -29,22 +29,22 @@ if (!isset($_SESSION['loggedin'])) {
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found  -->
     </div>
     <main>
-<banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
+      <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
       </banner-component>
       <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-      </script>
+</script>
       <div class="navbar" id="myNavbar">
 
       </div>
       <button id="addEventContainer">Add Event Container</button>
       <div id="eventContainers" class="container-row">
-      <?php
-      // Include the PHP script to retrieve event containers
-      include '../includes/loadEventContainers.php';
-?>
+        <?php
+        // Include the PHP script to retrieve event containers
+        include '../includes/loadEventContainers.php';
+        ?>
       </div>
       <div id="eventContainerModal" class="modal fade">
         <div class="modal-content">
@@ -148,7 +148,7 @@ var sessionData = {
         </div>
 
       </div> <!-- addEventContainerModal close -->
-      
+
       <div id="deleteMessageModal" class="modal fade">
         <div class="modal-content">
           <form class="modal-form">
@@ -161,14 +161,14 @@ var sessionData = {
         </div> <!-- deleteMessageModal close -->
 
     </main>
-      <?php
-      // Include the PHP script to retrieve event containers
-      include '../includes/getEventContainerMaxID.php';
-?>
+    <?php
+    // Include the PHP script to retrieve event containers
+    include '../includes/getEventContainerMaxID.php';
+    ?>
     <div id="footerDiv">
       <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
     </div>
-<!-- Output the highest container ID as a JavaScript variable -->
+    <!-- Output the highest container ID as a JavaScript variable -->
   </body>
 
 </html>
