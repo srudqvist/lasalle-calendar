@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: index.php');
-    exit;
+header('Location: index.php');
+exit;
 }
 ?>
 <html lang="en">
@@ -29,23 +28,23 @@ if (!isset($_SESSION['loggedin'])) {
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     </div>
     <main>
-      <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
-      </banner-component>
+      <!-- <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>"> -->
+      <!-- </banner-component> -->
       <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-      </script>
+</script>
       <div class="navbar" id="myNavbar">
 
       </div>
       <?php
       include '../includes/load_scheduled_meetings.php';
-?>
+      ?>
       <div id="scheduleModal" class="modal fade">
         <div class="modal-content">
         <div class="top">
-            <h1>Cancel Meeting</h1>
+          <h1>Cancel Meeting</h1>
           </div>
           <div id="meetingDetailsDiv">
             <div class="details-container">

@@ -29,13 +29,13 @@ exit;
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found  -->
     </div>
     <main>
-      <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
-      </banner-component>
+      <!-- <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>"> -->
+      <!-- </banner-component> -->
       <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-</script>
+      </script>
       <div class="navbar" id="myNavbar">
 
       </div>
