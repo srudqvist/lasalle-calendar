@@ -16,8 +16,10 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="./css/eventContainer.css">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/banner/banner2.css">
     <script src="./js/handleEventContainers.js" type="module"></script>
     <script src="./js/components/banner.js" defer></script>
+    <script src="./js/components/banner2.js" defer></script>
     <title>Event Containers</title>
 </head>
 
@@ -29,6 +31,14 @@ if (!isset($_SESSION['loggedin'])) {
     <main>
 <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>">
       </banner-component>
+      <script>
+var sessionData = {
+  email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
+};
+      </script>
+      <div class="navbar" id="myNavbar">
+
+      </div>
       <button id="addEventContainer">Add Event Container</button>
       <div id="eventContainers" class="container-row">
       <?php
