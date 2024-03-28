@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/formStyles.css">
     <link rel="stylesheet" href="css/forgotPassword.css">
+    <script src="./js/forgotPassword.js"></script>
     <title>Forgot Password</title>
   </head>
 
