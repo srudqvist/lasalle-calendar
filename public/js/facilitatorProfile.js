@@ -3,17 +3,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   let originalUserDetailsDiv; // Variable to store the original state of userInformationDiv
   const editUserInformationButton = document.getElementById("editButton");
   const userInformationDiv = document.getElementById("userInformationDiv");
-  const resetPasswordButton = document.getElementById("resetPasswordButton");
+  const changePasswordButton = document.getElementById("changePasswordButton");
   const userData = await fetchUserInformation();
   let editDisabled = false;
   let editing = false;
 
-  resetPasswordButton.addEventListener("mouseover", () =>
-    scaleUpElement(resetPasswordButton),
+  changePasswordButton.addEventListener("mouseover", () =>
+    scaleUpElement(changePasswordButton),
   );
 
-  resetPasswordButton.addEventListener("mouseleave", () =>
-    resetScaleElement(resetPasswordButton),
+  changePasswordButton.addEventListener("mouseleave", () =>
+    resetScaleElement(changePasswordButton),
   );
 
   if (userInformationDiv) {
@@ -37,9 +37,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("No edit button");
   }
 
-  if (resetPasswordButton) {
-    resetPasswordButton.addEventListener("click", () => {
-      console.log("Reset Password Clicked");
+  if (changePasswordButton) {
+    changePasswordButton.addEventListener("click", () => {
+      console.log("Change Password Clicked");
       // Todo: implement reset password functionality
     });
   }
@@ -71,8 +71,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       const secondaryEmailSpan = document.getElementById("secondaryEmail");
       const facilitySpan = document.getElementById("facility");
       const phoneSpan = document.getElementById("phone");
-      const resetPasswordButton = document.createElement("button");
-      resetPasswordButton.innerText = "Reset Password";
+      // const resetPasswordButton = document.createElement("button");
+      // resetPasswordButton.innerText = "Reset Password";
 
       if (userData.first_name) {
         firstNameSpan.innerText = userData.first_name;
@@ -151,6 +151,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const primaryEmailSpan = currentDiv.querySelector("#primaryEmail");
     const secondaryEmailSpan = currentDiv.querySelector("#secondaryEmail");
     const phoneSpan = currentDiv.querySelector("#phone");
+    const passwordDiv = currentDiv.querySelector("#passwordDiv");
+    passwordDiv.parentNode.removeChild(passwordDiv);
 
     let firstName;
     let lastName;
