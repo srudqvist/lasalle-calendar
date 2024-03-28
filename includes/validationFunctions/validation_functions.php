@@ -22,6 +22,6 @@ function isValidPassword($password)
 {
     // Password should contain at least one lowercase letter, one uppercase letter, one digit, one special character,
     // and be at least 8 characters long
-    $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/';
+    $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[=@$!%*?&])[A-Za-z\d@=$!%*?&]{8,}$/';
     return !empty($password) && preg_match($passwordRegex, $password);
 }
