@@ -51,7 +51,7 @@
   cursor: pointer;
 }
 
-#resetPasswordButton {
+#changePasswordButton {
   color: var(--on-primary);
   background-color: var(--primary-color);
   border: none;
