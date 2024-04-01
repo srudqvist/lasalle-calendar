@@ -23,12 +23,20 @@
   flex-direction: column;
 }
 
-#userDetailsDiv label {
+label {
   margin-bottom: 1px;
   margin-top: 10px;
   font-weight: bold;
   color: var(--text-color-black);
 }
+newPassLabel
+
+/* #userDetailsDiv label { */
+/*   margin-bottom: 1px; */
+/*   margin-top: 10px; */
+/*   font-weight: bold; */
+/*   color: var(--text-color-black); */
+/* } */
 
 #userDetailsDiv input {
   margin-bottom: 1px;
@@ -51,6 +59,11 @@
   cursor: pointer;
 }
 
+#passwordDiv {
+  display: flex;
+  flex-direction: column;
+}
+
 #changePasswordButton {
   color: var(--on-primary);
   background-color: var(--primary-color);
@@ -60,6 +73,7 @@
   padding: 8px 40px;
   margin-top: 20px;
   margin-bottom: 10px;
+  width: 25%;
 }
 
 #resetPasswordButton:hover {

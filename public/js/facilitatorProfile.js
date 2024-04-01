@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     changePasswordButton.addEventListener("click", () => {
       console.log("Change Password Clicked");
       // Todo: implement reset password functionality
+      displayChangePassword();
     });
   }
 
@@ -48,12 +49,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Restoring userInformationDiv");
     const userDetailsDiv = document.getElementById("userDetailsDiv");
     const buttonDiv = document.getElementById("buttonDiv");
+    const passwordDiv = document.getElementById("passwordDiv");
     const parent = userDetailsDiv.parentNode;
-    parent.replaceChild(originalUserDetailsDiv.cloneNode(true), userDetailsDiv); // Restore userInformationDiv to its original state
 
-    if (buttonDiv) {
+    if (buttonDiv && !passwordDiv) {
       parent.removeChild(buttonDiv);
+    } else if (passwordDiv) {
+      userDetailsDiv.removeChild(passwordDiv);
     }
+
+    parent.replaceChild(originalUserDetailsDiv.cloneNode(true), userDetailsDiv); // Restore userInformationDiv to its original state
+    let changePasswordButton = document.getElementById("changePasswordButton");
+    console.log(changePasswordButton);
+    changePasswordButton.addEventListener("click", () => {
+      console.log("Change Password Clicked");
+      // Todo: implement reset password functionality
+      displayChangePassword();
+    });
+    changePasswordButton.addEventListener("mouseover", () =>
+      scaleUpElement(changePasswordButton),
+    );
+
+    changePasswordButton.addEventListener("mouseleave", () =>
+      resetScaleElement(changePasswordButton),
+    );
+    console.log(changePasswordButton);
   }
 
   function displayUserInformation(userData) {
@@ -276,9 +296,59 @@ document.addEventListener("DOMContentLoaded", async () => {
     currentDiv.appendChild(displayButtons());
   }
 
+  function displayChangePassword() {
+    let currentPassword = "";
+    let newPassword = "";
+    let confirmNewPassword = "";
+
+    const passwordDiv = document.getElementById("passwordDiv");
+    let changePasswordButton = document.getElementById("changePasswordButton");
+    const currPassLabel = createLabel("Current Password:");
+    const currPassInput = createInputField(currentPassword, "password");
+    const newPassLabel = createLabel("New Password");
+    const newPasswordInput = createInputField(newPassword, "text");
+    const confirmNewLabel = createLabel("Confirm New Password");
+    const confirmNewPasswordInput = createInputField(
+      confirmNewPassword,
+      "password",
+    );
+
+    passwordDiv.appendChild(currPassLabel);
+    passwordDiv.appendChild(currPassInput);
+
+    passwordDiv.appendChild(newPassLabel);
+    passwordDiv.appendChild(newPasswordInput);
+
+    passwordDiv.appendChild(confirmNewLabel);
+    passwordDiv.appendChild(confirmNewPasswordInput);
+
+    const buttonDiv = document.createElement("div");
+    buttonDiv.setAttribute("id", "buttonDiv");
+    buttonDiv.style.display = "flex";
+    buttonDiv.style.justifyContent = "space-between";
+
+    const buttons = createButtons(false);
+
+    for (const button of buttons) {
+      button.addEventListener("mouseover", () => scaleUpElement(button));
+      button.addEventListener("mouseleave", () => resetScaleElement(button));
+      buttonDiv.appendChild(button);
+    }
+    passwordDiv.appendChild(buttonDiv);
+
+    passwordDiv.removeChild(changePasswordButton);
+  }
+
   function hideEditElements() {
     const buttonDiv = document.getElementById("buttonDiv");
     buttonDiv.parentNode.removeChild(buttonDiv);
+  }
+
+  function createLabel(text) {
+    const label = document.createElement("label");
+    label.textContent = text;
+    //label.classList.add()
+    return label;
   }
 
   function createInputField(text, inputType) {
@@ -289,7 +359,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return inputField;
   }
 
-  function createButtons() {
+  function createButtons(edit = true) {
     const buttons = [];
     const cancelButton = document.createElement("button");
     cancelButton.innerHTML = "Cancel";
@@ -308,11 +378,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     saveButton.addEventListener("click", () => {
       console.log("Save Button Clicked");
 
-      if (validateInputs()) {
-        const inputData = getInputData();
-        saveEdits(inputData);
+      if (edit) {
+        if (validateInputs()) {
+          const inputData = getInputData();
+          saveEdits(inputData);
+        } else {
+          console.log("Validation Failed");
+        }
       } else {
-        console.log("Validation Failed");
+        console.log("save reset password clicked");
       }
     });
 
