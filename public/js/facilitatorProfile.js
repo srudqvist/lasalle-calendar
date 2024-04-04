@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   let editDisabled = false;
   let editing = false;
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const passwordReset = urlParams.get("passwordReset");
+
+  if (passwordReset) {
+    displayChangePassword();
+  }
+
   changePasswordButton.addEventListener("mouseover", () =>
     scaleUpElement(changePasswordButton),
   );

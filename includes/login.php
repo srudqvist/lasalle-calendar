@@ -50,7 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['id'] = $row['user_id'];
             $_SESSION['facility'] = $row['facility'];
             echo 'Welcome back, ' . htmlspecialchars($_SESSION['fname'], ENT_QUOTES) . '!';
-            header("Location: ../public/eventContainers.php");
+            if ($row['password_reset'] == 1) {
+                header("Location: ../public/facilitator_profile.php?passwordReset=true");
+            } else {
+                header("Location: ../public/eventContainers.php");
+            }
             exit;
         } else {
             $_SESSION['login_error_msg'] = "Invalid Email or Password";
