@@ -436,7 +436,18 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (passwordsMatch) {
             // send the current password and the new to the server
 
-            changePasswordRequest(currentPassword, newPassword);
+            const passwordChangeMessage = changePasswordRequest(
+              currentPassword,
+              newPassword,
+            );
+            if (passwordChangeMessage != null) {
+              restoreUserInformationDiv();
+              const contentDiv = document.getElementById("contentDiv");
+              contentDiv.insertBefore(
+                displaySuccessMessage("Password Updated"),
+                contentDiv.firstChild,
+              );
+            }
           } else {
             console.log("passwords did not match, do something");
             const contentDiv = document.getElementById("contentDiv");
@@ -536,6 +547,16 @@ function displayErrorMessage(message) {
   errorDiv.appendChild(errorMessage);
 
   return errorDiv;
+}
+
+function displaySuccessMessage(message) {
+  const successMessage = document.createElement("p");
+  successMessage.innerText = message;
+  const successDiv = document.createElement("div");
+  successDiv.setAttribute("id", "successDiv");
+  successDiv.appendChild(successMessage);
+
+  return successDiv;
 }
 
 async function fetchUserInformation() {
