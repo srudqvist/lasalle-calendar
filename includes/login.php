@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
 
-    if (!isValidEmail($email) || !isValidPassword($password)) {
-        exit("Password or email failed validation");
-    }
-
+    // if (!isValidEmail($email) || !isValidPassword($password)) {
+    //     exit("Password or email failed validation");
+    // }
+    //
     // Connect to the database
     $mysqli = new mysqli($db_host, $db_username, $db_password, $db_database);
 

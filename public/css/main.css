@@ -94,3 +94,12 @@ body {
   box-shadow: var(--input-shadow);
   box-sizing: border-box;
 }
+
+.appear-transition {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.appear-transition-appearing {
+  opacity: 1;
+}

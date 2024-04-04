@@ -1,4 +1,5 @@
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
+import { isPasswordValid } from "./utils/passwordValidation.js";
 document.addEventListener("DOMContentLoaded", async () => {
   let originalUserDetailsDiv; // Variable to store the original state of userInformationDiv
   const editUserInformationButton = document.getElementById("editButton");
@@ -306,19 +307,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     const currPassLabel = createLabel("Current Password:");
     const currPassInput = createInputField(currentPassword, "password");
     const newPassLabel = createLabel("New Password");
-    const newPasswordInput = createInputField(newPassword, "text");
+    const newPasswordInput = createInputField(newPassword, "password");
     const confirmNewLabel = createLabel("Confirm New Password");
     const confirmNewPasswordInput = createInputField(
       confirmNewPassword,
       "password",
     );
 
+    currPassLabel.classList.add("appear-transition");
+    currPassInput.classList.add("appear-transition");
+    currPassInput.setAttribute("id", "currPass");
     passwordDiv.appendChild(currPassLabel);
     passwordDiv.appendChild(currPassInput);
 
+    newPassLabel.classList.add("appear-transition");
+    newPasswordInput.classList.add("appear-transition");
+    newPasswordInput.setAttribute("id", "newPass");
     passwordDiv.appendChild(newPassLabel);
     passwordDiv.appendChild(newPasswordInput);
 
+    confirmNewLabel.classList.add("appear-transition");
+    confirmNewPasswordInput.classList.add("appear-transition");
+    confirmNewPasswordInput.setAttribute("id", "confirmPass");
     passwordDiv.appendChild(confirmNewLabel);
     passwordDiv.appendChild(confirmNewPasswordInput);
 
@@ -337,6 +347,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     passwordDiv.appendChild(buttonDiv);
 
     passwordDiv.removeChild(changePasswordButton);
+    // Apply the transition effect after a short delay to trigger the animation
+    setTimeout(() => {
+      currPassLabel.style.opacity = 1;
+      currPassInput.style.opacity = 1;
+      newPassLabel.style.opacity = 1;
+      newPasswordInput.style.opacity = 1;
+      confirmNewLabel.style.opacity = 1;
+      confirmNewPasswordInput.style.opacity = 1;
+    }, 1); // Adjust the delay time as needed
   }
 
   function hideEditElements() {
@@ -387,12 +406,62 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       } else {
         console.log("save reset password clicked");
+        // todo:
+        // compare new password and confirm new password
+        const contentDiv = document.getElementById("contentDiv");
+        const currentPassword = document.getElementById("currPass").value;
+        const newPassword = document.getElementById("newPass").value;
+        const confirmPassword = document.getElementById("confirmPass").value;
+
+        const contentChildren = Array.from(contentDiv.children);
+        const errorDivs = contentChildren.filter(
+          (child) => child.id === "errorDiv",
+        );
+
+        for (let i = 0; i < errorDivs.length; i++) {
+          contentDiv.removeChild(errorDivs[i]);
+        }
+
+        if (currentPassword === newPassword) {
+          console.log("STOP! Current password is the same as new");
+          //todo: display error message
+          const contentDiv = document.getElementById("contentDiv");
+          contentDiv.insertBefore(
+            displayErrorMessage("New password can not be the same as old."),
+            contentDiv.firstChild,
+          );
+        } else {
+          const passwordsMatch = comparePasswords(newPassword, confirmPassword);
+
+          if (passwordsMatch) {
+            // send the current password and the new to the server
+
+            changePasswordRequest(currentPassword, newPassword);
+          } else {
+            console.log("passwords did not match, do something");
+            const contentDiv = document.getElementById("contentDiv");
+            contentDiv.insertBefore(
+              displayErrorMessage("Passwords did not match"),
+              contentDiv.firstChild,
+            );
+          }
+        }
       }
     });
 
     buttons.push(cancelButton);
     buttons.push(saveButton);
     return buttons;
+  }
+
+  function comparePasswords(newPassword, confirmPassword) {
+    console.log(newPassword);
+    console.log(confirmPassword);
+    if (isPasswordValid(newPassword) && newPassword === confirmPassword) {
+      console.log("PASS MATCH");
+      return true;
+    }
+    return false;
   }
 
   function displayButtons() {
@@ -520,6 +589,42 @@ async function saveEdits(data) {
 
   try {
     const url = "../../includes/facilitator_profile/save_user_info.php";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
+
+    if (!response.ok) {
+      console.log("Response NOT OK");
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+
+    if (responseData["success"] === false) {
+      return null;
+    }
+
+    // Return the user data
+    console.log(responseData);
+    return responseData["message"];
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function changePasswordRequest(currentPassword, newPassword) {
+  console.log(`Password: ${currentPassword}, New Password: ${newPassword}`);
+  const url = "../../includes/facilitator_profile/change_password.php";
+  const requestData = {
+    newPassword: newPassword,
+    currentPassword: currentPassword,
+  };
+
+  try {
     const response = await fetch(url, {
       method: "POST",
       headers: {
