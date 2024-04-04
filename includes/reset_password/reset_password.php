@@ -49,10 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Hash the password
     $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    $passwordReset = 1;
 
-    $changePasswordQuery = "UPDATE users SET password = ? WHERE email = ?";
+    $changePasswordQuery = "UPDATE users SET password = ?, password_reset = ? WHERE email = ?";
     $changePasswordStatement = $conn->prepare($changePasswordQuery);
-    $changePasswordStatement->bind_param("ss", $hashedPassword, $email);
+    $changePasswordStatement->bind_param("sis", $hashedPassword, $passwordReset, $email);
 
     if ($changePasswordStatement->execute() === false) {
         http_response_code(500); // Internal Server Error

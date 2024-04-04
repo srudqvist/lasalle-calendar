@@ -125,10 +125,12 @@ function updatePassword($newPassword, $userId)
             exit;
         }
 
+        $passwordReset = 0;
+
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-        $updatePasswordQuery = "UPDATE users SET password = ? WHERE user_id = ?";
+        $updatePasswordQuery = "UPDATE users SET password = ?, password_reset = ? WHERE user_id = ?";
         $updatePasswordStatement = $conn->prepare($updatePasswordQuery);
-        $updatePasswordStatement->bind_param("si", $hashedPassword, $userId);
+        $updatePasswordStatement->bind_param("sii", $hashedPassword, $passwordReset, $userId);
 
         if ($updatePasswordStatement->execute() === false) {
             http_response_code(500); // Internal Server Error
