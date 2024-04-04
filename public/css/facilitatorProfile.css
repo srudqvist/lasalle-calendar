@@ -114,3 +114,7 @@ newPassLabel
 #errorDiv {
   color: var(--error-color-500);
 }
+
+#successDiv {
+  color: green;
+}
