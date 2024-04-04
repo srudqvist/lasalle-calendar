@@ -447,6 +447,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 displaySuccessMessage("Password Updated"),
                 contentDiv.firstChild,
               );
+            } else {
+              const contentDiv = document.getElementById("contentDiv");
+              contentDiv.insertBefore(
+                displayErrorMessage("Password could not be updated"),
+                contentDiv.firstChild,
+              );
             }
           } else {
             console.log("passwords did not match, do something");
