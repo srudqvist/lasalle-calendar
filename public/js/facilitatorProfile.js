@@ -33,6 +33,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   if (editUserInformationButton) {
+    editUserInformationButton.addEventListener("mouseover", () => {
+      scaleUpElement(editUserInformationButton, 2.0);
+    });
+    editUserInformationButton.addEventListener("mouseleave", () => {
+      resetScaleElement(editUserInformationButton, 1.5);
+    });
     editUserInformationButton.addEventListener("click", () => {
       if (userInformationDiv && !editing && !editDisabled) {
         editing = true;
