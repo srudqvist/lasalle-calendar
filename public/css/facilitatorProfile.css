@@ -55,7 +55,6 @@ newPassLabel
 }
 
 #editButton:hover {
-  transform: scale(2);
   cursor: pointer;
 }
 
@@ -95,6 +94,9 @@ newPassLabel
 
 .cancel-button:hover {
   background-color: var(--error-color);
+}
+.cancel-button:disabled {
+  background-color: grey;
 }
 
 .save-button {
