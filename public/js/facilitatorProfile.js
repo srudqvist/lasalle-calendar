@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (passwordReset) {
     displayChangePassword();
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      console.log(button);
+      if (button.id != "saveButton") {
+        button.disabled = true;
+      }
+    });
   }
 
   changePasswordButton.addEventListener("mouseover", () =>
@@ -406,6 +413,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const saveButton = document.createElement("button");
     saveButton.innerHTML = "Save";
     saveButton.classList.add("save-button");
+    saveButton.setAttribute("id", "saveButton");
 
     saveButton.addEventListener("click", () => {
       console.log("Save Button Clicked");
