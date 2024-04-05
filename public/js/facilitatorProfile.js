@@ -462,12 +462,14 @@ document.addEventListener("DOMContentLoaded", async () => {
               newPassword,
             );
             if (passwordChangeMessage != null) {
-              restoreUserInformationDiv();
               const contentDiv = document.getElementById("contentDiv");
               contentDiv.insertBefore(
                 displaySuccessMessage("Password Updated"),
                 contentDiv.firstChild,
               );
+
+              window.location.replace("./facilitator_profile.php");
+              //restoreUserInformationDiv();
             } else {
               const contentDiv = document.getElementById("contentDiv");
               contentDiv.insertBefore(
