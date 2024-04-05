@@ -90,12 +90,30 @@ function createNavbar(page) {
   accountSpan.textContent = `Account: ${email}`;
   logoutImg.setAttribute("id", "logOutLogo");
   logout.href = "../../../includes/logout.php";
+  logout.setAttribute("id", "logoutLink");
   logoutImg.src = "img/logout.png";
 
   logout.appendChild(logoutImg);
   accountDiv.appendChild(accountSpan);
   accountDiv.appendChild(logout);
   navbar.appendChild(accountDiv);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const passwordReset = urlParams.get("passwordReset");
+  console.log(passwordReset);
+
+  if (passwordReset) {
+    const aTags = document.querySelectorAll("a");
+    aTags.forEach((link) => {
+      console.log(link);
+      if (link.id != "logoutLink") {
+        link.setAttribute("disabled", true);
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+        });
+      }
+    });
+  }
 }
 
 // Call the createNavbar function with the appropriate page name
