@@ -38,20 +38,20 @@ var sessionData = {
       </div>
       <div id='users'>
 
-        <div id="scheduledTableDiv" class="center_content">';
-       <table id="outerTable">';
-       <tr><th id="tableHeader">Scheduled Meetings</th></tr>';
-       <tr><td class="center_content"><br><table id="innerTable">';
-       <tr>';
-       <th class="green-background"><f1>Last Name</f1></th>;
-       <th class="green-background"><f1>First Name</f1></th>;
-       <th class="green-background"><f1>Primary Email</f1></th>;
-       <th class="green-background"><f1>Secondary Email</f1></th>;
-       <th class="green-background"><f1>Phone</f1></th>;
-       <th class="green-background"><f1>Active</f1></th>;
-       <th class="green-background"><f1>Notes</f1></th>;
-       <th class="green-background"><f1>Cancel</f1></th>;
-       </tr>;
+        <div id="scheduledTableDiv" class="center_content">
+       <table id="outerTable">
+       <tr><th id="tableHeader">Scheduled Meetings</th></tr>
+       <tr><td class="center_content"><br><table id="innerTable">
+       <tr>
+       <th class="green-background"><f1>Last Name</f1></th>
+       <th class="green-background"><f1>First Name</f1></th>
+       <th class="green-background"><f1>Primary Email</f1></th>
+       <th class="green-background"><f1>Secondary Email</f1></th>
+       <th class="green-background"><f1>Phone</f1></th>
+       <th class="green-background"><f1>Active</f1></th>
+       <th class="green-background"><f1>Notes</f1></th>
+       <th class="green-background"><f1>Cancel</f1></th>
+       </tr>
       </div>
     </main>
   </body>
