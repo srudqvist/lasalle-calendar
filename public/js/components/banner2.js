@@ -47,6 +47,10 @@ const pageLinks = {
     { label: "Events", href: eventContainersLink },
     { label: "Calendar", href: calendarLink, active: true },
   ],
+  admin: [
+    { label: "admin", href: eventContainersLink },
+    { label: "admin", href: calendarLink, active: true },
+  ],
   // Add more pages and links as needed
 };
 
@@ -100,7 +104,6 @@ function createNavbar(page) {
 
   const urlParams = new URLSearchParams(window.location.search);
   const passwordReset = urlParams.get("passwordReset");
-  console.log(passwordReset);
 
   if (passwordReset) {
     const aTags = document.querySelectorAll("a");
