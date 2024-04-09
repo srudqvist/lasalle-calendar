@@ -47,10 +47,7 @@ const pageLinks = {
     { label: "Events", href: eventContainersLink },
     { label: "Calendar", href: calendarLink, active: true },
   ],
-  admin: [
-    { label: "admin", href: eventContainersLink },
-    { label: "admin", href: calendarLink, active: true },
-  ],
+  admin: [{ label: "admin", href: "#", active: true }],
   // Add more pages and links as needed
 };
 
