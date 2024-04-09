@@ -1,4 +1,6 @@
 import { getUsers } from "./getUsers.js";
+import { updateUserStatus } from "./updateUserStatus.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   const users = await getUsers();
 
@@ -50,12 +52,15 @@ function displayUsers(users) {
 
     const buttonTd = document.createElement("td");
     const button = document.createElement("button");
+    const userId = users[i].user_id;
     if (users[i].hasOwnProperty("isActive") && users[i]["isActive"] == 1) {
       button.classList.add("cancel-button");
       button.textContent = "Inactivate";
+      button.addEventListener("click", updateUserStatus(0, userId));
       console.log("active user");
     } else {
       button.classList.add("activate-user-button");
+      button.addEventListener("click", updateUserStatus(1, userId));
       button.textContent = "Activate";
     }
     buttonTd.appendChild(button);
