@@ -47,23 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(array("success" => false, "message" => 'No users found'));
     }
 
-    // if ($result->num_rows > 0) {
-    //   while (row = $result->fetch_assoc()) {
-    //           echo "<tr id='meeting{$row['meeting_id']}'>";
-    //           echo "<td class='date-column'>{$row['meeting_date']}</td>";
-    //           echo "<td class='time-column'>{$row['meeting_time']}</td>";
-    //           echo "<td class='eventTitle-column'>{$row['event_name']}</td>";
-    //           echo "<td class='name-column'>{$row['name']}</td>";
-    //           echo "<td class='phone-column'>{$row['phone']}</td>";
-    //           echo "<td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>";
-    //           echo "<td class='notes-column'><td1>{$row['notes']}</td1></td>";
-    //           echo "<td class='cancel-column'><button class='cancel-button' id='{$row['meeting_id']}'>Cancel</button></td>";
-    //           echo "</tr>";
-    //   }
-    // } else {
-    //   echo '0 results';
-    // }
-
     $getUsersStatement->close();
     $conn->close();
 
