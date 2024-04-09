@@ -1,5 +1,6 @@
 // get the users and return them in json
 async function updateUserStatus(userStatusToChangeTo, userId) {
+  console.log("running updateUserStatus");
   const url = "../../../includes/admin/switch_user_status.php";
 
   const requestData = {
@@ -24,8 +25,11 @@ async function updateUserStatus(userStatusToChangeTo, userId) {
     const responseData = await response.json();
 
     if (responseData["success"] === false) {
+      showAlert("Error", "Could not update user status");
       return { success: false };
     }
+
+    location.reload();
 
     return {
       success: true,

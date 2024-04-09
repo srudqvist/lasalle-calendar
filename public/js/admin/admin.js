@@ -27,11 +27,15 @@ function displayUsers(users) {
       console.log(`Key: ${key}, Value: ${value}`);
       const cell = document.createElement("td");
 
+      if (key == "user_id") {
+        continue;
+      }
+
       if (key == "isActive") {
         if (value == 1) {
-          value = "Active";
-        } else if (value == 2) {
-          value = "Inactive";
+          value = "Inactivate";
+        } else if (value == 0) {
+          value = "Activate";
         }
       }
 
@@ -53,48 +57,25 @@ function displayUsers(users) {
     const buttonTd = document.createElement("td");
     const button = document.createElement("button");
     const userId = users[i].user_id;
+
     if (users[i].hasOwnProperty("isActive") && users[i]["isActive"] == 1) {
       button.classList.add("cancel-button");
       button.textContent = "Inactivate";
-      button.addEventListener("click", updateUserStatus(0, userId));
+      button.addEventListener("click", () => {
+        updateUserStatus(0, userId);
+      });
       console.log("active user");
     } else {
       button.classList.add("activate-user-button");
-      button.addEventListener("click", updateUserStatus(1, userId));
+      button.addEventListener("click", () => {
+        updateUserStatus(1, userId);
+      });
       button.textContent = "Activate";
     }
+
     buttonTd.appendChild(button);
     row.appendChild(buttonTd);
 
     table.appendChild(row);
-
-    //   <table id="outerTable">
-    //     <tr><th id="tableHeader">Scheduled Meetings</th></tr>
-    //     <tr><td class="center_content"><br><table id="innerTable">
-    //       <tr>
-    //         <th class="green-background"><f1>Last Name</f1></th>
-    //         <th class="green-background"><f1>First Name</f1></th>
-    //         <th class="green-background"><f1>Primary Email</f1></th>
-    //         <th class="green-background"><f1>Secondary Email</f1></th>
-    //         <th class="green-background"><f1>Phone</f1></th>
-    //         <th class="green-background"><f1>Active</f1></th>
-    //         <th class="green-background"><f1>Notes</f1></th>
-    //         <th class="green-background"><f1>Cancel</f1></th>
-    //       </tr>
-    //
-    //
-    //     <tr id='meeting{$row['meeting_id']}'>
-    //     <td class='date-column'>{$row['meeting_date']}</td>
-    //     <td class='time-column'>{$row['meeting_time']}</td>
-    //     <td class='eventTitle-column'>{$row['event_name']}</td>
-    //     <td class='name-column'>{$row['name']}</td>
-    //     <td class='phone-column'>{$row['phone']}</td>
-    //     <td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>
-    //     <td class='notes-column'><td1>{$row['notes']}</td1></td>
-    //     <td class='cancel-column'><button class='cancel-button' >Cancel</button></td>
-    //     </tr>
-    //
-    //
-    // </table><br></td></tr></table></div>
   }
 }

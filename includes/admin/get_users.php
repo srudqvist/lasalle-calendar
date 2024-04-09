@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $getUsersQuery = 'SELECT last_name, first_name, email, secondary_email, phone, isActive FROM users';
+    $getUsersQuery = 'SELECT user_id, last_name, first_name, email, secondary_email, phone, isActive FROM users';
     $getUsersStatement = $conn->prepare($getUsersQuery);
     $getUsersStatement->execute();
     $result = $getUsersStatement->get_result();
