@@ -1,0 +1,162 @@
+#scheduledTableDiv {
+  margin: 10px 0px 10px 0px;
+}
+table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#outerTable {
+  width: 90%;
+}
+
+#innerTable {
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.green-background {
+  background-color: var(--primary-color);
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#innerTable tr:nth-child(odd) {
+  /* background-color: #f9f9f9; */
+  /*background-color: #c9c7c7;*/
+  background-color: var(--primary-color-100);
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#tableHeader {
+  text-align: left;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--modal-bg-color);
+}
+
+.modal-content {
+  background-color: var(--card-color);
+  border-radius: var(--card-border-radius);
+  margin: 15% auto;
+  width: 30%;
+}
+
+.modal-content button {
+  width: auto;
+  padding: 15px;
+  border: none;
+  border-radius: var(--button-border-radius);
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.top {
+  background-color: var(--primary-color);
+  border-radius: var(--card-border-radius) var(--card-border-radius) 1px 1px;
+  color: var(--on-primary);
+  text-align: center;
+  padding: 1px;
+  margin-bottom: 10px;
+}
+
+.details-container {
+  display: flex;
+}
+
+.label-column {
+  flex: 1;
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+.text-column {
+  flex: 2;
+}
+
+.text-column span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+}
+
+#modalButtonsDiv {
+  padding: 0px 20px 20px 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#confirmCancel {
+  background-color: var(--error-color-600);
+}
+
+#confirmCancel:hover {
+  background-color: var(--error-color);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--primary-color);
+}
+
+.cancel-button {
+  background-color: var(--error-color-600);
+  color: var(--on-primary);
+  padding: 8px 40px;
+  border-radius: var(--button-border-radius);
+  border: none;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: var(--error-color);
+}
+
+.activate-user-button {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  padding: 8px 40px;
+  border-radius: var(--button-border-radius);
+  border: none;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+}
+
+.activate-user-button:hover {
+  background-color: var(--primary-color-800);
+}

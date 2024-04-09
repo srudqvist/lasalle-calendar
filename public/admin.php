@@ -14,7 +14,7 @@ if (!isset($_SESSION['loggedin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="./css/banner/banner2.css">
     <script src="./js/components/banner2.js" defer></script>
     <script src="./js/utils/movingCard.js" defer></script>
@@ -36,13 +36,13 @@ include('navbar.php'); ?>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-</script>
+        </script>
       </div>
       <div id='users'>
 
         <div id="scheduledTableDiv" class="center_content">
           <table id="outerTable">
-            <tr><th id="tableHeader">Scheduled Meetings</th></tr>
+            <tr><th id="tableHeader">Users</th></tr>
             <tr><td class="center_content"><br><table id="innerTable">
               <tr>
                 <th class="green-background"><f1>Last Name</f1></th>
@@ -53,20 +53,7 @@ var sessionData = {
                 <th class="green-background"><f1>Active</f1></th>
                 <th class="green-background"><f1>Cancel</f1></th>
               </tr>
-
-
-            <tr id='meeting{$row['meeting_id']}'>
-            <td class='date-column'>{$row['meeting_date']}</td>
-            <td class='time-column'>{$row['meeting_time']}</td>
-            <td class='eventTitle-column'>{$row['event_name']}</td>
-            <td class='name-column'>{$row['name']}</td>
-            <td class='phone-column'>{$row['phone']}</td>
-            <td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>
-            <td class='cancel-column'><button class='cancel-button' >Cancel</button></td>
-            </tr>
-
-
-        </table><br></td></tr></table></div>
+            </table><br></td></tr></table></div>
 
       </div>
     </main>
