@@ -37,6 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($result -> num_rows == 1) {
         $row = $result -> fetch_assoc();
 
+        if ($row["isActive"] == 0) {
+            $_SESSION['login_error_msg'] = "User Account Inactive, Please Contact Your System Administrator";
+            header("Location: ../public/index.php");
+            exit;
+        }
         echo "Password from submission: " . $password . "<br>";
         echo "Password from DB: " . $row['password'] . "<br>";
 
