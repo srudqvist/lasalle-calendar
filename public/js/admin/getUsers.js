@@ -1,6 +1,6 @@
 // get the users and return them in json
 async function getUsers() {
-  const url = "";
+  const url = "../../../includes/admin/get_users.php";
 
   try {
     const response = await fetch(url, {
@@ -8,6 +8,7 @@ async function getUsers() {
       headers: {
         "Content-type": "application/json",
       },
+      body: JSON.stringify({}),
     });
 
     if (!response.ok) {
@@ -23,7 +24,7 @@ async function getUsers() {
 
     return {
       success: true,
-      users: responseData["message"],
+      users: responseData["users"],
     };
   } catch {
     console.log("Could not get users");

@@ -14,9 +14,11 @@ if (!isset($_SESSION['loggedin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/schedule.css">
     <link rel="stylesheet" href="./css/banner/banner2.css">
     <script src="./js/components/banner2.js" defer></script>
     <script src="./js/utils/movingCard.js" defer></script>
+    <script src="./js/admin/admin.js" type='module' defer></script>
     <title>Admin</title>
   </head>
 
@@ -39,19 +41,35 @@ var sessionData = {
       <div id='users'>
 
         <div id="scheduledTableDiv" class="center_content">
-       <table id="outerTable">
-       <tr><th id="tableHeader">Scheduled Meetings</th></tr>
-       <tr><td class="center_content"><br><table id="innerTable">
-       <tr>
-       <th class="green-background"><f1>Last Name</f1></th>
-       <th class="green-background"><f1>First Name</f1></th>
-       <th class="green-background"><f1>Primary Email</f1></th>
-       <th class="green-background"><f1>Secondary Email</f1></th>
-       <th class="green-background"><f1>Phone</f1></th>
-       <th class="green-background"><f1>Active</f1></th>
-       <th class="green-background"><f1>Notes</f1></th>
-       <th class="green-background"><f1>Cancel</f1></th>
-       </tr>
+          <table id="outerTable">
+            <tr><th id="tableHeader">Scheduled Meetings</th></tr>
+            <tr><td class="center_content"><br><table id="innerTable">
+              <tr>
+                <th class="green-background"><f1>Last Name</f1></th>
+                <th class="green-background"><f1>First Name</f1></th>
+                <th class="green-background"><f1>Primary Email</f1></th>
+                <th class="green-background"><f1>Secondary Email</f1></th>
+                <th class="green-background"><f1>Phone</f1></th>
+                <th class="green-background"><f1>Active</f1></th>
+                <th class="green-background"><f1>Notes</f1></th>
+                <th class="green-background"><f1>Cancel</f1></th>
+              </tr>
+
+
+            <tr id='meeting{$row['meeting_id']}'>
+            <td class='date-column'>{$row['meeting_date']}</td>
+            <td class='time-column'>{$row['meeting_time']}</td>
+            <td class='eventTitle-column'>{$row['event_name']}</td>
+            <td class='name-column'>{$row['name']}</td>
+            <td class='phone-column'>{$row['phone']}</td>
+            <td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>
+            <td class='notes-column'><td1>{$row['notes']}</td1></td>
+            <td class='cancel-column'><button class='cancel-button' >Cancel</button></td>
+            </tr>
+
+
+        </table><br></td></tr></table></div>
+
       </div>
     </main>
   </body>

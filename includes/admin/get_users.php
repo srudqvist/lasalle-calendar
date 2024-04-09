@@ -32,38 +32,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $getUsersQuery = 'SELECT * FROM users';
     $getUsersStatement = $conn->prepare($getUsersQuery);
     $getUsersStatement->execute();
-  $result = $getUsersStatement->get_result();
-   
-  $users = array();
+    $result = $getUsersStatement->get_result();
 
-  while ($row = $result->fetch_assoc) {
-    $users[] = $row['user_id'];
-  }
+    $users = array();
 
-  if (!empty($users)) {
-    echo json_encode('success' => true, 'users' => $users);
-  } else {
-    echo json_encode(array("success" => false, 'message' => 'No users found'));
-  }
+    while ($row = $result->fetch_assoc()) {
+        $users[] = $row;
+        error_log($row['user_id']);
+    }
 
-  // if ($result->num_rows > 0) {
-  //   while (row = $result->fetch_assoc()) {
-  //           echo "<tr id='meeting{$row['meeting_id']}'>";
-  //           echo "<td class='date-column'>{$row['meeting_date']}</td>";
-  //           echo "<td class='time-column'>{$row['meeting_time']}</td>";
-  //           echo "<td class='eventTitle-column'>{$row['event_name']}</td>";
-  //           echo "<td class='name-column'>{$row['name']}</td>";
-  //           echo "<td class='phone-column'>{$row['phone']}</td>";
-  //           echo "<td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>";
-  //           echo "<td class='notes-column'><td1>{$row['notes']}</td1></td>";
-  //           echo "<td class='cancel-column'><button class='cancel-button' id='{$row['meeting_id']}'>Cancel</button></td>";
-  //           echo "</tr>";
-  //   }
-  // } else {
-  //   echo '0 results';
-  // }
+    if (!empty($users)) {
+        echo json_encode(array("success" => true, "users" => $users));
+    } else {
+        echo json_encode(array("success" => false, "message" => 'No users found'));
+    }
 
+    // if ($result->num_rows > 0) {
+    //   while (row = $result->fetch_assoc()) {
+    //           echo "<tr id='meeting{$row['meeting_id']}'>";
+    //           echo "<td class='date-column'>{$row['meeting_date']}</td>";
+    //           echo "<td class='time-column'>{$row['meeting_time']}</td>";
+    //           echo "<td class='eventTitle-column'>{$row['event_name']}</td>";
+    //           echo "<td class='name-column'>{$row['name']}</td>";
+    //           echo "<td class='phone-column'>{$row['phone']}</td>";
+    //           echo "<td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>";
+    //           echo "<td class='notes-column'><td1>{$row['notes']}</td1></td>";
+    //           echo "<td class='cancel-column'><button class='cancel-button' id='{$row['meeting_id']}'>Cancel</button></td>";
+    //           echo "</tr>";
+    //   }
+    // } else {
+    //   echo '0 results';
+    // }
 
+    $getUsersStatement->close();
     $conn->close();
 
 } else {

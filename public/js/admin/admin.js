@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     displayUsers(users["users"]);
   } else {
     // display error message
+    console.log(`Users: ${users}`);
     console.log("Could not get users");
   }
 });
