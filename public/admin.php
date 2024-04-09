@@ -51,7 +51,6 @@ var sessionData = {
                 <th class="green-background"><f1>Secondary Email</f1></th>
                 <th class="green-background"><f1>Phone</f1></th>
                 <th class="green-background"><f1>Active</f1></th>
-                <th class="green-background"><f1>Notes</f1></th>
                 <th class="green-background"><f1>Cancel</f1></th>
               </tr>
 
@@ -63,7 +62,6 @@ var sessionData = {
             <td class='name-column'>{$row['name']}</td>
             <td class='phone-column'>{$row['phone']}</td>
             <td class='email-column'><a href='mailto:{$row['email']}'>{$row['email']}</a></td>
-            <td class='notes-column'><td1>{$row['notes']}</td1></td>
             <td class='cancel-column'><button class='cancel-button' >Cancel</button></td>
             </tr>
 

@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS users (
     last_name VARCHAR(50) NOT NULL,
     phone VARCHAR(15) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    password_reset BOOLEAN NOT NULL DEFAULT FALSE
+    password_reset BOOLEAN NOT NULL DEFAULT FALSE,
+    isActive BOOLEAN NOT NULL DEFAULT TRUE
 );
 
 -- Create the table for the event containers
