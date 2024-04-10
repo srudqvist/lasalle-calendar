@@ -135,7 +135,26 @@ document.addEventListener("DOMContentLoaded", function () {
       const startTime = eventInfo.fetchedStartTime;
       //const startTime = "08:00";
       const endTime = eventInfo.fetchedEndTime;
-      const durationMinutes = parseInt(eventInfo.fetchedDuration.split(" "));
+      let durationMinutes = eventInfo.fetchedDuration;
+      //const durationMinutes = parseInt(eventInfo.fetchedDuration.split(" "));
+
+      if (!durationMinutes.includes("h")) {
+        durationMinutes = parseInt(eventInfo.fetchedDuration.split(" "));
+      } else if (
+        durationMinutes.includes("h") &&
+        !durationMinutes.includes("min")
+      ) {
+        durationMinutes = parseInt(eventInfo.fetchedDuration.split(" ")) * 60;
+      } else if (
+        durationMinutes.includes("h") &&
+        durationMinutes.includes("min")
+      ) {
+        let [hours, minutes, ...xyz] = eventInfo.fetchedDuration.split(" ");
+        hours = hours.split("h")[0];
+        let totalMin = Math.floor(hours * 60) + Math.floor(minutes);
+        durationMinutes = totalMin;
+      }
+
       availableDays = eventInfo.fetchedAvailableDays;
       const numTimeSlots = calculateTimeSlots(
         startTime,
