@@ -103,3 +103,6 @@ body {
 .appear-transition-appearing {
   opacity: 1;
 }
+.no-data {
+  font-size: 1rem;
+}
