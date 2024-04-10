@@ -48,7 +48,7 @@ if(isset($_SESSION['facility'])) {
         }
         echo '</table><br></td></tr></table></div>';
     } else {
-        echo "0 results";
+        echo "<div class='no-data center_content'><p>There are no meetings scheduled yet</p></div>";
     }
 }
 $conn->close();

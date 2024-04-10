@@ -51,7 +51,8 @@ if(isset($_SESSION['facility'])) {
             echo "</div>"; // Close eventContainerDiv
         }
     } else {
-        echo "0 results";
+        echo "";
+        //echo "<div class='no-data center_content'><p>Add an event container</p></div>";
     }
 }
 
