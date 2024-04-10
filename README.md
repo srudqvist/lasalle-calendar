@@ -1,6 +1,4 @@
-# lasalle-calendar
-
-The calendar for ICE
+# online-calendar
 
 ### How to run
 
