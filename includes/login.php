@@ -58,7 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($row['password_reset'] == 1) {
                 header("Location: ../public/facilitator_profile.php?passwordReset=true");
             } else {
-                header("Location: ../public/eventContainers.php");
+                if ($_SESSION['facility'] == 'LMC-ADMIN') {
+                    header("Location: ../public/admin.php");
+                } else {
+                    header("Location: ../public/eventContainers.php");
+                }
             }
             exit;
         } else {

@@ -25,6 +25,7 @@ const eventContainersLink = "eventContainers.php";
 const scheduleLink = "schedule.php";
 const calendarLink = currentURL;
 const profileLink = "facilitator_profile.php";
+const adminLink = "admin.php";
 
 // Array of navbar links for each page
 const pageLinks = {
@@ -47,7 +48,10 @@ const pageLinks = {
     { label: "Events", href: eventContainersLink },
     { label: "Calendar", href: calendarLink, active: true },
   ],
-  admin: [{ label: "admin", href: "#", active: true }],
+  admin: [
+    { label: "admin", href: adminLink, active: true },
+    { label: "Profile", href: profileLink },
+  ],
   // Add more pages and links as needed
 };
 
