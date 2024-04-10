@@ -7,6 +7,13 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: index.php');
     exit;
 }
+if (isset($_SESSION['facility'])) {
+    if ($_SESSION['facility'] != 'LMC-ADMIN') {
+        header('Location: index.php');
+        exit;
+    }
+
+}
 ?>
 <html lang="en">
 
