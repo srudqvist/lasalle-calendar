@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/formStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="./js/signupValidation.js"></script>
+    <script src="./js/signupValidation.js" type="module"></script>
     <title>Sign Up</title>
   </head>
 
