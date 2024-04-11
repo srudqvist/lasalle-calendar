@@ -39,17 +39,23 @@ const pageLinks = {
     { label: "Scheduled", href: scheduleLink, active: true },
     { label: "Profile", href: profileLink },
   ],
-  facilitator_profile: [
-    { label: "Events", href: eventContainersLink },
-    { label: "Scheduled", href: scheduleLink },
-    { label: "Profile", href: profileLink, active: true },
-  ],
+  facilitator_profile:
+    email === "admin@lasallecorrections.com"
+      ? [
+          { label: "Admin", href: adminLink },
+          { label: "Profile", href: profileLink, active: true },
+        ]
+      : [
+          { label: "Events", href: eventContainersLink },
+          { label: "Scheduled", href: scheduleLink },
+          { label: "Profile", href: profileLink, active: true },
+        ],
   calendar: [
     { label: "Events", href: eventContainersLink },
     { label: "Calendar", href: calendarLink, active: true },
   ],
   admin: [
-    { label: "admin", href: adminLink, active: true },
+    { label: "Admin", href: adminLink, active: true },
     { label: "Profile", href: profileLink },
   ],
   // Add more pages and links as needed
