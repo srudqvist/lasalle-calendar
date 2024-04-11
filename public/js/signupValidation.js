@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (
         nameValidation(firstNameInput.value) &&
         nameValidation(lastNameInput.value) &&
+        phoneValidation(phoneInput.value) &&
         isPasswordValid(password) &&
         password === confirmPassword
       ) {
@@ -167,6 +168,15 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       return true;
     }
+  }
+
+  function phoneValidation(phoneNumber) {
+    console.log(phoneNumber);
+    console.log(`PHONE LENGTH ${phoneNumber.length}`);
+    if (phoneNumber.length != 14) {
+      return false;
+    }
+    return true;
   }
 
   function showErrorMessage(message, inputName, errorDiv) {
