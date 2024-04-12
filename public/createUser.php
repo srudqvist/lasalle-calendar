@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: index.php');
+    exit;
+}
+if (isset($_SESSION['facility'])) {
+    if ($_SESSION['facility'] != 'LMC-ADMIN') {
+        header('Location: index.php');
+        exit;
+    }
+
+}
+?>
 <html lang="en">
 
   <head>
@@ -8,20 +24,30 @@
     <!-- <link rel="stylesheet" href="css/login.css"> -->
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/formStyles.css">
+    <link rel="stylesheet" href="./css/banner/banner2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="./js/signupValidation.js" type="module"></script>
+    <script src="./js/components/banner2.js" defer></script>
     <title>Sign Up</title>
   </head>
 
   <body>
+      <script>
+var sessionData = {
+  email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
+};
+        </script>
     <div class="flex-wrap">
       <div id="navbarDiv">
         <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
       </div>
+      <div class="navbar" id="myNavbar">
+
+      </div>
       <div class="content">
         <div id="signUp">
           <form action="../includes/signup.php" method="post" id="signupForm" class="modern_form">
-            <h1 class="center_content">Sign Up</h1>
+            <h1 class="center_content">Create User</h1>
             <label for="facility">Facility:</label>
             <select required name="facility" id="facility" placeholder="facility">
               <option>Facility 1</option>
@@ -48,13 +74,10 @@
             <label for="confirmPassword">Confirm Password:</label>
             <input required type="password" name="confirmPassword" id="confirmPassword" placeholder="password123">
             <div id="confirmError"></div>
-            <button type="submit">Sign Up</button>
+            <button type="submit">Create User</button>
             <div id="successMessage">
               <p>User Created</p>
               <p id="redirectText"></p>
-            </div>
-            <div id="createForgot">
-              <p>Already have an account? <a href="index.php">Log In</a></p>
             </div>
           </form>
         </div>

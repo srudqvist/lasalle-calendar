@@ -26,6 +26,7 @@ const scheduleLink = "schedule.php";
 const calendarLink = currentURL;
 const profileLink = "facilitator_profile.php";
 const adminLink = "admin.php";
+const createUserLink = "createUser.php";
 
 // Array of navbar links for each page
 const pageLinks = {
@@ -57,6 +58,12 @@ const pageLinks = {
   admin: [
     { label: "Admin", href: adminLink, active: true },
     { label: "Profile", href: profileLink },
+    { label: "Create User", href: createUserLink },
+  ],
+  createUser: [
+    { label: "Admin", href: adminLink },
+    { label: "Profile", href: profileLink },
+    { label: "Create User", href: createUserLink, active: true },
   ],
   // Add more pages and links as needed
 };
