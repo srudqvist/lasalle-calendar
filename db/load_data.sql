@@ -9,6 +9,7 @@ INSERT INTO users (facility, email, secondary_email, first_name, last_name, phon
 
 
     -- 'SuperSecret!123',
+    -- 'SuperSecret!123',
     -- 'MyPassword123!',
     -- 'p@ssw0rd!',
     -- 'longerThanBefore!123'
