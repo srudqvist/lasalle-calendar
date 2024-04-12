@@ -528,11 +528,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Validate primary email
     if (primaryEmailInput && !validateEmail(primaryEmailInput.value)) {
+      console.log("failed here 1");
       return false;
     }
 
     // Validate phone number
     if (phoneInput && !validatePhoneNumber(phoneInput.value)) {
+      console.log("failed here");
       return false;
     }
 
@@ -660,6 +662,9 @@ async function saveEdits(data) {
 
     // Return the user data
     console.log(responseData);
+    if (responseData["success"] == true) {
+      location.reload();
+    }
     return responseData["message"];
   } catch (error) {
     console.log(error);
