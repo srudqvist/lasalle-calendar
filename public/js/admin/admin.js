@@ -1,3 +1,4 @@
+import { changeFacility } from "./changeFacility.js";
 import { getUsers } from "./getUsers.js";
 import { updateUserStatus } from "./updateUserStatus.js";
 
@@ -68,6 +69,10 @@ function displayUsers(users) {
           }
         }
         dropdown.classList.add("dropdown");
+
+        dropdown.addEventListener("change", () => {
+          changeFacility(dropdown.value, users[i].user_id);
+        });
 
         cell.classList.add("column");
 
