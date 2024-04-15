@@ -1,6 +1,16 @@
 import { getUsers } from "./getUsers.js";
 import { updateUserStatus } from "./updateUserStatus.js";
 
+const facilities = [
+  "Limestone",
+  "Winnfield",
+  "San Luis",
+  "Facility 1",
+  "Facility 2",
+  "Facility 3",
+  "LMC-ADMIN",
+];
+
 document.addEventListener("DOMContentLoaded", async () => {
   const users = await getUsers();
 
@@ -33,9 +43,9 @@ function displayUsers(users) {
 
       if (key == "isActive") {
         if (value == 1) {
-          value = "Inactivate";
+          value = "Active";
         } else if (value == 0) {
-          value = "Activate";
+          value = "Inactive";
         }
       }
 
@@ -45,6 +55,24 @@ function displayUsers(users) {
         aTag.href = `mailto:${value}`;
         aTag.textContent = value;
         cell.appendChild(aTag);
+      } else if (key == "facility") {
+        const dropdown = document.createElement("select");
+
+        for (let i = 0; i < facilities.length; i++) {
+          const option = document.createElement("option");
+          option.value = facilities[i];
+          option.text = facilities[i];
+          dropdown.appendChild(option);
+          if (option.value == value) {
+            option.selected = true;
+          }
+        }
+        dropdown.classList.add("dropdown");
+
+        cell.classList.add("column");
+
+        //cell.textContent = value;
+        cell.appendChild(dropdown);
       } else {
         // give different class to email
         cell.classList.add("column");

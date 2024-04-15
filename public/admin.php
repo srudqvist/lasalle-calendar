@@ -52,6 +52,7 @@ var sessionData = {
             <tr><th id="tableHeader">Users</th></tr>
             <tr><td class="center_content"><br><table id="innerTable">
               <tr>
+                <th class="green-background"><f1>Facility</f1></th>
                 <th class="green-background"><f1>Last Name</f1></th>
                 <th class="green-background"><f1>First Name</f1></th>
                 <th class="green-background"><f1>Primary Email</f1></th>
