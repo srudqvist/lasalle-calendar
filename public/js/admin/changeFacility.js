@@ -5,7 +5,7 @@ async function changeFacility(newFacility, userId) {
 
   const requestData = {
     userId: userId,
-    userStatus: newFacility,
+    facility: newFacility,
   };
 
   try {
