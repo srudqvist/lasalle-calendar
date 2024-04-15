@@ -160,3 +160,10 @@ input[type="checkbox"] {
 .activate-user-button:hover {
   background-color: var(--primary-color-800);
 }
+
+.dropdown {
+  border-radius: var(--input-border-radius);
+  border: none;
+  padding: 8px 10px;
+  box-shadow: var(--button-shadow);
+}
