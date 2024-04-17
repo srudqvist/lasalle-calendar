@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
 ?>
 <html lang="en">
@@ -25,9 +24,9 @@ session_start();
           <?php
           // Check if meeting details are set in the session
           if(isset($_SESSION['meeting_details'])) {
-              // Retrieve meeting details from the session
-              $meetingDetails = $_SESSION['meeting_details'];
-              ?>
+          // Retrieve meeting details from the session
+          $meetingDetails = $_SESSION['meeting_details'];
+          ?>
           <div id="confirmation" class="card">
             <h1>Your meeting has been scheduled!</h1>
             <p>An email confirmation has been sent to:<?php echo htmlspecialchars($meetingDetails['email']); ?></p>
@@ -49,19 +48,19 @@ session_start();
             <p data-label="Timezone"> <?php echo htmlspecialchars($meetingDetails['timezone']); ?></p>
             <p data-label="Comments"> <?php echo htmlspecialchars($meetingDetails['comments']); ?></p>
             <?php
-          } else {
-              // Display a message if meeting details are not set in the session
-              ?>
+            } else {
+            // Display a message if meeting details are not set in the session
+            ?>
             <p>No meeting details found.</p>
             <?php
-          }
-?>
+            }
+            ?>
           </div>
         </div>
       </div>
     </main>
-        <div id="footerDiv">
-            <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
-        </div>
+    <div id="footerDiv">
+      <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
+    </div>
   </body>
 </html>
