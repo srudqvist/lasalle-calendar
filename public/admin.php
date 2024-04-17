@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: index.php');
-    exit;
+header('Location: index.php');
+exit;
 }
 if (isset($_SESSION['facility'])) {
-    if ($_SESSION['facility'] != 'LMC-ADMIN') {
-        header('Location: index.php');
-        exit;
-    }
-
+if ($_SESSION['facility'] != 'LMC-ADMIN') {
+header('Location: index.php');
+exit;
+}
 }
 ?>
 <html lang="en">
@@ -33,20 +31,17 @@ if (isset($_SESSION['facility'])) {
     <main>
       <div class='flex-wrap'>
         <div id='navbarDiv'>
-<?php
-include('navbar.php'); ?>
+          <?php
+          include('navbar.php'); ?>
         </div>
-      <div class="navbar" id="myNavbar">
-
-      </div>
-      <script>
+        <div class="navbar" id="myNavbar"></div>
+        <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-        </script>
+</script>
       </div>
       <div id='users'>
-
         <div id="scheduledTableDiv" class="center_content">
           <table id="outerTable">
             <tr><th id="tableHeader">Users</th></tr>
@@ -62,7 +57,7 @@ var sessionData = {
                 <th class="green-background"><f1>Cancel</f1></th>
               </tr>
             </table><br></td></tr></table></div>
-
       </div>
     </main>
   </body>
+</html>

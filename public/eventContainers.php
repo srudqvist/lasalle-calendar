@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
@@ -29,16 +28,12 @@ exit;
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found  -->
     </div>
     <main>
-      <!-- <banner-component custom-text="Events | Scheduled" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>"> -->
-      <!-- </banner-component> -->
       <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-      </script>
-      <div class="navbar" id="myNavbar">
-
-      </div>
+</script>
+      <div class="navbar" id="myNavbar"></div>
       <button id="addEventContainer">Add Event Container</button>
       <div id="eventContainers" class="container-row">
         <?php
@@ -84,8 +79,6 @@ var sessionData = {
               </div>
               <div class="row">
                 <div id="to">
-                  <!-- <label for="dayTo">To:</label> -->
-
                   <label class="col-25" for="availableTimes">Available Times:</label>
                   <div class="col-75">
                     <input required type="time" id="startTime" name="startTime">
@@ -123,22 +116,12 @@ var sessionData = {
                 <label class="col-25" for="description">Description:</label>
                 <textarea class="col-75" id="description" name="description" placeholder="Description"></textarea>
               </div>
-              <!--<div id="eventColorDiv">
-<label for="eventColor">Event Color:</label>
-<div class="color-picker">
-<div class="color-swatch" id="swatch1"></div>
-<div class="color-swatch" id="swatch2"></div>
-<div class="color-swatch" id="swatch3"></div>
-</div>
-</div>
--->
               <div class="row">
                 <div class="color-picker">
                   <label class="col-25" for="eventColor">Event Color:</label>
                   <input class="col-75" type="color" id="eventColorPicker" name="eventColor" value="#cdcbcb">
                 </div>
               </div>
-
               <div id="modalButtonsDiv">
                 <button id="cancelButton" type="button">Cancel</button>
                 <button id="submitButton" type="submit">Create New Container</button>
@@ -146,9 +129,7 @@ var sessionData = {
             </form>
           </div>
         </div>
-
       </div> <!-- addEventContainerModal close -->
-
       <div id="deleteMessageModal" class="modal fade">
         <div class="modal-content">
           <form class="modal-form">
@@ -159,16 +140,12 @@ var sessionData = {
             </div>
           </form>
         </div> <!-- deleteMessageModal close -->
-
     </main>
     <?php
-    // Include the PHP script to retrieve event containers
-//    include '../includes/getEventContainerMaxID.php';
     ?>
     <div id="footerDiv">
       <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
     </div>
-    <!-- Output the highest container ID as a JavaScript variable -->
   </body>
 
 </html>

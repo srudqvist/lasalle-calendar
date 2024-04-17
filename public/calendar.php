@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
-// If the user is not logged in redirect to the login page...
-// if (!isset($_SESSION['loggedin'])) {
-//    header('Location: index.php');
-//    exit;
-//}
 ?>
 <html lang="en">
 
@@ -31,16 +25,13 @@ session_start();
         <div id="navbarDiv">
           <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
         </div>
-        <!-- <banner-component custom-text="Calendar" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>"> -->
-        <!-- </banner-component> -->
-      <script>
+        <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-</script>
-      <div class="navbar" id="myNavbar">
-
-      </div>
+        </script>
+        <div class="navbar" id="myNavbar">
+        </div>
         <div id="contentDiv">
           <div id="meetingDetailsDiv" class="preserve-3d-container">
             <div class="card moving-card">
@@ -59,10 +50,8 @@ var sessionData = {
                   <span id="meetingNotes"></span>
                 </div>
               </div>
-
             </div>
           </div>
-
           <div id="calendarDiv">
             <div id="calendarControls">
               <div class="yearDiv">
@@ -84,10 +73,8 @@ var sessionData = {
             <button id="nextButton" class="next-schedule-button">Next</button>
           </div>
           <div id="timeDiv"></div>
-
         </div>
         <div id="userDetailsDiv">
-
           <div id="meetingDetailsDiv2">
             <div class="card moving-card">
               <h1>Meeting Details</h1>
@@ -135,16 +122,11 @@ var sessionData = {
               </div>
             </form>
           </div>
-
-
         </div>
-
         <div id="footerDiv">
           <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
         </div>
       </div>
     </main>
-
   </body>
-
 </html>

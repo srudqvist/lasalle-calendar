@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: index.php');
-    exit;
+header('Location: index.php');
+exit;
 }
 if (isset($_SESSION['facility'])) {
-    if ($_SESSION['facility'] != 'LMC-ADMIN') {
-        header('Location: index.php');
-        exit;
-    }
+if ($_SESSION['facility'] != 'LMC-ADMIN') {
+header('Location: index.php');
+exit;
+}
 
 }
 ?>
@@ -21,7 +20,6 @@ if (isset($_SESSION['facility'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <!-- <link rel="stylesheet" href="css/login.css"> -->
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/formStyles.css">
     <link rel="stylesheet" href="./css/banner/banner2.css">
@@ -32,18 +30,16 @@ if (isset($_SESSION['facility'])) {
   </head>
 
   <body>
-      <script>
+    <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-        </script>
+</script>
     <div class="flex-wrap">
       <div id="navbarDiv">
         <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
       </div>
-      <div class="navbar" id="myNavbar">
-
-      </div>
+      <div class="navbar" id="myNavbar"></div>
       <div class="content">
         <div id="signUp">
           <form action="../includes/signup.php" method="post" id="signupForm" class="modern_form">

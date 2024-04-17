@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <?php
-// We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
@@ -28,13 +27,11 @@ if (!isset($_SESSION['loggedin'])) {
     <div id="navbarDiv">
       <?php include('navbar.php'); ?> <!-- Use require if it should error if navbar.php is not found -->
     </div>
-    <!-- <banner-component custom-text="Profile Page" label="<?=htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>"> -->
-    <!-- </banner-component> -->
     <script>
 var sessionData = {
   email: "<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES)?>",
 };
-</script>
+    </script>
     <div class="navbar" id="myNavbar">
     </div>
     <h1>Settings</h1>
@@ -64,12 +61,10 @@ var sessionData = {
       </div>
       <div class="card">
         <h3>Preferences</h3>
-
       </div>
       <div class="card">
         <h3>Other</h3>
       </div>
-
     </div>
     <div id="footerDiv">
       <?php include('footer.php'); ?> <!-- Use require if it should error if footer.php is not found -->
