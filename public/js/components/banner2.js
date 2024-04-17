@@ -133,6 +133,4 @@ function createNavbar(page) {
   }
 }
 
-// Call the createNavbar function with the appropriate page name
-// Replace "home" with the current page name dynamically
 createNavbar(lastSegment);

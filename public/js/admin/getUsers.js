@@ -12,7 +12,6 @@ async function getUsers() {
     });
 
     if (!response.ok) {
-      console.log("Bad response");
       throw new Error(`HTTP ERROR! Status: ${response.status}`);
     }
 
@@ -27,7 +26,6 @@ async function getUsers() {
       users: responseData["users"],
     };
   } catch {
-    console.log("Could not get users");
     return { success: false };
   }
 }

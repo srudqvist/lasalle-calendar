@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const users = await getUsers();
 
   if (users["success"] === true) {
-    // display the users
-    console.log("Got users");
     displayUsers(users["users"]);
   } else {
     // display error message
@@ -27,15 +25,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function displayUsers(users) {
-  console.log(users);
   const table = document.getElementById("innerTable");
   for (let i = 0; i < users.length; i++) {
-    console.log(users[i]);
-
     const row = document.createElement("tr");
 
     for (let [key, value] of Object.entries(users[i])) {
-      console.log(`Key: ${key}, Value: ${value}`);
       const cell = document.createElement("td");
 
       if (key == "user_id") {
@@ -64,6 +58,7 @@ function displayUsers(users) {
           option.value = facilities[i];
           option.text = facilities[i];
           dropdown.appendChild(option);
+
           if (option.value == value) {
             option.selected = true;
           }
@@ -76,10 +71,8 @@ function displayUsers(users) {
 
         cell.classList.add("column");
 
-        //cell.textContent = value;
         cell.appendChild(dropdown);
       } else {
-        // give different class to email
         cell.classList.add("column");
         cell.textContent = value;
       }
@@ -94,12 +87,13 @@ function displayUsers(users) {
     if (users[i].hasOwnProperty("isActive") && users[i]["isActive"] == 1) {
       button.classList.add("cancel-button");
       button.textContent = "Inactivate";
+
       button.addEventListener("click", () => {
         updateUserStatus(0, userId);
       });
-      console.log("active user");
     } else {
       button.classList.add("activate-user-button");
+
       button.addEventListener("click", () => {
         updateUserStatus(1, userId);
       });

@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   nextButton.addEventListener("mouseleave", () =>
     resetScaleElement(nextButton),
   );
+
   nextButton.addEventListener("click", () => {
     if (bannerComponent) {
       bannerComponent.setAttribute("custom-text", "User Details");
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       console.log("banner not found");
     }
+
     userDetails.style.display = "flex";
     calendarContent.style.display = "none";
     const year = document.getElementById("currentYear").innerText;
@@ -42,15 +44,16 @@ document.addEventListener("DOMContentLoaded", function () {
       bannerComponent.setAttribute("custom-text", "Calendar");
       bannerComponent.connectedCallback();
     }
+
     userDetails.style.display = "none";
     calendarContent.style.display = "flex";
   });
+
   backButton.addEventListener("mouseover", () => scaleUpElement(backButton));
   backButton.addEventListener("mouseleave", () =>
     resetScaleElement(backButton),
   );
 
-  // ScheduleButton event listeners
   scheduleButton.addEventListener("mouseover", () =>
     scaleUpElement(scheduleButton),
   );
@@ -72,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return numTimeSlots;
   };
+
   // Function to convert time in HH:mm format to minutes
   function timeToMinutes(time) {
     const [hours, minutes] = time.split(":").map(Number);
@@ -108,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
       button.id = buttonId;
       const buttonMinutes = timeToMinutes(startTime) + duration * i;
       const buttonText = timeToHours(buttonMinutes);
+
       if (i == 0) {
         const formattedStartTime = formatAMPM(startTime);
         button.innerText = formattedStartTime;
@@ -118,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const formattedTime = formatAMPM(buttonText);
         button.innerText = formattedTime;
       }
+
       button.addEventListener("mouseover", () => scaleUpElement(button));
       button.addEventListener("mouseleave", () => resetScaleElement(button));
 
@@ -161,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         endTime,
         durationMinutes,
       );
+
       const generateButtons = generateTimeSlotButtons(
         numTimeSlots,
         startTime,
@@ -207,12 +214,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "Friday",
       "Saturday",
     ];
+
     daysOfWeek.forEach((day) => {
       const th = document.createElement("th");
       //th.classList.add("gray-out");
       th.textContent = day;
       headerRow.appendChild(th);
     });
+
     calendarTable.appendChild(headerRow);
 
     // Create table rows with days
@@ -271,16 +280,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const year = parseInt(selectYear.value);
     const month = parseInt(selectMonth.value) + 1;
     let formattedDate = `${year}-`;
+
     if (month.toString().length == 1) {
       formattedDate += `0${month}-`;
     } else {
       formattedDate += `${month}-`;
     }
+
     if (selectedDate.length == 1) {
       formattedDate += `0${selectedDate}`;
     } else {
       formattedDate += selectedDate;
     }
+
     getScheduledMeetingsByDate(formattedDate)
       .then((takenTimes) => {
         grayOutTimeButtons(takenTimes);
@@ -295,6 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const timeButtons = document.querySelectorAll(".time-button-row button");
     timeButtons.forEach((button) => {
       const buttonText = button.innerText.trim();
+
       if (takenTimes.includes(buttonText)) {
         button.classList.add("gray-out");
         button.disabled = true;
@@ -310,6 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
     selectedButtons.forEach((button) =>
       button.classList.remove("selected-time"),
     );
+
     const button = document.getElementById(buttonId);
     button.classList.add("selected-time");
   };
@@ -372,14 +386,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevMonthButton = document.getElementById("prevMonth");
   prevMonthButton.addEventListener("click", () => {
     const month = document.getElementById("currentMonth").innerText;
+
     if (month == "January") {
       switchYear(-1);
     }
+
     switchMonth(-1);
   });
+
   prevMonthButton.addEventListener("mouseover", () =>
     scaleUpElement(prevMonthButton),
   );
+
   prevMonthButton.addEventListener("mouseleave", () =>
     resetScaleElement(prevMonthButton),
   );
@@ -392,9 +410,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     switchMonth(1);
   });
+
   nextMonthButton.addEventListener("mouseover", () =>
     scaleUpElement(nextMonthButton),
   );
+
   nextMonthButton.addEventListener("mouseleave", () =>
     resetScaleElement(nextMonthButton),
   );
@@ -404,6 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
   prevYearButton.addEventListener("mouseover", () =>
     scaleUpElement(prevYearButton),
   );
+
   prevYearButton.addEventListener("mouseleave", () =>
     resetScaleElement(prevYearButton),
   );
@@ -414,6 +435,7 @@ document.addEventListener("DOMContentLoaded", function () {
   nextYearButton.addEventListener("mouseover", () =>
     scaleUpElement(nextYearButton),
   );
+
   nextYearButton.addEventListener("mouseleave", () =>
     resetScaleElement(nextYearButton),
   );
