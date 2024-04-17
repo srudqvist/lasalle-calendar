@@ -1,6 +1,6 @@
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
+
 document.addEventListener("DOMContentLoaded", function () {
-  const cancelButtons = document.getElementsByClassName("cancel-button");
   const deleteScheduleModal = document.getElementById("scheduleModal");
   const scheduleTable = document.getElementById("innerTable");
   const modalEventTitle = document.getElementById("eventTitle");
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const allButtons = document.getElementsByTagName("BUTTON");
   const sendEmailCheckbox = document.getElementById("myCheckbox");
 
+  // Add the scaling eventlisteners to all the buttons
   for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("mouseover", () =>
       scaleUpElement(allButtons[i]),
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
+  // Add the scaling eventlisteners to the checkbox
   sendEmailCheckbox.addEventListener("mouseover", () =>
     scaleUpElement(sendEmailCheckbox),
   );
@@ -31,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.target.classList.contains("cancel-button")) {
       const buttonID = event.target.id;
       const meetingRowToCancel = document.getElementById(`meeting${buttonID}`);
+
       if (meetingRowToCancel) {
         openCancelModal(meetingRowToCancel, buttonID);
       }
@@ -75,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
           meetingID: meetingID,
         };
 
+        // Todo: refactor this to match other fetches when changing anything here
         fetch("../../includes/delete_meeting.php", {
           method: "POST",
           headers: {

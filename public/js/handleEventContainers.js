@@ -1,4 +1,5 @@
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const addEventButton = document.getElementById("addEventContainer");
   const eventContainersDiv = document.getElementById("eventContainers");
@@ -13,9 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let editing = false;
   let editContainerIndex = 0;
 
+  // Add the scaling eventlisteners to the close icon
   closeIcon.addEventListener("mouseover", () => scaleUpElement(closeIcon, 2.0));
   closeIcon.addEventListener("mouseleave", () => resetScaleElement(closeIcon));
 
+  // Add the scaling eventlisteners to all the buttons
   for (let i = 0; i < allButtons.length; i++) {
     allButtons[i].addEventListener("mouseover", () =>
       scaleUpElement(allButtons[i]),
@@ -30,24 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
     openAddEventContainerModal("Create New Container");
   });
 
+  // Handle button presses on the event containers
   eventContainersDiv.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
       const buttonId = event.target.id;
       const containerIndex = buttonId.replace(/\D/g, "");
-      console.log(containerIndex);
 
       if (buttonId.startsWith("viewCalendarButton")) {
-        handleButtonClick(event, "View Calendar", containerIndex);
         viewCalendar(containerIndex);
       } else if (buttonId.startsWith("copyLinkButton")) {
-        // Handle the "Copy Link" button click
         copyLink(containerIndex);
       } else if (buttonId.startsWith("editButton")) {
-        // Handle the "Edit" button click
         getContainerValues(containerIndex);
       } else if (buttonId.startsWith("deleteButton")) {
-        // Handle the "Delete" button click
-        handleButtonClick(event, "Delete", containerIndex);
         deleteEventContainer(containerIndex);
       }
     }
@@ -185,16 +183,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Todo: secure the link and have it expire after a set amount of time
   const viewCalendar = (containerNumber) => {
     let dummyLink = `http://localhost:3000/public/calendar.php?containerId=${containerNumber}`;
     window.location.href = dummyLink;
   };
 
   const copyLink = (containerNumber) => {
-    // Fetch the link from the db and copy it.
     let dummyLink = `http://localhost:3000/public/calendar.php?containerId=${containerNumber}`;
-    console.log(`Copy Link Number: ${containerNumber}`);
-    console.log(`Copy Link: ${dummyLink}`);
     const myButton = document.getElementById(
       "copyLinkButton" + containerNumber,
     );
@@ -220,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
     openDeleteMessageModal(containerNumber);
   };
 
-  // Handle the add event container modal
   const openAddEventContainerModal = (submitButtonText) => {
     document.getElementById("submitButton").innerHTML = submitButtonText;
     addEventContainerModal.style.display = "block";
@@ -231,7 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
     addEventContainerModal.style.display = "none";
   };
 
-  // Handle the delete message modal
   const openDeleteMessageModal = (containerNumber) => {
     const deleteModalDeleteButton = document.getElementById(
       "deleteModalDeleteButton",
@@ -258,7 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         if (response.ok) {
-          // If the update was successful, remove the event container from the DOM
           if (eventContainersDiv.contains(eventContainerToDelete)) {
             eventContainersDiv.removeChild(eventContainerToDelete);
           }
@@ -282,62 +275,13 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteMessageModal.style.display = "none";
   };
 
-  const handleButtonClick = (event, buttonText, containerNumber) => {
-    const container = event.target.closest(".event-container");
-    console.log(
-      `${buttonText} button on  container ${containerNumber} clicked.`,
-    );
-  };
-
   cancelButton.addEventListener("click", function () {
-    // Your code to handle the click event goes here
-    console.log("Cancel button clicked!");
     closeAddEventContainerModal();
 
     if (editing) {
       editing = false;
     }
   });
-
-  const getContrastColor = (hexColor) => {
-    // Convert hex color to RGB
-    const r = parseInt(hexColor.slice(1, 3), 16);
-    const g = parseInt(hexColor.slice(3, 5), 16);
-    const b = parseInt(hexColor.slice(5, 7), 16);
-
-    // Calculate relative luminance using the formula for sRGB
-    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-
-    // Choose white or black based on luminance
-    return luminance > 0.5 ? "#000000" : "#ffffff";
-  };
-  const makeColorDarker = (eventColor) => {
-    // Get the color value from the input
-    const hex = eventColor.replace(/^#/, "");
-    const bigint = parseInt(hex, 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-
-    // Brighten the color (you can adjust the brightness factor)
-    const brightnessFactor = 0.7;
-    const brighterR = Math.min(Math.floor(r * brightnessFactor), 255);
-    const brighterG = Math.min(Math.floor(g * brightnessFactor), 255);
-    const brighterB = Math.min(Math.floor(b * brightnessFactor), 255);
-
-    // Convert back to hex
-    const brighterHex = `#${(
-      (1 << 24) |
-      (brighterR << 16) |
-      (brighterG << 8) |
-      brighterB
-    )
-      .toString(16)
-      .slice(1)}`;
-    console.log(`Brighter Hex: ${brighterHex}`);
-
-    return brighterHex;
-  };
 
   window.addEventListener("click", function (event) {
     if (event.target === addEventContainerModal) {
@@ -358,8 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function updateEventContainer(requestData) {
-  console.log(requestData);
-
   try {
     const url = "../../includes/edit_event_container.php";
     const response = await fetch(url, {
@@ -377,15 +319,10 @@ async function updateEventContainer(requestData) {
     const data = await response.json();
 
     if (data) {
-      console.log(`DATA: ${data["message"]}`);
-
       if (data["success"] === true) {
-        console.log("Event container updated successfully.");
-
         return true;
       }
     } else {
-      console.log("No Data");
       return false;
     }
   } catch (error) {

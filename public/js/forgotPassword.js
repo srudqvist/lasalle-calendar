@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const resetButton = document.getElementById("resetButton");
   const resetForm = document.getElementsByTagName("form");
 
   resetForm[0].addEventListener("submit", async (event) => {
@@ -15,11 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/**
- * Sends a password reset request to the server.
- * @param {string} email - The email address of the user.
- *
- * */
 async function resetPasswordRequest(email) {
   console.log("sending password reset request to server");
   const url = "../../includes/reset_password/reset_password.php";

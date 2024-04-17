@@ -133,8 +133,9 @@ document.addEventListener("DOMContentLoaded", function () {
           password: event.target.password.value,
           confirmPassword: event.target.confirmPassword.value,
         };
+
         const responseMessage = submitSignupForm(formData);
-        console.log(responseMessage);
+
         if (responseMessage) {
         }
       } else {
@@ -159,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function nameValidation(name) {
-    console.log(name);
     // Regex allowing letters, spaces, hyphens, and apostrophes
     if (name.length > 0) {
       const nameRegex = /^[A-Za-z]+(?:[-' ]?[A-Za-z]+)*$/;
@@ -171,8 +171,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function phoneValidation(phoneNumber) {
-    console.log(phoneNumber);
-    console.log(`PHONE LENGTH ${phoneNumber.length}`);
     if (phoneNumber.length != 14) {
       return false;
     }
@@ -208,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function submitSignupForm(requestData) {
-  console.log(requestData);
   try {
     const url = "../../includes/signup.php";
     const response = await fetch(url, {
@@ -220,15 +217,12 @@ async function submitSignupForm(requestData) {
     });
 
     if (!response.ok) {
-      console.log(response);
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
     const data = await response.json();
 
     if (data) {
-      console.log(`DATA: ${data["message"]}`);
-
       if (data["success"] === true) {
         const successMessage = document.getElementById("successMessage");
         successMessage.style.display = "block";
@@ -242,18 +236,17 @@ async function submitSignupForm(requestData) {
       return false;
     }
   } catch (error) {
-    console.log(error);
+    console.log(`Error: ${error}`);
   }
 }
 
 // Function to update the countdown
 function updateCountdown(targetTime) {
-  var intervalId; // Declare intervalId variable outside of the function
+  var intervalId;
   var intervalId = setInterval(function () {
     var now = new Date().getTime();
     var timeDifference = targetTime - now;
 
-    // Calculate remaining time in seconds
     var seconds = Math.ceil(timeDifference / 1000);
 
     // Display the remaining time on the page
@@ -262,7 +255,7 @@ function updateCountdown(targetTime) {
 
     // If time difference is less than or equal to 0, stop updating the countdown and perform the redirection
     if (timeDifference <= 0) {
-      clearInterval(intervalId); // Stop the interval
+      clearInterval(intervalId);
       window.location.replace("index.php");
     }
   }, 1000);
