@@ -1,5 +1,6 @@
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
 import { isPasswordValid } from "./utils/passwordValidation.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   let originalUserDetailsDiv; // Variable to store the original state of userInformationDiv
   const editUserInformationButton = document.getElementById("editButton");
@@ -43,9 +44,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     editUserInformationButton.addEventListener("mouseover", () => {
       scaleUpElement(editUserInformationButton, 2.0);
     });
+
     editUserInformationButton.addEventListener("mouseleave", () => {
       resetScaleElement(editUserInformationButton, 1.5);
     });
+
     editUserInformationButton.addEventListener("click", () => {
       if (userInformationDiv && !editing && !editDisabled) {
         editing = true;
@@ -61,7 +64,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (changePasswordButton) {
     changePasswordButton.addEventListener("click", () => {
       console.log("Change Password Clicked");
-      // Todo: implement reset password functionality
       displayChangePassword();
     });
   }
@@ -84,7 +86,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(changePasswordButton);
     changePasswordButton.addEventListener("click", () => {
       console.log("Change Password Clicked");
-      // Todo: implement reset password functionality
       displayChangePassword();
     });
     changePasswordButton.addEventListener("mouseover", () =>
@@ -112,8 +113,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const secondaryEmailSpan = document.getElementById("secondaryEmail");
       const facilitySpan = document.getElementById("facility");
       const phoneSpan = document.getElementById("phone");
-      // const resetPasswordButton = document.createElement("button");
-      // resetPasswordButton.innerText = "Reset Password";
 
       if (userData.first_name) {
         firstNameSpan.innerText = userData.first_name;
@@ -375,18 +374,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       newPasswordInput.style.opacity = 1;
       confirmNewLabel.style.opacity = 1;
       confirmNewPasswordInput.style.opacity = 1;
-    }, 1); // Adjust the delay time as needed
-  }
-
-  function hideEditElements() {
-    const buttonDiv = document.getElementById("buttonDiv");
-    buttonDiv.parentNode.removeChild(buttonDiv);
+    }, 1);
   }
 
   function createLabel(text) {
     const label = document.createElement("label");
     label.textContent = text;
-    //label.classList.add()
     return label;
   }
 
@@ -416,8 +409,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     saveButton.setAttribute("id", "saveButton");
 
     saveButton.addEventListener("click", () => {
-      console.log("Save Button Clicked");
-
       if (edit) {
         if (validateInputs()) {
           const inputData = getInputData();
@@ -426,9 +417,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           console.log("Validation Failed");
         }
       } else {
-        console.log("save reset password clicked");
-        // todo:
-        // compare new password and confirm new password
         const contentDiv = document.getElementById("contentDiv");
         const currentPassword = document.getElementById("currPass").value;
         const newPassword = document.getElementById("newPass").value;
@@ -444,8 +432,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         if (currentPassword === newPassword) {
-          console.log("STOP! Current password is the same as new");
-          //todo: display error message
           const contentDiv = document.getElementById("contentDiv");
           contentDiv.insertBefore(
             displayErrorMessage("New password can not be the same as old."),
@@ -455,12 +441,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           const passwordsMatch = comparePasswords(newPassword, confirmPassword);
 
           if (passwordsMatch) {
-            // send the current password and the new to the server
-
             const passwordChangeMessage = changePasswordRequest(
               currentPassword,
               newPassword,
             );
+
             if (passwordChangeMessage != null) {
               const contentDiv = document.getElementById("contentDiv");
               contentDiv.insertBefore(
@@ -469,7 +454,6 @@ document.addEventListener("DOMContentLoaded", async () => {
               );
 
               window.location.replace("./facilitator_profile.php");
-              //restoreUserInformationDiv();
             } else {
               const contentDiv = document.getElementById("contentDiv");
               contentDiv.insertBefore(
@@ -478,7 +462,6 @@ document.addEventListener("DOMContentLoaded", async () => {
               );
             }
           } else {
-            console.log("passwords did not match, do something");
             const contentDiv = document.getElementById("contentDiv");
             contentDiv.insertBefore(
               displayErrorMessage("Passwords did not match"),
@@ -526,13 +509,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(primaryEmailInput);
     const phoneInput = document.querySelector("#phone");
 
-    // Validate primary email
     if (primaryEmailInput && !validateEmail(primaryEmailInput.value)) {
       console.log("failed here 1");
       return false;
     }
 
-    // Validate phone number
     if (phoneInput && !validatePhoneNumber(phoneInput.value)) {
       console.log("failed here");
       return false;
@@ -591,7 +572,6 @@ function displaySuccessMessage(message) {
 }
 
 async function fetchUserInformation() {
-  // Todo: fetch the user information.
   try {
     const requestData = {};
     const url = "../../../includes/get_profile_info.php";
@@ -615,17 +595,13 @@ async function fetchUserInformation() {
 
     // Return the user data
     return data["data"];
-
-    // Handle the response data as needed
   } catch (error) {
-    // Handle errors
     console.log(`Error in facilitatorProfile: ${error}`);
     return [];
   }
 }
 
 async function saveEdits(data) {
-  console.log(`Data: ${JSON.stringify(data)}`);
   const requestData = data;
 
   if (!requestData) {
@@ -661,7 +637,6 @@ async function saveEdits(data) {
     }
 
     // Return the user data
-    console.log(responseData);
     if (responseData["success"] == true) {
       location.reload();
     }
@@ -672,7 +647,6 @@ async function saveEdits(data) {
 }
 
 async function changePasswordRequest(currentPassword, newPassword) {
-  console.log(`Password: ${currentPassword}, New Password: ${newPassword}`);
   const url = "../../includes/facilitator_profile/change_password.php";
   const requestData = {
     newPassword: newPassword,
@@ -689,7 +663,6 @@ async function changePasswordRequest(currentPassword, newPassword) {
     });
 
     if (!response.ok) {
-      console.log("Response NOT OK");
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
@@ -699,8 +672,6 @@ async function changePasswordRequest(currentPassword, newPassword) {
       return null;
     }
 
-    // Return the user data
-    console.log(responseData);
     return responseData["message"];
   } catch (error) {
     console.log(error);
