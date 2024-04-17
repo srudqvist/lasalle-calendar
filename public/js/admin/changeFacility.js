@@ -1,6 +1,5 @@
 // get the users and return them in json
 async function changeFacility(newFacility, userId) {
-  console.log("running updateUserStatus");
   const url = "../../../includes/admin/change_facility.php";
 
   const requestData = {
@@ -18,7 +17,6 @@ async function changeFacility(newFacility, userId) {
     });
 
     if (!response.ok) {
-      console.log("Bad response");
       throw new Error(`HTTP ERROR! Status: ${response.status}`);
     }
 
@@ -36,7 +34,6 @@ async function changeFacility(newFacility, userId) {
       users: responseData["message"],
     };
   } catch {
-    console.log("Could not upate facility");
     return { success: false };
   }
 }

@@ -10,8 +10,7 @@ const getScheduledMeetingsByDate = async (date) => {
       containerId: containerId,
       date: date,
     };
-    console.log(requestData);
-    console.log(JSON.stringify(requestData));
+
     const response = await fetch(
       "../../../includes/get_scheduled_calendar.php",
       {
@@ -24,7 +23,6 @@ const getScheduledMeetingsByDate = async (date) => {
     );
 
     if (!response.ok) {
-      console.log(response);
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 

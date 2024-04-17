@@ -18,7 +18,6 @@ async function updateUserStatus(userStatusToChangeTo, userId) {
     });
 
     if (!response.ok) {
-      console.log("Bad response");
       throw new Error(`HTTP ERROR! Status: ${response.status}`);
     }
 
@@ -36,7 +35,6 @@ async function updateUserStatus(userStatusToChangeTo, userId) {
       users: responseData["message"],
     };
   } catch {
-    console.log("Could not upate user");
     return { success: false };
   }
 }
