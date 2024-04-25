@@ -56,8 +56,8 @@ body {
 }
 .center_content {
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
+  justify-content: center;
+  align-items: center;
 }
 .content {
   margin-top: 75px;
@@ -83,8 +83,8 @@ body {
   transition: transform 0.3s ease;
 }
 .preserve-3d-container {
-  perspective: 1000px; /* Adjust perspective value as needed */
-  transform-style: preserve-3d; /* Maintain crispness of child elements */
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .generic-input {

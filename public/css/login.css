@@ -3,21 +3,19 @@
   justify-content: center;
   align-items: center;
   height: calc(100vh - 13rem);
-  /* Other styles for your form */
 }
 
 #createForgot {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 10px; /* Adjust margin as needed */
+  margin-top: 10px;
 }
 
 #createForgot p,
 a {
-  flex: 1; /* Occupy available space equally */
-  text-align: center; /* Center-align text within each link */
-  /* Additional styles for the links */
+  flex: 1;
+  text-align: center;
 }
 
 #createForgot a:first-child {
