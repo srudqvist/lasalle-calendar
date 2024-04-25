@@ -34,8 +34,7 @@
 }
 
 .modern_form input[type="password"] {
-  /* Your existing properties */
-  border: none; /* Example border color */
+  border: none;
 }
 
 /* Style for the submit button */
@@ -65,7 +64,7 @@
   box-shadow: var(--input-shadow);
   box-sizing: border-box;
   font-size: 16px;
-  color: var(-text-color-black); /* Text color */
+  color: var(-text-color-black);
 }
 
 /* Style for select arrow */

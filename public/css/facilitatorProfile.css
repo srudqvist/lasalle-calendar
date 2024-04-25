@@ -29,14 +29,6 @@ label {
   font-weight: bold;
   color: var(--text-color-black);
 }
-newPassLabel
-
-/* #userDetailsDiv label { */
-/*   margin-bottom: 1px; */
-/*   margin-top: 10px; */
-/*   font-weight: bold; */
-/*   color: var(--text-color-black); */
-/* } */
 
 #userDetailsDiv input {
   margin-bottom: 1px;
@@ -82,6 +74,7 @@ newPassLabel
 #buttonDiv {
   margin-top: 10px;
 }
+
 .cancel-button {
   background-color: var(--error-color-600);
   color: var(--on-primary);
