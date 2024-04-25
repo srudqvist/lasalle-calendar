@@ -1,10 +1,9 @@
 <?php
 
-// Checkout: https://codeshack.io/secure-login-system-php-mysql/
 include '../../../lasalle-calendar-env-variables/config.php';
 require_once './validationFunctions/validation_functions.php';
+
 // Make sure request is of the right type
-//var_dump($_SERVER["REQUEST_METHOD"]);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     session_start();
 
@@ -16,10 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
 
-    // if (!isValidEmail($email) || !isValidPassword($password)) {
-    //     exit("Password or email failed validation");
-    // }
-    //
     // Connect to the database
     $mysqli = new mysqli($db_host, $db_username, $db_password, $db_database);
 
@@ -27,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);
     }
-    echo "Connection Successful";
+
     // Prepare SQL query to retrieve user with the provided email
     $query = $mysqli->prepare("SELECT * FROM users WHERE email = ?");
     $query->bind_param("s", $email);
@@ -42,8 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: ../public/index.php");
             exit;
         }
-        echo "Password from submission: " . $password . "<br>";
-        echo "Password from DB: " . $row['password'] . "<br>";
 
         if (password_verify(trim($password), trim($row['password']))) {
             // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.

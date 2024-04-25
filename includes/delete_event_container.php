@@ -16,11 +16,13 @@ if (isset($_POST['event_container_id'])) {
     // Prepare and execute the SQL update statement
     $stmt = $conn->prepare("UPDATE event_containers SET isDeleted = TRUE WHERE event_container_id = ?");
     $stmt->bind_param("i", $eventContainerID);
+
     if ($stmt->execute()) {
         echo "Event container deleted successfully";
     } else {
         echo "Error deleting event container";
     }
+
 } else {
     echo "Event container ID not provided";
 }

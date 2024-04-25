@@ -1,11 +1,5 @@
 <?php
-
-//ini_set('display_errors', 1);
-//error_reporting(E_ALL);
-
 include '../../../lasalle-calendar-env-variables/config.php';
-
-// Start or resume session
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,15 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $facility = $_SESSION['facility'];
 
         // Retrieve and sanitize form data
-        // $eventName = mysqli_real_escape_string($conn, $_POST['eventName']);
-        // $startDay = mysqli_real_escape_string($conn, $_POST['dayFrom']);
-        // $endDay = mysqli_real_escape_string($conn, $_POST['dayTo']);
-        // $startTime = mysqli_real_escape_string($conn, $_POST['startTime']);
-        // $endTime = mysqli_real_escape_string($conn, $_POST['endTime']);
-        // $timeZone = mysqli_real_escape_string($conn, $_POST['timeZone']);
-        // $meetingType = mysqli_real_escape_string($conn, $_POST['meetingType']);
-        // $description = mysqli_real_escape_string($conn, $_POST['description']);
-        // $color = mysqli_real_escape_string($conn, $_POST['eventColor']);
         $eventName = isset($_POST['eventName']) ? htmlspecialchars($_POST['eventName']) : null;
         $startDay = isset($_POST['dayFrom']) ? htmlspecialchars($_POST['dayFrom']) : null;
         $endDay = isset($_POST['dayTo']) ? htmlspecialchars($_POST['dayTo']) : null;

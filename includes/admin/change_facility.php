@@ -1,10 +1,8 @@
 <?php
 
 include '../../../../lasalle-calendar-env-variables/config.php';
-
 session_start();
 
-//if (isset($_SESSION['admin'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize the input
     $requestBody = file_get_contents('php://input');

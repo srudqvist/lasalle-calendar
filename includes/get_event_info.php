@@ -2,7 +2,6 @@
 
 include '../../../lasalle-calendar-env-variables/config.php';
 
-
 $containerId = isset($_GET['containerId']) ? $_GET['containerId'] : null;
 
 if ($containerId) {
@@ -21,7 +20,6 @@ if ($containerId) {
 
     if ($result -> num_rows == 1) {
         $row = $result -> fetch_assoc();
-        // Close the prepared statement and result set
         $query->close();
         $mysqli->close();
 

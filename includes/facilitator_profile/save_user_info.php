@@ -1,12 +1,9 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 include '../../../../lasalle-calendar-env-variables/config.php';
 require_once '../validationFunctions/validation_functions.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging: Dump the received POST data to inspect it
 
     session_start();
     // Make sure user id is set
@@ -30,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(array("success" => false, "message" => "Invalid JSON data"));
         exit;
     }
+
     $firstName =  isset($requestData['firstName']) ? htmlspecialchars($requestData['firstName']) : null;
     $lastName =  isset($requestData['lastName']) ? htmlspecialchars($requestData['lastName']) : null;
     $primaryEmail =  isset($requestData['primaryEmail']) ? htmlspecialchars($requestData['primaryEmail']) : null;
@@ -54,11 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Perform database connection
     $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
     // Check connection
+
     if ($conn->connect_error) {
         http_response_code(500); // Internal Server Error
         echo json_encode(array("success" => false, "message" => "Database connection error"));
         exit;
     }
+
     $saveInfoQuery = "UPDATE users SET first_name = ?, last_name = ?, email = ?, secondary_email = ?, phone = ? WHERE user_id = ?";
     $saveInfoStatement = $conn->prepare($saveInfoQuery);
     $saveInfoStatement->bind_param("sssssi", $firstName, $lastName, $primaryEmail, $secondaryEmail, $phone, $userId);

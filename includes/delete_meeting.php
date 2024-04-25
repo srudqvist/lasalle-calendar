@@ -1,7 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 include '../../../lasalle-calendar-env-variables/config.php';
 
 // Check if the event container ID is provided in the request
@@ -22,12 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $meetingID = isset($requestData['meetingID']) ? htmlspecialchars($requestData['meetingID']) : null;
     error_log("Meeting ID: $meetingID");
+
     if ($meetingID === null) {
         error_log("Received meetingID: " . $_POST['meetingID']);
         http_response_code(400);
         echo json_encode(array("success" => false, "message" => "Meeting ID not provided"));
         exit; // Stop script execution
     }
+
     // Create a connection to the database
     $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
 

@@ -15,8 +15,8 @@ if(isset($_SESSION['facility'])) {
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $facility);
-    $stmt->execute(); // Execute the prepared statement
-    $result = $stmt->get_result(); // Get the result set
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
 

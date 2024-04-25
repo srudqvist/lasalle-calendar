@@ -1,5 +1,5 @@
-
 <?php
+
 include '../../../lasalle-calendar-env-variables/config.php';
 $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
 
@@ -15,4 +15,3 @@ $highestId = $row["max_id"];
 $conn->close();
 
 echo $highestId;
-?>
