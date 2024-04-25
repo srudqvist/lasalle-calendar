@@ -1,11 +1,8 @@
 
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 include '../../../lasalle-calendar-env-variables/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging: Dump the received POST data to inspect it
 
     // Read the raw request body
     $requestBody = file_get_contents('php://input');
@@ -24,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Extract containerId and date from JSON data
     $containerId = isset($requestData['containerId']) ? htmlspecialchars($requestData['containerId']) : null;
     $date = isset($requestData['date']) ? htmlspecialchars($requestData['date']) : null;
+
     // Check if containerId and date are provided in the POST data
     if ($containerId === null || $date === null) {
         // Log the received containerId and date for debugging

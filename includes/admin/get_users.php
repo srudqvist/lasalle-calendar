@@ -1,11 +1,8 @@
 <?php
 
 include '../../../../lasalle-calendar-env-variables/config.php';
-
-
 session_start();
 
-//if (isset($_SESSION['admin'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize the input
     $requestBody = file_get_contents('php://input');
@@ -55,6 +52,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(405); // Method Not Allowed
     echo json_encode(array("success" => false, "message" => "Invalid request method"));
 }
-//} else {
-
-//}

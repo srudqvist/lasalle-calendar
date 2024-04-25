@@ -4,8 +4,8 @@ include '../../../../lasalle-calendar-env-variables/config.php';
 
 session_start();
 
-//if (isset($_SESSION['admin'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // Sanitize the input
     $requestBody = file_get_contents('php://input');
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         error_log("Received meetingID: " . $_POST['meetingID']);
         http_response_code(400);
         echo json_encode(array("success" => false, "message" => "User ID or userStatus not provided"));
-        exit; // Stop script execution
+        exit;
     }
 
     $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
@@ -56,7 +56,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(405); // Method Not Allowed
     echo json_encode(array("success" => false, "message" => "Invalid request method"));
 }
-
-// } else {
-//
-// }

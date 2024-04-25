@@ -6,7 +6,6 @@ include '../../../../lasalle-calendar-env-variables/config.php';
 require_once '../validationFunctions/validation_functions.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging: Dump the received POST data to inspect it
 
     session_start();
     // Make sure user id is set
@@ -46,13 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit; // Stop script execution
     }
 
-
     $passwordMatch = checkCurrentPassword($currentPassword, $userId);
     error_log($passwordMatch);
     if (!$passwordMatch) {
         http_response_code(400);
         echo json_encode(array("success" => false, "message" => "Invalid Data provided 3"));
-        exit; // Stop script execution
+        exit;
     }
 
     updatePassword($newPassword, $userId);
@@ -64,15 +62,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 
-
 function checkCurrentPassword($currentPassword, $userId)
 {
 
     global $db_host, $db_username, $db_password, $db_database;
     try {
+
         // Perform database connection
         $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
         // Check connection
+
         if ($conn->connect_error) {
             http_response_code(500); // Internal Server Error
             echo json_encode(array("success" => false, "message" => "Database connection error"));
@@ -100,25 +99,22 @@ function checkCurrentPassword($currentPassword, $userId)
         return false;
     } catch (Exception $e) {
 
-        // Database connection or query execution failed
-        // Log the error
-        error_log("Error: " . $e->getMessage());
-
         // Send a 500 response
         http_response_code(500); // Internal Server Error
         echo json_encode(array("success" => false, "message" => "Database error"));
         exit;
     }
-
 }
 
 function updatePassword($newPassword, $userId)
 {
     global $db_host, $db_username, $db_password, $db_database;
     try {
+
         // Perform database connection
         $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
         // Check connection
+
         if ($conn->connect_error) {
             http_response_code(500); // Internal Server Error
             echo json_encode(array("success" => false, "message" => "Database connection error"));
@@ -143,9 +139,6 @@ function updatePassword($newPassword, $userId)
             exit;
         }
     } catch (Exception $e) {
-        // Database connection or query execution failed
-        // Log the error
-        error_log("Error: " . $e->getMessage());
 
         // Send a 500 response
         http_response_code(500); // Internal Server Error

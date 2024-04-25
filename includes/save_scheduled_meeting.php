@@ -1,10 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 include '../../../lasalle-calendar-env-variables/config.php';
-// Get facility, and event name from the event container id
-
 // Add something to the link to make sure it is sent from a facilitator?
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -45,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $comments = isset($_POST['comments']) ? htmlspecialchars($_POST['comments']) : null;
 
             $meetingInfo = array($facility, $eventName, $date, $time, $name, $email, $timezone, $comments);
+
             foreach ($meetingInfo as $value) {
                 if ($value === null) {
                     exit("Expected Data Was Not Provided");
@@ -55,10 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $saveMeeting = "INSERT INTO scheduled_meetings (event_id, facility, name, meeting_date, meeting_time, event_name, email, notes) VALUES (?,?,?,?,?,?,?,?)";
             $saveMeetingSTMT = $conn->prepare($saveMeeting);
             $saveMeetingSTMT->bind_param("isssssss", $containerId, $facility, $name, $date, $time, $eventName, $email, $comments);
+
             if ($saveMeetingSTMT->execute() === true) {
                 $saveMeetingSTMT->close();
                 $conn->close();
-                // Store meeting details in session
+
                 session_start();
                 $_SESSION['meeting_details'] = array(
                     'facility' => $facility,
@@ -84,9 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo json_encode(array("success" => false, "message" => "Error Getting Event Info"));
     }
-
-
-
 
 } else {
     // Handle invalid request method
