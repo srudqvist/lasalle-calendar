@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * User Registration Endpoint
+ *
+ * This PHP script serves as an endpoint for user registration. It receives POST requests with JSON data containing user registration information.
+ * It validates the received data and inserts a new user record into the database if the data is valid.
+ *
+ * HTTP Methods:
+ * - POST: Accepts POST requests containing JSON data for user registration.
+ *
+ * Request Data Parameters:
+ * - facility: The facility associated with the user.
+ * - firstName: The first name of the user.
+ * - lastName: The last name of the user.
+ * - email: The email address of the user.
+ * - phone: The phone number of the user.
+ * - password: The password for the user account.
+ * - confirmPassword: The confirmation password for the user account.
+ *
+ * Response Format:
+ * - JSON: Returns a JSON response indicating the success or failure of the registration process.
+ *
+ */
+
 include '../../../lasalle-calendar-env-variables/config.php';
 require_once './validationFunctions/validation_functions.php';
 

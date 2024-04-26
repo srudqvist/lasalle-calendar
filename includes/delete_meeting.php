@@ -1,4 +1,16 @@
 <?php
+/**
+ * Delete Meeting Endpoint
+ *
+ * This PHP script serves as an endpoint for deleting a scheduled meeting.
+ * It expects a POST request with JSON data containing the meeting ID to be deleted.
+ * The script validates the provided meeting ID and then marks the meeting as deleted in the database.
+ *
+ * HTTP Methods:
+ * - POST: Deletes a scheduled meeting based on the provided meeting ID.
+ *
+ * Note: The meeting is not deleted but only flagged as deleted
+ */
 
 include '../../../lasalle-calendar-env-variables/config.php';
 

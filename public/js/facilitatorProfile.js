@@ -1,3 +1,21 @@
+/**
+ * User Profile Management
+ *
+ * This JavaScript file handles the management of user profiles, including editing user information and changing passwords.
+ * It listens for the DOMContentLoaded event to ensure all DOM elements are loaded before executing JavaScript.
+ * It retrieves user information asynchronously, displays it on the page, and provides functionality to edit user information and change passwords.
+ * Password validation and error handling are also implemented.
+ *
+ * External Dependencies:
+ * - scaleElements.js: Provides functions for scaling elements.
+ * - passwordValidation.js: Provides functions for password validation.
+ *
+ * Functions:
+ * - fetchUserInformation(): Fetches user information from the server.
+ * - saveEdits(data): Saves edited user information to the server.
+ * - changePasswordRequest(currentPassword, newPassword): Sends a request to change the user's password to the server.
+ */
+
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
 import { isPasswordValid } from "./utils/passwordValidation.js";
 

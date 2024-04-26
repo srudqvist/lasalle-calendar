@@ -1,3 +1,16 @@
+/**
+ * Password Reset Request
+ *
+ * This JavaScript file handles the submission of a password reset request form.
+ * It listens for the submission of the form and prevents the default form submission behavior.
+ * Upon form submission, it retrieves the email input value, sends a password reset request to the server asynchronously,
+ * and logs the outcome of the request.
+ * If the request is successful, it returns true; otherwise, it returns false.
+ *
+ * Functions:
+ * - resetPasswordRequest(email): Sends a password reset request to the server.
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
   const resetForm = document.getElementsByTagName("form");
 

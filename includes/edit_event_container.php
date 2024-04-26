@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Edit Event Container Endpoint
+ *
+ * This PHP script serves as an endpoint for updating event container data.
+ * It expects a POST request with JSON data containing the updated event container information.
+ * The script validates the user session to ensure authorization.
+ * If authorized, it updates the event container data in the database.
+ *
+ * HTTP Methods:
+ * - POST: Updates event container data based on the provided JSON data.
+ *
+ */
+
 include '../../../lasalle-calendar-env-variables/config.php';
 
 session_start();

@@ -1,4 +1,18 @@
 <?php
+/**
+ * Load Scheduled Meetings Endpoint
+ *
+ * This PHP script serves as an endpoint for displaying scheduled meetings associated with a specific facility.
+ * It retrieves scheduled meetings from the database based on the facility stored in the user's session.
+ * The retrieved meetings are then displayed on the webpage in a tabular format.
+ *
+ * HTTP Methods:
+ * - GET: Retrieves scheduled meetings and displays them on the webpage.
+ *
+ * Session Data:
+ * - facility: The facility associated with the logged-in user.
+ *
+ */
 
 include '../../../lasalle-calendar-env-variables/config.php';
 $conn = new mysqli($db_host, $db_username, $db_password, $db_database);

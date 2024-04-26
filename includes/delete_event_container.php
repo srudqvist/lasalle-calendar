@@ -1,4 +1,17 @@
 <?php
+/**
+ * Delete Event Container Endpoint
+ *
+ * This PHP script serves as an endpoint for deleting an event container.
+ * It expects a POST request with the event container ID to be deleted.
+ * The script validates the provided ID and then marks the event container as deleted in the database.
+ *
+ * HTTP Methods:
+ * - POST: Deletes an event container based on the provided ID.
+ *
+ * Note: The event container is not deleted but only flagged as deleted
+ *
+ */
 
 include '../../../lasalle-calendar-env-variables/config.php';
 

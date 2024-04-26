@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Get Event Container Data Endpoint
+ *
+ * This PHP script serves as an endpoint for retrieving event container data.
+ * It expects a container ID as a query parameter in the URL.
+ * The script retrieves the event container data from the database based on the provided ID.
+ * It then returns the event container data as a JSON response.
+ *
+ * HTTP Methods:
+ * - GET: Retrieves event container data based on the container ID provided in the URL.
+ *
+*/
+
 include '../../../lasalle-calendar-env-variables/config.php';
 
 $containerId = isset($_GET['containerId']) ? $_GET['containerId'] : null;

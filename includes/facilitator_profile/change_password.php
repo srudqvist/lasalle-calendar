@@ -1,4 +1,16 @@
 <?php
+/**
+ * Password Update Endpoint
+ *
+ * This PHP script serves as an endpoint for updating user passwords.
+ * It expects a POST request with the user's current password and the new password.
+ * The script verifies the current password, checks the validity of the new password,
+ * and then updates the password in the database.
+ *
+ * HTTP Methods:
+ * - POST: Updates the user's password based on the provided current and new passwords.
+ *
+ */
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

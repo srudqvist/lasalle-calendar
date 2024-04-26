@@ -1,3 +1,19 @@
+/*
+ * Dynamic Navigation Bar Creation
+ *
+ * This JavaScript file dynamically generates a navigation bar based on the current page and user session data.
+ *
+ * It first extracts the last segment of the current URL and initializes user email from sessionData.
+ * Then, it sets up event listeners for next and back buttons, updating the navigation bar accordingly.
+ *
+ * The file defines various links for different pages and constructs pageLinks object with respective links.
+ * A function createNavbar(page) dynamically creates the navigation bar based on the provided page parameter.
+ *
+ * Each link is generated as an anchor element (<a>) with appropriate attributes and classes.
+ * Additionally, the function handles user account display and logout functionality.
+ * If a password reset is detected in the URL parameters, certain links are disabled.
+ *
+ */
 const currentURL = window.location.href;
 let lastSegment = currentURL.substring(currentURL.lastIndexOf("/") + 1);
 const email = sessionData.email;

@@ -1,3 +1,13 @@
+/**
+ * Format Time in AM/PM
+ *
+ * This function takes a time string in 24-hour format (HH:mm) and returns the time
+ * formatted in AM/PM format.
+ *
+ * @param {string} time - Time string in 24-hour format (HH:mm).
+ * @returns {string} Time formatted in AM/PM format (h:mm AM/PM).
+ */
+
 function formatAMPM(time) {
   // Split the time string into hours, minutes, and seconds
   const [hours, minutes] = time.split(":").map(Number);

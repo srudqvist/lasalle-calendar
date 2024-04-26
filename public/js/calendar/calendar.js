@@ -1,3 +1,34 @@
+/**
+ * Calendar Management
+ *
+ * This JavaScript file handles the management of the calendar interface.
+ * It imports functions from various utility files to assist in calendar management.
+ * Upon the DOMContentLoaded event, it initializes the calendar and sets up event listeners for navigation buttons.
+ * It dynamically generates the calendar grid based on the selected month and year.
+ * The user can navigate between months and years using the provided buttons.
+ * Event listeners are attached to date and time buttons to handle user interactions.
+ * The calendar also interacts with other components such as user details and scheduling.
+ * Error handling and scaling of elements are implemented throughout the script.
+ *
+ * External Dependencies:
+ * - formatAMPM.js: Provides the formatAMPM function for formatting time.
+ * - getEventInfo.js: Provides the getEventInfo function for fetching event information.
+ * - getMeetingsForCalendar.js: Provides the getScheduledMeetingsByDate function for fetching scheduled meetings.
+ * - scaleElements.js: Provides functions for scaling elements.
+ *
+ * Functions:
+ * - generateCalendar(year, month, availableDays): Generates the calendar grid based on the specified year, month, and available days.
+ * - calculateTimeSlots(startTime, endTime, durationMinutes): Calculates the number of time slots based on the start and end times and duration.
+ * - generateTimeSlotButtons(numTimeSlots, startTime, endTime, duration): Generates time slot buttons for the calendar.
+ * - highlightDate(element): Highlights the selected date in the calendar and retrieves scheduled meetings for that date.
+ * - grayOutTimeButtons(takenTimes): Disables time buttons that are already taken.
+ * - highlightButton(buttonId): Highlights the selected time button.
+ * - updateCalendar(): Updates the calendar based on the selected year and month.
+ * - switchMonth(offset): Switches to the previous or next month based on the provided offset.
+ * - switchYear(offset): Switches to the previous or next year based on the provided offset.
+ *
+ */
+
 import { formatAMPM } from "../utils/formatAMPM.js";
 import { getEventInfo } from "./getEventInfo.js";
 import { getScheduledMeetingsByDate } from "./getMeetingsForCalendar.js";

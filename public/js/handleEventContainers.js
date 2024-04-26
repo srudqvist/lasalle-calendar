@@ -1,3 +1,22 @@
+/**
+ * Event Container Management and Modification
+ *
+ * This JavaScript file manages the creation, editing, and deletion of event containers.
+ * It includes functions for scaling elements on mouseover and mouseleave events, as well as for opening and closing modal dialogs for adding and deleting event containers.
+ * Additionally, it contains event listeners for interacting with event containers, such as viewing calendars, copying links, editing, and deleting.
+ * When an event container is edited or deleted, the changes are asynchronously updated on the server using fetch API calls.
+ *
+ * Functions:
+ * - scaleUpElement(element): Scales up an element on mouseover.
+ * - resetScaleElement(element): Resets the scale of an element on mouseleave.
+ * - openAddEventContainerModal(submitButtonText): Opens a modal for adding or editing event containers.
+ * - closeAddEventContainerModal(): Closes the modal for adding or editing event containers.
+ * - openDeleteMessageModal(containerNumber): Opens a modal for confirming the deletion of an event container.
+ * - closeDeleteMessageModal(): Closes the modal for confirming the deletion of an event container.
+ * - editEventContainer(...): Updates an existing event container with new data.
+ * - updateEventContainer(requestData): Asynchronously updates an event container on the server.
+ */
+
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
 
 document.addEventListener("DOMContentLoaded", () => {

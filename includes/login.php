@@ -1,4 +1,21 @@
 <?php
+/**
+ * User Authentication Endpoint
+ *
+ * This PHP script serves as an endpoint for authenticating users. It receives POST requests with user credentials and verifies them against the database.
+ * If the credentials are valid, it creates sessions to maintain user login state.
+ *
+ * HTTP Methods:
+ * - POST: Accepts POST requests containing user credentials for authentication.
+ *
+ * Request Data Parameters:
+ * - email: The email address of the user.
+ * - password: The password of the user.
+ *
+ * Response:
+ * - Redirects the user to appropriate pages based on the authentication result.
+ *
+ */
 
 include '../../../lasalle-calendar-env-variables/config.php';
 require_once './validationFunctions/validation_functions.php';
