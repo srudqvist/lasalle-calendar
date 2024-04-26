@@ -1,3 +1,23 @@
+/**
+ * Event Information Retrieval
+ *
+ * This JavaScript file handles the retrieval of event information.
+ * It imports the formatAMPM function from the formatAMPM.js file.
+ * Upon the DOMContentLoaded event, it invokes the getEventInfo function to fetch event data from the server.
+ * The getEventInfo function is defined as an asynchronous function that extracts the containerId from the URL parameters.
+ * It sends a GET request to get_event_info.php with the containerId and processes the response data.
+ * It formats the available days and times, meeting type, duration, notes, and time zone.
+ * The formatted data is then displayed on the page.
+ * Error handling is implemented to catch any errors that occur during the process.
+ *
+ * External Dependencies:
+ * - formatAMPM.js: Provides the formatAMPM function for formatting time.
+ *
+ * Functions:
+ * - getEventInfo(): Fetches event information from the server.
+ *
+ */
+
 import { formatAMPM } from "../utils/formatAMPM.js";
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -18,7 +18,7 @@ Open a browser and browse to `http://localhost:3000/public/index.php`
 
 ### Development Environment
 
-I use my own custom Neovim configuration.
+I use my own custom Neovim configuration.  
 To get started with php I recommend using Visual Studio Code. There are a lot of useful extensions that can be useful in this project.  
 Some of them are:
 
@@ -40,6 +40,8 @@ These are just a few suggestions. There are probably more extensions that can be
 - Send emails, how depends on hosting.
 - Update file names to snake_case as they are modified.
 - Consider encrypting database.
+- Decide if facilities should be hard coded or read from database, then update the code accordingly.
+- - Hard coding is easier to implement but more work to change at a later date.
 
 #### Confirmation Page
 
@@ -48,3 +50,4 @@ These are just a few suggestions. There are probably more extensions that can be
 #### Calendar Page
 
 - Display an error message if the link is expired and/or invalid
+- Disable dates in past months from being available. (it already works for years)

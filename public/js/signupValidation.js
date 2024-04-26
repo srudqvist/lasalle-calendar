@@ -1,3 +1,23 @@
+/**
+ * Signup Form Validation and Submission
+ *
+ * This JavaScript file handles the validation and submission of a signup form.
+ * It includes functions for validating input fields such as first name, last name, phone number, and password.
+ * Additionally, it ensures that the password meets complexity requirements and matches the confirmation password.
+ * Upon successful validation, the form data is submitted asynchronously to a backend endpoint for processing.
+ * It also provides functionality for displaying error messages and a countdown timer for redirection upon successful submission.
+ *
+ * Note: this is only front end validation.
+ *
+ * Functions:
+ * - nameValidation(name): Validates the format of a name input.
+ * - phoneValidation(phoneNumber): Validates the format of a phone number input.
+ * - showErrorMessage(message, inputName, errorDiv): Displays an error message for a specific input field.
+ * - removeErrorMessage(message, inputName, errorDiv): Removes an error message associated with a specific input field.
+ * - submitSignupForm(requestData): Asynchronously submits the signup form data to the backend.
+ * - updateCountdown(targetTime): Updates and displays a countdown timer for redirection.
+ */
+
 import { isPasswordValid } from "./utils/passwordValidation.js";
 document.addEventListener("DOMContentLoaded", function () {
   const signupForm = document.getElementById("signupForm");

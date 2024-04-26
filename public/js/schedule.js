@@ -1,3 +1,20 @@
+/**
+ * Schedule Management and Event Cancellation
+ *
+ * This JavaScript file handles the management of schedules and event cancellation functionality.
+ * It includes functions for scaling elements on mouseover and mouseleave events, as well as for opening and closing a modal for canceling events.
+ * Additionally, it contains event listeners for interacting with the schedule table, cancel buttons, and checkboxes.
+ * When a cancel button is clicked, it triggers the opening of a modal displaying event details, allowing the user to
+ * confirm the cancellation of the event.
+ * Upon confirmation, the event is deleted from the schedule and removed from the DOM.
+ *
+ * Functions:
+ * - scaleUpElement(element): Scales up an element on mouseover.
+ * - resetScaleElement(element): Resets the scale of an element on mouseleave.
+ * - openCancelModal(meetingRowToCancel, meetingID): Opens a modal for canceling an event, displaying event details.
+ * - closeCancelModal(): Closes the cancel event modal.
+ */
+
 import { scaleUpElement, resetScaleElement } from "./utils/scaleElements.js";
 
 document.addEventListener("DOMContentLoaded", function () {

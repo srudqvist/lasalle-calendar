@@ -1,4 +1,15 @@
 <?php
+/**
+ * User Facility Update Endpoint
+ *
+ * This PHP script serves as an endpoint for updating a user's facility.
+ * It expects a POST request with the user's ID and the new facility.
+ * The script validates the provided data and updates the user's facility in the database.
+ *
+ * HTTP Methods:
+ * - POST: Updates the user's facility based on the provided data.
+ *
+ */
 
 include '../../../../lasalle-calendar-env-variables/config.php';
 session_start();

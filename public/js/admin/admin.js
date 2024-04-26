@@ -1,3 +1,20 @@
+/**
+ * User Management
+ *
+ * This JavaScript file handles the management of user data, including displaying user information, changing user facility, and updating user status.
+ * It makes asynchronous requests to fetch user data, change user facility, and update user status.
+ * User data is displayed in a table format, with options to change facility and update user status.
+ *
+ * External Dependencies:
+ * - getUsers.js: JavaScript file for fetching user data.
+ * - changeFacility.js: JavaScript file for changing user facility.
+ * - updateUserStatus.js: JavaScript file for updating user status.
+ *
+ * Functions:
+ * - displayUsers(users): Displays user information in a table format with options to change facility and update user status.
+ *
+ */
+
 import { changeFacility } from "./changeFacility.js";
 import { getUsers } from "./getUsers.js";
 import { updateUserStatus } from "./updateUserStatus.js";

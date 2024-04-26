@@ -1,5 +1,17 @@
-
 <?php
+/**
+ * Get Scheduled Meetings Endpoint
+ *
+ * This PHP script serves as an endpoint for retrieving scheduled meetings for a given event container ID and date.
+ * It expects a POST request with JSON data containing the event container ID and date.
+ * It queries the database for scheduled meetings matching the provided container ID and date.
+ * The script then returns the meeting times as a JSON response.
+ *
+ * HTTP Methods:
+ * - POST: Retrieves scheduled meetings for a given event container ID and date.
+ *
+ */
+
 include '../../../lasalle-calendar-env-variables/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -76,4 +88,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(405); // Method Not Allowed
     echo json_encode(array("success" => false, "message" => "Invalid request method"));
 }
-?>

@@ -1,5 +1,16 @@
 <?php
-function generateRandomPassword($length = 12) {
+/**
+ * Generate Random Password
+ *
+ * This function generates a random password of the specified length with a mix of uppercase letters, lowercase letters,
+ * numbers, and symbols.
+ *
+ * @param int $length The length of the password (default is 12)
+ * @return string The generated random password
+ */
+
+function generateRandomPassword($length = 12)
+{
     // Define the character sets for each type of character
     $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $lowercase = 'abcdefghijklmnopqrstuvwxyz';

@@ -1,4 +1,16 @@
 <?php
+/**
+ * User Information Update Endpoint
+ *
+ * This PHP script serves as an endpoint for updating user information.
+ * It expects a POST request with the user's updated information including
+ * first name, last name, primary email, secondary email, and phone number.
+ * The script validates the provided data and updates the user's information in the database.
+ *
+ * HTTP Methods:
+ * - POST: Updates the user's information based on the provided data.
+ *
+ */
 
 include '../../../../lasalle-calendar-env-variables/config.php';
 require_once '../validationFunctions/validation_functions.php';

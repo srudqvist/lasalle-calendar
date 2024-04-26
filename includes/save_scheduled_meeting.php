@@ -1,4 +1,26 @@
 <?php
+/**
+ * Meeting Creation Endpoint
+ *
+ * This PHP script serves as an endpoint for creating new meetings. It receives POST requests with form data containing meeting information.
+ * It validates the received data and inserts a new meeting record into the database if the data is valid.
+ *
+ * HTTP Methods:
+ * - POST: Accepts POST requests containing form data for meeting creation.
+ *
+ * Request Data Parameters:
+ * - containerId: The ID of the event container associated with the meeting.
+ * - date: The date of the meeting.
+ * - time: The time of the meeting.
+ * - name: The name of the attendee.
+ * - email: The email of the attendee.
+ * - timezone: The timezone of the meeting.
+ * - comments: Any additional comments about the meeting.
+ *
+ * Response Format:
+ * - JSON: Returns a JSON response indicating the success or failure of the meeting creation process.
+ *
+ */
 
 include '../../../lasalle-calendar-env-variables/config.php';
 // Add something to the link to make sure it is sent from a facilitator?

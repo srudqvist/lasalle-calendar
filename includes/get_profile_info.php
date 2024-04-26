@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Profile Data Endpoint
+ *
+ * This PHP script serves as an endpoint for retrieving user data.
+ * It expects a POST request with the user's ID in the session.
+ * It retrieves user data from the database based on the provided user ID.
+ * The script then returns the user data as a JSON response.
+ *
+ * HTTP Methods:
+ * - POST: Retrieves user data based on the user's ID.
+ *
+ */
+
 include '../../../lasalle-calendar-env-variables/config.php';
 session_start();
 

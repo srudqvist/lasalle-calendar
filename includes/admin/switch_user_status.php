@@ -1,4 +1,15 @@
 <?php
+/**
+ * Update User Status Endpoint
+ *
+ * This PHP script serves as an endpoint for updating a user's status.
+ * It expects a POST request with JSON data containing the user ID and the new user status.
+ * It updates the user's status in the database accordingly.
+ *
+ * HTTP Methods:
+ * - POST: Updates the user's status and returns a JSON response indicating success or failure.
+ *
+ */
 
 include '../../../../lasalle-calendar-env-variables/config.php';
 

@@ -1,4 +1,30 @@
 <?php
+/**
+ * Save Event Endpoint
+ *
+ * This PHP script serves as an endpoint for creating new events. It receives POST requests with form data containing event information.
+ * It validates the received data, ensures that the facility information exists in the session, and inserts a new event record into the database if the data is valid.
+ *
+ * HTTP Methods:
+ * - POST: Accepts POST requests containing form data for event creation.
+ *
+ * Request Data Parameters:
+ * - eventName: The name of the event.
+ * - dayFrom: The start day of the event.
+ * - dayTo: The end day of the event.
+ * - startTime: The start time of the event.
+ * - endTime: The end time of the event.
+ * - duration: The duration of the event.
+ * - timeZone: The time zone of the event.
+ * - meetingType: The type of the meeting.
+ * - description: The description of the event.
+ * - eventColor: The color code associated with the event.
+ *
+ * Response Format:
+ * - JSON: Returns a JSON response indicating the success or failure of the event creation process.
+ *
+ */
+
 include '../../../lasalle-calendar-env-variables/config.php';
 
 // Check if the form is submitted

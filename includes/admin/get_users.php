@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Get Users Endpoint
+ *
+ * This PHP script serves as an endpoint for retrieving users' information.
+ * It expects a POST request and returns JSON data containing information about all users in the database.
+ *
+ * HTTP Methods:
+ * - POST: Retrieves information about all users and returns it as JSON data.
+ *
+ */
+
 include '../../../../lasalle-calendar-env-variables/config.php';
 session_start();
 

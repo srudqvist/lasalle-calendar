@@ -1,4 +1,15 @@
 <?php
+/**
+ * Password Reset Endpoint
+ *
+ * This PHP script serves as an endpoint for resetting user passwords.
+ * It expects a POST request with the user's email address.
+ * The script generates a random password, emails it to the user, and updates the password in the database.
+ *
+ * HTTP Methods:
+ * - POST: Resets the user's password based on the provided email address.
+ *
+ */
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

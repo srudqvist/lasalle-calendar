@@ -1,3 +1,22 @@
+/**
+ * Scheduled Meeting Form Submission
+ *
+ * This JavaScript file handles the submission of a scheduled meeting form.
+ * It listens for the DOMContentLoaded event and attaches a submit event listener to the scheduleMeetingForm element.
+ * When the form is submitted, it prevents the default form submission behavior and gathers form data.
+ * The containerId is retrieved from the URL parameters, and the date and time are extracted from the form.
+ * The form data is then sent via a POST request to save_scheduled_meeting.php using the Fetch API.
+ * Upon successful submission, the user is redirected to meetingConfirmation.php.
+ * If an error occurs during submission, appropriate error messages are logged to the console.
+ *
+ * Functions:
+ * - splitDateTime(dateTimeString): Parses date and time strings, converts time to 24-hour format, and formats date and time strings.
+ * - fetchUserInformation(): Fetches user information from the server.
+ * - saveEdits(data): Saves edited user information to the server.
+ * - changePasswordRequest(currentPassword, newPassword): Sends a request to change the user's password to the server.
+ *
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
   const scheduleForm = document.getElementById("scheduleMeetingForm");
   scheduleForm.addEventListener("submit", (event) => {

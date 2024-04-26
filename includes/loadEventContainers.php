@@ -1,5 +1,18 @@
 <?php
-
+/**
+ * Load Event Containers Endpoint
+ *
+ * This PHP script serves as an endpoint for displaying event containers associated with a specific facility.
+ * It retrieves event containers from the database based on the facility stored in the user's session.
+ * The retrieved event containers are then displayed on the webpage.
+ *
+ * HTTP Methods:
+ * - GET: Retrieves event containers and displays them on the webpage.
+ *
+ * Session Data:
+ * - facility: The facility associated with the logged-in user.
+ *
+ */
 include '../../../lasalle-calendar-env-variables/config.php';
 $conn = new mysqli($db_host, $db_username, $db_password, $db_database);
 
